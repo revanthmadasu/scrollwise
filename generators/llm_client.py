@@ -1,0 +1,158 @@
+"""Pluggable LLM client.
+
+Default backend is the Anthropic API. To swap in a self-hosted OpenAI-compatible
+server (vLLM, Ollama, LM Studio, TGI), set:
+
+    LLM_BACKEND=openai_compatible
+    LLM_BASE_URL=http://localhost:8000/v1
+    LLM_API_KEY=anything
+    LLM_MODEL=meta-llama/Llama-3.1-70B-Instruct
+
+The interface is a single `complete()` method that takes a system prompt and a
+user prompt and returns the text response. JSON parsing is the caller's job.
+"""
+
+from __future__ import annotations
+
+import json
+import os
+from typing import Protocol
+
+from generators._logging import get_logger
+
+logger = get_logger(__name__)
+
+
+class LLMClient(Protocol):
+    model_version: str
+
+    def complete(
+        self,
+        system: str,
+        user: str,
+        *,
+        max_tokens: int = 2048,
+        temperature: float = 0.7,
+    ) -> str:
+        ...
+
+
+class AnthropicLLMClient:
+    """Default backend: Anthropic API."""
+
+    def __init__(self, model: str = "claude-opus-4-7"):
+        import anthropic
+
+        self.client = anthropic.Anthropic()
+        self.model = model
+        self.model_version = f"anthropic:{model}"
+
+    def complete(
+        self,
+        system: str,
+        user: str,
+        *,
+        max_tokens: int = 2048,
+        temperature: float = 0.7,
+    ) -> str:
+        response = self.client.messages.create(
+            model=self.model,
+            max_tokens=max_tokens,
+            system=system,
+            messages=[{"role": "user", "content": user}],
+        )
+        # Extract text from response blocks
+        out: list[str] = []
+        for block in response.content:
+            if getattr(block, "type", None) == "text":
+                out.append(block.text)
+        return "".join(out)
+
+
+class OpenAICompatibleLLMClient:
+    """For self-hosted vLLM, Ollama, etc.
+
+    Requires `pip install openai`.
+    """
+
+    def __init__(
+        self,
+        model: str,
+        base_url: str,
+        api_key: str = "no-key-needed",
+    ):
+        try:
+            from openai import OpenAI
+        except ImportError as e:
+            raise RuntimeError(
+                "openai package not installed. pip install openai"
+            ) from e
+
+        self.client = OpenAI(base_url=base_url, api_key=api_key)
+        self.model = model
+        self.model_version = f"openai_compat:{model}@{base_url}"
+
+    def complete(
+        self,
+        system: str,
+        user: str,
+        *,
+        max_tokens: int = 2048,
+        temperature: float = 0.7,
+    ) -> str:
+        response = self.client.chat.completions.create(
+            model=self.model,
+            max_tokens=max_tokens,
+            temperature=temperature,
+            messages=[
+                {"role": "system", "content": system},
+                {"role": "user", "content": user},
+            ],
+        )
+        return response.choices[0].message.content or ""
+
+
+def get_llm_client() -> LLMClient:
+    """Factory. Reads LLM_BACKEND env var."""
+    backend = os.environ.get("LLM_BACKEND", "anthropic")
+    model = os.environ.get("LLM_MODEL", "claude-opus-4-7")
+
+    if backend == "anthropic":
+        return AnthropicLLMClient(model=model)
+    elif backend == "openai_compatible":
+        base_url = os.environ["LLM_BASE_URL"]
+        api_key = os.environ.get("LLM_API_KEY", "no-key-needed")
+        return OpenAICompatibleLLMClient(
+            model=model, base_url=base_url, api_key=api_key
+        )
+    else:
+        raise ValueError(f"Unknown LLM_BACKEND: {backend}")
+
+
+def parse_json_response(text: str) -> dict:
+    """Robustly extract JSON from an LLM response.
+
+    Handles common patterns: ```json fenced blocks, leading prose, trailing text.
+    """
+    text = text.strip()
+    # Strip fenced code blocks
+    if text.startswith("```"):
+        # Find the first newline after the opening fence
+        first_nl = text.find("\n")
+        if first_nl >= 0:
+            text = text[first_nl + 1:]
+        # Strip the closing fence
+        if text.endswith("```"):
+            text = text[:-3]
+        text = text.strip()
+
+    # Find the first { and last } to slice out the JSON
+    start = text.find("{")
+    end = text.rfind("}")
+    if start < 0 or end < 0:
+        raise ValueError(f"No JSON object found in response: {text[:200]}")
+    try:
+        return json.loads(text[start:end + 1])
+    except json.JSONDecodeError as e:
+        logger.error("json_parse_failed", extra={"snippet": text[:500]})
+        raise ValueError(f"Could not parse JSON: {e}") from e
