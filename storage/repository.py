@@ -36,7 +36,7 @@ class Repository:
         backend = os.environ.get("DB_BACKEND", "sqlite")
 
         if backend == "postgres" or database_url:
-            self._init_postgres(database_url or os.environ["DATABASE_URL"])
+            self._init_postgres(database_url or os.environ.get("DATABASE_URL"))
         else:
             self._init_sqlite(db_path or os.environ.get("DB_PATH", "data/content.db"))
 
