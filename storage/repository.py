@@ -67,8 +67,11 @@ class Repository:
     def _ensure_schema_postgres(self) -> None:
         with open(SCHEMA_PATH) as f:
             schema = f.read()
+        # Strip -- comments before splitting so inline comments after a
+        # semicolon don't produce empty/broken statements.
+        lines = [ln.split("--")[0] for ln in schema.splitlines()]
+        schema = "\n".join(lines)
         with self.conn.cursor() as cur:
-            # Postgres doesn't support executescript; split on statements
             for stmt in schema.split(";"):
                 stmt = stmt.strip()
                 if stmt:
