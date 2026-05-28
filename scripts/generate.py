@@ -44,15 +44,16 @@ load_dotenv()
 @click.option(
     "--db",
     default=None,
-    help="Path to SQLite DB (defaults to DB_PATH env var or data/content.db)",
+    help="Path to SQLite DB (overrides DB_PATH env var). Ignored when DB_BACKEND=postgres.",
 )
 def main(topic, modules, subtopics_per_module, levels, test_cadence, db):
-    db_path = db or os.environ.get("DB_PATH", "data/content.db")
+    if db:
+        os.environ["DB_PATH"] = db
 
     level_ints = [int(x.strip()) for x in levels.split(",")]
     parsed_levels = [Level(x) for x in level_ints]
 
-    repo = Repository(db_path)
+    repo = Repository()
     llm = get_llm_client()
     images = get_image_client()
     embeddings = get_embedding_client()
@@ -65,11 +66,12 @@ def main(topic, modules, subtopics_per_module, levels, test_cadence, db):
         test_cadence=test_cadence,
     )
 
+    db_info = os.environ.get("DATABASE_URL", os.environ.get("DB_PATH", "data/content.db"))
     click.echo(f"Generating content for: {topic}")
     click.echo(f"  Modules: {modules}, subtopics/module: {subtopics_per_module}")
     click.echo(f"  Levels: {[int(l) for l in parsed_levels]}")
     click.echo(f"  Test cadence: every {test_cadence} subtopics")
-    click.echo(f"  DB: {db_path}")
+    click.echo(f"  DB: {db_info}")
     click.echo()
 
     try:
