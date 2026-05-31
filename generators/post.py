@@ -69,7 +69,7 @@ class PostGenerator:
             data = parse_json_response(response)
 
         except ValueError as e:
-            logger.error("Failed to parse LLM response", extra={"error": str(e)})
+            logger.error("Failed to parse LLM response", extra={"error": str(e), "response": response})
             raise
 
         # Generate images from prompts
