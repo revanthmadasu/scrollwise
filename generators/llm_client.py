@@ -184,11 +184,11 @@ def get_llm_client() -> LLMClient:
 def parse_json_response(text: str) -> dict:
     """Robustly extract JSON from an LLM response.
 
-    Handles common patterns: ```json fenced blocks, leading prose, trailing
-    text, and unescaped control characters (newlines inside strings) that
-    some models like Llama emit.
+    Uses json-repair to handle common model output issues: single quotes,
+    unescaped newlines, trailing commas, fenced code blocks, leading prose.
+    Requires `pip install json-repair`.
     """
-    import re
+    from json_repair import repair_json
 
     text = text.strip()
     # Strip fenced code blocks
@@ -200,26 +200,15 @@ def parse_json_response(text: str) -> dict:
             text = text[:-3]
         text = text.strip()
 
-    # Find the first { and last } to slice out the JSON
+    # Find the first { and last } to slice out the JSON object
     start = text.find("{")
     end = text.rfind("}")
     if start < 0 or end < 0:
         raise ValueError(f"No JSON object found in response: {text[:200]}")
     candidate = text[start:end + 1]
 
-    # First attempt: parse as-is
     try:
-        return json.loads(candidate)
-    except json.JSONDecodeError:
-        pass
-
-    # Second attempt: replace unescaped control characters (tabs, newlines)
-    # inside JSON string values that Llama/other models sometimes emit.
-    cleaned = re.sub(r'(?<!\\)\\?(\n|\r|\t)', lambda m: {
-        "\n": "\\n", "\r": "\\r", "\t": "\\t"
-    }.get(m.group(0), m.group(0)), candidate)
-    try:
-        return json.loads(cleaned)
-    except json.JSONDecodeError as e:
+        return json.loads(repair_json(candidate))
+    except (json.JSONDecodeError, ValueError) as e:
         logger.error("json_parse_failed", extra={"snippet": candidate[:500]})
         raise ValueError(f"Could not parse JSON: {e}") from e
