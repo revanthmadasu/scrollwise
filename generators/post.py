@@ -65,8 +65,12 @@ class PostGenerator:
             max_tokens=max_tokens,
             temperature=temperature,
         )
+        try:
+            data = parse_json_response(response)
 
-        data = parse_json_response(response)
+        except ValueError as e:
+            logger.error("Failed to parse LLM response", extra={"error": str(e), "response": response})
+            raise
 
         # Generate images from prompts
         image_prompts = data.get("image_prompts", [])

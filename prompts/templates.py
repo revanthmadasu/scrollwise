@@ -72,7 +72,9 @@ You always also produce 1-3 image prompts for an image generation model. The \
 image prompts should be visually rich and specific: describe the scene, the \
 style, the composition. Don't reference text in the image.
 
-Output strictly valid JSON, no markdown fences."""
+Output strictly valid JSON, no markdown fences. Do not add any prose before \
+or after the JSON. The entire response must be a single JSON object and \
+nothing else."""
 
 POST_USER = """Topic: {topic_title}
 Module: {module_title}
