@@ -11,7 +11,7 @@ class FakeLLMClient:
         """responder(system, user) -> raw text response"""
         self.responder = responder
 
-    def complete(self, system, user, *, max_tokens=2048, temperature=0.7):
+    def complete(self, system, user, *, max_tokens=4096, temperature=0.7):
         return self.responder(system, user)
 
 
