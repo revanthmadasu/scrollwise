@@ -184,16 +184,18 @@ def get_llm_client() -> LLMClient:
 def parse_json_response(text: str) -> dict:
     """Robustly extract JSON from an LLM response.
 
-    Handles common patterns: ```json fenced blocks, leading prose, trailing text.
+    Handles common patterns: ```json fenced blocks, leading prose, trailing
+    text, and unescaped control characters (newlines inside strings) that
+    some models like Llama emit.
     """
+    import re
+
     text = text.strip()
     # Strip fenced code blocks
     if text.startswith("```"):
-        # Find the first newline after the opening fence
         first_nl = text.find("\n")
         if first_nl >= 0:
             text = text[first_nl + 1:]
-        # Strip the closing fence
         if text.endswith("```"):
             text = text[:-3]
         text = text.strip()
@@ -203,8 +205,21 @@ def parse_json_response(text: str) -> dict:
     end = text.rfind("}")
     if start < 0 or end < 0:
         raise ValueError(f"No JSON object found in response: {text[:200]}")
+    candidate = text[start:end + 1]
+
+    # First attempt: parse as-is
     try:
-        return json.loads(text[start:end + 1])
+        return json.loads(candidate)
+    except json.JSONDecodeError:
+        pass
+
+    # Second attempt: replace unescaped control characters (tabs, newlines)
+    # inside JSON string values that Llama/other models sometimes emit.
+    cleaned = re.sub(r'(?<!\\)\\?(\n|\r|\t)', lambda m: {
+        "\n": "\\n", "\r": "\\r", "\t": "\\t"
+    }.get(m.group(0), m.group(0)), candidate)
+    try:
+        return json.loads(cleaned)
     except json.JSONDecodeError as e:
-        logger.error("json_parse_failed", extra={"snippet": text[:500]})
+        logger.error("json_parse_failed", extra={"snippet": candidate[:500]})
         raise ValueError(f"Could not parse JSON: {e}") from e
