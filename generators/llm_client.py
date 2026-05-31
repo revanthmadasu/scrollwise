@@ -37,7 +37,7 @@ class LLMClient(Protocol):
         system: str,
         user: str,
         *,
-        max_tokens: int = 4096,
+        max_tokens: int = 8192,
         temperature: float = 0.7,
     ) -> str:
         ...
@@ -58,7 +58,7 @@ class AnthropicLLMClient:
         system: str,
         user: str,
         *,
-        max_tokens: int = 4096,
+        max_tokens: int = 8192,
         temperature: float = 0.7,
     ) -> str:
         response = self.client.messages.create(
@@ -103,7 +103,7 @@ class OpenAICompatibleLLMClient:
         system: str,
         user: str,
         *,
-        max_tokens: int = 4096,
+        max_tokens: int = 8192,
         temperature: float = 0.7,
     ) -> str:
         response = self.client.chat.completions.create(
@@ -149,7 +149,7 @@ class BedrockLLMClient:
         system: str,
         user: str,
         *,
-        max_tokens: int = 4096,
+        max_tokens: int = 8192,
         temperature: float = 0.7,
     ) -> str:
         response = self.client.converse(
