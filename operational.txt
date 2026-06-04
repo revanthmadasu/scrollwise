@@ -1,0 +1,16 @@
+aws signin url: https://339140804013.signin.aws.amazon.com/console
+aws account number: 339140804013
+
+ssh connect to instance: 
+ssh -i models_server_keypair.pem ubuntu@13.220.210.42
+
+source .venv/bin/activate
+python -m scripts.generate --topic 'Linear Algebra' --modules 3
+
+my ec2 key directory: 
+cd /Users/revanthmadasu/Desktop/projects/ContentSummarizer/infra
+
+sql termincal for postgres:
+psql -U cguser -d content_generator -h localhost
+
+connect to postgres via dbeaver from ssh tunnel: ssh -i models_server_keypair.pem -L 5432:localhost:5432 ubuntu@13.220.210.42 -N
