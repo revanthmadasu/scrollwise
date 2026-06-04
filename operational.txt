@@ -14,3 +14,11 @@ sql termincal for postgres:
 psql -U cguser -d content_generator -h localhost
 
 connect to postgres via dbeaver from ssh tunnel: ssh -i models_server_keypair.pem -L 5432:localhost:5432 ubuntu@13.220.210.42 -N
+
+test: 
+python -m scripts.generate \
+  --topic "Law of attraction" \
+  --modules 1 \
+  --subtopics-per-module 3 \
+  --levels 1,2,3 \
+  --test-cadence 3

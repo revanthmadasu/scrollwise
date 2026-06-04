@@ -2,7 +2,7 @@
 
 Backends:
   stub        — placeholder URL (dev, no GPU needed)
-  bedrock     — Stability AI SDXL on Amazon Bedrock (current POC)
+  bedrock     — Amazon Nova Canvas text-to-image on Amazon Bedrock (current POC)
   local_sdxl  — self-hosted SDXL/FLUX server on a separate EC2 (future)
 
 Set IMAGE_BACKEND env var to switch. Images are saved to S3 when using
@@ -36,24 +36,26 @@ class StubImageClient:
         return f"https://picsum.photos/seed/{h}/1024/1024"
 
 
-class BedrockSDXLClient:
-    """Stability AI SDXL via Amazon Bedrock.
+class BedrockImageClient:
+    """Amazon Nova Canvas text-to-image via Amazon Bedrock.
 
     Uses the same IAM role as the LLM client — no separate API key needed.
     Generated images are uploaded to S3 and the public URL is returned.
 
     Required env vars:
-        IMAGE_S3_BUCKET   — S3 bucket to store generated images
-        AWS_REGION        — defaults to us-east-1
+        IMAGE_S3_BUCKET    — S3 bucket to store generated images
+        AWS_REGION         — defaults to us-east-1
 
     Optional env vars:
-        IMAGE_SDXL_MODEL  — Bedrock model ID (defaults to stability.stable-diffusion-xl-v1)
+        IMAGE_BEDROCK_MODEL — Bedrock model ID (defaults to amazon.nova-canvas-v1:0).
+                              Titan (amazon.titan-image-generator-v2:0) uses the same
+                              request/response schema, so it works as a drop-in too.
     """
 
     def __init__(
         self,
         bucket: str,
-        model: str = "stability.stable-diffusion-xl-v1",
+        model: str = "amazon.nova-canvas-v1:0",
         region: str | None = None,
     ):
         try:
@@ -68,14 +70,16 @@ class BedrockSDXLClient:
         self.s3 = boto3.client("s3", region_name=region)
 
     def generate(self, prompt: str) -> str:
-        # Call Bedrock SDXL
+        # Call Bedrock (Nova Canvas / Titan text-to-image schema)
         body = json.dumps({
-            "text_prompts": [{"text": prompt, "weight": 1.0}],
-            "cfg_scale": 7,
-            "steps": 30,
-            "width": 1024,
-            "height": 1024,
-            "samples": 1,
+            "taskType": "TEXT_IMAGE",
+            "textToImageParams": {"text": prompt},
+            "imageGenerationConfig": {
+                "numberOfImages": 1,
+                "width": 1024,
+                "height": 1024,
+                "cfgScale": 8.0,
+            },
         })
         response = self.bedrock.invoke_model(
             modelId=self.model,
@@ -84,7 +88,7 @@ class BedrockSDXLClient:
             accept="application/json",
         )
         result = json.loads(response["body"].read())
-        image_bytes = base64.b64decode(result["artifacts"][0]["base64"])
+        image_bytes = base64.b64decode(result["images"][0])
 
         # Upload to S3
         key = f"generated-images/{uuid.uuid4().hex}.png"
@@ -152,7 +156,7 @@ def get_image_client() -> ImageClient:
     """Factory. Reads IMAGE_BACKEND env var.
 
     IMAGE_BACKEND=stub         → StubImageClient (default)
-    IMAGE_BACKEND=bedrock      → BedrockSDXLClient (needs IMAGE_S3_BUCKET)
+    IMAGE_BACKEND=bedrock      → BedrockImageClient (needs IMAGE_S3_BUCKET)
     IMAGE_BACKEND=local_sdxl   → LocalSDXLClient  (needs IMAGE_BASE_URL + IMAGE_S3_BUCKET)
     """
     backend = os.environ.get("IMAGE_BACKEND", "stub")
@@ -165,9 +169,9 @@ def get_image_client() -> ImageClient:
         if not bucket:
             raise RuntimeError("IMAGE_S3_BUCKET env var required for bedrock image backend")
         model = os.environ.get(
-            "IMAGE_SDXL_MODEL", "stability.stable-diffusion-xl-v1"
+            "IMAGE_BEDROCK_MODEL", "amazon.nova-canvas-v1:0"
         )
-        return BedrockSDXLClient(bucket=bucket, model=model)
+        return BedrockImageClient(bucket=bucket, model=model)
 
     elif backend == "local_sdxl":
         base_url = os.environ["IMAGE_BASE_URL"]
