@@ -17,7 +17,9 @@ import json
 import os
 import uuid
 from typing import Protocol
+from generators._logging import get_logger
 
+logger = get_logger(__name__)
 
 class ImageClient(Protocol):
     def generate(self, prompt: str) -> str:
@@ -76,6 +78,14 @@ class BedrockImageClient:
             or "us-west-2"
         )
         s3_region = s3_region or os.environ.get("AWS_REGION", "us-east-1")
+        logger.info(
+            "setting image client",
+            extra={
+                "bedrock_region": bedrock_region,
+                "s3_region": s3_region,
+                "model": model,
+            },
+        )
         self.model = model
         self.bucket = bucket
         self.bedrock = boto3.client("bedrock-runtime", region_name=bedrock_region)
