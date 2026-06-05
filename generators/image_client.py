@@ -2,7 +2,7 @@
 
 Backends:
   stub        — placeholder URL (dev, no GPU needed)
-  bedrock     — Amazon Nova Canvas text-to-image on Amazon Bedrock (current POC)
+  bedrock     — Stability Stable Image Core on Amazon Bedrock (current POC)
   local_sdxl  — self-hosted SDXL/FLUX server on a separate EC2 (future)
 
 Set IMAGE_BACKEND env var to switch. Images are saved to S3 when using
@@ -37,49 +37,57 @@ class StubImageClient:
 
 
 class BedrockImageClient:
-    """Amazon Nova Canvas text-to-image via Amazon Bedrock.
+    """Stability Stable Image Core text-to-image via Amazon Bedrock.
 
     Uses the same IAM role as the LLM client — no separate API key needed.
     Generated images are uploaded to S3 and the public URL is returned.
 
+    The Bedrock region and the S3 region are decoupled on purpose: Stable
+    Image Core is only active in some regions (e.g. us-west-2) while your
+    bucket / EC2 may live elsewhere (e.g. us-east-1). Invoking Bedrock
+    cross-region from us-east-1 is fully supported.
+
     Required env vars:
-        IMAGE_S3_BUCKET    — S3 bucket to store generated images
-        AWS_REGION         — defaults to us-east-1
+        IMAGE_S3_BUCKET     — S3 bucket to store generated images
 
     Optional env vars:
-        IMAGE_BEDROCK_MODEL — Bedrock model ID (defaults to amazon.nova-canvas-v1:0).
-                              Titan (amazon.titan-image-generator-v2:0) uses the same
-                              request/response schema, so it works as a drop-in too.
+        IMAGE_BEDROCK_REGION — region to invoke Bedrock in (defaults to us-west-2)
+        AWS_REGION           — region of the S3 bucket (defaults to us-east-1)
+        IMAGE_BEDROCK_MODEL  — Bedrock model ID (defaults to stability.stable-image-core-v1:1).
+                               Ultra (stability.stable-image-ultra-v1:1) and SD3.5
+                               (stability.sd3-5-large-v1:0) share this schema.
     """
 
     def __init__(
         self,
         bucket: str,
-        model: str = "amazon.nova-canvas-v1:0",
-        region: str | None = None,
+        model: str = "stability.stable-image-core-v1:1",
+        bedrock_region: str | None = None,
+        s3_region: str | None = None,
     ):
         try:
             import boto3
         except ImportError as e:
             raise RuntimeError("boto3 not installed. pip install boto3") from e
 
-        region = region or os.environ.get("AWS_REGION", "us-east-1")
+        bedrock_region = (
+            bedrock_region
+            or os.environ.get("IMAGE_BEDROCK_REGION")
+            or "us-west-2"
+        )
+        s3_region = s3_region or os.environ.get("AWS_REGION", "us-east-1")
         self.model = model
         self.bucket = bucket
-        self.bedrock = boto3.client("bedrock-runtime", region_name=region)
-        self.s3 = boto3.client("s3", region_name=region)
+        self.bedrock = boto3.client("bedrock-runtime", region_name=bedrock_region)
+        self.s3 = boto3.client("s3", region_name=s3_region)
 
     def generate(self, prompt: str) -> str:
-        # Call Bedrock (Nova Canvas / Titan text-to-image schema)
+        # Call Bedrock (Stability Stable Image Core / Ultra / SD3.5 schema)
         body = json.dumps({
-            "taskType": "TEXT_IMAGE",
-            "textToImageParams": {"text": prompt},
-            "imageGenerationConfig": {
-                "numberOfImages": 1,
-                "width": 1024,
-                "height": 1024,
-                "cfgScale": 8.0,
-            },
+            "prompt": prompt,
+            "mode": "text-to-image",
+            "aspect_ratio": "1:1",
+            "output_format": "png",
         })
         response = self.bedrock.invoke_model(
             modelId=self.model,
@@ -88,6 +96,16 @@ class BedrockImageClient:
             accept="application/json",
         )
         result = json.loads(response["body"].read())
+
+        # Stability returns a per-image finish reason; surface content filtering
+        # instead of silently uploading an empty/blank image.
+        finish_reasons = result.get("finish_reasons") or [None]
+        if finish_reasons[0] is not None:
+            raise RuntimeError(
+                f"Stable Image Core did not return an image "
+                f"(finish_reason={finish_reasons[0]!r}) for prompt: {prompt!r}"
+            )
+
         image_bytes = base64.b64decode(result["images"][0])
 
         # Upload to S3
@@ -169,7 +187,7 @@ def get_image_client() -> ImageClient:
         if not bucket:
             raise RuntimeError("IMAGE_S3_BUCKET env var required for bedrock image backend")
         model = os.environ.get(
-            "IMAGE_BEDROCK_MODEL", "amazon.nova-canvas-v1:0"
+            "IMAGE_BEDROCK_MODEL", "stability.stable-image-core-v1:1"
         )
         return BedrockImageClient(bucket=bucket, model=model)
 
