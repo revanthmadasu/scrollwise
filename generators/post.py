@@ -60,9 +60,11 @@ class PostGenerator:
             level_word_budget=word_budget,
         )
 
-        # Higher temperature for longer-form content (more variation in voice)
+        # Higher temperature for longer-form content (more variation in voice).
+        # DEEP is capped at 1536 (a real 250-500 word post is ~850 tokens incl.
+        # JSON); a bigger budget just lets a looping model ramble and truncate.
         temperature = 0.6 if level == Level.SUMMARY else 0.75
-        max_tokens = 512 if level == Level.SUMMARY else 1024 if level == Level.STANDARD else 4096
+        max_tokens = 512 if level == Level.SUMMARY else 1024 if level == Level.STANDARD else 1536
 
         response = self.llm.complete(
             system=POST_SYSTEM,

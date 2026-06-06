@@ -68,6 +68,11 @@ Voice:
 - No "in this post we will" preambles. Start with the idea.
 - No emoji.
 
+Length discipline (important):
+- Respect the level's word budget. Do NOT pad, restate, or repeat sentences
+  or paragraphs to fill space. Repetition is a failure.
+- Stop as soon as the idea is fully expressed, even if under budget.
+
 You always also produce 1-2 image prompts for an image generation model. The \
 generated image is used as a BACKGROUND that the post's text is overlaid on, \
 so it must be subtle and unobtrusive — never the main attraction. Describe a \

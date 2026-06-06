@@ -200,12 +200,15 @@ def parse_json_response(text: str) -> dict:
             text = text[:-3]
         text = text.strip()
 
-    # Find the first { and last } to slice out the JSON object
+    # Slice from the first { to the matching last }. If the response was
+    # truncated (model hit max_tokens mid-object) there may be no closing },
+    # so fall back to everything after the first { — json-repair can close an
+    # unterminated string/object and recover a usable (if shortened) object.
     start = text.find("{")
-    end = text.rfind("}")
-    if start < 0 or end < 0:
+    if start < 0:
         raise ValueError(f"No JSON object found in response: {text[:200]}")
-    candidate = text[start:end + 1]
+    end = text.rfind("}")
+    candidate = text[start:end + 1] if end > start else text[start:]
 
     try:
         return json.loads(repair_json(candidate))
