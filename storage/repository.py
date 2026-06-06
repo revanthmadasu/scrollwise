@@ -254,6 +254,27 @@ class Repository:
         row = self._fetchone("SELECT COUNT(*) AS c FROM posts WHERE topic_id = ?", (topic_id,))
         return int(row["c"])
 
+    def topic_ids(self) -> list[str]:
+        """All topic_ids that have a curriculum, with their post counts."""
+        rows = self._fetchall("SELECT topic_id FROM curricula ORDER BY topic_id")
+        return [r["topic_id"] for r in rows]
+
+    def delete_topic(self, topic_id: str) -> tuple[int, int]:
+        """Delete a topic's posts and curriculum. Returns (posts, curricula) removed."""
+        posts = self._execute("DELETE FROM posts WHERE topic_id = ?", (topic_id,)).rowcount
+        curr = self._execute(
+            "DELETE FROM curricula WHERE topic_id = ?", (topic_id,)
+        ).rowcount
+        self._commit()
+        return max(posts, 0), max(curr, 0)
+
+    def delete_all(self) -> tuple[int, int]:
+        """Delete ALL posts and curricula. Returns (posts, curricula) removed."""
+        posts = self._execute("DELETE FROM posts").rowcount
+        curr = self._execute("DELETE FROM curricula").rowcount
+        self._commit()
+        return max(posts, 0), max(curr, 0)
+
     def all_posts_for_topic(self, topic_id: str) -> list[Post]:
         rows = self._fetchall(
             "SELECT * FROM posts WHERE topic_id = ? ORDER BY offset_module, offset_subtopic, offset_seq",
