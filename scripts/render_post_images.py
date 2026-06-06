@@ -43,12 +43,14 @@ def main(topic, limit, db, out, force):
         os.environ["DB_PATH"] = db
 
     region = os.environ.get("AWS_REGION", "us-east-1")
-    bucket = os.environ.get("IMAGE_S3_BUCKET")
+    # Cards go to POST_IMAGE_S3_BUCKET if set, else fall back to IMAGE_S3_BUCKET.
+    bucket = os.environ.get("POST_IMAGE_S3_BUCKET") or os.environ.get("IMAGE_S3_BUCKET")
     preview = out is not None
 
     if not preview and not bucket:
         raise click.UsageError(
-            "IMAGE_S3_BUCKET is required to upload cards. Use --out <dir> for a local preview."
+            "Set POST_IMAGE_S3_BUCKET (or IMAGE_S3_BUCKET) to upload cards, "
+            "or use --out <dir> for a local preview."
         )
 
     renderer = PostImageRenderer(bucket=bucket, region=region)

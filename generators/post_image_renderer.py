@@ -266,11 +266,16 @@ def get_post_image_renderer() -> PostImageRenderer | None:
     Returns None (rendering disabled) unless the backgrounds actually live in
     S3 — i.e. an S3-backed image backend plus a bucket. On the stub backend the
     backgrounds are placeholder URLs that can't be fetched/composed, so we skip.
+
+    Rendered cards are uploaded to POST_IMAGE_S3_BUCKET if set, otherwise to the
+    same IMAGE_S3_BUCKET as the raw backgrounds. (Backgrounds are always read
+    from whatever bucket their URL points at, so only the upload target matters.)
     """
     backend = os.environ.get("IMAGE_BACKEND", "stub")
-    bucket = os.environ.get("IMAGE_S3_BUCKET")
-    if backend not in ("bedrock", "local_sdxl") or not bucket:
+    bg_bucket = os.environ.get("IMAGE_S3_BUCKET")
+    if backend not in ("bedrock", "local_sdxl") or not bg_bucket:
         logger.info("post_image_renderer_disabled", extra={"backend": backend})
         return None
     region = os.environ.get("AWS_REGION", "us-east-1")
-    return PostImageRenderer(bucket=bucket, region=region)
+    cards_bucket = os.environ.get("POST_IMAGE_S3_BUCKET") or bg_bucket
+    return PostImageRenderer(bucket=cards_bucket, region=region)
