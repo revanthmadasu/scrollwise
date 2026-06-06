@@ -15,9 +15,9 @@ import base64
 import hashlib
 import json
 import os
-import uuid
 from typing import Protocol
 from generators._logging import get_logger
+from generators.s3_util import upload_png
 from prompts.templates import (
     IMAGE_BACKGROUND_NEGATIVE_PROMPT,
     IMAGE_BACKGROUND_STYLE,
@@ -99,12 +99,13 @@ class BedrockImageClient:
         # Steer every image toward a quiet, text-friendly background.
         styled_prompt = f"{prompt}, {IMAGE_BACKGROUND_STYLE}"
 
-        # Call Bedrock (Stability Stable Image Core / Ultra / SD3.5 schema)
+        # Call Bedrock (Stability Stable Image Core / Ultra / SD3.5 schema).
+        # 4:5 portrait so the background fills the post card without cropping.
         body = json.dumps({
             "prompt": styled_prompt,
             "negative_prompt": IMAGE_BACKGROUND_NEGATIVE_PROMPT,
             "mode": "text-to-image",
-            "aspect_ratio": "1:1",
+            "aspect_ratio": "4:5",
             "output_format": "png",
         })
         response = self.bedrock.invoke_model(
@@ -125,16 +126,9 @@ class BedrockImageClient:
             )
 
         image_bytes = base64.b64decode(result["images"][0])
-
-        # Upload to S3
-        key = f"generated-images/{uuid.uuid4().hex}.png"
-        self.s3.put_object(
-            Bucket=self.bucket,
-            Key=key,
-            Body=image_bytes,
-            ContentType="image/png",
+        return upload_png(
+            image_bytes, self.bucket, key_prefix="generated-images", s3_client=self.s3
         )
-        return f"https://{self.bucket}.s3.amazonaws.com/{key}"
 
 
 class LocalSDXLClient:
@@ -151,7 +145,6 @@ class LocalSDXLClient:
 
     def __init__(self, base_url: str, bucket: str, region: str | None = None):
         try:
-            import boto3
             import requests
         except ImportError as e:
             raise RuntimeError("pip install boto3 requests") from e
@@ -160,7 +153,6 @@ class LocalSDXLClient:
         self.bucket = bucket
         self.region = region or os.environ.get("AWS_REGION", "us-east-1")
         self._requests = requests
-        self._boto3 = boto3
 
     def generate(self, prompt: str) -> str:
         response = self._requests.post(
@@ -177,15 +169,9 @@ class LocalSDXLClient:
 
         # Otherwise expect base64 and upload to S3
         image_bytes = base64.b64decode(data["image_base64"])
-        s3 = self._boto3.client("s3", region_name=self.region)
-        key = f"generated-images/{uuid.uuid4().hex}.png"
-        s3.put_object(
-            Bucket=self.bucket,
-            Key=key,
-            Body=image_bytes,
-            ContentType="image/png",
+        return upload_png(
+            image_bytes, self.bucket, key_prefix="generated-images", region=self.region
         )
-        return f"https://{self.bucket}.s3.amazonaws.com/{key}"
 
 
 def get_image_client() -> ImageClient:

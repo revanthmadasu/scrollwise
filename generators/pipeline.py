@@ -9,6 +9,7 @@ from generators.image_client import ImageClient
 from generators.llm_client import LLMClient
 from generators.models import Curriculum, Level, Post
 from generators.post import PostGenerator
+from generators.post_image_renderer import PostImageRenderer
 from generators.test_post import TestGenerator
 from storage.repository import Repository
 
@@ -28,10 +29,11 @@ class Pipeline:
         images: ImageClient,
         embeddings: EmbeddingClient,
         test_cadence: int = 3,
+        renderer: PostImageRenderer | None = None,
     ):
         self.repo = repo
         self.curriculum_gen = CurriculumGenerator(llm)
-        self.post_gen = PostGenerator(llm, images, embeddings)
+        self.post_gen = PostGenerator(llm, images, embeddings, renderer=renderer)
         self.test_gen = TestGenerator(llm, embeddings)
         self.test_cadence = test_cadence
 

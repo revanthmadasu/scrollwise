@@ -28,7 +28,11 @@ CREATE TABLE IF NOT EXISTS posts (
     body TEXT NOT NULL,
 
     image_prompts TEXT NOT NULL DEFAULT '[]',  -- JSON array
-    image_urls TEXT NOT NULL DEFAULT '[]',     -- JSON array
+    image_urls TEXT NOT NULL DEFAULT '[]',     -- JSON array (raw AI backgrounds)
+    -- Rendered post cards: background + overlaid post text. One entry per
+    -- carousel page (long posts paginate into several). This is what the feed
+    -- actually displays; image_urls are the intermediate backgrounds.
+    post_image_urls TEXT NOT NULL DEFAULT '[]',  -- JSON array
     video_url TEXT,
 
     -- Test fields

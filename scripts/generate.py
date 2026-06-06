@@ -15,6 +15,7 @@ from generators.image_client import get_image_client
 from generators.llm_client import get_llm_client
 from generators.models import Level
 from generators.pipeline import Pipeline
+from generators.post_image_renderer import get_post_image_renderer
 from storage.repository import Repository
 
 load_dotenv()
@@ -57,6 +58,7 @@ def main(topic, modules, subtopics_per_module, levels, test_cadence, db):
     llm = get_llm_client()
     images = get_image_client()
     embeddings = get_embedding_client()
+    renderer = get_post_image_renderer()
 
     pipeline = Pipeline(
         repo=repo,
@@ -64,6 +66,7 @@ def main(topic, modules, subtopics_per_module, levels, test_cadence, db):
         images=images,
         embeddings=embeddings,
         test_cadence=test_cadence,
+        renderer=renderer,
     )
 
     db_info = os.environ.get("DATABASE_URL", os.environ.get("DB_PATH", "data/content.db"))
@@ -72,6 +75,7 @@ def main(topic, modules, subtopics_per_module, levels, test_cadence, db):
     click.echo(f"  Levels: {[int(l) for l in parsed_levels]}")
     click.echo(f"  Test cadence: every {test_cadence} subtopics")
     click.echo(f"  DB: {db_info}")
+    click.echo(f"  Post-card rendering: {'on' if renderer else 'off (stub/no bucket)'}")
     click.echo()
 
     try:
