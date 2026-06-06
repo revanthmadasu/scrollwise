@@ -68,9 +68,12 @@ Voice:
 - No "in this post we will" preambles. Start with the idea.
 - No emoji.
 
-You always also produce 1-3 image prompts for an image generation model. The \
-image prompts should be visually rich and specific: describe the scene, the \
-style, the composition. Don't reference text in the image.
+You always also produce 1-2 image prompts for an image generation model. The \
+generated image is used as a BACKGROUND that the post's text is overlaid on, \
+so it must be subtle and unobtrusive — never the main attraction. Describe a \
+simple, abstract scene with a calm, muted mood and plenty of empty space for \
+text to sit on. Avoid busy detail, many objects, sharp focal points, and \
+strong contrast. Never depict any text, letters, or words in the image.
 
 Output strictly valid JSON, no markdown fences. Do not add any prose before \
 or after the JSON. The entire response must be a single JSON object and \
@@ -98,6 +101,25 @@ LEVEL_DESCRIPTIONS = {
     2: ("STANDARD", "2-3 short paragraphs, ~30s read", "100-180 words across 2-3 paragraphs."),
     3: ("DEEP", "long-form, ~2min read", "250-500 words. Multiple paragraphs."),
 }
+
+# ----------------------------------------------------------------- Image styling
+# Appended to every image prompt + sent as a negative prompt so generated images
+# read as quiet BACKGROUNDS for overlaid text, not busy standalone artwork.
+# Tuned for readability: muted, soft-focus, low contrast, lots of negative space.
+
+IMAGE_BACKGROUND_STYLE = (
+    "soft out-of-focus abstract background, heavily blurred, minimal, "
+    "muted desaturated color palette, low contrast, gentle smooth gradient, "
+    "generous empty negative space, calm and unobtrusive, no central subject, "
+    "simple flat composition, subtle"
+)
+
+IMAGE_BACKGROUND_NEGATIVE_PROMPT = (
+    "text, letters, words, typography, captions, watermark, logo, "
+    "busy, cluttered, intricate fine detail, many objects, sharp focus, "
+    "high contrast, vivid saturated colors, bright highlights, "
+    "central focal point, faces, people, complex composition, noise"
+)
 
 # ---------------------------------------------------------------------- Test
 

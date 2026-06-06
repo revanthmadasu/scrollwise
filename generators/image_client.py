@@ -18,6 +18,10 @@ import os
 import uuid
 from typing import Protocol
 from generators._logging import get_logger
+from prompts.templates import (
+    IMAGE_BACKGROUND_NEGATIVE_PROMPT,
+    IMAGE_BACKGROUND_STYLE,
+)
 
 logger = get_logger(__name__)
 
@@ -92,9 +96,13 @@ class BedrockImageClient:
         self.s3 = boto3.client("s3", region_name=s3_region)
 
     def generate(self, prompt: str) -> str:
+        # Steer every image toward a quiet, text-friendly background.
+        styled_prompt = f"{prompt}, {IMAGE_BACKGROUND_STYLE}"
+
         # Call Bedrock (Stability Stable Image Core / Ultra / SD3.5 schema)
         body = json.dumps({
-            "prompt": prompt,
+            "prompt": styled_prompt,
+            "negative_prompt": IMAGE_BACKGROUND_NEGATIVE_PROMPT,
             "mode": "text-to-image",
             "aspect_ratio": "1:1",
             "output_format": "png",
