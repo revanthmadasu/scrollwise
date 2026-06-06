@@ -259,6 +259,21 @@ class Repository:
         rows = self._fetchall("SELECT topic_id FROM curricula ORDER BY topic_id")
         return [r["topic_id"] for r in rows]
 
+    def media_urls(self, topic_id: str | None = None) -> list[str]:
+        """All background + rendered-card URLs (for S3 cleanup), optionally scoped."""
+        if topic_id:
+            rows = self._fetchall(
+                "SELECT image_urls, post_image_urls FROM posts WHERE topic_id = ?",
+                (topic_id,),
+            )
+        else:
+            rows = self._fetchall("SELECT image_urls, post_image_urls FROM posts")
+        urls: list[str] = []
+        for r in rows:
+            urls.extend(json.loads(r["image_urls"]))
+            urls.extend(json.loads(r["post_image_urls"]))
+        return urls
+
     def delete_topic(self, topic_id: str) -> tuple[int, int]:
         """Delete a topic's posts and curriculum. Returns (posts, curricula) removed."""
         posts = self._execute("DELETE FROM posts WHERE topic_id = ?", (topic_id,)).rowcount
