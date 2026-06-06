@@ -1,9 +1,26 @@
+# Root monorepo ignores. Each app/service may add its own .gitignore.
+
+# OS / editor
+.DS_Store
+
+# Python (services/content-generator)
 __pycache__/
 *.pyc
-.env
-data/*.db
-data/*.db-journal
-output/*.json
-.venv/
 .pytest_cache/
-.DS_Store
+.venv/
+
+# Secrets / env
+.env
+**/.env
+
+# Local data / generated output
+**/data/*.db
+**/data/*.db-journal
+**/output/*.json
+
+# Node (future apps/api, apps/web)
+node_modules/
+dist/
+build/
+.next/
+*.log

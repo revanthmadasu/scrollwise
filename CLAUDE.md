@@ -1,64 +1,62 @@
-# Claude Code instructions for this repo
+# ScrollWise — monorepo
 
-This is a learning-content generator for an Instagram-style learning feed app.
+ScrollWise is a social, Instagram/YouTube-style app **for learning** — an
+antidote to doomscrolling and brain rot. Users follow topics they care about
+and trigger generation of bite-size, multi-level learning posts; the feed
+interleaves topics, schedules tests, and tracks progress. The goal is a feed
+that makes you sharper instead of number.
 
-## What you're working on
+## Repository layout
 
-The producer side of a two-sided system:
+This is a **monorepo**. Components are split by coupling and release cadence,
+not crammed together — but they live in one tree so cross-cutting changes (API
+contract + producer + consumer) can happen in a single change and be verified
+together.
 
-- **This repo (content generator)**: batch-generates posts from a topic catalog,
-  tags them with metadata, stores them in a database.
-- **Posts backend (separate service, not in this repo)**: serves the feed to
-  users, interleaves topics, schedules tests, tracks progress.
-
-## Architecture decisions already made — don't relitigate
-
-1. **Offset is a 4-tuple**, not a single int and not a vector:
-   `(topic_id, module_id, subtopic_id, seq_within_subtopic)`. This is how the
-   feed service knows where a user is in the curriculum. Embeddings exist
-   separately for dedup, not for ordering.
-
-2. **Three levels are not three separate posts on the same topic in the feed.**
-   Each subtopic has 3 versions; the feed service picks one based on the user's
-   preferred granularity. So we generate all 3 at ingestion time.
-
-3. **Tests are just posts** with `content_type = "test"` and `blocking = true`.
-   They live in the same table. The feed service knows to gate progression on
-   them.
-
-4. **LLM is pluggable.** Default to Anthropic API for development, swap to vLLM
-   or Ollama for self-hosted production. Don't hardcode the model anywhere
-   except `generators/llm_client.py`.
-
-5. **Image generation is a stub for now** that returns a prompt and a
-   placeholder URL. When you wire in real image gen, do it in
-   `generators/image_client.py` — don't change call sites.
-
-6. **SQLite for dev, Postgres + pgvector for prod.** Schema is in
-   `storage/schema.sql`. Keep it Postgres-compatible (avoid SQLite-only syntax
-   in DDL). Embeddings are stored as JSON in SQLite; in prod they'll be a
-   `vector(1024)` column.
-
-## Style
-
-- Type hints everywhere
-- Pydantic models for anything that crosses an API or DB boundary
-- Prompts live in `prompts/` as `.txt` or `.py` constants — never inline a
-  multi-line prompt in business logic
-- One CLI script per top-level operation in `scripts/`
-- Log structured JSON to stdout, not free-text print statements (use the
-  `logger` from `generators/_logging.py`)
-
-## When adding a new generator
-
-1. Add the prompt template to `prompts/`
-2. Add the generator class to `generators/`
-3. Add a CLI script to `scripts/` if it's a top-level operation
-4. Add a test to `tests/`
-5. Update the schema if needed, and the migration in `storage/schema.sql`
-
-## Running tests
-
-```bash
-pytest tests/
 ```
+scrollwise/
+├─ services/
+│   └─ content-generator/   Producer. Batch-generates posts from a topic
+│                           catalog, tags them, writes them to the DB.
+│                           Python. Has its own CLAUDE.md — READ IT before
+│                           working in there.
+├─ apps/
+│   ├─ api/                 Backend API: serves the feed, interleaves topics,
+│   │                       schedules tests, tracks progress. (not built yet)
+│   └─ web/  (or mobile/)   Frontend feed. (not built yet)
+└─ packages/
+    └─ contract/            The integration contract shared across components:
+                            the `posts` table schema + (later) the OpenAPI spec
+                            / generated client types.
+```
+
+## The most important boundary
+
+The **`posts` table is the integration contract** between the producer
+(`services/content-generator`, which writes posts) and the API
+(`apps/api`, which reads them). Treat it as a versioned interface:
+
+- Canonical DDL: `services/content-generator/storage/schema.sql`
+  (kept Postgres-compatible; SQLite for dev, Postgres + pgvector for prod).
+- A reference copy + notes live in `packages/contract/`.
+- Changing that schema is a cross-component change — update the writer, the
+  reader, and the contract together.
+
+## Working in a subproject
+
+Each subproject has its own conventions and its own `CLAUDE.md`. When you work
+inside one, follow that file. Run commands from the subproject's directory (or
+use the root `Makefile` targets).
+
+## Root commands
+
+See the `Makefile`:
+- `make test`        — run all subproject test suites
+- `make generate`    — run the content generator (see its CLAUDE.md for flags)
+- `make api` / `make web` — run the backend / frontend (once they exist)
+
+## Deploys are independent
+
+One repo does **not** mean one deploy. Each component ships on its own cadence
+via path-filtered CI: the generator is a batch job (Fargate/Batch, or later a
+Lambda fan-out), the API and frontend are long-running services.
