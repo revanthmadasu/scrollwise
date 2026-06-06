@@ -9,6 +9,7 @@ from generators.embedding_client import EmbeddingClient
 from generators.image_client import ImageClient
 from generators.llm_client import LLMClient, parse_json_response
 from generators.models import ContentType, Level, Module, Post, Subtopic
+from generators.post_image_renderer import PostImageRenderer
 from prompts.templates import LEVEL_DESCRIPTIONS, POST_SYSTEM, POST_USER
 
 logger = get_logger(__name__)
@@ -27,10 +28,14 @@ class PostGenerator:
         llm: LLMClient,
         images: ImageClient,
         embeddings: EmbeddingClient,
+        renderer: PostImageRenderer | None = None,
     ):
         self.llm = llm
         self.images = images
         self.embeddings = embeddings
+        # Optional: composes post text over the background into feed cards.
+        # When None (e.g. stub image backend), posts keep raw backgrounds only.
+        self.renderer = renderer
 
     def generate_for_subtopic(
         self,
@@ -55,9 +60,11 @@ class PostGenerator:
             level_word_budget=word_budget,
         )
 
-        # Higher temperature for longer-form content (more variation in voice)
+        # Higher temperature for longer-form content (more variation in voice).
+        # DEEP is capped at 1536 (a real 250-500 word post is ~850 tokens incl.
+        # JSON); a bigger budget just lets a looping model ramble and truncate.
         temperature = 0.6 if level == Level.SUMMARY else 0.75
-        max_tokens = 512 if level == Level.SUMMARY else 1024 if level == Level.STANDARD else 4096
+        max_tokens = 512 if level == Level.SUMMARY else 1024 if level == Level.STANDARD else 1536
 
         response = self.llm.complete(
             system=POST_SYSTEM,
@@ -72,15 +79,24 @@ class PostGenerator:
             logger.error("Failed to parse LLM response", extra={"error": str(e), "response": response})
             raise
 
-        # Generate images from prompts
+        # Generate background images from prompts
         image_prompts = data.get("image_prompts", [])
         image_urls = [self.images.generate(p) for p in image_prompts]
 
-        # Pick content type based on what we got
+        # Compose the post text over the first background into feed card(s).
+        # Long bodies paginate into multiple cards (a carousel).
+        post_image_urls: list[str] = []
+        if self.renderer and image_urls:
+            post_image_urls = self.renderer.render_from_url(
+                image_urls[0], data["title"], data["body"]
+            )
+
+        # Content type: prefer the rendered cards; fall back to raw backgrounds.
+        cards = post_image_urls or image_urls
         content_type = ContentType.TEXT
-        if len(image_urls) == 1:
+        if len(cards) == 1:
             content_type = ContentType.IMAGE_POST
-        elif len(image_urls) > 1:
+        elif len(cards) > 1:
             content_type = ContentType.CAROUSEL
 
         # Embed on title + body for dedup
@@ -100,6 +116,7 @@ class PostGenerator:
             body=data["body"],
             image_prompts=image_prompts,
             image_urls=image_urls,
+            post_image_urls=post_image_urls,
             estimated_duration_sec=DURATION_BY_LEVEL[level],
             prerequisites=subtopic.prerequisites,
             embedding=embedding,
@@ -114,6 +131,7 @@ class PostGenerator:
                 "level": int(level),
                 "body_chars": len(post.body),
                 "images": len(image_urls),
+                "cards": len(post_image_urls),
             },
         )
         return post

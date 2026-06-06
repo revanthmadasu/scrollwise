@@ -1,0 +1,26 @@
+aws signin url: https://339140804013.signin.aws.amazon.com/console
+aws account number: 339140804013
+
+ssh connect to instance: 
+ssh -i models_server_keypair.pem ubuntu@54.236.227.121
+
+source .venv/bin/activate
+python -m scripts.generate --topic 'Linear Algebra' --modules 3
+
+my ec2 key directory: 
+cd /Users/revanthmadasu/Desktop/projects/ContentSummarizer/infra
+
+sql termincal for postgres:
+psql -U cguser -d content_generator -h localhost
+
+connect to postgres via dbeaver from ssh tunnel: ssh -i models_server_keypair.pem -L 5432:localhost:5432 ubuntu@54.236.227.121 -N
+
+test: 
+python -m scripts.generate \
+  --topic "Law of attraction" \
+  --modules 1 \
+  --subtopics-per-module 3 \
+  --levels 1,2,3 \
+  --test-cadence 3
+
+test single image: python3 -m scripts.test_image_gen -p "a curriculum about neural networks" --count 1

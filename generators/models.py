@@ -97,7 +97,9 @@ class Post(BaseModel):
     title: str
     body: str
     image_prompts: list[str] = Field(default_factory=list)
-    image_urls: list[str] = Field(default_factory=list)
+    image_urls: list[str] = Field(default_factory=list)  # raw AI backgrounds
+    # Rendered cards (background + overlaid post text), one per carousel page.
+    post_image_urls: list[str] = Field(default_factory=list)
     video_url: Optional[str] = None
 
     # Test fields (only set when content_type == TEST)

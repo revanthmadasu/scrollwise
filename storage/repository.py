@@ -63,6 +63,7 @@ class Repository:
         with open(SCHEMA_PATH) as f:
             self.conn.executescript(f.read())
         self.conn.commit()
+        self._run_migrations()
 
     def _ensure_schema_postgres(self) -> None:
         with open(SCHEMA_PATH) as f:
@@ -77,6 +78,31 @@ class Repository:
                 if stmt:
                     cur.execute(stmt)
         self.conn.commit()
+        self._run_migrations()
+
+    def _run_migrations(self) -> None:
+        """Idempotent, additive migrations for DBs created before a column existed.
+
+        CREATE TABLE IF NOT EXISTS won't add new columns to an existing table,
+        so add them here. Safe to run on every startup.
+        """
+        # post_image_urls: rendered cards (background + overlaid text).
+        if not self._column_exists("posts", "post_image_urls"):
+            self._execute(
+                "ALTER TABLE posts ADD COLUMN post_image_urls TEXT NOT NULL DEFAULT '[]'"
+            )
+            self._commit()
+
+    def _column_exists(self, table: str, column: str) -> bool:
+        if self._backend == "sqlite":
+            cur = self.conn.execute(f"PRAGMA table_info({table})")
+            return any(r["name"] == column for r in cur.fetchall())
+        row = self._fetchone(
+            "SELECT 1 FROM information_schema.columns "
+            "WHERE table_name = ? AND column_name = ?",
+            (table, column),
+        )
+        return row is not None
 
     def _execute(self, sql: str, params: tuple = ()) -> Any:
         """Run a query, adapting placeholder syntax to the active backend."""
@@ -167,10 +193,10 @@ class Repository:
                     post_id, topic_id, module_id, subtopic_id,
                     offset_module, offset_subtopic, offset_seq,
                     level, content_type, title, body,
-                    image_prompts, image_urls, video_url,
+                    image_prompts, image_urls, post_image_urls, video_url,
                     test_type, question, options, correct_index, explanation, blocking,
                     estimated_duration_sec, prerequisites, embedding, model_version
-                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
             """
         else:
             sql = """
@@ -178,19 +204,23 @@ class Repository:
                     post_id, topic_id, module_id, subtopic_id,
                     offset_module, offset_subtopic, offset_seq,
                     level, content_type, title, body,
-                    image_prompts, image_urls, video_url,
+                    image_prompts, image_urls, post_image_urls, video_url,
                     test_type, question, options, correct_index, explanation, blocking,
                     estimated_duration_sec, prerequisites, embedding, model_version
-                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
                 ON CONFLICT (post_id) DO UPDATE SET
                     title = EXCLUDED.title, body = EXCLUDED.body,
+                    image_urls = EXCLUDED.image_urls,
+                    post_image_urls = EXCLUDED.post_image_urls,
+                    content_type = EXCLUDED.content_type,
                     embedding = EXCLUDED.embedding, model_version = EXCLUDED.model_version
             """
         self._execute(sql, (
             post.post_id, post.topic_id, post.module_id, post.subtopic_id,
             post.offset_module, post.offset_subtopic, post.offset_seq,
             int(post.level), post.content_type.value, post.title, post.body,
-            json.dumps(post.image_prompts), json.dumps(post.image_urls), post.video_url,
+            json.dumps(post.image_prompts), json.dumps(post.image_urls),
+            json.dumps(post.post_image_urls), post.video_url,
             post.test_type.value if post.test_type else None,
             post.question, json.dumps(post.options) if post.options else None,
             post.correct_index, post.explanation, 1 if post.blocking else 0,
@@ -224,6 +254,42 @@ class Repository:
         row = self._fetchone("SELECT COUNT(*) AS c FROM posts WHERE topic_id = ?", (topic_id,))
         return int(row["c"])
 
+    def topic_ids(self) -> list[str]:
+        """All topic_ids that have a curriculum, with their post counts."""
+        rows = self._fetchall("SELECT topic_id FROM curricula ORDER BY topic_id")
+        return [r["topic_id"] for r in rows]
+
+    def media_urls(self, topic_id: str | None = None) -> list[str]:
+        """All background + rendered-card URLs (for S3 cleanup), optionally scoped."""
+        if topic_id:
+            rows = self._fetchall(
+                "SELECT image_urls, post_image_urls FROM posts WHERE topic_id = ?",
+                (topic_id,),
+            )
+        else:
+            rows = self._fetchall("SELECT image_urls, post_image_urls FROM posts")
+        urls: list[str] = []
+        for r in rows:
+            urls.extend(json.loads(r["image_urls"]))
+            urls.extend(json.loads(r["post_image_urls"]))
+        return urls
+
+    def delete_topic(self, topic_id: str) -> tuple[int, int]:
+        """Delete a topic's posts and curriculum. Returns (posts, curricula) removed."""
+        posts = self._execute("DELETE FROM posts WHERE topic_id = ?", (topic_id,)).rowcount
+        curr = self._execute(
+            "DELETE FROM curricula WHERE topic_id = ?", (topic_id,)
+        ).rowcount
+        self._commit()
+        return max(posts, 0), max(curr, 0)
+
+    def delete_all(self) -> tuple[int, int]:
+        """Delete ALL posts and curricula. Returns (posts, curricula) removed."""
+        posts = self._execute("DELETE FROM posts").rowcount
+        curr = self._execute("DELETE FROM curricula").rowcount
+        self._commit()
+        return max(posts, 0), max(curr, 0)
+
     def all_posts_for_topic(self, topic_id: str) -> list[Post]:
         rows = self._fetchall(
             "SELECT * FROM posts WHERE topic_id = ? ORDER BY offset_module, offset_subtopic, offset_seq",
@@ -247,6 +313,7 @@ class Repository:
             body=row["body"],
             image_prompts=json.loads(row["image_prompts"]),
             image_urls=json.loads(row["image_urls"]),
+            post_image_urls=json.loads(row["post_image_urls"]),
             video_url=row["video_url"],
             test_type=TestType(row["test_type"]) if row["test_type"] else None,
             question=row["question"],

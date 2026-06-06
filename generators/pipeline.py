@@ -9,6 +9,7 @@ from generators.image_client import ImageClient
 from generators.llm_client import LLMClient
 from generators.models import Curriculum, Level, Post
 from generators.post import PostGenerator
+from generators.post_image_renderer import PostImageRenderer
 from generators.test_post import TestGenerator
 from storage.repository import Repository
 
@@ -28,10 +29,11 @@ class Pipeline:
         images: ImageClient,
         embeddings: EmbeddingClient,
         test_cadence: int = 3,
+        renderer: PostImageRenderer | None = None,
     ):
         self.repo = repo
         self.curriculum_gen = CurriculumGenerator(llm)
-        self.post_gen = PostGenerator(llm, images, embeddings)
+        self.post_gen = PostGenerator(llm, images, embeddings, renderer=renderer)
         self.test_gen = TestGenerator(llm, embeddings)
         self.test_cadence = test_cadence
 
@@ -68,6 +70,7 @@ class Pipeline:
 
         # 2. Posts and tests
         all_posts: list[Post] = []
+        failures = 0
 
         for module_idx, module in enumerate(curriculum.modules):
             since_last_test = 0
@@ -88,15 +91,27 @@ class Pipeline:
                             },
                         )
                         continue
-                    post = self.post_gen.generate_for_subtopic(
-                        topic_id=curriculum.topic_id,
-                        topic_title=curriculum.title,
-                        module=module,
-                        module_index=module_idx,
-                        subtopic=subtopic,
-                        subtopic_index=offset_subtopic_cursor,
-                        level=level,
-                    )
+                    try:
+                        post = self.post_gen.generate_for_subtopic(
+                            topic_id=curriculum.topic_id,
+                            topic_title=curriculum.title,
+                            module=module,
+                            module_index=module_idx,
+                            subtopic=subtopic,
+                            subtopic_index=offset_subtopic_cursor,
+                            level=level,
+                        )
+                    except Exception:  # noqa: BLE001 — isolate one bad post, keep the run going
+                        failures += 1
+                        logger.error(
+                            "post_failed",
+                            extra={
+                                "subtopic_id": subtopic.subtopic_id,
+                                "level": int(level),
+                            },
+                            exc_info=True,
+                        )
+                        continue
                     # Use seq to disambiguate the three levels at the same offset
                     post.offset_seq = int(level)
                     self.repo.save_post(post)
@@ -115,16 +130,24 @@ class Pipeline:
                     if not self.repo.has_post_at_offset(
                         curriculum.topic_id, module_idx, offset_subtopic_cursor, 0
                     ):
-                        test_post = self.test_gen.generate(
-                            topic_id=curriculum.topic_id,
-                            topic_title=curriculum.title,
-                            module=module,
-                            module_index=module_idx,
-                            covered_subtopics=covered,
-                            offset_subtopic=offset_subtopic_cursor,
-                        )
-                        self.repo.save_post(test_post)
-                        all_posts.append(test_post)
+                        try:
+                            test_post = self.test_gen.generate(
+                                topic_id=curriculum.topic_id,
+                                topic_title=curriculum.title,
+                                module=module,
+                                module_index=module_idx,
+                                covered_subtopics=covered,
+                                offset_subtopic=offset_subtopic_cursor,
+                            )
+                            self.repo.save_post(test_post)
+                            all_posts.append(test_post)
+                        except Exception:  # noqa: BLE001 — isolate one bad test
+                            failures += 1
+                            logger.error(
+                                "test_failed",
+                                extra={"module_id": module.module_id},
+                                exc_info=True,
+                            )
                     offset_subtopic_cursor += 1
                     since_last_test = 0
 
@@ -133,6 +156,7 @@ class Pipeline:
             extra={
                 "topic_id": curriculum.topic_id,
                 "post_count": len(all_posts),
+                "failures": failures,
             },
         )
         return curriculum
