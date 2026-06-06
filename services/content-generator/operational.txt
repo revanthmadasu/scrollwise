@@ -15,6 +15,13 @@ psql -U cguser -d content_generator -h localhost
 
 connect to postgres via dbeaver from ssh tunnel: ssh -i models_server_keypair.pem -L 5432:localhost:5432 ubuntu@54.236.227.121 -N
 
+Python environment related:
+Create a venv: python3 -m venv /opt/ScrollWise/.venv
+Activate venv: source /opt/ScrollWise/.venv/bin/activate
+Install packages: 
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+
 test: 
 python -m scripts.generate \
   --topic "Law of attraction" \
