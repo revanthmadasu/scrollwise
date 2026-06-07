@@ -7,3 +7,4 @@ numpy>=1.24.0
 boto3>=1.34.0
 json-repair>=0.25.0
 Pillow>=10.1.0
+psycopg2-binary>=2.9.0  # Postgres driver (prod; dev uses stdlib sqlite3)
