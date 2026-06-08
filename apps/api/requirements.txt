@@ -1,0 +1,26 @@
+# ScrollWise API — backend service that serves the personalized feed.
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+pydantic[email]>=2.5.0
+pydantic-settings>=2.2.0
+python-dotenv>=1.0.0
+eval-type-backport>=0.2.0  # lets `X | None` annotations evaluate on Python 3.9
+
+# Persistence (same dual-backend story as the content-generator:
+# SQLite for dev, Postgres + pgvector for prod).
+SQLAlchemy[asyncio]>=2.0.29
+alembic>=1.13.0
+aiosqlite>=0.20.0          # async SQLite driver (dev)
+asyncpg>=0.29.0            # async Postgres driver (prod)
+pgvector>=0.2.5            # vector(1024) column support (prod)
+
+# Auth
+passlib[bcrypt]>=1.7.4     # password hashing
+bcrypt>=4.0,<4.1           # passlib 1.7.4 is incompatible with bcrypt >=4.1
+PyJWT>=2.8.0               # access / refresh tokens
+authlib>=1.3.0             # Google OIDC / OAuth2
+httpx>=0.27.0              # token endpoint / JWKS fetch
+
+# Tests
+pytest>=7.4.0
+pytest-asyncio>=0.23.0
