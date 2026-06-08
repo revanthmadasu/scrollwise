@@ -297,6 +297,96 @@ class Repository:
         )
         return [self._row_to_post(r) for r in rows]
 
+    # ------------------------------------------------- user_prompts (gen queue)
+    # `user_prompts` is OWNED by apps/api (it creates/migrates it). The generator
+    # only consumes it: claim a PENDING row, build content, flip it to READY or
+    # FAILED. See packages/contract/README.md.
+
+    def user_prompts_ready(self) -> bool:
+        """Whether the API-owned `user_prompts` table exists in this DB yet."""
+        return self._table_exists("user_prompts")
+
+    def count_pending_prompts(self) -> int:
+        row = self._fetchone(
+            "SELECT COUNT(*) AS c FROM user_prompts WHERE status = 'pending'"
+        )
+        return int(row["c"]) if row else 0
+
+    def claim_pending_prompt(self) -> Optional[dict]:
+        """Atomically claim the oldest PENDING prompt, flipping it to GENERATING.
+
+        Returns {'id', 'prompt_text'} or None if the queue is empty. The claim is
+        race-safe so multiple workers (or concurrent Lambdas) never double-process
+        a row: Postgres uses SELECT ... FOR UPDATE SKIP LOCKED; SQLite (single
+        writer) uses an optimistic `WHERE status='pending'` guard.
+        """
+        if self._backend == "postgres":
+            cur = self._execute(
+                """
+                UPDATE user_prompts
+                   SET status = 'generating', updated_at = now()
+                 WHERE id = (
+                     SELECT id FROM user_prompts
+                      WHERE status = 'pending'
+                      ORDER BY created_at
+                      LIMIT 1
+                      FOR UPDATE SKIP LOCKED
+                 )
+                RETURNING id, prompt_text
+                """
+            )
+            row = cur.fetchone()
+            self._commit()
+            return {"id": row[0], "prompt_text": row[1]} if row else None
+
+        # SQLite: pick the oldest pending row, then claim it conditionally.
+        row = self._fetchone(
+            "SELECT id, prompt_text FROM user_prompts WHERE status = 'pending' "
+            "ORDER BY created_at LIMIT 1"
+        )
+        if row is None:
+            return None
+        cur = self._execute(
+            "UPDATE user_prompts SET status = 'generating', "
+            "updated_at = CURRENT_TIMESTAMP WHERE id = ? AND status = 'pending'",
+            (row["id"],),
+        )
+        self._commit()
+        if cur.rowcount != 1:
+            return None  # lost the race to another worker
+        return {"id": row["id"], "prompt_text": row["prompt_text"]}
+
+    def mark_prompt_ready(self, prompt_id: str, topic_id: str) -> None:
+        ts = "now()" if self._backend == "postgres" else "CURRENT_TIMESTAMP"
+        self._execute(
+            f"UPDATE user_prompts SET status = 'ready', topic_id = ?, "
+            f"error = NULL, updated_at = {ts} WHERE id = ?",
+            (topic_id, prompt_id),
+        )
+        self._commit()
+
+    def mark_prompt_failed(self, prompt_id: str, error: str) -> None:
+        ts = "now()" if self._backend == "postgres" else "CURRENT_TIMESTAMP"
+        self._execute(
+            f"UPDATE user_prompts SET status = 'failed', error = ?, "
+            f"updated_at = {ts} WHERE id = ?",
+            (error[:1000], prompt_id),
+        )
+        self._commit()
+
+    def _table_exists(self, table: str) -> bool:
+        if self._backend == "sqlite":
+            row = self._fetchone(
+                "SELECT name FROM sqlite_master WHERE type = 'table' AND name = ?",
+                (table,),
+            )
+        else:
+            row = self._fetchone(
+                "SELECT 1 FROM information_schema.tables WHERE table_name = ?",
+                (table,),
+            )
+        return row is not None
+
     @staticmethod
     def _row_to_post(row: Any) -> Post:
         return Post(

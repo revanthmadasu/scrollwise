@@ -23,6 +23,30 @@ Key facts the consumer must respect:
   displays.
 - Embeddings are JSON in SQLite, `vector(1024)` in Postgres (pgvector).
 
+## The `user_prompts` table (generation-request queue)
+
+The second shared interface. It's **owned by `apps/api`** (which creates and
+migrates it); the generator only *consumes* it.
+
+Flow:
+1. `apps/api` inserts a row (`status='pending'`) when a user asks to learn
+   something (`POST /me/prompts`).
+2. `services/content-generator` drains it
+   (`generators/prompt_consumer.py`, via `make drain` / the Lambda handler):
+   claims a row (`pending -> generating`), runs the pipeline, then sets
+   `topic_id` and flips it to `ready` — or `failed` with an `error`.
+3. The feed picks up the new `topic_id` for that user.
+
+Status lifecycle: `pending -> generating -> ready | failed`.
+
+Contract rules:
+- The generator **never creates/migrates** this table — only `apps/api` does.
+  It writes back only `status`, `topic_id`, `error`, `updated_at`.
+- The claim is race-safe (`FOR UPDATE SKIP LOCKED` on Postgres), so multiple
+  workers / concurrent Lambdas can drain the same queue.
+- The string status values are the shared vocabulary — keep
+  `apps/api`'s `PromptStatus` enum and the generator's writes in sync.
+
 ## Later
 
 When `apps/api` exists, its OpenAPI spec and a generated client/types package
