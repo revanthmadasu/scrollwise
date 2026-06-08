@@ -31,3 +31,7 @@ python -m scripts.generate \
   --test-cadence 3
 
 test single image: python3 -m scripts.test_image_gen -p "a curriculum about neural networks" --count 1
+
+tunnel script on dev system:
+cd infra
+./tunnel.sh  54.236.227.121

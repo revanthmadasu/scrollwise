@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import type { FeedItem, FeedReason } from "../api/types";
 import { ReactionBar } from "./ReactionBar";
 import { TestCard } from "./TestCard";
@@ -66,7 +66,7 @@ export function PostCard({ item }: { item: FeedItem }) {
 
       <div className="card-body">
         <h2 className="card-title">{post.title}</h2>
-        <p className="card-text">{post.body}</p>
+        <ExpandableText text={post.body} />
       </div>
 
       <footer className="card-foot">
@@ -79,4 +79,37 @@ export function PostCard({ item }: { item: FeedItem }) {
 
 function ReasonBadge({ reason }: { reason: FeedReason }) {
   return <span className={`reason ${reason}`}>{REASON_LABEL[reason]}</span>;
+}
+
+/** Post body collapsed to 2 lines, with a "See more" toggle shown only when the
+ *  text actually overflows the clamp. */
+function ExpandableText({ text }: { text: string }) {
+  const [expanded, setExpanded] = useState(false);
+  const [overflowing, setOverflowing] = useState(false);
+  const ref = useRef<HTMLParagraphElement>(null);
+
+  // Measure against the clamped height. Skip while expanded (the clamp is off,
+  // so scrollHeight would equal clientHeight and falsely report no overflow);
+  // `overflowing` retains its collapsed-state value so the toggle stays put.
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el || expanded) return;
+    const measure = () => setOverflowing(el.scrollHeight > el.clientHeight + 1);
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [text, expanded]);
+
+  return (
+    <div className="card-text-wrap">
+      <p ref={ref} className={expanded ? "card-text" : "card-text clamped"}>
+        {text}
+      </p>
+      {overflowing && (
+        <button className="see-more" onClick={() => setExpanded((e) => !e)}>
+          {expanded ? "See less" : "See more"}
+        </button>
+      )}
+    </div>
+  );
 }
