@@ -31,6 +31,11 @@
 
 set -euo pipefail
 
+# Red for warnings/errors, but only when stderr is a real terminal — keeps the
+# escape codes out of redirected logs (infra/logs/*.log) and CI captures.
+if [ -t 2 ]; then RED=$'\033[31m'; RESET=$'\033[0m'; else RED=''; RESET=''; fi
+err() { echo "${RED}$*${RESET}" >&2; }
+
 # ---------------------------------------------------------------- configuration
 # These DB values MUST match services/content-generator/scripts/ec2_setup.sh.
 # Override by exporting before running, e.g. DB_PASS=... ./infra/ec2_app_setup.sh
@@ -44,7 +49,7 @@ START_SERVICES=1
 for arg in "$@"; do
   case "$arg" in
     --no-start) START_SERVICES=0 ;;
-    *) echo "Unknown arg: $arg" >&2; exit 2 ;;
+    *) err "Unknown arg: $arg"; exit 2 ;;
   esac
 done
 
@@ -78,10 +83,10 @@ elif have python3; then
   PYTHON=python3
   sudo apt-get install -y python3-venv python3-pip
 else
-  echo "!!  No python3 found and none installable. Aborting." >&2
+  err "!!  No python3 found and none installable. Aborting."
   exit 1
 fi
-have "$PYTHON" || { echo "!!  $PYTHON not found after install. Aborting." >&2; exit 1; }
+have "$PYTHON" || { err "!!  $PYTHON not found after install. Aborting."; exit 1; }
 echo "    Python: $($PYTHON --version)"
 
 # Node 22 + npm via NodeSource. The NodeSource `nodejs` package bundles npm, so
@@ -95,7 +100,7 @@ if ! have node || ! have npm || [ "${NODE_MAJOR:-0}" -lt 18 ]; then
 fi
 # Verify both landed — don't limp forward to a confusing failure at `npm install`.
 if ! have node || ! have npm; then
-  echo "!!  node/npm still missing after install. Check the apt output above." >&2
+  err "!!  node/npm still missing after install. Check the apt output above."
   exit 1
 fi
 echo "    Node: $(node -v)  npm: $(npm -v)"
@@ -116,9 +121,9 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO ${DB_USER};
 SQL
   API_DB_URL="postgresql+asyncpg://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}"
 else
-  echo "!!  Postgres DB '$DB_NAME' not found."
-  echo "!!  Run services/content-generator/scripts/ec2_setup.sh first, or the"
-  echo "!!  feed will have no posts. Falling back to a local SQLite DB for now."
+  err "!!  Postgres DB '$DB_NAME' not found."
+  err "!!  Run services/content-generator/scripts/ec2_setup.sh first, or the"
+  err "!!  feed will have no posts. Falling back to a local SQLite DB for now."
   API_DB_URL="sqlite+aiosqlite:///${API_DIR}/scrollwise.db"
 fi
 
@@ -184,7 +189,7 @@ echo ""
 if curl -fsS http://127.0.0.1:8000/health >/dev/null 2>&1; then
   echo "    API health: OK  (http://127.0.0.1:8000/health)"
 else
-  echo "!!  API not responding yet — check $LOG_DIR/api.log"
+  err "!!  API not responding yet — check $LOG_DIR/api.log"
 fi
 if curl -fsS http://127.0.0.1:5173 >/dev/null 2>&1; then
   echo "    Web:        OK  (http://127.0.0.1:5173)"
