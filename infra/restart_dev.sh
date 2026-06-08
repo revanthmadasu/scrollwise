@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
-# Restart EVERYTHING on EC2: API, web, and the prompt-drain worker.
+# Restart the DEV/tunnel stack on EC2: API, Vite dev server, and the drain
+# worker. This is the SSH-tunnel mode (you reach it via infra/tunnel.sh) — the
+# counterpart to restart_prod.sh (the public/Caddy mode).
 #
 # API + web are nohup processes (restart_api.sh / restart_web.sh); the drain
 # worker is a systemd service (scrollwise-drain), so it restarts via systemctl.
 # Runs all three even if one fails, then reports. Does NOT reinstall deps —
 # use ec2_app_setup.sh / ec2_drain_setup.sh for that.
 #
-# Usage:  ./infra/restart_all.sh
+# Usage:  ./infra/restart_dev.sh
 set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -35,7 +37,7 @@ fi
 
 echo ""
 if [ "$api_rc" -eq 0 ] && [ "$web_rc" -eq 0 ] && [ "$drain_rc" -eq 0 ]; then
-  echo "All services restarted. From your laptop:  ./infra/tunnel.sh <EC2_PUBLIC_IP>"
+  echo "Dev stack restarted. From your laptop:  ./infra/tunnel.sh <EC2_PUBLIC_IP>"
 else
   echo "${RED}Something didn't come up (api=$api_rc web=$web_rc drain=$drain_rc).${RESET}" >&2
   echo "${RED}Check infra/logs/{api,web}.log and journalctl -u $SERVICE.${RESET}" >&2
