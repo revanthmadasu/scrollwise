@@ -59,25 +59,44 @@ mkdir -p "$LOG_DIR"
 echo "==> Repo root: $REPO_ROOT"
 
 # ----------------------------------------------------------------- system deps
-echo "==> Installing system dependencies (Python, Node 22)"
+echo "==> Installing system dependencies (curl, Python, Node 22 + npm)"
 sudo apt-get update -y
 
-# Python 3.12 + venv (Ubuntu 24.04 ships it; fall back to whatever python3 exists).
-if command -v python3.12 >/dev/null 2>&1; then
-  PYTHON=python3.12
-  sudo apt-get install -y python3.12-venv >/dev/null
-else
-  PYTHON=python3
-  sudo apt-get install -y python3-venv >/dev/null
+have() { command -v "$1" >/dev/null 2>&1; }
+
+# curl — needed both for the NodeSource installer and the health checks below.
+if ! have curl; then
+  echo "    Installing curl"
+  sudo apt-get install -y curl
 fi
+
+# Python 3.12 + venv (Ubuntu 24.04 ships 3.12; fall back to whatever python3 exists).
+if have python3.12; then
+  PYTHON=python3.12
+  sudo apt-get install -y python3.12-venv
+elif have python3; then
+  PYTHON=python3
+  sudo apt-get install -y python3-venv python3-pip
+else
+  echo "!!  No python3 found and none installable. Aborting." >&2
+  exit 1
+fi
+have "$PYTHON" || { echo "!!  $PYTHON not found after install. Aborting." >&2; exit 1; }
 echo "    Python: $($PYTHON --version)"
 
-# Node 22 via NodeSource (the box's default node, if any, is too old for Vite 5).
-NODE_MAJOR="$(node -v 2>/dev/null | sed -E 's/v([0-9]+).*/\1/' || echo 0)"
-if [ "${NODE_MAJOR:-0}" -lt 18 ]; then
-  echo "    Installing Node 22 via NodeSource"
+# Node 22 + npm via NodeSource. The NodeSource `nodejs` package bundles npm, so
+# install it whenever node is missing/too old for Vite 5 OR npm is absent
+# (e.g. a stray node install without npm — the case that broke the last run).
+NODE_MAJOR="$(node -v 2>/dev/null | sed -E 's/v([0-9]+).*/\1/' || true)"
+if ! have node || ! have npm || [ "${NODE_MAJOR:-0}" -lt 18 ]; then
+  echo "    Installing Node 22 + npm via NodeSource"
   curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
   sudo apt-get install -y nodejs
+fi
+# Verify both landed — don't limp forward to a confusing failure at `npm install`.
+if ! have node || ! have npm; then
+  echo "!!  node/npm still missing after install. Check the apt output above." >&2
+  exit 1
 fi
 echo "    Node: $(node -v)  npm: $(npm -v)"
 
