@@ -69,6 +69,8 @@ export interface FeedItem {
 
 export interface FeedResponse {
   items: FeedItem[];
+  /** True when the user has seen everything and the feed is now repeating posts. */
+  exhausted: boolean;
 }
 
 export interface ReactionResult {

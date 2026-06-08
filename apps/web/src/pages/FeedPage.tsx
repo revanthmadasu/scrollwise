@@ -26,6 +26,7 @@ export function FeedPage() {
   });
 
   const items: FeedItem[] = data?.pages.flatMap((p) => p.items) ?? [];
+  const exhausted = data?.pages.some((p) => p.exhausted) ?? false;
   const sentinel = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -60,8 +61,18 @@ export function FeedPage() {
 
   return (
     <div className="feed">
-      {items.map((item) => (
-        <PostCard key={item.post.post_id} item={item} />
+      {exhausted && (
+        <div className="feed-banner">
+          <strong>You've covered everything ✦</strong>
+          <span className="muted">
+            You're all caught up on every topic — the posts below are repeats.{" "}
+            <Link to="/discover">Request a new topic</Link> to generate fresh ones.
+          </span>
+        </div>
+      )}
+      {/* Repeats can reuse a post_id across pages, so the key includes the index. */}
+      {items.map((item, idx) => (
+        <PostCard key={`${idx}-${item.post.post_id}`} item={item} />
       ))}
       <div ref={sentinel} className="sentinel">
         {isFetchingNextPage ? "Loading more…" : hasNextPage ? "" : "You're all caught up ✦"}

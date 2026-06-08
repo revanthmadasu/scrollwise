@@ -80,3 +80,6 @@ class FeedItem(BaseModel):
 
 class FeedResponse(BaseModel):
     items: list[FeedItem]
+    # True when the user has seen everything available and the feed is now
+    # repeating posts — the client should nudge them to request a new topic.
+    exhausted: bool = False

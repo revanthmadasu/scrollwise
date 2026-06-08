@@ -101,6 +101,27 @@ async def _gate_offset(
     return None
 
 
+async def _has_unseen_beyond_gate(
+    session: AsyncSession,
+    topic_id: str,
+    gate: tuple[int, int, int],
+    seen: set[str],
+) -> bool:
+    """Whether `topic_id` has unseen content the user would unlock by passing the
+    blocking test at `gate`. If so, the user isn't "done" — they have a path
+    forward — so the feed must NOT fall back to repeats yet.
+    """
+    res = await session.execute(
+        select(Post.post_id).where(
+            Post.topic_id == topic_id,
+            Post.content_type != "test",
+            tuple_(Post.offset_module, Post.offset_subtopic, Post.offset_seq)
+            > tuple_(*gate),
+        )
+    )
+    return any(pid not in seen for pid in res.scalars().all())
+
+
 async def _prompted_candidates(
     session: AsyncSession,
     topic_id: str,
@@ -202,6 +223,64 @@ async def _suggested_candidates(
     return pool[:limit]
 
 
+async def _discovery_candidates(
+    session: AsyncSession,
+    user_id: str,
+    preferred_level: int,
+    exclude: set[str],
+    limit: int,
+) -> list[Post]:
+    """Unseen content posts from ANY topic — including ones the user never
+    subscribed to. The fallback once prompted + interest content is used up, so
+    the feed keeps surfacing genuinely new material. Trending-first, shuffled.
+    """
+    if limit <= 0:
+        return []
+    seen_subq = select(UserPostView.post_id).where(UserPostView.user_id == user_id)
+    like_count = (
+        select(PostReaction.post_id, func.count().label("likes"))
+        .where(PostReaction.reaction == ReactionType.LIKE.value)
+        .group_by(PostReaction.post_id)
+        .subquery()
+    )
+    stmt = (
+        select(Post)
+        .outerjoin(like_count, like_count.c.post_id == Post.post_id)
+        .where(
+            Post.content_type != "test",
+            Post.level == preferred_level,
+            Post.post_id.not_in(seen_subq),
+        )
+        .order_by(func.coalesce(like_count.c.likes, 0).desc())
+        .limit(limit * _SUGGESTED_POOL_FACTOR)
+    )
+    pool = [p for p in (await session.execute(stmt)).scalars().all() if p.post_id not in exclude]
+    random.shuffle(pool)
+    return pool[:limit]
+
+
+async def _repeat_candidates(
+    session: AsyncSession,
+    preferred_level: int,
+    exclude: set[str],
+    limit: int,
+) -> list[Post]:
+    """Random already-seen posts, used only when there's nothing new left to
+    show anywhere. Deliberately ignores the `seen` ledger — repeating is the
+    point — so the feed is never empty while the user waits on new content.
+    """
+    if limit <= 0:
+        return []
+    stmt = (
+        select(Post)
+        .where(Post.content_type != "test", Post.level == preferred_level)
+        .order_by(func.random())
+        .limit(limit * 2)
+    )
+    pool = [p for p in (await session.execute(stmt)).scalars().all() if p.post_id not in exclude]
+    return pool[:limit]
+
+
 def _interleave(groups: list[list[Post]]) -> list[Post]:
     """Round-robin across per-topic candidate lists so the feed covers all
     prompted topics rather than draining one at a time."""
@@ -276,13 +355,20 @@ async def build_feed(session: AsyncSession, user: User, limit: int) -> FeedRespo
     )
     take(remediation, "remediation")
 
-    # 2. Prompted topics, interleaved round-robin.
+    # 2. Prompted topics, interleaved round-robin. Along the way, note whether
+    #    any prompted topic still has content gated behind an unpassed test —
+    #    if so the user has a path forward and we must not fall back to repeats.
+    has_pending_gate = False
     remaining = limit - len(chosen)
     if remaining > 0:
         topics = await _ready_prompted_topics(session, user.id)
         groups: list[list[Post]] = []
         for topic_id in topics:
             gate = await _gate_offset(session, topic_id, passed)
+            if gate is not None and await _has_unseen_beyond_gate(
+                session, topic_id, gate, seen
+            ):
+                has_pending_gate = True
             groups.append(
                 await _prompted_candidates(
                     session, topic_id, user.preferred_level, seen, gate, remaining
@@ -290,13 +376,39 @@ async def build_feed(session: AsyncSession, user: User, limit: int) -> FeedRespo
             )
         take(_interleave(groups), "prompted")
 
-    # 3. Suggested / trending fill.
+    # 3. Suggested / trending fill, from the user's interest topics.
     remaining = limit - len(chosen)
     if remaining > 0:
         suggested = await _suggested_candidates(
             session, user.id, user.preferred_level, seen, used, remaining
         )
         take(suggested, "suggested")
+
+    # Stages 4-5 are exhaustion fallbacks. Skip them entirely while the user
+    # still has gated content to unlock — they should pass the test, not get
+    # cross-topic filler or repeats.
+    exhausted = False
+    if not has_pending_gate:
+        # 4. Discovery: unseen posts from ANY topic, even un-subscribed ones, so
+        #    a user who exhausted their own topics still gets fresh material.
+        remaining = limit - len(chosen)
+        if remaining > 0:
+            discovery = await _discovery_candidates(
+                session, user.id, user.preferred_level, used, remaining
+            )
+            take(discovery, "suggested")
+
+        # 5. Exhausted: nothing new remains anywhere. Repeat posts at random so
+        #    the feed is never empty, and flag it so the client can nudge the
+        #    user to request a new topic.
+        remaining = limit - len(chosen)
+        if remaining > 0:
+            repeats = await _repeat_candidates(
+                session, user.preferred_level, used, remaining
+            )
+            if repeats:
+                exhausted = True
+                take(repeats, "suggested")
 
     # Record views for everything served that the user hadn't seen before, so it
     # won't repeat next time. (Remediation re-serves are already in `seen`.)
@@ -320,7 +432,7 @@ async def build_feed(session: AsyncSession, user: User, limit: int) -> FeedRespo
         )
         for post, reason in chosen
     ]
-    return FeedResponse(items=items)
+    return FeedResponse(items=items, exhausted=exhausted)
 
 
 async def _advance_cursors(
