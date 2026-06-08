@@ -2,7 +2,7 @@ aws signin url: https://339140804013.signin.aws.amazon.com/console
 aws account number: 339140804013
 
 ssh connect to instance: 
-ssh -i models_server_keypair.pem ubuntu@54.236.227.121
+ssh -i models_server_keypair.pem ubuntu@100.56.122.101
 
 source .venv/bin/activate
 python -m scripts.generate --topic 'Linear Algebra' --modules 3
