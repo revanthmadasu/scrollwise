@@ -65,7 +65,9 @@ export function FeedPage() {
         <div className="feed-banner">
           <strong>You've covered everything ✦</strong>
           <span className="muted">
-            You're all caught up on every topic — the posts below are repeats.{" "}
+            You're all caught up on every topic — the posts below are repeats.
+          </span>
+          <span className="muted">
             <Link to="/discover">Request a new topic</Link> to generate fresh ones.
           </span>
         </div>
