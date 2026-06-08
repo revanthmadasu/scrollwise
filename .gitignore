@@ -24,4 +24,8 @@ dist/
 build/
 .next/
 *.log
-infra/
+
+# infra: track scripts, but never the secrets or local runtime artifacts
+infra/*.pem
+infra/passwords
+infra/logs/
