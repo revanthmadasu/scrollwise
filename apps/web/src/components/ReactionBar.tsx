@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { api } from "../api/client";
 import type { Post, Reaction } from "../api/types";
+import { CloseIcon, HeartIcon } from "./icons";
 
 // Like / dislike footer. Clicking the active reaction clears it (toggle).
 export function ReactionBar({ post }: { post: Post }) {
@@ -28,14 +29,14 @@ export function ReactionBar({ post }: { post: Post }) {
         onClick={() => set("like")}
         aria-label="Like"
       >
-        ♥ <span>{likes}</span>
+        <HeartIcon filled={reaction === "like"} /> <span>{likes}</span>
       </button>
       <button
         className={`react-btn ${reaction === "dislike" ? "active dislike" : ""}`}
         onClick={() => set("dislike")}
         aria-label="Dislike"
       >
-        ✕
+        <CloseIcon />
       </button>
     </div>
   );
