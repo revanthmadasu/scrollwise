@@ -34,7 +34,7 @@ test single image: python3 -m scripts.test_image_gen -p "a curriculum about neur
 
 tunnel script on dev system:
 cd infra
-./tunnel.sh  54.236.227.121
+./tunnel.sh  100.56.122.101
 
 
 deployment scripts:

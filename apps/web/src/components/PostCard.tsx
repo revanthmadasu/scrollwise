@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef, useState } from "react";
+import type { TouchEvent } from "react";
 import type { FeedItem, FeedReason } from "../api/types";
 import { ReactionBar } from "./ReactionBar";
 import { TestCard } from "./TestCard";
@@ -11,18 +12,45 @@ const REASON_LABEL: Record<FeedReason, string> = {
 
 const LEVEL_LABEL: Record<number, string> = { 1: "Summary", 2: "Standard", 3: "Deep dive" };
 
+const SWIPE_THRESHOLD = 40; // px of horizontal travel to count as a swipe
+
 function Carousel({ images }: { images: string[] }) {
   const [i, setI] = useState(0);
+  const start = useRef<{ x: number; y: number } | null>(null);
+
   if (images.length === 0) return null;
+
+  const go = (dir: number) => setI((prev) => (prev + dir + images.length) % images.length);
+
+  function onTouchStart(e: TouchEvent) {
+    const t = e.touches[0];
+    start.current = { x: t.clientX, y: t.clientY };
+  }
+  function onTouchEnd(e: TouchEvent) {
+    if (!start.current) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - start.current.x;
+    const dy = t.clientY - start.current.y;
+    start.current = null;
+    // Only act on a horizontal-dominant swipe, so vertical feed scrolling is untouched.
+    if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+      go(dx < 0 ? 1 : -1);
+    }
+  }
+
   return (
-    <div className="carousel">
-      <img src={images[i]} alt="" />
+    <div className="carousel" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+      <div className="carousel-track" style={{ transform: `translateX(-${i * 100}%)` }}>
+        {images.map((src, n) => (
+          <img key={n} src={src} alt="" draggable={false} />
+        ))}
+      </div>
       {images.length > 1 && (
         <>
-          <button className="car-nav left" onClick={() => setI((i - 1 + images.length) % images.length)}>
+          <button className="car-nav left" onClick={() => go(-1)} aria-label="Previous image">
             ‹
           </button>
-          <button className="car-nav right" onClick={() => setI((i + 1) % images.length)}>
+          <button className="car-nav right" onClick={() => go(1)} aria-label="Next image">
             ›
           </button>
           <div className="dots">
