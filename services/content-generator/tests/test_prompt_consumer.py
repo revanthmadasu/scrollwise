@@ -99,6 +99,43 @@ def test_claim_marks_generating_and_is_not_reclaimed(env):
     assert _status(repo, first["id"])["status"] == "generating"
 
 
+def test_health_report_reflects_queue(env):
+    repo, _pipeline = env
+    _enqueue(repo, "A")
+    _enqueue(repo, "B")
+
+    report = pc.health_report(repo)
+    assert report["healthy"] is True
+    assert report["queue"]["pending"] == 2
+    assert report["stuck_generating"] == 0
+
+
+def test_health_report_flags_stuck_generating(env):
+    repo, _pipeline = env
+    # A row claimed long ago but never completed = a dead worker.
+    repo._execute(
+        "INSERT INTO user_prompts (id, user_id, prompt_text, status, updated_at) "
+        "VALUES ('stuck1', 'u1', 'x', 'generating', '2000-01-01 00:00:00')"
+    )
+    repo._commit()
+
+    report = pc.health_report(repo, stuck_after_seconds=900)
+    assert report["healthy"] is False
+    assert report["stuck_generating"] == 1
+    assert report["problems"]
+
+
+def test_health_report_unhealthy_without_table(tmp_path):
+    # Fresh DB with no user_prompts table (apps/api never ran).
+    repo = Repository(str(tmp_path / "bare.db"))
+    try:
+        report = pc.health_report(repo)
+        assert report["healthy"] is False
+        assert "user_prompts" in report["reason"]
+    finally:
+        repo.close()
+
+
 def test_generation_failure_marks_failed(env):
     repo, _pipeline = env
     pid = _enqueue(repo, "Boom")

@@ -122,6 +122,36 @@ def run_forever(
             time.sleep(interval)
 
 
+def health_report(repo: Repository, *, stuck_after_seconds: int = 900) -> dict:
+    """A point-in-time health snapshot of the generation queue.
+
+    No LLM/pipeline needed — just DB reads. `healthy` is False if the contract
+    table is missing or prompts are stuck mid-generation (a worker died after
+    claiming a row). Used by scripts/health.py and infra/healthcheck.sh.
+    """
+    if not repo.user_prompts_ready():
+        return {
+            "healthy": False,
+            "reason": "user_prompts table not found (is apps/api initialized?)",
+        }
+    queue = repo.prompt_status_counts()
+    stuck = repo.stuck_generating_count(stuck_after_seconds)
+    problems: list[str] = []
+    if stuck:
+        problems.append(
+            f"{stuck} prompt(s) stuck in 'generating' > {stuck_after_seconds}s"
+        )
+    return {
+        "healthy": not problems,
+        "queue": queue,
+        "stuck_generating": stuck,
+        "stuck_after_seconds": stuck_after_seconds,
+        "posts": repo.count_all_posts(),
+        "topics": len(repo.topic_ids()),
+        "problems": problems,
+    }
+
+
 # --------------------------------------------------------------------- wiring
 
 
