@@ -103,6 +103,15 @@ def drain_once(
     return processed
 
 
+def recover_stuck(repo: Repository, *, stuck_after_seconds: int = 900) -> int:
+    """Requeue prompts orphaned in 'generating' by a crashed/interrupted worker
+    (claimed but never completed) so they get retried. Safe at worker startup."""
+    n = repo.requeue_stuck_generating(stuck_after_seconds)
+    if n:
+        logger.info("prompts_requeued", extra={"count": n})
+    return n
+
+
 def run_forever(
     repo: Repository,
     pipeline: Pipeline,
@@ -110,9 +119,12 @@ def run_forever(
     *,
     interval: float = 10.0,
     batch_size: int = 5,
+    stuck_after_seconds: int = 900,
 ) -> None:
     """EC2 poller: drain the queue, then sleep `interval`s when it's empty.
-    Clears any backlog at full speed (no sleep while rows remain)."""
+    Clears any backlog at full speed (no sleep while rows remain). Recovers
+    orphaned 'generating' rows from a previous worker before starting."""
+    recover_stuck(repo, stuck_after_seconds=stuck_after_seconds)
     logger.info(
         "drain_loop_start", extra={"interval": interval, "batch_size": batch_size}
     )
@@ -186,9 +198,12 @@ def lambda_handler(event: dict | None = None, context: object = None) -> dict:
     )
     repo, pipeline = build_pipeline(test_cadence=int(event.get("test_cadence", 3)))
     try:
+        recovered = recover_stuck(
+            repo, stuck_after_seconds=int(event.get("stuck_after", 900))
+        )
         processed = drain_once(
             repo, pipeline, opts, batch_size=int(event.get("batch_size", 5))
         )
     finally:
         repo.close()
-    return {"processed": processed}
+    return {"processed": processed, "recovered": recovered}

@@ -400,6 +400,26 @@ class Repository:
             )
         return int(row["c"]) if row else 0
 
+    def requeue_stuck_generating(self, seconds: int) -> int:
+        """Reset 'generating' rows older than `seconds` back to 'pending' so a
+        generation orphaned by a crashed/interrupted worker gets retried.
+        Returns how many were reset. Safe to call at worker startup.
+        """
+        if self._backend == "postgres":
+            cur = self._execute(
+                "UPDATE user_prompts SET status = 'pending', updated_at = now() "
+                "WHERE status = 'generating' AND updated_at < now() - make_interval(secs => ?)",
+                (int(seconds),),
+            )
+        else:
+            cur = self._execute(
+                "UPDATE user_prompts SET status = 'pending', updated_at = CURRENT_TIMESTAMP "
+                "WHERE status = 'generating' AND updated_at < datetime('now', ?)",
+                (f"-{int(seconds)} seconds",),
+            )
+        self._commit()
+        return max(cur.rowcount, 0)
+
     def count_all_posts(self) -> int:
         row = self._fetchone("SELECT COUNT(*) AS c FROM posts")
         return int(row["c"]) if row else 0

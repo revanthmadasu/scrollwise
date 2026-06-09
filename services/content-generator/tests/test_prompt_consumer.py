@@ -136,6 +136,25 @@ def test_health_report_unhealthy_without_table(tmp_path):
         repo.close()
 
 
+def test_recover_stuck_requeues_orphaned_generating(env):
+    repo, _pipeline = env
+    # A row claimed long ago but never completed (a crashed worker).
+    repo._execute(
+        "INSERT INTO user_prompts (id, user_id, prompt_text, status, updated_at) "
+        "VALUES ('orphan', 'u1', 'x', 'generating', '2000-01-01 00:00:00')"
+    )
+    repo._commit()
+
+    recovered = pc.recover_stuck(repo, stuck_after_seconds=900)
+    assert recovered == 1
+    assert _status(repo, "orphan")["status"] == "pending"  # back in the queue
+    # A freshly-claimed row (recent) is NOT requeued.
+    _enqueue(repo, "fresh")
+    claimed = repo.claim_pending_prompt()
+    assert pc.recover_stuck(repo, stuck_after_seconds=900) == 0
+    assert _status(repo, claimed["id"])["status"] == "generating"
+
+
 def test_generation_failure_marks_failed(env):
     repo, _pipeline = env
     pid = _enqueue(repo, "Boom")
