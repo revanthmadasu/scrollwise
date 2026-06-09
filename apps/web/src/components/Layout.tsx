@@ -1,6 +1,7 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
 import { ChartIcon, CompassIcon, HomeIcon, SparklesIcon } from "./icons";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Layout() {
   const { user, logout } = useAuth();
@@ -20,6 +21,7 @@ export function Layout() {
         </nav>
         <div className="user-menu">
           <span className="muted">{user?.display_name || user?.email}</span>
+          <ThemeToggle />
           <button className="ghost" onClick={logout}>Sign out</button>
         </div>
       </header>
