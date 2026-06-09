@@ -40,6 +40,11 @@
 
 * { box-sizing: border-box; }
 
+/* Respect users who ask for less motion (disables the carousel slide, fades, etc.). */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.001ms !important; animation-duration: 0.001ms !important; }
+}
+
 html, body, #root { height: 100%; }
 
 body {
@@ -48,6 +53,11 @@ body {
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.card, .topbar, .nav, .react-btn, .option, .theme-toggle, .theme-toggle button, .stat,
+.prompt-row, .progress-row, .topic-tile {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 button { font-family: inherit; cursor: pointer; }
@@ -138,14 +148,15 @@ a { color: var(--accent-2); text-decoration: none; }
 .level-chip { font-size: 0.72rem; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 0.15rem 0.6rem; }
 
 .media { width: 100%; display: block; background: #000; max-height: 70vh; }
-.carousel { position: relative; background: #000; touch-action: pan-y; }
-.carousel img { width: 100%; display: block; max-height: 70vh; object-fit: cover; user-select: none; -webkit-user-select: none; }
+.carousel { position: relative; background: #000; touch-action: pan-y; overflow: hidden; }
+.carousel-track { display: flex; transition: transform 0.32s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.carousel-track img { flex: 0 0 100%; width: 100%; display: block; max-height: 70vh; object-fit: cover; user-select: none; -webkit-user-select: none; }
 .car-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.45);
   color: #fff; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 1.3rem; }
 .car-nav.left { left: 8px; } .car-nav.right { right: 8px; }
 .dots { position: absolute; bottom: 10px; left: 0; right: 0; display: flex; justify-content: center; gap: 6px; }
-.dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.4); }
-.dot.active { background: #fff; }
+.dot { width: 6px; height: 6px; border-radius: 999px; background: rgba(255,255,255,0.4); transition: width 0.25s ease, background 0.25s ease; }
+.dot.active { width: 18px; background: #fff; }
 
 .card-body { padding: 1rem 1.1rem 0.4rem; }
 .card-title { margin: 0 0 0.5rem; font-size: 1.15rem; letter-spacing: -0.01em; }
@@ -229,7 +240,33 @@ a { color: var(--accent-2); text-decoration: none; }
 .progress-row { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 0.9rem 1rem; }
 .progress-head { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
 .bar { height: 8px; background: var(--surface-2); border-radius: 999px; overflow: hidden; }
-.bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+.bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transform-origin: left; animation: growX 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+
+/* ---------- motion / micro-interactions ---------- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes riseIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes growX { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* Content entrances: cards rise in as you scroll the feed; panels/verdicts/
+   banners ease in when they appear; pages + the auth card fade in on mount. */
+.card { animation: riseIn 0.35s ease both; }
+.verdict { animation: riseIn 0.25s ease both; }
+.revise-panel { animation: riseIn 0.2s ease both; }
+.feed-banner { animation: riseIn 0.3s ease both; }
+.page, .center { animation: fadeIn 0.25s ease both; }
+.auth-card { animation: riseIn 0.3s ease both; }
+
+/* Smooth hover + a tactile press on interactive controls. */
+.primary, .ghost, .react-btn, .option, .revise-btn, .see-more, .nav a, .theme-toggle button {
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease,
+    transform 0.1s ease, opacity 0.18s ease;
+}
+.primary:active:not(:disabled),
+.ghost:active,
+.react-btn:active,
+.option:active:not(:disabled),
+.revise-btn:active,
+.theme-toggle button:active { transform: scale(0.96); }
 
 /* ---------- mobile ---------- */
 @media (max-width: 640px) {

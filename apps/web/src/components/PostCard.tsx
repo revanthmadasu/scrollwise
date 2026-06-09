@@ -40,7 +40,11 @@ function Carousel({ images }: { images: string[] }) {
 
   return (
     <div className="carousel" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-      <img src={images[i]} alt="" draggable={false} />
+      <div className="carousel-track" style={{ transform: `translateX(-${i * 100}%)` }}>
+        {images.map((src, n) => (
+          <img key={n} src={src} alt="" draggable={false} />
+        ))}
+      </div>
       {images.length > 1 && (
         <>
           <button className="car-nav left" onClick={() => go(-1)} aria-label="Previous image">
