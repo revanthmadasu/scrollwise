@@ -36,8 +36,9 @@ load_dotenv()
 @click.option("--subtopics-per-module", default=4, show_default=True, help="Subtopics per module.")
 @click.option("--levels", default="1,2,3", show_default=True, help="Comma-separated levels to generate.")
 @click.option("--test-cadence", default=3, show_default=True, help="Insert a test after every N subtopics.")
+@click.option("--stuck-after", default=900, show_default=True, help="Seconds before an orphaned 'generating' row is requeued.")
 @click.option("--db", default=None, help="SQLite DB path (overrides DB_PATH). Ignored for Postgres.")
-def main(once, interval, batch_size, modules, subtopics_per_module, levels, test_cadence, db):
+def main(once, interval, batch_size, modules, subtopics_per_module, levels, test_cadence, stuck_after, db):
     if db:
         os.environ["DB_PATH"] = db
 
@@ -59,6 +60,9 @@ def main(once, interval, batch_size, modules, subtopics_per_module, levels, test
                     err=True,
                 )
                 sys.exit(1)
+            recovered = pc.recover_stuck(repo, stuck_after_seconds=stuck_after)
+            if recovered:
+                click.echo(f"Requeued {recovered} stuck prompt(s).")
             n = pc.drain_once(repo, pipeline, opts, batch_size=batch_size)
             click.echo(f"Processed {n} prompt(s).")
         else:
@@ -73,7 +77,10 @@ def main(once, interval, batch_size, modules, subtopics_per_module, levels, test
                 f"(batch {batch_size}, {repo.count_pending_prompts()} pending now). "
                 "Ctrl-C to stop."
             )
-            pc.run_forever(repo, pipeline, opts, interval=interval, batch_size=batch_size)
+            pc.run_forever(
+                repo, pipeline, opts, interval=interval, batch_size=batch_size,
+                stuck_after_seconds=stuck_after,
+            )
     except KeyboardInterrupt:
         click.echo("\nStopped.")
     finally:

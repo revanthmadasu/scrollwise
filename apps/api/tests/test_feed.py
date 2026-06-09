@@ -38,16 +38,26 @@ async def test_feed_serves_prompted_then_gates_on_test(auth_client):
     assert all(i["reason"] == "prompted" for i in items)
 
 
-async def test_seen_posts_not_repeated(auth_client):
-    await _set_prompt_ready("stoicism")
-    first = await auth_client.get("/feed?limit=10")
-    first_ids = {i["post"]["post_id"] for i in first.json()["items"]}
-    assert first_ids  # got something
+async def test_revise_returns_the_tests_prerequisite_content(auth_client):
+    # s1-test covers st0 (its prerequisites); /revise returns that content (s1).
+    r = await auth_client.get("/posts/s1-test/revise")
+    assert r.status_code == 200
+    ids = [p["post_id"] for p in r.json()]
+    assert ids == ["s1"]
 
-    second = await auth_client.get("/feed?limit=10")
-    second_ids = {i["post"]["post_id"] for i in second.json()["items"]}
-    # Nothing repeats (no remediation in play yet, test unanswered).
-    assert first_ids.isdisjoint(second_ids)
+
+async def test_blocked_feed_reserves_the_unblocking_test(auth_client):
+    await _set_prompt_ready("stoicism")
+    await auth_client.get("/feed?limit=10")  # see s1 + s1-test
+
+    # Test still unanswered, s2 gated behind it. The feed re-serves the blocking
+    # test (the action that unblocks) — not empty, not repeats, not "exhausted".
+    r = await auth_client.get("/feed?limit=10")
+    body = r.json()
+    ids = [i["post"]["post_id"] for i in body["items"]]
+    assert "s1-test" in ids        # the unblocking test is re-served
+    assert "s2" not in ids         # gated content stays hidden
+    assert body["exhausted"] is False  # they have a path forward, not exhausted
 
 
 async def test_passing_test_unlocks_next_post(auth_client):

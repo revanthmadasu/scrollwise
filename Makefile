@@ -6,7 +6,7 @@ GEN_DIR := services/content-generator
 API_DIR := apps/api
 WEB_DIR := apps/web
 
-.PHONY: help test test-generator test-api generate drain install-generator install-api install-web api web
+.PHONY: help test test-generator test-api generate drain health install-generator install-api install-web api web
 
 help:
 	@echo "ScrollWise monorepo targets:"
@@ -42,6 +42,10 @@ generate:
 # poller by default; `make drain ARGS=--once` for a single pass.
 drain:
 	cd $(GEN_DIR) && $(PY) -m scripts.drain_prompts $(ARGS)
+
+# Health check for the content-generator queue + DB (exit 0 healthy, 1 not).
+health:
+	cd $(GEN_DIR) && $(PY) -m scripts.health $(ARGS)
 
 api:
 	cd $(API_DIR) && $(PY) -m uvicorn app.main:app --reload

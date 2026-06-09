@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -79,6 +81,42 @@ async def set_reaction(
         like_count=likes,
         dislike_count=dislikes,
     )
+
+
+@router.get("/{post_id}/revise", response_model=list[PostOut])
+async def revise_test(
+    post_id: str,
+    user: User = Depends(get_current_user),
+    session: AsyncSession = Depends(get_session),
+):
+    """The content a test covers — its prerequisites — so the user can review
+    before (re)taking it. Returned in curriculum order, at the user's preferred
+    level (falling back to any level if none exist there)."""
+    post = await _load_post(session, post_id)
+    if not post.is_test:
+        raise HTTPException(status.HTTP_400_BAD_REQUEST, "Post is not a test")
+
+    try:
+        prereqs = json.loads(post.prerequisites) if post.prerequisites else []
+    except (json.JSONDecodeError, TypeError):
+        prereqs = []
+    if not prereqs:
+        return []
+
+    async def _content(level: int | None) -> list[Post]:
+        stmt = select(Post).where(
+            Post.subtopic_id.in_(prereqs),
+            Post.content_type != "test",
+        )
+        if level is not None:
+            stmt = stmt.where(Post.level == level)
+        stmt = stmt.order_by(
+            Post.offset_module, Post.offset_subtopic, Post.offset_seq
+        )
+        return list((await session.execute(stmt)).scalars().all())
+
+    posts = await _content(user.preferred_level) or await _content(None)
+    return [PostOut.from_post(p) for p in posts]
 
 
 @router.post("/{post_id}/answer", response_model=AnswerResult)

@@ -40,6 +40,7 @@ def _post_row(**kw):
         explanation=None,
         blocking=0,
         estimated_duration_sec=30,
+        prerequisites="[]",
     )
     base.update(kw)
     return base
@@ -78,14 +79,17 @@ async def _seed(conn):
                 level=2, content_type="text", title="Dichotomy of control",
                 body="Some things are up to us...",
             ),
+            # A test's subtopic_id is a synthetic gate id (as the generator emits);
+            # the content it covers (st0) lives in `prerequisites`.
             _post_row(
-                post_id="s1-test", topic_id="stoicism", module_id="m0", subtopic_id="st0",
+                post_id="s1-test", topic_id="stoicism", module_id="m0", subtopic_id="m0__test",
                 offset_module=0, offset_subtopic=0, offset_seq=1,
                 level=2, content_type="test", title="Quiz",
                 body="Check understanding",
                 test_type="mcq", question="What is up to us?",
                 options=json.dumps(["externals", "our judgments"]),
                 correct_index=1, explanation="Our judgments are up to us.", blocking=1,
+                prerequisites=json.dumps(["st0"]),
             ),
             _post_row(
                 post_id="s2", topic_id="stoicism", module_id="m0", subtopic_id="st1",
