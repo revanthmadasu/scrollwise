@@ -101,6 +101,36 @@ async def _gate_offset(
     return None
 
 
+async def _gated_post_ids(
+    session: AsyncSession, passed: set[str]
+) -> set[str]:
+    """All post_ids gated behind an unpassed blocking test, across every topic
+    that has one. Discovery/repeats exclude these so they never surface content
+    out of order — e.g. a topic's advanced material before its intro test.
+    """
+    topics = (
+        await session.execute(
+            select(Post.topic_id)
+            .where(Post.content_type == "test", Post.blocking == 1)
+            .distinct()
+        )
+    ).scalars().all()
+    forbidden: set[str] = set()
+    for topic_id in topics:
+        gate = await _gate_offset(session, topic_id, passed)
+        if gate is None:
+            continue
+        res = await session.execute(
+            select(Post.post_id).where(
+                Post.topic_id == topic_id,
+                tuple_(Post.offset_module, Post.offset_subtopic, Post.offset_seq)
+                > tuple_(*gate),
+            )
+        )
+        forbidden.update(res.scalars().all())
+    return forbidden
+
+
 async def _has_unseen_beyond_gate(
     session: AsyncSession,
     topic_id: str,
@@ -384,31 +414,34 @@ async def build_feed(session: AsyncSession, user: User, limit: int) -> FeedRespo
         )
         take(suggested, "suggested")
 
-    # Stages 4-5 are exhaustion fallbacks. Skip them entirely while the user
-    # still has gated content to unlock — they should pass the test, not get
-    # cross-topic filler or repeats.
-    exhausted = False
-    if not has_pending_gate:
-        # 4. Discovery: unseen posts from ANY topic, even un-subscribed ones, so
-        #    a user who exhausted their own topics still gets fresh material.
-        remaining = limit - len(chosen)
-        if remaining > 0:
-            discovery = await _discovery_candidates(
-                session, user.id, user.preferred_level, used, remaining
-            )
-            take(discovery, "suggested")
+    # Posts gated behind an unpassed blocking test (any topic). Discovery and
+    # repeats exclude these so neither serves content out of order.
+    forbidden = await _gated_post_ids(session, passed)
 
-        # 5. Exhausted: nothing new remains anywhere. Repeat posts at random so
-        #    the feed is never empty, and flag it so the client can nudge the
-        #    user to request a new topic.
-        remaining = limit - len(chosen)
-        if remaining > 0:
-            repeats = await _repeat_candidates(
-                session, user.preferred_level, used, remaining
-            )
-            if repeats:
-                exhausted = True
-                take(repeats, "suggested")
+    # 4. Discovery: unseen, un-gated posts from ANY topic, even un-subscribed
+    #    ones. Runs even when a prompted topic is mid-gate — surfacing a NEW
+    #    topic isn't filler and isn't the gated content, so an unpassed test in
+    #    one topic must not hide every other topic.
+    remaining = limit - len(chosen)
+    if remaining > 0:
+        discovery = await _discovery_candidates(
+            session, user.id, user.preferred_level, used | forbidden, remaining
+        )
+        take(discovery, "suggested")
+
+    # 5. Exhausted: nothing new remains anywhere. Repeat seen posts so the feed
+    #    is never empty, and flag it so the client nudges for a new topic. But
+    #    NOT while the user still has gated content to unlock — there they should
+    #    go pass the test rather than get repeats.
+    exhausted = False
+    remaining = limit - len(chosen)
+    if remaining > 0 and not has_pending_gate:
+        repeats = await _repeat_candidates(
+            session, user.preferred_level, used | forbidden, remaining
+        )
+        if repeats:
+            exhausted = True
+            take(repeats, "suggested")
 
     # Record views for everything served that the user hadn't seen before, so it
     # won't repeat next time. (Remediation re-serves are already in `seen`.)

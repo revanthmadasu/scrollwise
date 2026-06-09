@@ -112,6 +112,21 @@ async def test_discovery_serves_unsubscribed_topic(auth_client):
     assert body["exhausted"] is False  # there was new content to show
 
 
+async def test_gated_topic_does_not_hide_other_topics(auth_client):
+    # Stoicism is prompted but gated on its (unpassed) blocking test; a separate
+    # untouched topic has content. Discovery must still surface that other topic
+    # — a pending gate in one topic shouldn't blank the whole feed.
+    await _set_prompt_ready("stoicism")
+    await _add_content_post("L1", topic_id="logic", subtopic_id="lt0")
+
+    r = await auth_client.get("/feed?limit=10")
+    ids = [i["post"]["post_id"] for i in r.json()["items"]]
+
+    assert "L1" in ids        # untouched topic shows via discovery
+    assert "s1-test" in ids   # the gate (test) is served
+    assert "s2" not in ids    # gated content stays hidden
+
+
 async def test_failing_test_queues_remediation(auth_client):
     await _set_prompt_ready("stoicism")
     await auth_client.get("/feed?limit=10")  # serve s1 + test
