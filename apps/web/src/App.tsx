@@ -8,12 +8,14 @@ import { FeedPage } from "./pages/FeedPage";
 import { DiscoverPage } from "./pages/DiscoverPage";
 import { InterestsPage } from "./pages/InterestsPage";
 import { ProgressPage } from "./pages/ProgressPage";
+import { WaitlistPage } from "./pages/WaitlistPage";
 
 export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
         <Routes>
+          <Route path="/waitlist" element={<WaitlistPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route

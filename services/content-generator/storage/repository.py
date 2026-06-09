@@ -139,21 +139,23 @@ class Repository:
 
     def save_curriculum(self, curriculum: Curriculum) -> None:
         if self._backend == "sqlite":
-            sql = "INSERT OR REPLACE INTO curricula (topic_id, title, description, tree) VALUES (?, ?, ?, ?)"
+            sql = "INSERT OR REPLACE INTO curricula (topic_id, title, description, tree, category_id) VALUES (?, ?, ?, ?, ?)"
         else:
             sql = """
-                INSERT INTO curricula (topic_id, title, description, tree)
-                VALUES (?, ?, ?, ?)
+                INSERT INTO curricula (topic_id, title, description, tree, category_id)
+                VALUES (?, ?, ?, ?, ?)
                 ON CONFLICT (topic_id) DO UPDATE
                   SET title = EXCLUDED.title,
                       description = EXCLUDED.description,
-                      tree = EXCLUDED.tree
+                      tree = EXCLUDED.tree,
+                      category_id = EXCLUDED.category_id
             """
         self._execute(sql, (
             curriculum.topic_id,
             curriculum.title,
             curriculum.description,
             curriculum.model_dump_json(),
+            curriculum.category_id,
         ))
         self._commit()
 

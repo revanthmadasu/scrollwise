@@ -26,6 +26,7 @@ from sqlalchemy import func, select, tuple_
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import (
+    Curriculum,
     Post,
     PostReaction,
     ReactionType,
@@ -247,14 +248,32 @@ async def _suggested_candidates(
     exclude: set[str],
     limit: int,
 ) -> list[Post]:
-    """Trending (most-liked) posts from the user's interest topics, shuffled."""
+    """Trending (most-liked) posts from the user's interest categories, shuffled.
+
+    Resolves user categories -> curricula topic_ids -> posts so the feed
+    reflects high-level interest selections rather than individual topic picks.
+    """
     if limit <= 0:
         return []
-    interests = (
+
+    # 1. Category IDs the user selected.
+    category_ids = (
         await session.execute(
-            select(UserInterest.topic_id).where(UserInterest.user_id == user_id)
+            select(UserInterest.category_id).where(UserInterest.user_id == user_id)
         )
     ).scalars().all()
+    if not category_ids:
+        return []
+
+    # 2. Resolve categories -> topic_ids via the curricula table.
+    topic_ids = (
+        await session.execute(
+            select(Curriculum.topic_id).where(
+                Curriculum.category_id.in_(list(category_ids))
+            )
+        )
+    ).scalars().all()
+    interests = list(topic_ids)
     if not interests:
         return []
 

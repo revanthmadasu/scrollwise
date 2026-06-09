@@ -73,3 +73,6 @@ class Curriculum(Base):
     title: Mapped[str] = mapped_column(String)
     description: Mapped[str] = mapped_column(String)
     tree: Mapped[str] = mapped_column(String)  # full Curriculum object as JSON
+    # High-level category this curriculum belongs to.
+    # Nullable: older generator rows may not carry a category yet.
+    category_id: Mapped[Optional[str]] = mapped_column(String, nullable=True)

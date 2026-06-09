@@ -18,7 +18,7 @@ from app.db import Base, engine
 
 # Import models so they're registered on Base.metadata before create_all.
 from app import models  # noqa: F401  (side-effect import)
-from app.routers import auth, feed, interests, posts, progress, prompts
+from app.routers import auth, feed, interests, posts, progress, prompts, waitlist
 
 settings = get_settings()
 
@@ -55,6 +55,7 @@ app.include_router(prompts.router)
 app.include_router(feed.router)
 app.include_router(posts.router)
 app.include_router(progress.router)
+app.include_router(waitlist.router)
 
 
 @app.get("/health", tags=["meta"])

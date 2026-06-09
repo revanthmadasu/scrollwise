@@ -2,6 +2,11 @@
 // When apps/api publishes an OpenAPI spec to packages/contract, these can be
 // replaced by generated types.
 
+export interface WaitlistJoinResult {
+  joined: boolean;   // true = new; false = already on the list
+  position: number;
+}
+
 export interface TokenPair {
   access_token: string;
   refresh_token: string;
@@ -16,14 +21,22 @@ export interface User {
   preferred_level: number;
 }
 
+export interface InterestCategory {
+  category_id: string;
+  label: string;
+  emoji: string;
+  description: string;
+}
+
 export interface Topic {
   topic_id: string;
   title: string;
   description: string;
+  category_id: string | null;
 }
 
 export interface Interests {
-  topic_ids: string[];
+  category_ids: string[];
 }
 
 export type PromptStatus = "pending" | "generating" | "ready" | "failed";

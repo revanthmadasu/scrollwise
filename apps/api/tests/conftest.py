@@ -60,13 +60,22 @@ async def _db():
 async def _seed(conn):
     from sqlalchemy import insert
 
-    from app.models import Curriculum, Post
+    from app.models import Curriculum, InterestCategory, Post
 
+    await conn.execute(
+        insert(InterestCategory),
+        [
+            dict(category_id="philosophy", emoji="💡", label="Philosophy & Psychology",
+                 description="How we think and why we behave."),
+        ],
+    )
     await conn.execute(
         insert(Curriculum),
         [
-            dict(topic_id="stoicism", title="Stoicism", description="Live wisely", tree="{}"),
-            dict(topic_id="logic", title="Logic", description="Think clearly", tree="{}"),
+            dict(topic_id="stoicism", title="Stoicism", description="Live wisely",
+                 tree="{}", category_id="philosophy"),
+            dict(topic_id="logic", title="Logic", description="Think clearly",
+                 tree="{}", category_id="philosophy"),
         ],
     )
     # Topic "stoicism": one content post (level 2), then a blocking test.
