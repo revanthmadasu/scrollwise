@@ -51,6 +51,11 @@ class Post(Base):
 
     estimated_duration_sec: Mapped[int] = mapped_column(Integer)
 
+    # JSON array (text). For a TEST, the content subtopic_ids it covers — used to
+    # map a failed test back to the content the user must review. (A test's own
+    # subtopic_id is a synthetic gate id, not a content subtopic.)
+    prerequisites: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+
     @property
     def is_test(self) -> bool:
         return self.content_type == "test"

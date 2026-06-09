@@ -132,6 +132,14 @@ a { color: var(--accent-2); text-decoration: none; }
 .test-card { border-color: rgba(124,92,255,0.4); }
 .test { padding: 1.2rem; }
 .test-tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--accent-2); margin-bottom: 0.6rem; }
+.test-head { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 0.6rem; }
+.test-head .test-tag { margin-bottom: 0; }
+.revise-btn { background: none; border: 1px solid var(--border); color: var(--accent-2); border-radius: 999px; padding: 0.25rem 0.7rem; font-size: 0.8rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.revise-btn:hover { border-color: var(--accent); }
+.test-gate-note { font-size: 0.82rem; margin: 0 0 0.8rem; }
+.revise-panel { display: flex; flex-direction: column; gap: 0.7rem; margin: 0 0 1rem; padding: 0.85rem; border: 1px solid var(--border); border-radius: 12px; background: var(--surface-2); }
+.revise-item h4 { margin: 0 0 0.25rem; font-size: 0.95rem; }
+.revise-item p { margin: 0; line-height: 1.5; color: #d6d6df; font-size: 0.9rem; white-space: pre-wrap; }
 .test-q { font-size: 1.2rem; margin: 0 0 1rem; }
 .options { display: flex; flex-direction: column; gap: 0.6rem; }
 .option { text-align: left; background: var(--surface-2); border: 1px solid var(--border); color: var(--text);

@@ -18,6 +18,7 @@ except remediation is filtered against it.
 
 from __future__ import annotations
 
+import json
 import random
 from collections import defaultdict
 
@@ -131,25 +132,31 @@ async def _gated_post_ids(
     return forbidden
 
 
-async def _has_unseen_beyond_gate(
-    session: AsyncSession,
-    topic_id: str,
-    gate: tuple[int, int, int],
-    seen: set[str],
-) -> bool:
-    """Whether `topic_id` has unseen content the user would unlock by passing the
-    blocking test at `gate`. If so, the user isn't "done" — they have a path
-    forward — so the feed must NOT fall back to repeats yet.
+async def _pending_gate_tests(
+    session: AsyncSession, topics: list[str], passed: set[str]
+) -> list[Post]:
+    """The unpassed blocking test that currently gates each prompted topic.
+
+    Re-served even if already seen: when a user is blocked, the feed's job is to
+    hand them the action that unblocks progress — the test — not filler or
+    repeats. One test per topic (the earliest unpassed gate).
     """
-    res = await session.execute(
-        select(Post.post_id).where(
-            Post.topic_id == topic_id,
-            Post.content_type != "test",
-            tuple_(Post.offset_module, Post.offset_subtopic, Post.offset_seq)
-            > tuple_(*gate),
+    out: list[Post] = []
+    for topic_id in topics:
+        res = await session.execute(
+            select(Post)
+            .where(
+                Post.topic_id == topic_id,
+                Post.content_type == "test",
+                Post.blocking == 1,
+            )
+            .order_by(Post.offset_module, Post.offset_subtopic, Post.offset_seq)
         )
-    )
-    return any(pid not in seen for pid in res.scalars().all())
+        for post in res.scalars().all():
+            if post.subtopic_id not in passed:
+                out.append(post)
+                break  # only the earliest gating test for this topic
+    return out
 
 
 async def _prompted_candidates(
@@ -189,16 +196,40 @@ async def _remediation_candidates(
     preferred_level: int,
     limit: int,
 ) -> list[Post]:
-    """Content posts for subtopics whose latest test attempt failed. These
-    deliberately bypass the `seen` filter — re-serving is the point.
+    """Content the user needs to review after FAILING a test, re-served so they
+    can pass on a retry. Deliberately bypasses the `seen` filter.
+
+    A test's covered content subtopics live in its `prerequisites` (its own
+    `subtopic_id` is a synthetic gate id), so we resolve: failed test attempts ->
+    the failed TEST posts -> their `prerequisites` -> the content posts for those
+    subtopics.
     """
-    failed = [sub for sub, ok in latest_attempt.items() if not ok]
-    if not failed:
+    failed_tests = [sub for sub, ok in latest_attempt.items() if not ok]
+    if not failed_tests:
         return []
+
+    # Failed TEST posts -> the content subtopic_ids each one covers.
+    rows = await session.execute(
+        select(Post.prerequisites).where(
+            Post.subtopic_id.in_(failed_tests),
+            Post.content_type == "test",
+        )
+    )
+    covered: set[str] = set()
+    for (prereq,) in rows.all():
+        if not prereq:
+            continue
+        try:
+            covered.update(json.loads(prereq))
+        except (json.JSONDecodeError, TypeError):
+            continue
+    if not covered:
+        return []
+
     res = await session.execute(
         select(Post)
         .where(
-            Post.subtopic_id.in_(failed),
+            Post.subtopic_id.in_(covered),
             Post.content_type != "test",
             Post.level == preferred_level,
         )
@@ -379,26 +410,20 @@ async def build_feed(session: AsyncSession, user: User, limit: int) -> FeedRespo
             used.add(p.post_id)
             chosen.append((p, reason))
 
+    topics = await _ready_prompted_topics(session, user.id)
+
     # 1. Remediation (capped so it can't starve the rest of the feed).
     remediation = await _remediation_candidates(
         session, latest_attempt, user.preferred_level, max(1, limit // 2)
     )
     take(remediation, "remediation")
 
-    # 2. Prompted topics, interleaved round-robin. Along the way, note whether
-    #    any prompted topic still has content gated behind an unpassed test —
-    #    if so the user has a path forward and we must not fall back to repeats.
-    has_pending_gate = False
+    # 2. Prompted topics, interleaved round-robin (blocking tests gate each topic).
     remaining = limit - len(chosen)
-    if remaining > 0:
-        topics = await _ready_prompted_topics(session, user.id)
+    if remaining > 0 and topics:
         groups: list[list[Post]] = []
         for topic_id in topics:
             gate = await _gate_offset(session, topic_id, passed)
-            if gate is not None and await _has_unseen_beyond_gate(
-                session, topic_id, gate, seen
-            ):
-                has_pending_gate = True
             groups.append(
                 await _prompted_candidates(
                     session, topic_id, user.preferred_level, seen, gate, remaining
@@ -406,7 +431,15 @@ async def build_feed(session: AsyncSession, user: User, limit: int) -> FeedRespo
             )
         take(_interleave(groups), "prompted")
 
-    # 3. Suggested / trending fill, from the user's interest topics.
+    # 3. Gate tests: re-serve the unpassed blocking test that gates each prompted
+    #    topic (even if already seen) so a blocked user always gets the action
+    #    that unblocks more content, rather than an empty feed or filler. A
+    #    pending gate also means the user ISN'T "exhausted" (see repeats below).
+    gate_tests = await _pending_gate_tests(session, topics, passed)
+    has_pending_gate = bool(gate_tests)
+    take(gate_tests, "prompted")
+
+    # 4. Suggested / trending fill, from the user's interest topics.
     remaining = limit - len(chosen)
     if remaining > 0:
         suggested = await _suggested_candidates(
@@ -418,7 +451,7 @@ async def build_feed(session: AsyncSession, user: User, limit: int) -> FeedRespo
     # repeats exclude these so neither serves content out of order.
     forbidden = await _gated_post_ids(session, passed)
 
-    # 4. Discovery: unseen, un-gated posts from ANY topic, even un-subscribed
+    # 5. Discovery: unseen, un-gated posts from ANY topic, even un-subscribed
     #    ones. Runs even when a prompted topic is mid-gate — surfacing a NEW
     #    topic isn't filler and isn't the gated content, so an unpassed test in
     #    one topic must not hide every other topic.
@@ -429,10 +462,11 @@ async def build_feed(session: AsyncSession, user: User, limit: int) -> FeedRespo
         )
         take(discovery, "suggested")
 
-    # 5. Exhausted: nothing new remains anywhere. Repeat seen posts so the feed
-    #    is never empty, and flag it so the client nudges for a new topic. But
-    #    NOT while the user still has gated content to unlock — there they should
-    #    go pass the test rather than get repeats.
+    # 6. Last resort: nothing new AND nothing to unblock. Repeat already-seen
+    #    posts so the feed is never empty, and flag `exhausted` so the client can
+    #    nudge for a new topic. Skipped while a gate is pending — there the user
+    #    has the test to take (stage 3), so they aren't actually done. Gated
+    #    posts stay excluded via `forbidden`.
     exhausted = False
     remaining = limit - len(chosen)
     if remaining > 0 and not has_pending_gate:

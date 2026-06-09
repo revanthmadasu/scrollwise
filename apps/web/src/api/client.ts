@@ -132,6 +132,7 @@ export const api = {
     request<ReactionResult>(`/posts/${id}/reaction`, { method: "PUT", body: { reaction } }),
   answer: (id: string, selected_index: number) =>
     request<AnswerResult>(`/posts/${id}/answer`, { method: "POST", body: { selected_index } }),
+  revise: (id: string) => request<Post[]>(`/posts/${id}/revise`),
 
   // --- progress ---
   progress: () => request<Progress>("/me/progress"),
