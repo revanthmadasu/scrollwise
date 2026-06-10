@@ -153,3 +153,16 @@ async def test_failing_test_queues_remediation(auth_client):
     assert "s1" in ids
     assert any(i["reason"] == "remediation" for i in items)
     assert "s2" not in ids
+
+
+async def test_answer_out_of_range_rejected(auth_client):
+    # s1-test has 2 options (valid indices 0,1). Index 2 is out of range.
+    r = await auth_client.post("/posts/s1-test/answer", json={"selected_index": 2})
+    assert r.status_code == 400
+    assert "out of range" in r.json()["detail"]
+
+
+async def test_answer_negative_index_rejected(auth_client):
+    # Negative indices are rejected by schema validation (ge=0).
+    r = await auth_client.post("/posts/s1-test/answer", json={"selected_index": -1})
+    assert r.status_code == 422
