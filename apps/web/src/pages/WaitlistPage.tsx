@@ -4,6 +4,15 @@ import { useMutation } from "@tanstack/react-query";
 import { api, ApiError } from "../api/client";
 import { ThemeToggle } from "../components/ThemeToggle";
 
+/** Bucket a raw waitlist position into a friendly "top N" tier so we never
+ * reveal the exact count. Falls back to the widest tier for large positions. */
+function positionTier(position: number): string {
+  for (const tier of [15, 30, 50, 100, 250, 500, 1000]) {
+    if (position <= tier) return `top ${tier}`;
+  }
+  return "list";
+}
+
 const PERKS = [
   {
     emoji: "🧠",
@@ -78,7 +87,7 @@ export function WaitlistPage() {
               <div className="waitlist-success-icon">🎉</div>
               {result?.joined ? (
                 <>
-                  <h2>You're #{result.position} on the list!</h2>
+                  <h2>You're in the {positionTier(result.position)}!</h2>
                   <p className="muted">
                     We'll email <strong>{email}</strong> when early access opens.
                     Tell a friend — the more the merrier.
@@ -95,7 +104,7 @@ export function WaitlistPage() {
               <a
                 className="primary waitlist-share"
                 href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                  "Just joined the ScrollWise waitlist — a learning feed that actually makes you smarter 🧠 scrollwise.app/waitlist"
+                  "Just joined the ScrollWise waitlist — a learning feed that actually makes you smarter 🧠 scrollwise.net/waitlist"
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -130,7 +139,7 @@ export function WaitlistPage() {
                 </button>
               </form>
               <p className="waitlist-login-hint muted">
-                Already have access? <Link to="/login">Sign in →</Link>
+                Curious already? <Link to="/login">Explore the prototype →</Link>
               </p>
             </>
           )}
