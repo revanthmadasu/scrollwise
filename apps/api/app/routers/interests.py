@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -65,10 +65,30 @@ async def set_interests(
     session: AsyncSession = Depends(get_session),
 ):
     """Replace the user's selected interest categories (full replace, not patch)."""
+    deduped = list(dict.fromkeys(body.category_ids))  # de-dup, preserve order
+
+    # Reject unknown category IDs with a clean 400 rather than letting the DB's
+    # foreign key raise a 500 (or silently inserting orphans on a FK-less DB).
+    if deduped:
+        valid = set(
+            (
+                await session.execute(
+                    select(InterestCategory.category_id).where(
+                        InterestCategory.category_id.in_(deduped)
+                    )
+                )
+            ).scalars().all()
+        )
+        unknown = [c for c in deduped if c not in valid]
+        if unknown:
+            raise HTTPException(
+                status.HTTP_400_BAD_REQUEST,
+                f"Unknown category id(s): {', '.join(unknown)}",
+            )
+
     await session.execute(
         delete(UserInterest).where(UserInterest.user_id == user.id)
     )
-    deduped = list(dict.fromkeys(body.category_ids))  # de-dup, preserve order
     for category_id in deduped:
         session.add(UserInterest(user_id=user.id, category_id=category_id))
     return InterestsOut(category_ids=deduped)

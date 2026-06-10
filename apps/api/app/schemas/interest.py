@@ -1,6 +1,10 @@
 from __future__ import annotations
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+
+# Safety cap: no legitimate user selects more categories than exist. Prevents a
+# malicious/buggy client from POSTing an unbounded list.
+MAX_INTERESTS = 50
 
 
 class CategoryOut(BaseModel):
@@ -15,7 +19,7 @@ class CategoryOut(BaseModel):
 
 
 class InterestsUpdate(BaseModel):
-    category_ids: list[str]
+    category_ids: list[str] = Field(default_factory=list, max_length=MAX_INTERESTS)
 
 
 class InterestsOut(BaseModel):
