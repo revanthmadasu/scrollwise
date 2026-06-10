@@ -147,6 +147,41 @@ a { color: var(--accent-2); text-decoration: none; }
 .user-menu .muted { font-size: 0.85rem; max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .signout { display: inline-flex; align-items: center; gap: 0.4rem; flex: none; }
 .signout svg { width: 16px; height: 16px; }
+
+/* Desktop shows the inline cluster; the collapsed account menu is mobile-only. */
+.user-desktop { display: flex; align-items: center; gap: 0.85rem; }
+.account { display: none; position: relative; }
+.account-trigger {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; padding: 0; flex: none;
+  background: transparent; border: 1px solid var(--border); border-radius: 12px;
+  color: var(--text);
+}
+.account-trigger:hover { border-color: var(--accent); }
+.account-menu {
+  position: absolute; right: 0; top: calc(100% + 0.55rem);
+  min-width: 224px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+  padding: 0.5rem; z-index: 30;
+  display: flex; flex-direction: column; gap: 0.15rem;
+  animation: riseIn 0.16s ease both;
+}
+.account-email {
+  font-size: 0.8rem; color: var(--muted); word-break: break-all;
+  padding: 0.45rem 0.6rem 0.6rem; border-bottom: 1px solid var(--border);
+  margin-bottom: 0.3rem;
+}
+.account-item {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+  width: 100%; padding: 0.65rem 0.6rem; border-radius: 10px;
+  background: transparent; border: none; color: var(--text);
+  font-size: 0.92rem; font-weight: 500; text-align: left;
+}
+button.account-item { cursor: pointer; }
+button.account-item:hover { background: var(--surface-2); }
+.account-signout { justify-content: flex-start; gap: 0.55rem; color: var(--bad); }
+.account-signout svg { width: 18px; height: 18px; }
 .content { flex: 1; }
 
 /* ---------- theme toggle ---------- */
@@ -366,17 +401,15 @@ a { color: var(--accent-2); text-decoration: none; }
 
 /* ---------- mobile ---------- */
 @media (max-width: 640px) {
-  /* Top bar keeps just the brand + sign-out; the nav becomes a bottom tab bar. */
+  /* Top bar: brand + collapsed account menu; nav becomes a bottom tab bar. */
   .topbar { gap: 0.75rem; padding: 0.7rem 1rem; }
   .brand { font-size: 1.15rem; }
   .user-menu { margin-left: auto; gap: 0.5rem; }
-  .user-menu .muted { display: none; }
 
-  /* Compact icon-only sign-out so it always fits and never overflows off-screen,
-     even with large accessibility text settings. */
-  .signout-label { display: none; }
-  .signout { padding: 0.5rem; gap: 0; }
-  .signout svg { width: 20px; height: 20px; }
+  /* Collapse the inline cluster into a tap-to-open account menu so sign-out
+     (and theme) always have a reachable home regardless of screen width. */
+  .user-desktop { display: none; }
+  .account { display: block; }
 
   /* Bottom tab bar — thumb-friendly, Instagram-style. */
   .nav {
