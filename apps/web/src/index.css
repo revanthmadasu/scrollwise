@@ -46,6 +46,15 @@
 }
 
 html, body, #root { height: 100%; }
+/* Hard guard against horizontal overflow. Chrome/Android expands the layout
+   viewport to fit any element wider than the screen, which pushes the effective
+   width past our 640px breakpoint and silently disables the mobile layout
+   (bottom tab bar + account menu) — iOS Safari instead clamps to device-width,
+   which is why the two browsers diverged. `clip` (not `hidden`) prevents the
+   horizontal scroll WITHOUT creating a scroll container, so `position: sticky`
+   on the topbar keeps working. */
+html, body { max-width: 100%; overflow-x: clip; }
+#root { overflow-x: clip; }
 
 body {
   margin: 0;
@@ -134,7 +143,7 @@ a { color: var(--accent-2); text-decoration: none; }
   padding: 0.85rem 1.25rem; background: var(--bar-bg);
   backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
 }
-.nav { display: flex; gap: 0.35rem; margin-left: 0.5rem; }
+.nav { display: flex; gap: 0.35rem; margin-left: 0.5rem; min-width: 0; }
 .nav a {
   display: inline-flex; align-items: center; gap: 0.4rem;
   color: var(--muted); padding: 0.45rem 0.85rem; border-radius: 999px;

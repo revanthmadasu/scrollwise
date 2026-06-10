@@ -71,7 +71,7 @@ export function WaitlistPage() {
           <div className="waitlist-badge">Coming soon</div>
           <h1 className="waitlist-headline">
             The feed that makes you<br />
-            <span className="waitlist-highlight">smarter, not number</span>
+            <span className="waitlist-highlight">smarter, not dumber</span>
           </h1>
           <p className="waitlist-sub">
             ScrollWise is a learning app built to replace doomscrolling — a
