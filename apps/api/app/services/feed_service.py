@@ -503,8 +503,12 @@ async def build_feed(session: AsyncSession, user: User, limit: int) -> FeedRespo
             session.add(UserPostView(user_id=user.id, post_id=post.post_id))
             seen.add(post.post_id)
 
-    # Advance per-topic progress cursors to the furthest offset served.
-    await _advance_cursors(session, user.id, [p for p, _ in chosen])
+    # Advance per-topic progress cursors — but ONLY for topics the user
+    # generated (prompted). Suggested/discovery content from topics the user
+    # never subscribed to must not appear on the progress page.
+    await _advance_cursors(
+        session, user.id, [p for p, _ in chosen], allowed_topics=set(topics)
+    )
 
     my_reaction, like_count = await _enrich(session, user.id, [p for p, _ in chosen])
     items = [
@@ -522,11 +526,21 @@ async def build_feed(session: AsyncSession, user: User, limit: int) -> FeedRespo
 
 
 async def _advance_cursors(
-    session: AsyncSession, user_id: str, posts: list[Post]
+    session: AsyncSession,
+    user_id: str,
+    posts: list[Post],
+    allowed_topics: set[str],
 ) -> None:
-    """Bump each touched topic's cursor to the max offset served this round."""
+    """Bump each touched topic's cursor to the max offset served this round.
+
+    Only topics in `allowed_topics` (the user's generated/prompted topics) get a
+    cursor — progress tracks the user's chosen learning paths, not trending
+    suggested or discovery content from topics they never subscribed to.
+    """
     furthest: dict[str, tuple[int, int, int]] = defaultdict(lambda: (-1, -1, -1))
     for p in posts:
+        if p.topic_id not in allowed_topics:
+            continue
         off = (p.offset_module, p.offset_subtopic, p.offset_seq)
         if off > furthest[p.topic_id]:
             furthest[p.topic_id] = off
