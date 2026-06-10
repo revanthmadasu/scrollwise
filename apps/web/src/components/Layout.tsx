@@ -1,6 +1,6 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
-import { ChartIcon, CompassIcon, HomeIcon, SparklesIcon } from "./icons";
+import { ChartIcon, CompassIcon, HomeIcon, LogoutIcon, SparklesIcon } from "./icons";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function Layout() {
@@ -22,7 +22,10 @@ export function Layout() {
         <div className="user-menu">
           <span className="muted">{user?.display_name || user?.email}</span>
           <ThemeToggle />
-          <button className="ghost" onClick={logout}>Sign out</button>
+          <button className="ghost signout" onClick={logout} aria-label="Sign out">
+            <LogoutIcon />
+            <span className="signout-label">Sign out</span>
+          </button>
         </div>
       </header>
       <main className="content">
