@@ -45,6 +45,7 @@ export function RegisterPage() {
         </div>
         <form onSubmit={onSubmit} className="auth-form">
           <input placeholder="Display name (optional)" value={displayName}
+            maxLength={50}
             onChange={(e) => setDisplayName(e.target.value)} />
           <input type="email" placeholder="Email" value={email} required
             onChange={(e) => setEmail(e.target.value)} />

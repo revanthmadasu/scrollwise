@@ -122,6 +122,7 @@ export function WaitlistPage() {
                 <input
                   placeholder="Your name (optional)"
                   value={name}
+                  maxLength={80}
                   onChange={(e) => setName(e.target.value)}
                   autoComplete="name"
                 />
