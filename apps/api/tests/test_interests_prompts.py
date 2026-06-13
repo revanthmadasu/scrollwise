@@ -63,6 +63,8 @@ async def test_prompt_enqueued_pending(auth_client):
     body = r.json()
     assert body["status"] == "pending"
     assert body["topic_id"] is None
+    # A freshly enqueued prompt hasn't been deduped against anything yet.
+    assert body["reused"] is False
 
     r = await auth_client.get("/me/prompts")
     assert len(r.json()) == 1

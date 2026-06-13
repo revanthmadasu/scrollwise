@@ -10,8 +10,17 @@ CREATE TABLE IF NOT EXISTS curricula (
     -- the API DB). Set at generation time so the feed can group topics by
     -- category when building the suggested section. NULL for legacy rows.
     category_id TEXT,
+    -- Normalized topic key for de-duplication: an LLM canonicalizes the user's
+    -- raw prompt to a standard title, which normalize() reduces to this key.
+    -- The UNIQUE index is the race guard — two workers generating the same
+    -- topic concurrently can't both insert. NULL for legacy rows (NULLs are not
+    -- considered equal, so they don't collide in the unique index).
+    canonical_key TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_curricula_canonical_key
+    ON curricula(canonical_key);
 
 CREATE TABLE IF NOT EXISTS posts (
     post_id TEXT PRIMARY KEY,

@@ -14,6 +14,7 @@ class PromptOut(BaseModel):
     prompt_text: str
     status: str
     topic_id: str | None = None
+    reused: bool = False
     error: str | None = None
     created_at: datetime
 

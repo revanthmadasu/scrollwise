@@ -7,7 +7,7 @@ import pytest
 
 from generators.embedding_client import HashEmbeddingClient
 from generators.image_client import StubImageClient
-from generators.models import ContentType, Level
+from generators.models import ContentType, Curriculum, Level
 from generators.pipeline import Pipeline
 from storage.repository import Repository
 from tests.fakes import FakeLLMClient, combined_responder
@@ -32,13 +32,15 @@ def pipeline():
 
 def test_end_to_end_generates_curriculum_posts_and_tests(pipeline):
     p, repo = pipeline
-    curriculum = p.run(
+    result = p.run(
         topic_title="Anything",
         num_modules=1,
         subtopics_per_module=2,
         levels=[Level.SUMMARY, Level.STANDARD],
     )
 
+    assert result.reused is False
+    curriculum = result.curriculum
     assert curriculum.topic_id == "test_topic"
     assert len(curriculum.modules) == 1
 
@@ -58,6 +60,54 @@ def test_each_post_has_embedding(pipeline):
     p.run(topic_title="X", num_modules=1, subtopics_per_module=1, levels=[Level.STANDARD])
     posts = repo.all_posts_for_topic("test_topic")
     assert all(post.embedding is not None and len(post.embedding) == 1024 for post in posts)
+
+
+def test_canonical_key_is_stored(pipeline):
+    p, repo = pipeline
+    p.run(topic_title="anything", num_modules=1, subtopics_per_module=1, levels=[Level.STANDARD])
+    # The fake canonicalizer always returns "Test Topic" -> "test topic".
+    assert repo.load_curriculum("test_topic").canonical_key == "test topic"
+
+
+def test_second_prompt_for_same_topic_is_reused(pipeline):
+    p, repo = pipeline
+    first = p.run(topic_title="Teach me WWII", num_modules=1, subtopics_per_module=1, levels=[Level.STANDARD])
+    assert first.reused is False
+    posts_after_first = repo.count_posts("test_topic")
+
+    # Different phrasing, same canonical key -> reuse, no new generation.
+    second = p.run(topic_title="the second world war", num_modules=1, subtopics_per_module=1, levels=[Level.STANDARD])
+    assert second.reused is True
+    assert second.curriculum.topic_id == "test_topic"
+    assert repo.count_posts("test_topic") == posts_after_first
+    assert len(repo.topic_ids()) == 1
+
+
+def test_pipeline_recovers_from_canonical_key_race(pipeline):
+    p, repo = pipeline
+    # Simulate a concurrent worker that already won the race for this key under
+    # a different topic_id.
+    winner = Curriculum(
+        topic_id="winner_topic",
+        title="Test Topic",
+        description="d",
+        modules=[],
+        canonical_key="test topic",
+    )
+    repo.save_curriculum(winner)
+
+    # skip_curriculum_if_exists=False forces generation; the save then loses the
+    # race to `winner` (same key, different topic_id) and must reuse it.
+    result = p.run(
+        topic_title="anything",
+        num_modules=1,
+        subtopics_per_module=1,
+        levels=[Level.STANDARD],
+        skip_curriculum_if_exists=False,
+    )
+    assert result.reused is True
+    assert result.curriculum.topic_id == "winner_topic"
+    assert len(repo.topic_ids()) == 1
 
 
 def test_offsets_are_unique_and_ordered(pipeline):

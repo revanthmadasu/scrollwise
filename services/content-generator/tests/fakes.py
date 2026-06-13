@@ -63,9 +63,17 @@ def test_responder(system, user) -> str:
     })
 
 
+def canonicalize_responder(system, user) -> str:
+    # Constant canonical title; matches the fake curriculum's title so a single
+    # topic per test DB normalizes to one stable key.
+    return json.dumps({"canonical_title": "Test Topic"})
+
+
 def combined_responder(system, user) -> str:
-    """Dispatch based on the system prompt's first word."""
-    if "curriculum designer" in system:
+    """Dispatch based on a distinctive phrase in the system prompt."""
+    if "normalize a user" in system:
+        return canonicalize_responder(system, user)
+    elif "curriculum designer" in system:
         return curriculum_responder(system, user)
     elif "learning posts" in system:
         return post_responder(system, user)

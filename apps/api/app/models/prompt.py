@@ -5,7 +5,7 @@ import uuid
 from datetime import datetime
 from typing import Optional
 
-from sqlalchemy import DateTime, ForeignKey, String, func
+from sqlalchemy import Boolean, DateTime, ForeignKey, String, false, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db import Base
@@ -42,6 +42,12 @@ class UserPrompt(Base):
     status: Mapped[str] = mapped_column(String, nullable=False, default=PromptStatus.PENDING.value)
     # Filled in once generation assigns/creates a curriculum for this prompt.
     topic_id: Mapped[Optional[str]] = mapped_column(String, index=True, nullable=True)
+    # True when the generator reused an existing equivalent topic (dedup hit)
+    # rather than generating a new curriculum. Written back by the generator
+    # alongside status/topic_id — see packages/contract.
+    reused: Mapped[bool] = mapped_column(
+        Boolean, nullable=False, default=False, server_default=false()
+    )
     error: Mapped[Optional[str]] = mapped_column(String, nullable=True)
 
     created_at: Mapped[datetime] = mapped_column(

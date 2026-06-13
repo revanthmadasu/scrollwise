@@ -31,6 +31,14 @@ from generators.models import (
 SCHEMA_PATH = Path(__file__).parent / "schema.sql"
 
 
+class CurriculumKeyConflict(Exception):
+    """Raised by save_curriculum when a new curriculum violates the
+    canonical_key UNIQUE index — i.e. another worker already created a
+    curriculum for the same topic (the race guard). Callers should catch this,
+    re-query by canonical_key, and reuse the now-existing row.
+    """
+
+
 class Repository:
     def __init__(self, db_path: str | None = None, database_url: str | None = None):
         backend = os.environ.get("DB_BACKEND", "sqlite")
@@ -99,6 +107,18 @@ class Repository:
             self._execute("ALTER TABLE curricula ADD COLUMN category_id TEXT")
             self._commit()
 
+        # canonical_key: normalized topic key for de-duplication. The UNIQUE
+        # index is the race guard (NULLs don't collide, so legacy rows are
+        # fine). Both steps are idempotent.
+        if not self._column_exists("curricula", "canonical_key"):
+            self._execute("ALTER TABLE curricula ADD COLUMN canonical_key TEXT")
+            self._commit()
+        self._execute(
+            "CREATE UNIQUE INDEX IF NOT EXISTS idx_curricula_canonical_key "
+            "ON curricula(canonical_key)"
+        )
+        self._commit()
+
     def _column_exists(self, table: str, column: str) -> bool:
         if self._backend == "sqlite":
             cur = self.conn.execute(f"PRAGMA table_info({table})")
@@ -141,29 +161,55 @@ class Repository:
     def _commit(self) -> None:
         self.conn.commit()
 
+    def _rollback(self) -> None:
+        # Postgres requires a rollback to clear an aborted transaction before
+        # the connection can run further queries (e.g. the post-conflict
+        # re-query). SQLite simply discards the failed statement.
+        self.conn.rollback()
+
+    def _is_integrity_error(self, e: Exception) -> bool:
+        """Whether an exception is a UNIQUE/integrity violation, across backends.
+        psycopg2 isn't imported in the SQLite path, so match by class name."""
+        if isinstance(e, sqlite3.IntegrityError):
+            return True
+        return type(e).__name__ in ("IntegrityError", "UniqueViolation")
+
     # ------------------------------------------------------------------ curricula
 
     def save_curriculum(self, curriculum: Curriculum) -> None:
-        if self._backend == "sqlite":
-            sql = "INSERT OR REPLACE INTO curricula (topic_id, title, description, tree, category_id) VALUES (?, ?, ?, ?, ?)"
-        else:
-            sql = """
-                INSERT INTO curricula (topic_id, title, description, tree, category_id)
-                VALUES (?, ?, ?, ?, ?)
-                ON CONFLICT (topic_id) DO UPDATE
-                  SET title = EXCLUDED.title,
-                      description = EXCLUDED.description,
-                      tree = EXCLUDED.tree,
-                      category_id = EXCLUDED.category_id
-            """
-        self._execute(sql, (
+        """Upsert a curriculum keyed on topic_id.
+
+        Re-saving the same topic_id updates it (idempotent re-runs). A *different*
+        topic_id carrying a canonical_key that already exists violates the
+        canonical_key UNIQUE index — that's the dedup race guard, surfaced as
+        CurriculumKeyConflict so the caller can re-query and reuse.
+        """
+        sql = """
+            INSERT INTO curricula (topic_id, title, description, tree, category_id, canonical_key)
+            VALUES (?, ?, ?, ?, ?, ?)
+            ON CONFLICT (topic_id) DO UPDATE
+              SET title = EXCLUDED.title,
+                  description = EXCLUDED.description,
+                  tree = EXCLUDED.tree,
+                  category_id = EXCLUDED.category_id,
+                  canonical_key = EXCLUDED.canonical_key
+        """
+        params = (
             curriculum.topic_id,
             curriculum.title,
             curriculum.description,
             curriculum.model_dump_json(),
             curriculum.category_id,
-        ))
-        self._commit()
+            curriculum.canonical_key,
+        )
+        try:
+            self._execute(sql, params)
+            self._commit()
+        except Exception as e:  # noqa: BLE001 — narrowed by _is_integrity_error
+            if self._is_integrity_error(e):
+                self._rollback()
+                raise CurriculumKeyConflict(str(e)) from e
+            raise
 
     def load_curriculum(self, topic_id: str) -> Optional[Curriculum]:
         row = self._fetchone("SELECT tree FROM curricula WHERE topic_id = ?", (topic_id,))
@@ -173,6 +219,18 @@ class Repository:
 
     def find_curriculum_by_title(self, title: str) -> Optional[Curriculum]:
         row = self._fetchone("SELECT tree FROM curricula WHERE title = ?", (title,))
+        if row is None:
+            return None
+        return Curriculum.model_validate_json(row["tree"])
+
+    def find_curriculum_by_canonical_key(self, key: str) -> Optional[Curriculum]:
+        """Topic-level dedup lookup: an existing curriculum whose normalized
+        key matches `key`, or None. NULL keys never match (legacy rows)."""
+        if not key:
+            return None
+        row = self._fetchone(
+            "SELECT tree FROM curricula WHERE canonical_key = ?", (key,)
+        )
         if row is None:
             return None
         return Curriculum.model_validate_json(row["tree"])
@@ -364,13 +422,24 @@ class Repository:
             return None  # lost the race to another worker
         return {"id": row["id"], "prompt_text": row["prompt_text"]}
 
-    def mark_prompt_ready(self, prompt_id: str, topic_id: str) -> None:
+    def mark_prompt_ready(
+        self, prompt_id: str, topic_id: str, reused: bool = False
+    ) -> None:
         ts = "now()" if self._backend == "postgres" else "CURRENT_TIMESTAMP"
-        self._execute(
-            f"UPDATE user_prompts SET status = 'ready', topic_id = ?, "
-            f"error = NULL, updated_at = {ts} WHERE id = ?",
-            (topic_id, prompt_id),
-        )
+        # `reused` is owned by apps/api and added by an additive migration; an
+        # older DB may not have it yet, so write it only when present.
+        if self._column_exists("user_prompts", "reused"):
+            self._execute(
+                f"UPDATE user_prompts SET status = 'ready', topic_id = ?, "
+                f"reused = ?, error = NULL, updated_at = {ts} WHERE id = ?",
+                (topic_id, reused, prompt_id),
+            )
+        else:
+            self._execute(
+                f"UPDATE user_prompts SET status = 'ready', topic_id = ?, "
+                f"error = NULL, updated_at = {ts} WHERE id = ?",
+                (topic_id, prompt_id),
+            )
         self._commit()
 
     def mark_prompt_failed(self, prompt_id: str, error: str) -> None:

@@ -4,6 +4,37 @@ Keeping prompts in one place makes them easy to iterate on and version.
 Use Python's str.format for substitution.
 """
 
+# ----------------------------------------------------------------- Canonicalize
+# Maps any phrasing of a topic request to a single canonical title, so that
+# "teach me about WWII" and "the second world war" land on the same curriculum
+# instead of generating duplicates. Determinism matters here — keep temperature
+# low at the call site.
+
+CANONICALIZE_SYSTEM = """You normalize a user's learning request into the \
+single canonical name of the topic they want to learn, so a content system can \
+detect when two differently-phrased requests mean the same thing.
+
+Rules for the canonical title:
+- The most common, standard English name for the topic.
+- Title Case. No leading article (no "The", "A", "An").
+- Strip instructional framing ("teach me about", "I want to learn", "explain", \
+  "a course on", "basics of", "intro to") — keep only the subject itself.
+- Singular, established form. Expand obvious abbreviations to their common full \
+  name (e.g. "WWII" -> "World War II", "ML" -> "Machine Learning").
+- No punctuation unless it is genuinely part of the name.
+- If the request names several topics, pick the single primary one.
+
+Output strictly valid JSON, no markdown fences, nothing else."""
+
+CANONICALIZE_USER = """User request: "{prompt_text}"
+
+Respond with ONLY this JSON shape:
+
+{{
+  "canonical_title": "The standard name of the topic"
+}}
+"""
+
 # -------------------------------------------------------------------- Curriculum
 
 CURRICULUM_SYSTEM = """You are a curriculum designer building structured \
