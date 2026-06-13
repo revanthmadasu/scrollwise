@@ -90,6 +90,20 @@ def test_canonical_key_roundtrip_and_lookup(repo):
     assert repo.find_curriculum_by_canonical_key("") is None
 
 
+def test_missing_and_existing_canonical_key_helpers(repo):
+    # Legacy row: no key.
+    legacy = make_curriculum()
+    repo.save_curriculum(legacy)
+    # Keyed row.
+    keyed = make_curriculum()
+    keyed.topic_id = "keyed_t"
+    keyed.canonical_key = "roman empire"
+    repo.save_curriculum(keyed)
+
+    assert repo.curricula_missing_canonical_key() == ["test_t"]
+    assert repo.existing_canonical_keys() == {"roman empire": "keyed_t"}
+
+
 def test_resaving_same_topic_does_not_conflict(repo):
     c = make_curriculum()
     c.canonical_key = "roman empire"

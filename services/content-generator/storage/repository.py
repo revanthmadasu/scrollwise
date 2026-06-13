@@ -235,6 +235,26 @@ class Repository:
             return None
         return Curriculum.model_validate_json(row["tree"])
 
+    def curricula_missing_canonical_key(self) -> list[str]:
+        """topic_ids of curricula with no canonical_key (legacy rows created
+        before topic dedup existed). These are invisible to dedup until
+        backfilled — see scripts/backfill_canonical_keys.py."""
+        rows = self._fetchall(
+            "SELECT topic_id FROM curricula WHERE canonical_key IS NULL "
+            "ORDER BY topic_id"
+        )
+        return [r["topic_id"] for r in rows]
+
+    def existing_canonical_keys(self) -> dict:
+        """{canonical_key: topic_id} for every curriculum that already has one.
+        Lets the backfill detect collisions (including ones already persisted)
+        before attempting a write."""
+        rows = self._fetchall(
+            "SELECT topic_id, canonical_key FROM curricula "
+            "WHERE canonical_key IS NOT NULL"
+        )
+        return {r["canonical_key"]: r["topic_id"] for r in rows}
+
     def has_post_at_offset(
         self,
         topic_id: str,
