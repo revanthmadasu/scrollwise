@@ -93,6 +93,12 @@ class Repository:
             )
             self._commit()
 
+        # category_id: high-level interest category for the curriculum. Added so
+        # the API feed can group topics by the category the user selected.
+        if not self._column_exists("curricula", "category_id"):
+            self._execute("ALTER TABLE curricula ADD COLUMN category_id TEXT")
+            self._commit()
+
     def _column_exists(self, table: str, column: str) -> bool:
         if self._backend == "sqlite":
             cur = self.conn.execute(f"PRAGMA table_info({table})")
@@ -139,21 +145,23 @@ class Repository:
 
     def save_curriculum(self, curriculum: Curriculum) -> None:
         if self._backend == "sqlite":
-            sql = "INSERT OR REPLACE INTO curricula (topic_id, title, description, tree) VALUES (?, ?, ?, ?)"
+            sql = "INSERT OR REPLACE INTO curricula (topic_id, title, description, tree, category_id) VALUES (?, ?, ?, ?, ?)"
         else:
             sql = """
-                INSERT INTO curricula (topic_id, title, description, tree)
-                VALUES (?, ?, ?, ?)
+                INSERT INTO curricula (topic_id, title, description, tree, category_id)
+                VALUES (?, ?, ?, ?, ?)
                 ON CONFLICT (topic_id) DO UPDATE
                   SET title = EXCLUDED.title,
                       description = EXCLUDED.description,
-                      tree = EXCLUDED.tree
+                      tree = EXCLUDED.tree,
+                      category_id = EXCLUDED.category_id
             """
         self._execute(sql, (
             curriculum.topic_id,
             curriculum.title,
             curriculum.description,
             curriculum.model_dump_json(),
+            curriculum.category_id,
         ))
         self._commit()
 

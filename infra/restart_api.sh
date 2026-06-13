@@ -26,6 +26,16 @@ echo "==> Stopping API"
 pkill -f "uvicorn app.main:app" 2>/dev/null || true
 sleep 1
 
+# Apply DB migrations BEFORE the app boots. Schema is owned by Alembic (the app
+# no longer runs create_all), so this is the single place the DB is brought up
+# to date. Abort the restart if a migration fails — booting against a stale
+# schema is what caused past UndefinedColumn / DuplicateTable incidents.
+echo "==> Running DB migrations (alembic upgrade head)"
+if ! ( cd "$API_DIR" && .venv/bin/alembic upgrade head ); then
+  err "!!  alembic upgrade head failed — NOT starting the API. Check the output above."
+  exit 1
+fi
+
 echo "==> Starting API (127.0.0.1:8000)"
 ( cd "$API_DIR" && nohup .venv/bin/python -m uvicorn app.main:app \
     --host 127.0.0.1 --port 8000 > "$LOG_DIR/api.log" 2>&1 & echo $! > "$LOG_DIR/api.pid" )

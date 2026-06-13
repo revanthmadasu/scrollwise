@@ -46,6 +46,15 @@
 }
 
 html, body, #root { height: 100%; }
+/* Hard guard against horizontal overflow. Chrome/Android expands the layout
+   viewport to fit any element wider than the screen, which pushes the effective
+   width past our 640px breakpoint and silently disables the mobile layout
+   (bottom tab bar + account menu) — iOS Safari instead clamps to device-width,
+   which is why the two browsers diverged. `clip` (not `hidden`) prevents the
+   horizontal scroll WITHOUT creating a scroll container, so `position: sticky`
+   on the topbar keeps working. */
+html, body { max-width: 100%; overflow-x: clip; }
+#root { overflow-x: clip; }
 
 body {
   margin: 0;
@@ -105,6 +114,27 @@ a { color: var(--accent-2); text-decoration: none; }
 .google-btn { display: flex; justify-content: center; }
 .switch { text-align: center; margin-top: 1.25rem; color: var(--muted); font-size: 0.9rem; }
 
+/* prototype heads-up on the register page */
+.prototype-note {
+  background: rgba(124, 92, 255, 0.08);
+  border: 1px solid rgba(124, 92, 255, 0.25);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.25rem;
+}
+.prototype-note p { margin: 0.5rem 0 0; font-size: 0.82rem; line-height: 1.5; color: var(--text-soft); }
+.prototype-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  background: rgba(124, 92, 255, 0.16);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+}
+
 /* ---------- shell ---------- */
 .app-shell { min-height: 100vh; display: flex; flex-direction: column; }
 .topbar {
@@ -113,7 +143,7 @@ a { color: var(--accent-2); text-decoration: none; }
   padding: 0.85rem 1.25rem; background: var(--bar-bg);
   backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
 }
-.nav { display: flex; gap: 0.35rem; margin-left: 0.5rem; }
+.nav { display: flex; gap: 0.35rem; margin-left: 0.5rem; min-width: 0; }
 .nav a {
   display: inline-flex; align-items: center; gap: 0.4rem;
   color: var(--muted); padding: 0.45rem 0.85rem; border-radius: 999px;
@@ -124,6 +154,43 @@ a { color: var(--accent-2); text-decoration: none; }
 .nav a.active { color: var(--text); background: var(--surface-2); }
 .user-menu { margin-left: auto; display: flex; align-items: center; gap: 0.85rem; }
 .user-menu .muted { font-size: 0.85rem; max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.signout { display: inline-flex; align-items: center; gap: 0.4rem; flex: none; }
+.signout svg { width: 16px; height: 16px; }
+
+/* Desktop shows the inline cluster; the collapsed account menu is mobile-only. */
+.user-desktop { display: flex; align-items: center; gap: 0.85rem; }
+.account { display: none; position: relative; }
+.account-trigger {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; padding: 0; flex: none;
+  background: transparent; border: 1px solid var(--border); border-radius: 12px;
+  color: var(--text);
+}
+.account-trigger:hover { border-color: var(--accent); }
+.account-menu {
+  position: absolute; right: 0; top: calc(100% + 0.55rem);
+  min-width: 224px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+  padding: 0.5rem; z-index: 30;
+  display: flex; flex-direction: column; gap: 0.15rem;
+  animation: riseIn 0.16s ease both;
+}
+.account-email {
+  font-size: 0.8rem; color: var(--muted); word-break: break-all;
+  padding: 0.45rem 0.6rem 0.6rem; border-bottom: 1px solid var(--border);
+  margin-bottom: 0.3rem;
+}
+.account-item {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+  width: 100%; padding: 0.65rem 0.6rem; border-radius: 10px;
+  background: transparent; border: none; color: var(--text);
+  font-size: 0.92rem; font-weight: 500; text-align: left;
+}
+button.account-item { cursor: pointer; }
+button.account-item:hover { background: var(--surface-2); }
+.account-signout { justify-content: flex-start; gap: 0.55rem; color: var(--bad); }
+.account-signout svg { width: 18px; height: 18px; }
 .content { flex: 1; }
 
 /* ---------- theme toggle ---------- */
@@ -224,6 +291,79 @@ a { color: var(--accent-2); text-decoration: none; }
 .status-pill.failed { color: var(--bad); background: rgba(255,107,107,0.14); }
 
 /* ---------- interests ---------- */
+.interests-header { margin-bottom: 0.25rem; }
+.interests-count { font-size: 0.85rem; font-weight: 600; color: var(--accent); margin-top: 0.5rem; }
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.9rem;
+  margin-top: 1.25rem;
+}
+
+.category-tile {
+  position: relative;
+  text-align: center;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  color: var(--text);
+  border-radius: 18px;
+  padding: 1.4rem 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s, box-shadow 0.15s;
+  min-height: 148px;
+}
+.category-tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  border-color: var(--accent);
+}
+.category-tile.on {
+  border-color: var(--accent);
+  background: rgba(124,92,255,0.13);
+  box-shadow: 0 0 0 3px rgba(124,92,255,0.18);
+}
+.category-tile:active { transform: scale(0.97); }
+
+.category-emoji {
+  font-size: 2.2rem;
+  line-height: 1;
+  display: block;
+}
+.category-label {
+  font-weight: 700;
+  font-size: 0.92rem;
+  line-height: 1.25;
+}
+.category-desc {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.category-check {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--accent);
+  background: rgba(124,92,255,0.15);
+  border-radius: 999px;
+  width: 1.3rem;
+  height: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Legacy topic-grid / topic-tile kept for any admin views. */
 .topic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.8rem; margin-top: 1.25rem; }
 .topic-tile { text-align: left; background: var(--surface); border: 1px solid var(--border); color: var(--text);
   border-radius: 14px; padding: 1rem; display: flex; flex-direction: column; gap: 0.35rem; transition: border-color 0.15s, transform 0.08s; }
@@ -270,11 +410,15 @@ a { color: var(--accent-2); text-decoration: none; }
 
 /* ---------- mobile ---------- */
 @media (max-width: 640px) {
-  /* Top bar keeps just the brand + sign-out; the nav becomes a bottom tab bar. */
+  /* Top bar: brand + collapsed account menu; nav becomes a bottom tab bar. */
   .topbar { gap: 0.75rem; padding: 0.7rem 1rem; }
   .brand { font-size: 1.15rem; }
   .user-menu { margin-left: auto; gap: 0.5rem; }
-  .user-menu .muted { display: none; }
+
+  /* Collapse the inline cluster into a tap-to-open account menu so sign-out
+     (and theme) always have a reachable home regardless of screen width. */
+  .user-desktop { display: none; }
+  .account { display: block; }
 
   /* Bottom tab bar — thumb-friendly, Instagram-style. */
   .nav {
@@ -295,9 +439,188 @@ a { color: var(--accent-2); text-decoration: none; }
   .auth-form input, .prompt-composer textarea, .option { font-size: 16px; }
 
   /* Denser layouts for narrow screens. */
+  .category-grid { grid-template-columns: 1fr 1fr; gap: 0.65rem; }
+  .category-tile { min-height: 132px; padding: 1.1rem 0.75rem 0.9rem; }
+  .category-emoji { font-size: 1.9rem; }
   .topic-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
   .stat-row { gap: 0.6rem; }
   .stat { padding: 0.9rem 0.6rem; }
   .stat-num { font-size: 1.5rem; }
   .card-title { font-size: 1.08rem; }
+
+  /* waitlist mobile */
+  .waitlist-headline { font-size: clamp(1.7rem, 7vw, 2.6rem); }
+  .waitlist-perks { grid-template-columns: 1fr; }
+  .waitlist-card { padding: 1.5rem 1.25rem; }
+}
+
+/* ========== waitlist page ========== */
+
+/* Full-page layout — independent of the app shell (no nav, no sidebar). */
+.waitlist-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse 120% 50% at 50% -5%, rgba(124,92,255,0.22), transparent 60%),
+    var(--bg);
+}
+
+/* top bar */
+.waitlist-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bar-bg);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.waitlist-bar-right { display: flex; align-items: center; gap: 0.75rem; }
+.waitlist-signin { font-size: 0.875rem; padding: 0.45rem 1rem; }
+
+/* main content column */
+.waitlist-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding: 4rem 1.5rem 4rem;
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* hero */
+.waitlist-hero { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+
+.waitlist-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  background: rgba(124,92,255,0.14);
+  border: 1px solid rgba(124,92,255,0.3);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+}
+
+.waitlist-headline {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+.waitlist-highlight {
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.waitlist-sub {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--text-soft);
+  max-width: 520px;
+  margin: 0;
+}
+
+/* sign-up card */
+.waitlist-card {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 2rem 2.25rem;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+}
+.waitlist-card-title { font-size: 1.25rem; font-weight: 700; margin: 0 0 0.3rem; }
+.waitlist-card-sub { margin: 0 0 1.25rem; font-size: 0.9rem; }
+
+.waitlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.waitlist-form input {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.15s;
+  font-family: inherit;
+}
+.waitlist-form input:focus { border-color: var(--accent); }
+.waitlist-form .primary { margin-top: 0.25rem; width: 100%; font-size: 1rem; padding: 0.8rem; }
+.waitlist-login-hint { font-size: 0.85rem; text-align: center; margin-top: 1rem; }
+
+/* success state */
+.waitlist-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+  padding: 0.5rem 0;
+}
+.waitlist-success-icon { font-size: 3rem; line-height: 1; }
+.waitlist-success h2 { margin: 0; font-size: 1.35rem; }
+.waitlist-success p { margin: 0; font-size: 0.95rem; max-width: 340px; }
+.waitlist-share {
+  display: inline-block;
+  margin-top: 0.5rem;
+  text-decoration: none;
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  transition: opacity 0.18s, transform 0.1s;
+}
+.waitlist-share:hover { opacity: 0.88; transform: translateY(-1px); }
+
+/* value props */
+.waitlist-perks {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  width: 100%;
+}
+.waitlist-perk {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.1rem 1.25rem;
+}
+.waitlist-perk-emoji { font-size: 1.75rem; line-height: 1; flex-shrink: 0; margin-top: 0.1rem; }
+.waitlist-perk-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.3rem; }
+.waitlist-perk-body { font-size: 0.875rem; line-height: 1.55; }
+
+/* footer */
+.waitlist-footer {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1.25rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+}
+
+@media (min-width: 600px) {
+  .waitlist-perks { grid-template-columns: 1fr 1fr 1fr; }
+  .waitlist-perk { flex-direction: column; align-items: flex-start; }
 }

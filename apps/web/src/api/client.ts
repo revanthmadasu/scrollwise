@@ -6,6 +6,7 @@
 import type {
   AnswerResult,
   FeedResponse,
+  InterestCategory,
   Interests,
   Progress,
   Prompt,
@@ -15,6 +16,7 @@ import type {
   TokenPair,
   Topic,
   User,
+  WaitlistJoinResult,
 } from "./types";
 
 const BASE = import.meta.env.VITE_API_BASE ?? "http://localhost:8000";
@@ -101,6 +103,14 @@ async function request<T>(path: string, opts: RequestOptions = {}): Promise<T> {
 }
 
 export const api = {
+  // --- waitlist (public, no auth) ---
+  joinWaitlist: (email: string, name: string) =>
+    request<WaitlistJoinResult>("/waitlist", {
+      method: "POST",
+      auth: false,
+      body: { email, name, source: "web" },
+    }),
+
   // --- auth ---
   register: (email: string, password: string, display_name?: string) =>
     request<TokenPair>("/auth/register", {
@@ -115,10 +125,11 @@ export const api = {
   me: () => request<User>("/auth/me"),
 
   // --- interests ---
+  categories: () => request<InterestCategory[]>("/interests/categories"),
   topics: () => request<Topic[]>("/interests"),
   getInterests: () => request<Interests>("/me/interests"),
-  setInterests: (topic_ids: string[]) =>
-    request<Interests>("/me/interests", { method: "PUT", body: { topic_ids } }),
+  setInterests: (category_ids: string[]) =>
+    request<Interests>("/me/interests", { method: "PUT", body: { category_ids } }),
 
   // --- prompts ---
   createPrompt: (prompt_text: string) =>

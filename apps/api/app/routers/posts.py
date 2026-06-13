@@ -133,6 +133,18 @@ async def answer_test(
     if not post.is_test or post.correct_index is None:
         raise HTTPException(status.HTTP_400_BAD_REQUEST, "Post is not a test")
 
+    # Reject an index that doesn't correspond to a real option, rather than
+    # silently grading it wrong and storing a garbage TestAttempt.
+    try:
+        option_count = len(json.loads(post.options)) if post.options else 0
+    except (json.JSONDecodeError, TypeError):
+        option_count = 0
+    if body.selected_index >= option_count:
+        raise HTTPException(
+            status.HTTP_400_BAD_REQUEST,
+            f"selected_index out of range (0..{option_count - 1})",
+        )
+
     is_correct = body.selected_index == post.correct_index
     session.add(
         TestAttempt(

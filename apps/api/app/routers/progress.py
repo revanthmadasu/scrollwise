@@ -7,7 +7,14 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_session
 from app.deps import get_current_user
-from app.models import Post, TestAttempt, User, UserPostView, UserTopicProgress
+from app.models import (
+    Post,
+    TestAttempt,
+    User,
+    UserPostView,
+    UserPrompt,
+    UserTopicProgress,
+)
 
 router = APIRouter(prefix="/me", tags=["progress"])
 
@@ -32,11 +39,32 @@ async def get_progress(
     user: User = Depends(get_current_user),
     session: AsyncSession = Depends(get_session),
 ):
-    cursors = (
-        await session.execute(
-            select(UserTopicProgress).where(UserTopicProgress.user_id == user.id)
-        )
-    ).scalars().all()
+    # Topics the user GENERATED (prompted). Progress is only about the user's
+    # own learning paths — not trending/suggested content from topics they
+    # never subscribed to. Filtering here also hides any legacy cursor rows that
+    # were written for suggested topics before this was enforced.
+    generated_topics = set(
+        (
+            await session.execute(
+                select(UserPrompt.topic_id).where(
+                    UserPrompt.user_id == user.id,
+                    UserPrompt.topic_id.is_not(None),
+                )
+            )
+        ).scalars().all()
+    )
+
+    cursors = [
+        c
+        for c in (
+            await session.execute(
+                select(UserTopicProgress).where(
+                    UserTopicProgress.user_id == user.id
+                )
+            )
+        ).scalars().all()
+        if c.topic_id in generated_topics
+    ]
 
     # Per-topic seen / total counts.
     seen_by_topic = dict(

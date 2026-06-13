@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class ReactionRequest(BaseModel):
@@ -16,7 +16,9 @@ class ReactionOut(BaseModel):
 
 
 class AnswerRequest(BaseModel):
-    selected_index: int
+    # Non-negative; the upper bound depends on the post's options and is
+    # checked in the handler.
+    selected_index: int = Field(ge=0)
 
 
 class AnswerResult(BaseModel):

@@ -57,6 +57,9 @@ class Curriculum(BaseModel):
     title: str
     description: str
     modules: list[Module]
+    # High-level interest category. Set by the caller; matches
+    # interest_categories.category_id in the API DB so the feed can group topics.
+    category_id: Optional[str] = None
 
 
 class Offset(BaseModel):

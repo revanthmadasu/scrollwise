@@ -6,6 +6,10 @@ CREATE TABLE IF NOT EXISTS curricula (
     title TEXT NOT NULL,
     description TEXT NOT NULL,
     tree TEXT NOT NULL,                -- full Curriculum object as JSON
+    -- High-level interest category (matches interest_categories.category_id in
+    -- the API DB). Set at generation time so the feed can group topics by
+    -- category when building the suggested section. NULL for legacy rows.
+    category_id TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

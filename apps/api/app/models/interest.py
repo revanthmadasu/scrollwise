@@ -9,9 +9,11 @@ from app.db import Base
 
 
 class UserInterest(Base):
-    """A topic the user cares about. Drives the 'suggested' fill of the feed.
+    """A high-level interest category the user has selected.
 
-    `topic_id` references a `curricula.topic_id` produced by the generator.
+    `category_id` references `interest_categories.category_id`. The feed
+    resolves this to all curricula in that category, then serves their posts
+    as the 'suggested' fill.
     """
 
     __tablename__ = "user_interests"
@@ -19,7 +21,10 @@ class UserInterest(Base):
     user_id: Mapped[str] = mapped_column(
         String, ForeignKey("users.id", ondelete="CASCADE"), primary_key=True
     )
-    topic_id: Mapped[str] = mapped_column(String, primary_key=True)
+    category_id: Mapped[str] = mapped_column(
+        String, ForeignKey("interest_categories.category_id", ondelete="CASCADE"),
+        primary_key=True
+    )
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False

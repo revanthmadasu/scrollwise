@@ -102,3 +102,21 @@ export function MonitorIcon({ size = 16 }: IconProps) {
     </svg>
   );
 }
+
+export function LogoutIcon({ size = 18 }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" {...stroke}>
+      <path d="M15 4h3a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-3" />
+      <path d="M10 17l-5-5 5-5" />
+      <path d="M5 12h11" />
+    </svg>
+  );
+}
+
+export function MenuIcon({ size = 22 }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" {...stroke}>
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </svg>
+  );
+}

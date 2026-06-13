@@ -14,27 +14,20 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import get_settings
-from app.db import Base, engine
+from app.db import engine
 
-# Import models so they're registered on Base.metadata before create_all.
+# Import models so they're registered on Base.metadata before any ORM use.
 from app import models  # noqa: F401  (side-effect import)
-from app.routers import auth, feed, interests, posts, progress, prompts
+from app.routers import auth, feed, interests, posts, progress, prompts, waitlist
 
 settings = get_settings()
-
-# Tables OWNED by the content-generator — the API must never create/migrate them.
-_CONTRACT_TABLES = {"posts", "curricula"}
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Dev convenience: create the API-owned tables if they don't exist. In prod,
-    # Alembic owns this. We never touch the generator's contract tables.
-    async with engine.begin() as conn:
-        api_tables = [
-            t for t in Base.metadata.sorted_tables if t.name not in _CONTRACT_TABLES
-        ]
-        await conn.run_sync(Base.metadata.create_all, tables=api_tables)
+    # Schema is managed exclusively by Alembic (`alembic upgrade head`).
+    # create_all is intentionally removed — mixing it with Alembic causes
+    # DuplicateTableError in prod when new models are deployed before migrations run.
     yield
     await engine.dispose()
 
@@ -55,6 +48,7 @@ app.include_router(prompts.router)
 app.include_router(feed.router)
 app.include_router(posts.router)
 app.include_router(progress.router)
+app.include_router(waitlist.router)
 
 
 @app.get("/health", tags=["meta"])

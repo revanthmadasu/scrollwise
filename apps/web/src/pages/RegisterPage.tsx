@@ -35,8 +35,17 @@ export function RegisterPage() {
       <div className="auth-card">
         <h1 className="brand big">Scroll<span>Wise</span></h1>
         <p className="tagline">Create your account.</p>
+        <div className="prototype-note">
+          <span className="prototype-badge">Prototype</span>
+          <p>
+            You're stepping into an early prototype. We're actively refining things
+            behind the scenes to deepen your wisdom-gain experience — expect rough
+            edges, and expect them to keep getting better.
+          </p>
+        </div>
         <form onSubmit={onSubmit} className="auth-form">
           <input placeholder="Display name (optional)" value={displayName}
+            maxLength={50}
             onChange={(e) => setDisplayName(e.target.value)} />
           <input type="email" placeholder="Email" value={email} required
             onChange={(e) => setEmail(e.target.value)} />

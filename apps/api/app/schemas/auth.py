@@ -1,12 +1,23 @@
 from __future__ import annotations
 
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, field_validator
+
+MAX_DISPLAY_NAME = 50
 
 
 class RegisterRequest(BaseModel):
     email: EmailStr
     password: str = Field(min_length=8, max_length=128)
-    display_name: str | None = None
+    display_name: str | None = Field(default=None, max_length=MAX_DISPLAY_NAME)
+
+    @field_validator("display_name")
+    @classmethod
+    def _clean_display_name(cls, v: str | None) -> str | None:
+        """Trim surrounding whitespace; treat an all-blank name as no name."""
+        if v is None:
+            return None
+        v = v.strip()
+        return v or None
 
 
 class LoginRequest(BaseModel):
