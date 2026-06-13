@@ -19,8 +19,12 @@ CREATE TABLE IF NOT EXISTS curricula (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE UNIQUE INDEX IF NOT EXISTS idx_curricula_canonical_key
-    ON curricula(canonical_key);
+-- NOTE: the UNIQUE index on canonical_key is created in
+-- Repository._run_migrations(), NOT here. On an existing DB the CREATE TABLE
+-- above is a no-op, so the canonical_key column doesn't exist until the
+-- additive migration adds it — an index here would run too early and fail with
+-- "column canonical_key does not exist". The migration adds the column first,
+-- then creates the index (idempotently), which works for fresh + existing DBs.
 
 CREATE TABLE IF NOT EXISTS posts (
     post_id TEXT PRIMARY KEY,
