@@ -59,6 +59,75 @@ DEFAULT_CASES: list[Case] = [
     Case(["the roman empire", "the human immune system"], False),
     Case(["machine learning", "World War II", "photosynthesis"], False),
     Case(["World War I", "World War II"], False),
+
+    # --- longer prompts, same topic -> expected True ---
+    Case(
+        [
+            "I would like a structured, beginner-friendly introduction to the "
+            "fundamentals of machine learning, covering what models are and how "
+            "they are trained from data",
+            "teach me the basics of machine learning, like how a model learns "
+            "patterns from examples, explained simply for someone just starting out",
+        ],
+        True,
+    ),
+    Case(
+        [
+            "Can you walk me through, step by step, how photosynthesis works — "
+            "how plants take in sunlight, water and carbon dioxide and turn it "
+            "into energy and oxygen?",
+            "explain the process of photosynthesis in plants and why it matters "
+            "for life on earth",
+        ],
+        True,
+    ),
+
+    # --- broken / non-native English, same topic -> expected True ---
+    Case(
+        [
+            "i am beginner, i want understand how the stock market is work and "
+            "how to buy the share for make money",
+            "please teach me basics of investing in stock market for totally "
+            "beginner person who dont know anything about shares and trading",
+            "introduction to stock market investing for beginners",
+        ],
+        True,
+    ),
+    Case(
+        [
+            "wat is ML and how it works, i dont have any background pls explain easy",
+            "I would like a gentle introduction to the fundamentals of machine learning",
+        ],
+        True,
+    ),
+    Case(
+        [
+            "i not understand the neural network and the deep learning, i want "
+            "learn from zero how the AI model is getting trained",
+            "give me an introduction to how neural networks and deep learning work",
+        ],
+        True,
+    ),
+
+    # --- longer / broken English, different topics -> expected False ---
+    Case(
+        [
+            "please explain to me how the french revolution did happen and why "
+            "the people was so angry against the king and queen at that time",
+            "i want to learn about quantum computing and what is the qubits and "
+            "how they are different from normal computer bits",
+        ],
+        False,
+    ),
+    Case(
+        [
+            "teach me how to cook the authentic italian pasta from scratch, "
+            "including how to make the tomato sauce by myself at home",
+            "what are the rules of chess for a complete beginner who never "
+            "play this game before in his life",
+        ],
+        False,
+    ),
 ]
 
 # ANSI colors (skipped automatically when stdout isn't a TTY).
