@@ -31,6 +31,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from dataclasses import dataclass
 
@@ -71,8 +72,21 @@ _RESET = "\033[0m" if _TTY else ""
 def _load_cases(path: str | None) -> list[Case]:
     if path is None:
         return DEFAULT_CASES
-    with open(path) as f:
-        raw = json.load(f)
+    try:
+        with open(path) as f:
+            raw = json.load(f)
+    except FileNotFoundError:
+        raise SystemExit(
+            f"--cases file not found: {path!r} (cwd: {os.getcwd()}). "
+            "Use a path relative to where you're running, or an absolute path."
+        )
+    except json.JSONDecodeError as e:
+        raise SystemExit(f"--cases file {path!r} is not valid JSON: {e}")
+    if not isinstance(raw, list):
+        raise SystemExit(
+            f"--cases file {path!r} must be a JSON list of "
+            '{"prompts": [...], "expected": bool} objects.'
+        )
     cases: list[Case] = []
     for i, item in enumerate(raw):
         try:

@@ -32,6 +32,11 @@ python -m scripts.generate \
 
 test single image: python3 -m scripts.test_image_gen -p "a curriculum about neural networks" --count 1
 
+test prompts deduping with actual llm:
+cd /opt/ScrollWise/services/content-generator
+source .venv/bin/activate
+python -m scripts.eval_canonicalization
+
 tunnel script on dev system:
 cd infra
 ./tunnel.sh  100.56.122.101
