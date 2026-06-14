@@ -55,6 +55,15 @@ DEFAULT_CASES: list[Case] = [
     Case(["I want to learn machine learning", "intro to ML basics", "machine learning"], True),
     Case(["the roman empire", "Tell me about Ancient Rome", "ROMAN EMPIRE!"], True),
     Case(["how do photosynthesis work", "explain photosynthesis to me"], True),
+    # Censored / obfuscated spelling must collapse to the uncensored form.
+    Case(
+        [
+            "The Subtle Art of Not Giving a F*ck",
+            "The Subtle Art of Not Giving a Fuck",
+            "the subtle art of not giving a f**k",
+        ],
+        True,
+    ),
     # --- different topics -> expected False ---
     Case(["the roman empire", "the human immune system"], False),
     Case(["machine learning", "World War II", "photosynthesis"], False),

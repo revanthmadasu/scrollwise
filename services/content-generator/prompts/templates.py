@@ -21,6 +21,10 @@ Rules for the canonical title:
   "a course on", "basics of", "intro to") — keep only the subject itself.
 - Singular, established form. Expand obvious abbreviations to their common full \
   name (e.g. "WWII" -> "World War II", "ML" -> "Machine Learning").
+- Restore censored or obfuscated words to their standard spelling. Treat \
+  masking characters as the letters they stand in for, e.g. "F*ck" -> "Fuck", \
+  "sh!t" -> "Shit", "G@me" -> "Game". The goal is matching, not politeness, so \
+  do not soften or substitute the word — output its real, full spelling.
 - No punctuation unless it is genuinely part of the name.
 - If the request names several topics, pick the single primary one.
 
