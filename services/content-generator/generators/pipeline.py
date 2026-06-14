@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 
+from dataclasses import dataclass
+
 from generators._logging import get_logger
+from generators.canonicalizer import TopicCanonicalizer
 from generators.curriculum import CurriculumGenerator
 from generators.embedding_client import EmbeddingClient
 from generators.image_client import ImageClient
@@ -11,9 +14,18 @@ from generators.models import Curriculum, Level, Post
 from generators.post import PostGenerator
 from generators.post_image_renderer import PostImageRenderer
 from generators.test_post import TestGenerator
-from storage.repository import Repository
+from storage.repository import CurriculumKeyConflict, Repository
 
 logger = get_logger(__name__)
+
+
+@dataclass
+class PipelineResult:
+    """Outcome of a pipeline run. `reused` is True when an equivalent topic
+    already existed and was reused instead of generated (the dedup hit)."""
+
+    curriculum: Curriculum
+    reused: bool
 
 
 class Pipeline:
@@ -32,6 +44,7 @@ class Pipeline:
         renderer: PostImageRenderer | None = None,
     ):
         self.repo = repo
+        self.canonicalizer = TopicCanonicalizer(llm)
         self.curriculum_gen = CurriculumGenerator(llm)
         self.post_gen = PostGenerator(llm, images, embeddings, renderer=renderer)
         self.test_gen = TestGenerator(llm, embeddings)
@@ -44,29 +57,46 @@ class Pipeline:
         subtopics_per_module: int = 4,
         levels: list[Level] | None = None,
         skip_curriculum_if_exists: bool = True,
-    ) -> Curriculum:
-        """Generate a curriculum (or reuse existing) and fill it with posts."""
+    ) -> PipelineResult:
+        """Generate a curriculum (or reuse an existing equivalent) and fill it
+        with posts. Returns a PipelineResult; `reused` is True on a dedup hit."""
 
         if levels is None:
             levels = [Level.SUMMARY, Level.STANDARD, Level.DEEP]
 
-        # 1. Curriculum
-        curriculum = None
+        # 1. Canonicalize the request to a normalized key for topic-level dedup.
+        canonical_title, canonical_key = self.canonicalizer.canonicalize(topic_title)
+
+        # 2. Reuse an existing equivalent topic if one exists.
         if skip_curriculum_if_exists:
-            curriculum = self.repo.find_curriculum_by_title(topic_title)
-            if curriculum:
+            existing = self.repo.find_curriculum_by_canonical_key(canonical_key)
+            if existing is not None:
                 logger.info(
                     "curriculum_reused",
-                    extra={"topic_id": curriculum.topic_id},
+                    extra={"topic_id": existing.topic_id, "canonical_key": canonical_key},
                 )
+                return PipelineResult(curriculum=existing, reused=True)
 
-        if curriculum is None:
-            curriculum = self.curriculum_gen.generate(
-                topic_title=topic_title,
-                num_modules=num_modules,
-                subtopics_per_module=subtopics_per_module,
-            )
+        # 3. Miss -> generate. The canonical_key UNIQUE index guards against a
+        #    concurrent worker that also missed the lookup: its save loses the
+        #    race with CurriculumKeyConflict, and we reuse the winner's topic.
+        curriculum = self.curriculum_gen.generate(
+            topic_title=canonical_title,
+            num_modules=num_modules,
+            subtopics_per_module=subtopics_per_module,
+        )
+        curriculum.canonical_key = canonical_key
+        try:
             self.repo.save_curriculum(curriculum)
+        except CurriculumKeyConflict:
+            existing = self.repo.find_curriculum_by_canonical_key(canonical_key)
+            if existing is not None:
+                logger.info(
+                    "curriculum_reused_after_race",
+                    extra={"topic_id": existing.topic_id, "canonical_key": canonical_key},
+                )
+                return PipelineResult(curriculum=existing, reused=True)
+            raise
 
         # 2. Posts and tests
         all_posts: list[Post] = []
@@ -159,4 +189,4 @@ class Pipeline:
                 "failures": failures,
             },
         )
-        return curriculum
+        return PipelineResult(curriculum=curriculum, reused=False)

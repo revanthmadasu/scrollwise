@@ -60,6 +60,9 @@ class Curriculum(BaseModel):
     # High-level interest category. Set by the caller; matches
     # interest_categories.category_id in the API DB so the feed can group topics.
     category_id: Optional[str] = None
+    # Normalized de-dup key (see normalize() in generators/canonicalizer.py and
+    # the canonical_key column in storage/schema.sql). NULL for legacy rows.
+    canonical_key: Optional[str] = None
 
 
 class Offset(BaseModel):

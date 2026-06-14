@@ -64,7 +64,7 @@ def process_claimed(
     prompt_id = prompt["id"]
     topic_title = prompt["prompt_text"]
     try:
-        curriculum = pipeline.run(
+        result = pipeline.run(
             topic_title=topic_title,
             num_modules=opts.num_modules,
             subtopics_per_module=opts.subtopics_per_module,
@@ -75,10 +75,11 @@ def process_claimed(
         repo.mark_prompt_failed(prompt_id, f"{type(e).__name__}: {e}")
         return False
 
-    repo.mark_prompt_ready(prompt_id, curriculum.topic_id)
+    topic_id = result.curriculum.topic_id
+    repo.mark_prompt_ready(prompt_id, topic_id, reused=result.reused)
     logger.info(
         "prompt_ready",
-        extra={"prompt_id": prompt_id, "topic_id": curriculum.topic_id},
+        extra={"prompt_id": prompt_id, "topic_id": topic_id, "reused": result.reused},
     )
     return True
 

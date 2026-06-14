@@ -22,6 +22,9 @@ Key facts the consumer must respect:
 - `image_urls` = raw AI backgrounds; `post_image_urls` = rendered cards the feed
   displays.
 - Embeddings are JSON in SQLite, `vector(1024)` in Postgres (pgvector).
+- `curricula.canonical_key` is the topic de-dup key: the generator
+  canonicalizes a prompt to a standard title and normalizes it to this key,
+  with a UNIQUE index as the race guard. See `topic-dedup.plan.md`.
 
 ## The `user_prompts` table (generation-request queue)
 
@@ -34,14 +37,18 @@ Flow:
 2. `services/content-generator` drains it
    (`generators/prompt_consumer.py`, via `make drain` / the Lambda handler):
    claims a row (`pending -> generating`), runs the pipeline, then sets
-   `topic_id` and flips it to `ready` — or `failed` with an `error`.
+   `topic_id` (+ `reused`) and flips it to `ready` — or `failed` with an
+   `error`.
 3. The feed picks up the new `topic_id` for that user.
 
 Status lifecycle: `pending -> generating -> ready | failed`.
 
 Contract rules:
 - The generator **never creates/migrates** this table — only `apps/api` does.
-  It writes back only `status`, `topic_id`, `error`, `updated_at`.
+  It writes back only `status`, `topic_id`, `reused`, `error`, `updated_at`.
+- `reused = true` means the generator matched an existing equivalent topic via
+  `curricula.canonical_key` and reused it instead of generating — the frontend
+  surfaces this as "already available".
 - The claim is race-safe (`FOR UPDATE SKIP LOCKED` on Postgres), so multiple
   workers / concurrent Lambdas can drain the same queue.
 - The string status values are the shared vocabulary — keep

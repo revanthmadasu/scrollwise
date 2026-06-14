@@ -79,12 +79,13 @@ def main(topic, modules, subtopics_per_module, levels, test_cadence, db):
     click.echo()
 
     try:
-        curriculum = pipeline.run(
+        result = pipeline.run(
             topic_title=topic,
             num_modules=modules,
             subtopics_per_module=subtopics_per_module,
             levels=parsed_levels,
         )
+        curriculum = result.curriculum
         post_count = repo.count_posts(curriculum.topic_id)
     except Exception as e:
         click.echo(f"Pipeline failed: {e}", err=True)
@@ -93,6 +94,8 @@ def main(topic, modules, subtopics_per_module, levels, test_cadence, db):
         repo.close()
 
     click.echo()
+    if result.reused:
+        click.echo("Reused an existing equivalent topic (no new generation).")
     click.echo(f"Done. Topic id: {curriculum.topic_id}")
     click.echo(f"Posts in DB: {post_count}")
 

@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS user_prompts (
     prompt_text TEXT NOT NULL,
     status TEXT NOT NULL DEFAULT 'pending',
     topic_id TEXT,
+    reused BOOLEAN NOT NULL DEFAULT 0,
     error TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -42,7 +43,7 @@ def _enqueue(repo: Repository, text: str) -> str:
 
 def _status(repo: Repository, pid: str) -> dict:
     return repo._fetchone(
-        "SELECT status, topic_id, error FROM user_prompts WHERE id = ?", (pid,)
+        "SELECT status, topic_id, reused, error FROM user_prompts WHERE id = ?", (pid,)
     )
 
 
@@ -78,9 +79,26 @@ def test_drain_processes_pending_prompt(env):
     row = _status(repo, pid)
     assert row["status"] == "ready"
     assert row["topic_id"] == "test_topic"  # from the fake curriculum responder
+    assert not row["reused"]  # first time this topic was generated
     assert row["error"] is None
     # Content actually landed in the posts table.
     assert repo.count_posts("test_topic") > 0
+
+
+def test_second_prompt_for_same_topic_is_marked_reused(env):
+    repo, pipeline = env
+    pid1 = _enqueue(repo, "Teach me WWII")
+    pid2 = _enqueue(repo, "the second world war")
+
+    processed = pc.drain_once(repo, pipeline, _OPTS, batch_size=5)
+    assert processed == 2
+
+    r1, r2 = _status(repo, pid1), _status(repo, pid2)
+    assert r1["status"] == r2["status"] == "ready"
+    # Both point at the same topic; only the second is a reuse.
+    assert r1["topic_id"] == r2["topic_id"] == "test_topic"
+    assert not r1["reused"]
+    assert r2["reused"]
 
 
 def test_drain_is_noop_on_empty_queue(env):

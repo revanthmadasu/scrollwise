@@ -46,6 +46,8 @@ export interface Prompt {
   prompt_text: string;
   status: PromptStatus;
   topic_id: string | null;
+  /** True when an equivalent topic already existed and was reused (dedup hit). */
+  reused: boolean;
   error: string | null;
   created_at: string;
 }

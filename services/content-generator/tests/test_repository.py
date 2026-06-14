@@ -13,7 +13,7 @@ from generators.models import (
     Subtopic,
     TestType,
 )
-from storage.repository import Repository
+from storage.repository import CurriculumKeyConflict, Repository
 
 
 @pytest.fixture
@@ -75,6 +75,60 @@ def test_save_and_load_curriculum(repo):
     assert loaded is not None
     assert loaded.topic_id == "test_t"
     assert len(loaded.modules) == 1
+
+
+def test_canonical_key_roundtrip_and_lookup(repo):
+    c = make_curriculum()
+    c.canonical_key = "roman empire"
+    repo.save_curriculum(c)
+
+    assert repo.load_curriculum("test_t").canonical_key == "roman empire"
+    found = repo.find_curriculum_by_canonical_key("roman empire")
+    assert found is not None and found.topic_id == "test_t"
+    assert repo.find_curriculum_by_canonical_key("ottoman empire") is None
+    # A blank/None key never matches (legacy rows).
+    assert repo.find_curriculum_by_canonical_key("") is None
+
+
+def test_missing_and_existing_canonical_key_helpers(repo):
+    # Legacy row: no key.
+    legacy = make_curriculum()
+    repo.save_curriculum(legacy)
+    # Keyed row.
+    keyed = make_curriculum()
+    keyed.topic_id = "keyed_t"
+    keyed.canonical_key = "roman empire"
+    repo.save_curriculum(keyed)
+
+    assert repo.curricula_missing_canonical_key() == ["test_t"]
+    assert repo.existing_canonical_keys() == {"roman empire": "keyed_t"}
+
+
+def test_resaving_same_topic_does_not_conflict(repo):
+    c = make_curriculum()
+    c.canonical_key = "roman empire"
+    repo.save_curriculum(c)
+    # Idempotent re-run: same topic_id + key updates in place, no conflict.
+    c.description = "updated"
+    repo.save_curriculum(c)
+    assert repo.load_curriculum("test_t").description == "updated"
+
+
+def test_save_curriculum_conflicts_on_duplicate_canonical_key(repo):
+    first = make_curriculum()
+    first.canonical_key = "roman empire"
+    repo.save_curriculum(first)
+
+    # A different topic_id carrying the same key is the race guard firing.
+    dup = make_curriculum()
+    dup.topic_id = "other_t"
+    dup.canonical_key = "roman empire"
+    with pytest.raises(CurriculumKeyConflict):
+        repo.save_curriculum(dup)
+
+    # The connection is still usable after the rollback, and only one row exists.
+    assert repo.find_curriculum_by_canonical_key("roman empire").topic_id == "test_t"
+    assert repo.load_curriculum("other_t") is None
 
 
 def test_save_and_list_posts(repo):

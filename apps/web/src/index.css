@@ -289,6 +289,7 @@ button.account-item:hover { background: var(--surface-2); }
 .status-pill.generating { color: var(--chip-sky); background: rgba(56,189,248,0.14); }
 .status-pill.ready { color: var(--ok); background: rgba(46,204,113,0.14); }
 .status-pill.failed { color: var(--bad); background: rgba(255,107,107,0.14); }
+.reused-note { margin-top: 0.35rem; font-size: 0.78rem; font-weight: 600; color: var(--ok); }
 
 /* ---------- interests ---------- */
 .interests-header { margin-bottom: 0.25rem; }

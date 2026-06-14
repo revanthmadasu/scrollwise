@@ -6,8 +6,15 @@ CREATE TABLE IF NOT EXISTS curricula (
     title TEXT NOT NULL,
     description TEXT NOT NULL,
     tree TEXT NOT NULL,                -- full Curriculum object as JSON
+    category_id TEXT,                  -- high-level interest category; NULL for legacy rows
+    -- Normalized topic key for de-duplication (LLM canonicalize -> normalize()).
+    -- The UNIQUE index is the race guard; NULLs don't collide (legacy rows).
+    canonical_key TEXT,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_curricula_canonical_key
+    ON curricula(canonical_key);
 
 CREATE TABLE IF NOT EXISTS posts (
     post_id TEXT PRIMARY KEY,

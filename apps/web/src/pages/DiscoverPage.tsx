@@ -61,6 +61,9 @@ export function DiscoverPage() {
               <div>
                 <div className="prompt-text">{p.prompt_text}</div>
                 <div className="muted small">{new Date(p.created_at).toLocaleString()}</div>
+                {p.status === "ready" && p.reused && (
+                  <div className="reused-note">✓ Already available — added to your feed instantly</div>
+                )}
               </div>
               <span className={`status-pill ${p.status}`}>{STATUS_LABEL[p.status]}</span>
             </li>
