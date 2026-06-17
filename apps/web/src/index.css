@@ -625,3 +625,427 @@ button.account-item:hover { background: var(--surface-2); }
   .waitlist-perks { grid-template-columns: 1fr 1fr 1fr; }
   .waitlist-perk { flex-direction: column; align-items: flex-start; }
 }
+
+/* ============================================================
+   TEMPLATES
+   Each template scopes its styles under its root class.
+   CSS custom properties (--accent, --bg, --surface, --text)
+   are injected inline by the component from its meta.defaultColors
+   (or caller override). All other variables fall back to the
+   global design system.
+   ============================================================ */
+
+/* --- Deco layer (shared across all templates) --- */
+.deco-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+/* Ensure content inside templates sits above the deco layer */
+.tmpl-glow-pulse > *:not(.deco-layer):not(.gp-glow-ring),
+.tmpl-minimal-scroll > *:not(.deco-layer):not(.ms-accent-line),
+.tmpl-lottie-hero .lh-content > *:not(.deco-layer),
+.tmpl-infographic-card > *:not(.deco-layer) {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Shared keyframes --- */
+@keyframes tmpl-pulse-ring {
+  0%   { opacity: 0.6; transform: scale(1); }
+  50%  { opacity: 1;   transform: scale(1.03); }
+  100% { opacity: 0.6; transform: scale(1); }
+}
+@keyframes tmpl-fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes tmpl-bar-slide {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ---- GlowPulse ---- */
+.tmpl-glow-pulse {
+  position: relative;
+  background: var(--bg);
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 0;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+}
+
+.gp-glow-ring {
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 24px var(--accent), inset 0 0 20px color-mix(in srgb, var(--accent) 15%, transparent);
+  animation: tmpl-pulse-ring 2.8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gp-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+.gp-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gp-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 30%, var(--bg) 100%);
+}
+
+.gp-content {
+  flex: 1;
+  padding: 20px 20px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: tmpl-fade-up 0.4s ease both;
+}
+
+.gp-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.gp-subtitle {
+  font-size: 0.9rem;
+  color: var(--accent);
+  margin: 0;
+  font-weight: 500;
+}
+.gp-body {
+  font-size: 0.9rem;
+  color: color-mix(in srgb, var(--text) 80%, transparent);
+  margin: 0;
+  line-height: 1.6;
+}
+.gp-bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.gp-bullet {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--text);
+}
+.gp-bullet-dot {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+}
+
+.gp-pulse-bar {
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 30%, transparent));
+  transform-origin: left;
+  animation: tmpl-bar-slide 0.6s ease both;
+}
+
+/* ---- MinimalScroll ---- */
+.tmpl-minimal-scroll {
+  background: var(--bg);
+  border-radius: 20px;
+  padding: 28px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  overflow: hidden; /* clips deco SVG */
+}
+
+.ms-accent-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent);
+  border-radius: 4px 0 0 4px;
+  opacity: 0.7;
+}
+
+.ms-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  animation: tmpl-fade-up 0.35s ease both;
+}
+.ms-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.25;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+.ms-subtitle {
+  font-size: 0.9rem;
+  color: var(--accent);
+  margin: 0;
+  font-style: italic;
+}
+
+.ms-svg-slot {
+  max-height: 140px;
+  overflow: hidden;
+  opacity: 0.85;
+}
+.ms-svg-slot svg {
+  width: 100%;
+  height: auto;
+  max-height: 140px;
+}
+
+.ms-images {
+  display: flex;
+  gap: 8px;
+}
+.ms-image {
+  flex: 1;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  opacity: 0.9;
+}
+
+.ms-body {
+  font-size: 0.92rem;
+  color: color-mix(in srgb, var(--text) 85%, transparent);
+  line-height: 1.75;
+  margin: 0;
+  animation: tmpl-fade-up 0.4s 0.1s ease both;
+}
+
+.ms-bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-left: 2px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  padding-left: 14px;
+}
+.ms-bullet {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ---- LottieHero ---- */
+.tmpl-lottie-hero {
+  background: var(--bg);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.lh-lottie-wrap {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lh-lottie {
+  width: 100%;
+  height: 100%;
+}
+.lh-lottie-placeholder {
+  width: 100%;
+  height: 220px;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--accent) 12%, var(--bg)),
+    color-mix(in srgb, var(--accent) 4%, var(--bg))
+  );
+}
+
+.lh-content {
+  padding: 20px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: tmpl-fade-up 0.4s 0.15s ease both;
+  position: relative;
+  overflow: hidden;
+}
+.lh-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0;
+}
+.lh-subtitle {
+  font-size: 0.88rem;
+  color: var(--accent);
+  margin: 0;
+  font-weight: 600;
+}
+.lh-body {
+  font-size: 0.9rem;
+  color: color-mix(in srgb, var(--text) 80%, transparent);
+  margin: 0;
+  line-height: 1.6;
+}
+.lh-bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.lh-bullet {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--text);
+}
+.lh-dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* ---- InfographicCard ---- */
+.tmpl-infographic-card {
+  background: var(--bg);
+  border-radius: 20px;
+  padding: 24px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ic-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.ic-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+}
+.ic-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.25;
+}
+.ic-subtitle {
+  font-size: 0.83rem;
+  color: var(--accent);
+  margin: 4px 0 0;
+}
+
+.ic-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 10px;
+}
+.ic-stat {
+  background: color-mix(in srgb, var(--stat-color) 10%, var(--surface, #0a1520));
+  border: 1px solid color-mix(in srgb, var(--stat-color) 30%, transparent);
+  border-radius: 12px;
+  padding: 12px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-align: center;
+}
+.ic-stat-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--stat-color);
+  line-height: 1;
+}
+.ic-stat-unit {
+  font-size: 0.7rem;
+  color: var(--stat-color);
+  opacity: 0.7;
+  font-weight: 600;
+}
+.ic-stat-label {
+  font-size: 0.72rem;
+  color: color-mix(in srgb, var(--text) 70%, transparent);
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+.ic-svg-slot {
+  opacity: 0.9;
+}
+.ic-svg-slot svg {
+  width: 100%;
+  height: auto;
+}
+
+.ic-body {
+  font-size: 0.88rem;
+  color: color-mix(in srgb, var(--text) 75%, transparent);
+  margin: 0;
+  line-height: 1.65;
+}
+
+/* ---- Fallback ---- */
+.tmpl-fallback {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 20px;
+}
+.tmpl-fallback h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 10px;
+}
+.tmpl-fallback p {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  margin: 0;
+  line-height: 1.6;
+}

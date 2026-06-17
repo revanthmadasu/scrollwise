@@ -9,6 +9,7 @@ import { DiscoverPage } from "./pages/DiscoverPage";
 import { InterestsPage } from "./pages/InterestsPage";
 import { ProgressPage } from "./pages/ProgressPage";
 import { WaitlistPage } from "./pages/WaitlistPage";
+import { TemplateShowcase } from "./pages/TemplateShowcase";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <AuthProvider>
         <Routes>
           <Route path="/waitlist" element={<WaitlistPage />} />
+          <Route path="/templates" element={<TemplateShowcase />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route
