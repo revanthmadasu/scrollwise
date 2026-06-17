@@ -1,6 +1,7 @@
 import { TemplateRenderer } from "../templates/TemplateRenderer";
 import { ALL_TEMPLATES } from "../templates/index";
 import { ThemeToggle } from "../components/ThemeToggle";
+import { compoundingLottie } from "../templates/assets/compoundingLottie";
 
 const SAMPLES: Record<string, import("../templates/types").TemplateInputs> = {
   "glow-pulse": {
@@ -31,6 +32,7 @@ const SAMPLES: Record<string, import("../templates/types").TemplateInputs> = {
       "$1 at 25 → $21 at 65 (at 8%)",
       "Warren Buffett earned 97% of his wealth after 65",
     ],
+    lottie: { id: "compounding-growth", src: compoundingLottie },
   },
   "infographic-card": {
     title: "The Human Brain at a Glance",
