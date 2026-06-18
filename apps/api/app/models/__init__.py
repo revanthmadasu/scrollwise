@@ -13,6 +13,7 @@ from app.models.interest import UserInterest
 from app.models.progress import TestAttempt, UserPostView, UserTopicProgress
 from app.models.prompt import PromptStatus, UserPrompt
 from app.models.reaction import PostReaction, ReactionType
+from app.models.template import Template, TemplateStatus
 from app.models.user import User
 from app.models.waitlist import WaitlistEntry
 
@@ -30,4 +31,6 @@ __all__ = [
     "Post",
     "Curriculum",
     "WaitlistEntry",
+    "Template",
+    "TemplateStatus",
 ]

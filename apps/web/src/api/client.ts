@@ -13,6 +13,9 @@ import type {
   ReactionResult,
   Post,
   Reaction,
+  TemplateRecord,
+  TemplateStatus,
+  TemplateSubmit,
   TokenPair,
   Topic,
   User,
@@ -147,6 +150,16 @@ export const api = {
 
   // --- progress ---
   progress: () => request<Progress>("/me/progress"),
+
+  // --- templates (admin builder) ---
+  listTemplates: () => request<TemplateRecord[]>("/admin/templates"),
+  submitTemplate: (body: TemplateSubmit) =>
+    request<TemplateRecord>("/admin/templates", { method: "PUT", body }),
+  setTemplateStatus: (template_id: string, status: TemplateStatus, review_notes?: string) =>
+    request<TemplateRecord>(`/admin/templates/${template_id}/status`, {
+      method: "PATCH",
+      body: { status, review_notes },
+    }),
 };
 
 export { BASE as API_BASE };

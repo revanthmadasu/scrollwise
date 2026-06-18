@@ -626,6 +626,162 @@ button.account-item:hover { background: var(--surface-2); }
   .waitlist-perk { flex-direction: column; align-items: flex-start; }
 }
 
+/* Admin badge in the admin login title. */
+.admin-tag {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 0.5em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  padding: 2px 8px;
+  border-radius: 20px;
+  -webkit-text-fill-color: var(--accent);
+}
+
+/* ============================================================
+   TEMPLATE BUILDER (admin review/approve UI)
+   ============================================================ */
+.page.builder {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+.builder-header h1 {
+  margin: 0 0 6px;
+  font-size: 1.5rem;
+}
+.builder-count {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.builder-error {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--bad);
+}
+.builder-list {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tb-card {
+  display: flex;
+  gap: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.tb-preview {
+  flex: 0 0 340px;
+  max-width: 340px;
+  align-self: flex-start;
+}
+.tb-meta {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tb-meta-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.tb-meta-head h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+.tb-desc {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.tb-status {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  background: var(--surface-2);
+}
+.tb-status.approved { color: var(--ok); border-color: color-mix(in srgb, var(--ok) 40%, transparent); background: color-mix(in srgb, var(--ok) 12%, transparent); }
+.tb-status.rejected { color: var(--bad); border-color: color-mix(in srgb, var(--bad) 40%, transparent); background: color-mix(in srgb, var(--bad) 12%, transparent); }
+.tb-status.archived { color: var(--muted); }
+
+.tb-spec {
+  margin: 4px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+}
+.tb-spec .tb-spec-wide { grid-column: 1 / -1; }
+.tb-spec dt {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+.tb-spec dd {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+}
+
+.tb-notes {
+  width: 100%;
+  min-height: 56px;
+  resize: vertical;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  padding: 8px 10px;
+  font: inherit;
+  font-size: 0.85rem;
+}
+.tb-notes:focus { outline: none; border-color: var(--accent); }
+
+.tb-actions {
+  display: flex;
+  gap: 10px;
+}
+.tb-actions .ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-soft);
+  border-radius: 10px;
+  padding: 8px 16px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tb-actions .ghost:hover:not(:disabled) { border-color: var(--bad); color: var(--bad); }
+.tb-actions button:disabled { opacity: 0.5; cursor: default; }
+
+.tb-version { margin: 0; font-size: 0.75rem; }
+
+@media (max-width: 720px) {
+  .tb-card { flex-direction: column; }
+  .tb-preview { flex-basis: auto; max-width: none; }
+}
+
 /* ============================================================
    TEMPLATES
    Each template scopes its styles under its root class.
