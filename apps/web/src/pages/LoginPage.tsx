@@ -42,7 +42,7 @@ export function LoginPage() {
     <div className="auth-page">
       <div className="auth-card">
         <h1 className="brand big">Scroll<span>Wise</span></h1>
-        <p className="tagline">Learn by scrolling. The anti-doomscroll feed.</p>
+        <p className="tagline">Learn by . The anti-doomscroll feed.</p>
 
         <form onSubmit={onSubmit} className="auth-form">
           <input type="email" placeholder="Email" value={email} required
