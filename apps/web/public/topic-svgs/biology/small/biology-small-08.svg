@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="biology decorative background">
+  <defs>
+    <radialGradient id="grad-biology-small-08" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#56c26a" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#071508" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="160" height="160" fill="#071508"/>
+  <rect width="160" height="160" fill="url(#grad-biology-small-08)"/>
+  <path d="M46.06,47.01 C24.55,96.92 135.61,84.75 151.54,98.76" fill="none" stroke="#2f9e6b" stroke-width="1.1" opacity="0.36"/>
+  <path d="M1.9,77.54 C92.83,118.85 156.44,117.96 140.79,64.19" fill="none" stroke="#2f9e6b" stroke-width="1.27" opacity="0.2"/>
+  <path d="M37.12,121.15 C35.17,12.45 20.5,41.97 115.18,57.61" fill="none" stroke="#56c26a" stroke-width="1.57" opacity="0.33"/>
+</svg>

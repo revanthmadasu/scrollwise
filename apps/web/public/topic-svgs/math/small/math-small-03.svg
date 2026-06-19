@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="math decorative background">
+  <defs>
+    <radialGradient id="grad-math-small-03" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#8b7bff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0e0a1f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="160" height="160" fill="#0e0a1f"/>
+  <rect width="160" height="160" fill="url(#grad-math-small-03)"/>
+  <polygon points="135.76,50.51 119.85,41.49 135.61,32.23" fill="none" stroke="#8b7bff" stroke-width="1.2" opacity="0.23"/>
+  <polygon points="122.78,107.56 146.54,107.4 158.57,127.89 146.83,148.56 123.07,148.72 111.04,128.23" fill="none" stroke="#8b7bff" stroke-width="1.2" opacity="0.34"/>
+  <polygon points="120.51,63.05 120.35,70.94 113.43,74.75 106.67,70.66 106.83,62.76 113.75,58.96" fill="none" stroke="#c4b5fd" stroke-width="1.2" opacity="0.26"/>
+  <line x1="0" y1="0" x2="0" y2="160" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="28" y1="0" x2="28" y2="160" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="56" y1="0" x2="56" y2="160" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="84" y1="0" x2="84" y2="160" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="112" y1="0" x2="112" y2="160" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="140" y1="0" x2="140" y2="160" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="0" x2="160" y2="0" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="28" x2="160" y2="28" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="56" x2="160" y2="56" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="84" x2="160" y2="84" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="112" x2="160" y2="112" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="140" x2="160" y2="140" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <polyline points="0,16 10,46 20,72 30,94 40,112 50,126 60,136 70,142 80,144 90,142 100,136 110,126 120,112 130,94 140,72 150,46 160,16" fill="none" stroke="#8b7bff" stroke-width="2" opacity="0.55"/>
+</svg>

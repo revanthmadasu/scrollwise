@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="chemistry decorative background">
+  <defs>
+    <radialGradient id="grad-chemistry-medium-02" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#2dd4a7" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#08160f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="#08160f"/>
+  <rect width="400" height="300" fill="url(#grad-chemistry-medium-02)"/>
+  <path d="M169.59,143.85 C169.13,152.79 156.58,165.17 148.98,168.31 C141.37,171.45 132.64,166.79 123.97,162.71 C115.29,158.63 97.7,151.47 96.93,143.85 C96.16,136.23 110.22,121.86 119.35,116.99 C128.48,112.13 143.34,110.18 151.71,114.66 C160.09,119.13 170.04,134.91 169.59,143.85 Z" fill="#f06aa6" opacity="0.12"/>
+  <path d="M169.59,143.85 C169.13,152.79 156.58,165.17 148.98,168.31 C141.37,171.45 132.64,166.79 123.97,162.71 C115.29,158.63 97.7,151.47 96.93,143.85 C96.16,136.23 110.22,121.86 119.35,116.99 C128.48,112.13 143.34,110.18 151.71,114.66 C160.09,119.13 170.04,134.91 169.59,143.85 Z" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.25"/>
+  <path d="M174.32,83.97 C175.01,99.25 157.49,131.09 142.35,136.16 C127.21,141.24 91.64,126.95 83.51,114.4 C75.38,101.85 84.44,72.5 93.56,60.84 C102.68,49.19 124.77,40.61 138.23,44.46 C151.69,48.31 173.64,68.69 174.32,83.97 Z" fill="#f06aa6" opacity="0.12"/>
+  <path d="M174.32,83.97 C175.01,99.25 157.49,131.09 142.35,136.16 C127.21,141.24 91.64,126.95 83.51,114.4 C75.38,101.85 84.44,72.5 93.56,60.84 C102.68,49.19 124.77,40.61 138.23,44.46 C151.69,48.31 173.64,68.69 174.32,83.97 Z" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.25"/>
+  <line x1="253.91" y1="95.2" x2="259.73" y2="122.34" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="253.91" y1="95.2" x2="158.64" y2="50.86" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="139.01" y1="107.32" x2="110.23" y2="97.31" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="139.01" y1="107.32" x2="113.6" y2="153.09" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="110.23" y1="97.31" x2="139.01" y2="107.32" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="110.23" y1="97.31" x2="116.52" y2="54.06" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="132.37" y1="263.94" x2="113.6" y2="153.09" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="132.37" y1="263.94" x2="139.01" y2="107.32" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="158.64" y1="50.86" x2="116.52" y2="54.06" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="158.64" y1="50.86" x2="139.01" y2="107.32" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="259.73" y1="122.34" x2="253.91" y2="95.2" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="259.73" y1="122.34" x2="139.01" y2="107.32" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="113.6" y1="153.09" x2="139.01" y2="107.32" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="113.6" y1="153.09" x2="110.23" y2="97.31" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="116.52" y1="54.06" x2="158.64" y2="50.86" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="116.52" y1="54.06" x2="110.23" y2="97.31" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <circle cx="253.91" cy="95.2" r="7.87" fill="#2dd4a7" opacity="0.5"/>
+  <circle cx="139.01" cy="107.32" r="7.25" fill="#f06aa6" opacity="0.5"/>
+  <circle cx="110.23" cy="97.31" r="6.24" fill="#f06aa6" opacity="0.5"/>
+  <circle cx="132.37" cy="263.94" r="7.57" fill="#2dd4a7" opacity="0.5"/>
+  <circle cx="158.64" cy="50.86" r="7.28" fill="#2dd4a7" opacity="0.5"/>
+  <circle cx="259.73" cy="122.34" r="6.2" fill="#2dd4a7" opacity="0.5"/>
+  <circle cx="113.6" cy="153.09" r="6.12" fill="#f06aa6" opacity="0.5"/>
+  <circle cx="116.52" cy="54.06" r="4.3" fill="#2dd4a7" opacity="0.5"/>
+</svg>

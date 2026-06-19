@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="math decorative background">
+  <defs>
+    <radialGradient id="grad-math-large-08" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#8b7bff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0e0a1f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="960" height="540" fill="#0e0a1f"/>
+  <rect width="960" height="540" fill="url(#grad-math-large-08)"/>
+  <line x1="0" y1="0" x2="0" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="79" y1="0" x2="79" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="158" y1="0" x2="158" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="237" y1="0" x2="237" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="316" y1="0" x2="316" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="395" y1="0" x2="395" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="474" y1="0" x2="474" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="553" y1="0" x2="553" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="632" y1="0" x2="632" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="711" y1="0" x2="711" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="790" y1="0" x2="790" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="869" y1="0" x2="869" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="948" y1="0" x2="948" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="0" x2="960" y2="0" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="79" x2="960" y2="79" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="158" x2="960" y2="158" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="237" x2="960" y2="237" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="316" x2="960" y2="316" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="395" x2="960" y2="395" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="474" x2="960" y2="474" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <polyline points="0,270 10,256.36 20,234.37 30,209.86 40,199.54 50,199.48 60,187.04 70,130.25 80,128.05 90,146.32 100,134.22 110,99 120,109.87 130,100.61 140,105.36 150,98 160,82.54 170,81.78 180,81.6 190,138.48 200,82.82 210,184.35 220,88.73 230,235.61 240,82.91 250,277.05 260,100.1 270,218.21 280,87.7 290,148.74 300,313.86 310,323.88 320,410.27 330,427.22 340,307.75 350,147.29 360,206.27 370,447.62 380,417.78 390,405.81 400,452.57 410,442.19 420,208.05 430,433.38 440,444.33 450,410.68 460,341.74 470,361.12 480,433.97 490,449.85 500,304.7 510,278.03 520,404.32 530,420.99 540,363.86 550,158.25 560,458.55 570,146.33 580,88.95 590,416.75 600,345.61 610,218.78 620,331.57 630,93.35 640,406.98 650,103.54 660,367.13 670,449.17 680,82.16 690,113.74 700,175.72 710,229.06 720,131.25 730,162.99 740,156.7 750,175 760,392.99 770,397.05 780,143.75 790,216.98 800,430.1 810,138.52 820,230.39 830,326.59 840,113.39 850,448.2 860,436.39 870,93.92 880,89.6 890,391.77 900,90.07 910,167.76 920,389.65 930,82.18 940,234.19 950,235.36 960,191.18" fill="none" stroke="#8b7bff" stroke-width="2" opacity="0.55"/>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="math decorative background">
+  <defs>
+    <radialGradient id="grad-math-large-06" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#8b7bff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0e0a1f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="960" height="540" fill="#0e0a1f"/>
+  <rect width="960" height="540" fill="url(#grad-math-large-06)"/>
+  <polygon points="778.66,269.37 758.74,327.31 700.8,307.39 720.72,249.45" fill="none" stroke="#c4b5fd" stroke-width="1.2" opacity="0.31"/>
+  <polygon points="133.91,364.53 199.82,341.07 242.49,396.49 202.97,454.21 135.86,434.45" fill="none" stroke="#5b8cff" stroke-width="1.2" opacity="0.29"/>
+  <polygon points="340.52,116.62 295.62,174.79 267.7,106.82" fill="none" stroke="#8b7bff" stroke-width="1.2" opacity="0.3"/>
+  <polygon points="587.25,416.5 570.73,453.88 546.63,420.88" fill="none" stroke="#8b7bff" stroke-width="1.2" opacity="0.2"/>
+  <polygon points="725.96,198.13 700.67,171.55 727.26,146.26 752.55,172.85" fill="none" stroke="#c4b5fd" stroke-width="1.2" opacity="0.21"/>
+  <polygon points="657.48,339.62 658.95,390.7 615.45,417.52 570.48,393.26 569,342.17 612.51,315.36" fill="none" stroke="#c4b5fd" stroke-width="1.2" opacity="0.32"/>
+  <polygon points="232.38,248.13 274.49,261.85 283.66,305.18 250.72,334.79 208.61,321.07 199.44,277.73" fill="none" stroke="#5b8cff" stroke-width="1.2" opacity="0.24"/>
+  <polygon points="366.6,360.52 431.38,292.9 499.01,357.68 434.23,425.3" fill="none" stroke="#8b7bff" stroke-width="1.2" opacity="0.42"/>
+  <polygon points="762.31,274.41 811.95,246.92 853.43,285.64 829.43,337.05 773.11,330.11" fill="none" stroke="#c4b5fd" stroke-width="1.2" opacity="0.21"/>
+  <polygon points="357.25,227.04 395.05,239.03 395.32,278.69 357.69,291.2 334.16,259.28" fill="none" stroke="#c4b5fd" stroke-width="1.2" opacity="0.2"/>
+</svg>

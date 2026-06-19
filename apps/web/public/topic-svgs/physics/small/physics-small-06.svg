@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="physics decorative background">
+  <defs>
+    <radialGradient id="grad-physics-small-06" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#5b8cff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0b1026" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="160" height="160" fill="#0b1026"/>
+  <rect width="160" height="160" fill="url(#grad-physics-small-06)"/>
+  <polyline points="0,41.96 12.31,41.06 24.62,40.39 36.92,40 49.23,39.93 61.54,40.19 73.85,40.75 86.15,41.56 98.46,42.55 110.77,43.64 123.08,44.73 135.38,45.72 147.69,46.54 160,47.1" fill="none" stroke="#39d0d8" stroke-width="1.07" opacity="0.32"/>
+  <polyline points="0,87.23 12.31,87.5 24.62,87.55 36.92,87.38 49.23,86.99 61.54,86.39 73.85,85.61 86.15,84.66 98.46,83.58 110.77,82.4 123.08,81.15 135.38,79.88 147.69,78.62 160,77.41" fill="none" stroke="#39d0d8" stroke-width="1.29" opacity="0.15"/>
+  <polyline points="0,108.41 12.31,109.73 24.62,111.22 36.92,112.85 49.23,114.57 61.54,116.34 73.85,118.13 86.15,119.89 98.46,121.58 110.77,123.15 123.08,124.57 135.38,125.82 147.69,126.85 160,127.64" fill="none" stroke="#39d0d8" stroke-width="1.68" opacity="0.35"/>
+</svg>

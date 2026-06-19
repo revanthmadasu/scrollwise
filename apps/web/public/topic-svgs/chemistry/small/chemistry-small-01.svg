@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="chemistry decorative background">
+  <defs>
+    <radialGradient id="grad-chemistry-small-01" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#2dd4a7" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#08160f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="160" height="160" fill="#08160f"/>
+  <rect width="160" height="160" fill="url(#grad-chemistry-small-01)"/>
+  <circle cx="145.17" cy="69.88" r="8.66" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.22"/>
+  <circle cx="142.57" cy="67.28" r="1.56" fill="#7be0c4" opacity="0.4"/>
+  <circle cx="34.21" cy="131.75" r="9.15" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.22"/>
+  <circle cx="31.47" cy="129.01" r="1.65" fill="#7be0c4" opacity="0.4"/>
+  <circle cx="43.17" cy="113.27" r="13.41" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.22"/>
+  <circle cx="39.15" cy="109.25" r="2.41" fill="#7be0c4" opacity="0.4"/>
+  <circle cx="152.34" cy="116.86" r="15.1" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.22"/>
+  <circle cx="147.82" cy="112.33" r="2.72" fill="#7be0c4" opacity="0.4"/>
+  <circle cx="29.24" cy="1.63" r="3.41" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.22"/>
+  <circle cx="28.22" cy="0.6" r="0.61" fill="#7be0c4" opacity="0.4"/>
+  <circle cx="39.81" cy="38.44" r="9.06" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.22"/>
+  <circle cx="37.1" cy="35.73" r="1.63" fill="#7be0c4" opacity="0.4"/>
+  <circle cx="30.71" cy="142.7" r="10.26" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.22"/>
+  <circle cx="27.63" cy="139.63" r="1.85" fill="#7be0c4" opacity="0.4"/>
+  <circle cx="62.91" cy="79.7" r="11.93" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.22"/>
+  <circle cx="59.33" cy="76.12" r="2.15" fill="#7be0c4" opacity="0.4"/>
+  <path d="M74.09,96.16 C73.07,101.75 67.43,104.87 62.88,109.09 C58.32,113.31 52.49,121.73 46.78,121.49 C41.07,121.26 31.26,113.67 28.6,107.7 C25.94,101.73 27.39,90.06 30.82,85.69 C34.26,81.32 42.86,83.19 49.22,81.5 C55.58,79.81 64.85,73.11 68.99,75.56 C73.14,78 75.11,90.57 74.09,96.16 Z" fill="#f06aa6" opacity="0.12"/>
+  <path d="M74.09,96.16 C73.07,101.75 67.43,104.87 62.88,109.09 C58.32,113.31 52.49,121.73 46.78,121.49 C41.07,121.26 31.26,113.67 28.6,107.7 C25.94,101.73 27.39,90.06 30.82,85.69 C34.26,81.32 42.86,83.19 49.22,81.5 C55.58,79.81 64.85,73.11 68.99,75.56 C73.14,78 75.11,90.57 74.09,96.16 Z" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.25"/>
+</svg>

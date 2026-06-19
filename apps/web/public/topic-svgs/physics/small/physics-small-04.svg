@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="physics decorative background">
+  <defs>
+    <radialGradient id="grad-physics-small-04" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#5b8cff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0b1026" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="160" height="160" fill="#0b1026"/>
+  <rect width="160" height="160" fill="url(#grad-physics-small-04)"/>
+  <circle cx="82.46" cy="60.97" r="33.33" fill="none" stroke="#9b6bff" stroke-width="1" opacity="0.28"/>
+  <circle cx="82.46" cy="60.97" r="66.67" fill="none" stroke="#9b6bff" stroke-width="1" opacity="0.25"/>
+  <circle cx="82.46" cy="60.97" r="100" fill="none" stroke="#9b6bff" stroke-width="1" opacity="0.22"/>
+  <line x1="82.46" y1="60.97" x2="154.45" y2="62.02" stroke="#5b8cff" stroke-width="0.6" opacity="0.12"/>
+  <line x1="82.46" y1="60.97" x2="106.8" y2="128.73" stroke="#5b8cff" stroke-width="0.6" opacity="0.12"/>
+  <line x1="82.46" y1="60.97" x2="30.56" y2="110.88" stroke="#5b8cff" stroke-width="0.6" opacity="0.12"/>
+  <line x1="82.46" y1="60.97" x2="11.2" y2="50.66" stroke="#5b8cff" stroke-width="0.6" opacity="0.12"/>
+  <line x1="82.46" y1="60.97" x2="64.94" y2="-8.86" stroke="#5b8cff" stroke-width="0.6" opacity="0.12"/>
+  <line x1="82.46" y1="60.97" x2="121.06" y2="0.2" stroke="#5b8cff" stroke-width="0.6" opacity="0.12"/>
+  <polyline points="0,47.35 12.31,47.23 24.62,46.97 36.92,46.57 49.23,46.05 61.54,45.41 73.85,44.67 86.15,43.83 98.46,42.92 110.77,41.95 123.08,40.93 135.38,39.9 147.69,38.86 160,37.84" fill="none" stroke="#39d0d8" stroke-width="1.82" opacity="0.22"/>
+  <polyline points="0,76.49 12.31,74.71 24.62,73.01 36.92,71.42 49.23,69.98 61.54,68.7 73.85,67.63 86.15,66.77 98.46,66.14 110.77,65.76 123.08,65.63 135.38,65.76 147.69,66.14 160,66.77" fill="none" stroke="#39d0d8" stroke-width="1.1" opacity="0.26"/>
+  <polyline points="0,121.82 12.31,123.5 24.62,124.81 36.92,125.71 49.23,126.15 61.54,126.11 73.85,125.59 86.15,124.62 98.46,123.24 110.77,121.52 123.08,119.53 135.38,117.37 147.69,115.15 160,112.96" fill="none" stroke="#5b8cff" stroke-width="1.63" opacity="0.33"/>
+</svg>

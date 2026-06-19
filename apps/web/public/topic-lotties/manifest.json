@@ -1,0 +1,5278 @@
+{
+  "generated_by": "scripts/gen_topic_lotties.py",
+  "schema": "bodymovin 5.7.4",
+  "fr": 30,
+  "frames": 90,
+  "assets": [
+    {
+      "id": "physics-small-01",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse",
+        "wave"
+      ],
+      "layer_count": 8,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/small/physics-small-01.json",
+      "tags": [
+        "physics",
+        "small",
+        "pulse",
+        "wave"
+      ]
+    },
+    {
+      "id": "physics-small-02",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "wave",
+        "orbit"
+      ],
+      "layer_count": 9,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/small/physics-small-02.json",
+      "tags": [
+        "physics",
+        "small",
+        "wave",
+        "orbit"
+      ]
+    },
+    {
+      "id": "physics-small-03",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "orbit",
+        "wave"
+      ],
+      "layer_count": 9,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/small/physics-small-03.json",
+      "tags": [
+        "physics",
+        "small",
+        "orbit",
+        "wave"
+      ]
+    },
+    {
+      "id": "physics-small-04",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse",
+        "orbit"
+      ],
+      "layer_count": 6,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/small/physics-small-04.json",
+      "tags": [
+        "physics",
+        "small",
+        "pulse",
+        "orbit"
+      ]
+    },
+    {
+      "id": "physics-small-05",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "wave",
+        "pulse"
+      ],
+      "layer_count": 8,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/small/physics-small-05.json",
+      "tags": [
+        "physics",
+        "small",
+        "wave",
+        "pulse"
+      ]
+    },
+    {
+      "id": "physics-small-06",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "orbit"
+      ],
+      "layer_count": 4,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/small/physics-small-06.json",
+      "tags": [
+        "physics",
+        "small",
+        "orbit"
+      ]
+    },
+    {
+      "id": "physics-small-07",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse"
+      ],
+      "layer_count": 3,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/small/physics-small-07.json",
+      "tags": [
+        "physics",
+        "small",
+        "pulse"
+      ]
+    },
+    {
+      "id": "physics-small-08",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "wave"
+      ],
+      "layer_count": 6,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/small/physics-small-08.json",
+      "tags": [
+        "physics",
+        "small",
+        "wave"
+      ]
+    },
+    {
+      "id": "physics-small-09",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "orbit",
+        "pulse"
+      ],
+      "layer_count": 6,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/small/physics-small-09.json",
+      "tags": [
+        "physics",
+        "small",
+        "orbit",
+        "pulse"
+      ]
+    },
+    {
+      "id": "physics-small-10",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse",
+        "wave"
+      ],
+      "layer_count": 8,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/small/physics-small-10.json",
+      "tags": [
+        "physics",
+        "small",
+        "pulse",
+        "wave"
+      ]
+    },
+    {
+      "id": "physics-medium-01",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse",
+        "wave"
+      ],
+      "layer_count": 22,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/medium/physics-medium-01.json",
+      "tags": [
+        "physics",
+        "medium",
+        "pulse",
+        "wave"
+      ]
+    },
+    {
+      "id": "physics-medium-02",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "wave",
+        "orbit"
+      ],
+      "layer_count": 23,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/medium/physics-medium-02.json",
+      "tags": [
+        "physics",
+        "medium",
+        "wave",
+        "orbit"
+      ]
+    },
+    {
+      "id": "physics-medium-03",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "orbit",
+        "wave"
+      ],
+      "layer_count": 23,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/medium/physics-medium-03.json",
+      "tags": [
+        "physics",
+        "medium",
+        "orbit",
+        "wave"
+      ]
+    },
+    {
+      "id": "physics-medium-04",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse",
+        "orbit"
+      ],
+      "layer_count": 8,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/medium/physics-medium-04.json",
+      "tags": [
+        "physics",
+        "medium",
+        "pulse",
+        "orbit"
+      ]
+    },
+    {
+      "id": "physics-medium-05",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "wave",
+        "pulse"
+      ],
+      "layer_count": 22,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/medium/physics-medium-05.json",
+      "tags": [
+        "physics",
+        "medium",
+        "wave",
+        "pulse"
+      ]
+    },
+    {
+      "id": "physics-medium-06",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "orbit"
+      ],
+      "layer_count": 5,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/medium/physics-medium-06.json",
+      "tags": [
+        "physics",
+        "medium",
+        "orbit"
+      ]
+    },
+    {
+      "id": "physics-medium-07",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse"
+      ],
+      "layer_count": 4,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/medium/physics-medium-07.json",
+      "tags": [
+        "physics",
+        "medium",
+        "pulse"
+      ]
+    },
+    {
+      "id": "physics-medium-08",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "wave"
+      ],
+      "layer_count": 19,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/medium/physics-medium-08.json",
+      "tags": [
+        "physics",
+        "medium",
+        "wave"
+      ]
+    },
+    {
+      "id": "physics-medium-09",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "orbit",
+        "pulse"
+      ],
+      "layer_count": 8,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/medium/physics-medium-09.json",
+      "tags": [
+        "physics",
+        "medium",
+        "orbit",
+        "pulse"
+      ]
+    },
+    {
+      "id": "physics-medium-10",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse",
+        "wave"
+      ],
+      "layer_count": 22,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/medium/physics-medium-10.json",
+      "tags": [
+        "physics",
+        "medium",
+        "pulse",
+        "wave"
+      ]
+    },
+    {
+      "id": "physics-large-01",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse",
+        "wave"
+      ],
+      "layer_count": 51,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/large/physics-large-01.json",
+      "tags": [
+        "physics",
+        "large",
+        "pulse",
+        "wave"
+      ]
+    },
+    {
+      "id": "physics-large-02",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "wave",
+        "orbit"
+      ],
+      "layer_count": 52,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/large/physics-large-02.json",
+      "tags": [
+        "physics",
+        "large",
+        "wave",
+        "orbit"
+      ]
+    },
+    {
+      "id": "physics-large-03",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "orbit",
+        "wave"
+      ],
+      "layer_count": 52,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/large/physics-large-03.json",
+      "tags": [
+        "physics",
+        "large",
+        "orbit",
+        "wave"
+      ]
+    },
+    {
+      "id": "physics-large-04",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse",
+        "orbit"
+      ],
+      "layer_count": 12,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/large/physics-large-04.json",
+      "tags": [
+        "physics",
+        "large",
+        "pulse",
+        "orbit"
+      ]
+    },
+    {
+      "id": "physics-large-05",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "wave",
+        "pulse"
+      ],
+      "layer_count": 51,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/large/physics-large-05.json",
+      "tags": [
+        "physics",
+        "large",
+        "wave",
+        "pulse"
+      ]
+    },
+    {
+      "id": "physics-large-06",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "orbit"
+      ],
+      "layer_count": 7,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/large/physics-large-06.json",
+      "tags": [
+        "physics",
+        "large",
+        "orbit"
+      ]
+    },
+    {
+      "id": "physics-large-07",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse"
+      ],
+      "layer_count": 6,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/large/physics-large-07.json",
+      "tags": [
+        "physics",
+        "large",
+        "pulse"
+      ]
+    },
+    {
+      "id": "physics-large-08",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "wave"
+      ],
+      "layer_count": 46,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/large/physics-large-08.json",
+      "tags": [
+        "physics",
+        "large",
+        "wave"
+      ]
+    },
+    {
+      "id": "physics-large-09",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "orbit",
+        "pulse"
+      ],
+      "layer_count": 12,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/large/physics-large-09.json",
+      "tags": [
+        "physics",
+        "large",
+        "orbit",
+        "pulse"
+      ]
+    },
+    {
+      "id": "physics-large-10",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse",
+        "wave"
+      ],
+      "layer_count": 51,
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "file": "physics/large/physics-large-10.json",
+      "tags": [
+        "physics",
+        "large",
+        "pulse",
+        "wave"
+      ]
+    },
+    {
+      "id": "chemistry-small-01",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "bubbles",
+        "molecule"
+      ],
+      "layer_count": 15,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/small/chemistry-small-01.json",
+      "tags": [
+        "chemistry",
+        "small",
+        "bubbles",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-small-02",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "molecule"
+      ],
+      "layer_count": 10,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/small/chemistry-small-02.json",
+      "tags": [
+        "chemistry",
+        "small",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-small-03",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "bubbles"
+      ],
+      "layer_count": 6,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/small/chemistry-small-03.json",
+      "tags": [
+        "chemistry",
+        "small",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-small-04",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "molecule",
+        "bubbles"
+      ],
+      "layer_count": 15,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/small/chemistry-small-04.json",
+      "tags": [
+        "chemistry",
+        "small",
+        "molecule",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-small-05",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "bubbles",
+        "molecule"
+      ],
+      "layer_count": 15,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/small/chemistry-small-05.json",
+      "tags": [
+        "chemistry",
+        "small",
+        "bubbles",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-small-06",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "molecule"
+      ],
+      "layer_count": 10,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/small/chemistry-small-06.json",
+      "tags": [
+        "chemistry",
+        "small",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-small-07",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "bubbles"
+      ],
+      "layer_count": 6,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/small/chemistry-small-07.json",
+      "tags": [
+        "chemistry",
+        "small",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-small-08",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "molecule",
+        "bubbles"
+      ],
+      "layer_count": 15,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/small/chemistry-small-08.json",
+      "tags": [
+        "chemistry",
+        "small",
+        "molecule",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-small-09",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "bubbles",
+        "molecule"
+      ],
+      "layer_count": 15,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/small/chemistry-small-09.json",
+      "tags": [
+        "chemistry",
+        "small",
+        "bubbles",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-small-10",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "molecule"
+      ],
+      "layer_count": 10,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/small/chemistry-small-10.json",
+      "tags": [
+        "chemistry",
+        "small",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-medium-01",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "bubbles",
+        "molecule"
+      ],
+      "layer_count": 25,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/medium/chemistry-medium-01.json",
+      "tags": [
+        "chemistry",
+        "medium",
+        "bubbles",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-medium-02",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "molecule"
+      ],
+      "layer_count": 16,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/medium/chemistry-medium-02.json",
+      "tags": [
+        "chemistry",
+        "medium",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-medium-03",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "bubbles"
+      ],
+      "layer_count": 10,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/medium/chemistry-medium-03.json",
+      "tags": [
+        "chemistry",
+        "medium",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-medium-04",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "molecule",
+        "bubbles"
+      ],
+      "layer_count": 25,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/medium/chemistry-medium-04.json",
+      "tags": [
+        "chemistry",
+        "medium",
+        "molecule",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-medium-05",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "bubbles",
+        "molecule"
+      ],
+      "layer_count": 25,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/medium/chemistry-medium-05.json",
+      "tags": [
+        "chemistry",
+        "medium",
+        "bubbles",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-medium-06",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "molecule"
+      ],
+      "layer_count": 16,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/medium/chemistry-medium-06.json",
+      "tags": [
+        "chemistry",
+        "medium",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-medium-07",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "bubbles"
+      ],
+      "layer_count": 10,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/medium/chemistry-medium-07.json",
+      "tags": [
+        "chemistry",
+        "medium",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-medium-08",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "molecule",
+        "bubbles"
+      ],
+      "layer_count": 25,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/medium/chemistry-medium-08.json",
+      "tags": [
+        "chemistry",
+        "medium",
+        "molecule",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-medium-09",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "bubbles",
+        "molecule"
+      ],
+      "layer_count": 25,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/medium/chemistry-medium-09.json",
+      "tags": [
+        "chemistry",
+        "medium",
+        "bubbles",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-medium-10",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "molecule"
+      ],
+      "layer_count": 16,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/medium/chemistry-medium-10.json",
+      "tags": [
+        "chemistry",
+        "medium",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-large-01",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "bubbles",
+        "molecule"
+      ],
+      "layer_count": 40,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/large/chemistry-large-01.json",
+      "tags": [
+        "chemistry",
+        "large",
+        "bubbles",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-large-02",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "molecule"
+      ],
+      "layer_count": 25,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/large/chemistry-large-02.json",
+      "tags": [
+        "chemistry",
+        "large",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-large-03",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "bubbles"
+      ],
+      "layer_count": 16,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/large/chemistry-large-03.json",
+      "tags": [
+        "chemistry",
+        "large",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-large-04",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "molecule",
+        "bubbles"
+      ],
+      "layer_count": 40,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/large/chemistry-large-04.json",
+      "tags": [
+        "chemistry",
+        "large",
+        "molecule",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-large-05",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "bubbles",
+        "molecule"
+      ],
+      "layer_count": 40,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/large/chemistry-large-05.json",
+      "tags": [
+        "chemistry",
+        "large",
+        "bubbles",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-large-06",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "molecule"
+      ],
+      "layer_count": 25,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/large/chemistry-large-06.json",
+      "tags": [
+        "chemistry",
+        "large",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-large-07",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "bubbles"
+      ],
+      "layer_count": 16,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/large/chemistry-large-07.json",
+      "tags": [
+        "chemistry",
+        "large",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-large-08",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "molecule",
+        "bubbles"
+      ],
+      "layer_count": 40,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/large/chemistry-large-08.json",
+      "tags": [
+        "chemistry",
+        "large",
+        "molecule",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-large-09",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "bubbles",
+        "molecule"
+      ],
+      "layer_count": 40,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/large/chemistry-large-09.json",
+      "tags": [
+        "chemistry",
+        "large",
+        "bubbles",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-large-10",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "molecule"
+      ],
+      "layer_count": 25,
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "file": "chemistry/large/chemistry-large-10.json",
+      "tags": [
+        "chemistry",
+        "large",
+        "molecule"
+      ]
+    },
+    {
+      "id": "cs-small-01",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "dataflow",
+        "binary"
+      ],
+      "layer_count": 27,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/small/cs-small-01.json",
+      "tags": [
+        "cs",
+        "small",
+        "dataflow",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-small-02",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "binary"
+      ],
+      "layer_count": 23,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/small/cs-small-02.json",
+      "tags": [
+        "cs",
+        "small",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-small-03",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "dataflow"
+      ],
+      "layer_count": 6,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/small/cs-small-03.json",
+      "tags": [
+        "cs",
+        "small",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-small-04",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "binary",
+        "dataflow"
+      ],
+      "layer_count": 26,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/small/cs-small-04.json",
+      "tags": [
+        "cs",
+        "small",
+        "binary",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-small-05",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "dataflow",
+        "binary"
+      ],
+      "layer_count": 28,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/small/cs-small-05.json",
+      "tags": [
+        "cs",
+        "small",
+        "dataflow",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-small-06",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "binary"
+      ],
+      "layer_count": 21,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/small/cs-small-06.json",
+      "tags": [
+        "cs",
+        "small",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-small-07",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "dataflow"
+      ],
+      "layer_count": 5,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/small/cs-small-07.json",
+      "tags": [
+        "cs",
+        "small",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-small-08",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "binary",
+        "dataflow"
+      ],
+      "layer_count": 27,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/small/cs-small-08.json",
+      "tags": [
+        "cs",
+        "small",
+        "binary",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-small-09",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "dataflow",
+        "binary"
+      ],
+      "layer_count": 21,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/small/cs-small-09.json",
+      "tags": [
+        "cs",
+        "small",
+        "dataflow",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-small-10",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "binary"
+      ],
+      "layer_count": 20,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/small/cs-small-10.json",
+      "tags": [
+        "cs",
+        "small",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-medium-01",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "dataflow",
+        "binary"
+      ],
+      "layer_count": 61,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/medium/cs-medium-01.json",
+      "tags": [
+        "cs",
+        "medium",
+        "dataflow",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-medium-02",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "binary"
+      ],
+      "layer_count": 53,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/medium/cs-medium-02.json",
+      "tags": [
+        "cs",
+        "medium",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-medium-03",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "dataflow"
+      ],
+      "layer_count": 8,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/medium/cs-medium-03.json",
+      "tags": [
+        "cs",
+        "medium",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-medium-04",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "binary",
+        "dataflow"
+      ],
+      "layer_count": 51,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/medium/cs-medium-04.json",
+      "tags": [
+        "cs",
+        "medium",
+        "binary",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-medium-05",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "dataflow",
+        "binary"
+      ],
+      "layer_count": 54,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/medium/cs-medium-05.json",
+      "tags": [
+        "cs",
+        "medium",
+        "dataflow",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-medium-06",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "binary"
+      ],
+      "layer_count": 55,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/medium/cs-medium-06.json",
+      "tags": [
+        "cs",
+        "medium",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-medium-07",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "dataflow"
+      ],
+      "layer_count": 8,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/medium/cs-medium-07.json",
+      "tags": [
+        "cs",
+        "medium",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-medium-08",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "binary",
+        "dataflow"
+      ],
+      "layer_count": 55,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/medium/cs-medium-08.json",
+      "tags": [
+        "cs",
+        "medium",
+        "binary",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-medium-09",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "dataflow",
+        "binary"
+      ],
+      "layer_count": 53,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/medium/cs-medium-09.json",
+      "tags": [
+        "cs",
+        "medium",
+        "dataflow",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-medium-10",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "binary"
+      ],
+      "layer_count": 48,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/medium/cs-medium-10.json",
+      "tags": [
+        "cs",
+        "medium",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-large-01",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "dataflow",
+        "binary"
+      ],
+      "layer_count": 49,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/large/cs-large-01.json",
+      "tags": [
+        "cs",
+        "large",
+        "dataflow",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-large-02",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "binary"
+      ],
+      "layer_count": 38,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/large/cs-large-02.json",
+      "tags": [
+        "cs",
+        "large",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-large-03",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "dataflow"
+      ],
+      "layer_count": 15,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/large/cs-large-03.json",
+      "tags": [
+        "cs",
+        "large",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-large-04",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "binary",
+        "dataflow"
+      ],
+      "layer_count": 56,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/large/cs-large-04.json",
+      "tags": [
+        "cs",
+        "large",
+        "binary",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-large-05",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "dataflow",
+        "binary"
+      ],
+      "layer_count": 49,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/large/cs-large-05.json",
+      "tags": [
+        "cs",
+        "large",
+        "dataflow",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-large-06",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "binary"
+      ],
+      "layer_count": 39,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/large/cs-large-06.json",
+      "tags": [
+        "cs",
+        "large",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-large-07",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "dataflow"
+      ],
+      "layer_count": 12,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/large/cs-large-07.json",
+      "tags": [
+        "cs",
+        "large",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-large-08",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "binary",
+        "dataflow"
+      ],
+      "layer_count": 42,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/large/cs-large-08.json",
+      "tags": [
+        "cs",
+        "large",
+        "binary",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-large-09",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "dataflow",
+        "binary"
+      ],
+      "layer_count": 44,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/large/cs-large-09.json",
+      "tags": [
+        "cs",
+        "large",
+        "dataflow",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-large-10",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "binary"
+      ],
+      "layer_count": 39,
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "file": "cs/large/cs-large-10.json",
+      "tags": [
+        "cs",
+        "large",
+        "binary"
+      ]
+    },
+    {
+      "id": "math-small-01",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse",
+        "orbit"
+      ],
+      "layer_count": 6,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/small/math-small-01.json",
+      "tags": [
+        "math",
+        "small",
+        "pulse",
+        "orbit"
+      ]
+    },
+    {
+      "id": "math-small-02",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "orbit",
+        "spin"
+      ],
+      "layer_count": 6,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/small/math-small-02.json",
+      "tags": [
+        "math",
+        "small",
+        "orbit",
+        "spin"
+      ]
+    },
+    {
+      "id": "math-small-03",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "spin",
+        "orbit"
+      ],
+      "layer_count": 6,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/small/math-small-03.json",
+      "tags": [
+        "math",
+        "small",
+        "spin",
+        "orbit"
+      ]
+    },
+    {
+      "id": "math-small-04",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse",
+        "spin"
+      ],
+      "layer_count": 5,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/small/math-small-04.json",
+      "tags": [
+        "math",
+        "small",
+        "pulse",
+        "spin"
+      ]
+    },
+    {
+      "id": "math-small-05",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "orbit",
+        "pulse"
+      ],
+      "layer_count": 6,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/small/math-small-05.json",
+      "tags": [
+        "math",
+        "small",
+        "orbit",
+        "pulse"
+      ]
+    },
+    {
+      "id": "math-small-06",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "spin"
+      ],
+      "layer_count": 3,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/small/math-small-06.json",
+      "tags": [
+        "math",
+        "small",
+        "spin"
+      ]
+    },
+    {
+      "id": "math-small-07",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse"
+      ],
+      "layer_count": 3,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/small/math-small-07.json",
+      "tags": [
+        "math",
+        "small",
+        "pulse"
+      ]
+    },
+    {
+      "id": "math-small-08",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "orbit"
+      ],
+      "layer_count": 4,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/small/math-small-08.json",
+      "tags": [
+        "math",
+        "small",
+        "orbit"
+      ]
+    },
+    {
+      "id": "math-small-09",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "spin",
+        "pulse"
+      ],
+      "layer_count": 5,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/small/math-small-09.json",
+      "tags": [
+        "math",
+        "small",
+        "spin",
+        "pulse"
+      ]
+    },
+    {
+      "id": "math-small-10",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse",
+        "orbit"
+      ],
+      "layer_count": 6,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/small/math-small-10.json",
+      "tags": [
+        "math",
+        "small",
+        "pulse",
+        "orbit"
+      ]
+    },
+    {
+      "id": "math-medium-01",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse",
+        "orbit"
+      ],
+      "layer_count": 8,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/medium/math-medium-01.json",
+      "tags": [
+        "math",
+        "medium",
+        "pulse",
+        "orbit"
+      ]
+    },
+    {
+      "id": "math-medium-02",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "orbit",
+        "spin"
+      ],
+      "layer_count": 9,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/medium/math-medium-02.json",
+      "tags": [
+        "math",
+        "medium",
+        "orbit",
+        "spin"
+      ]
+    },
+    {
+      "id": "math-medium-03",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "spin",
+        "orbit"
+      ],
+      "layer_count": 9,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/medium/math-medium-03.json",
+      "tags": [
+        "math",
+        "medium",
+        "spin",
+        "orbit"
+      ]
+    },
+    {
+      "id": "math-medium-04",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse",
+        "spin"
+      ],
+      "layer_count": 8,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/medium/math-medium-04.json",
+      "tags": [
+        "math",
+        "medium",
+        "pulse",
+        "spin"
+      ]
+    },
+    {
+      "id": "math-medium-05",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "orbit",
+        "pulse"
+      ],
+      "layer_count": 8,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/medium/math-medium-05.json",
+      "tags": [
+        "math",
+        "medium",
+        "orbit",
+        "pulse"
+      ]
+    },
+    {
+      "id": "math-medium-06",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "spin"
+      ],
+      "layer_count": 5,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/medium/math-medium-06.json",
+      "tags": [
+        "math",
+        "medium",
+        "spin"
+      ]
+    },
+    {
+      "id": "math-medium-07",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse"
+      ],
+      "layer_count": 4,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/medium/math-medium-07.json",
+      "tags": [
+        "math",
+        "medium",
+        "pulse"
+      ]
+    },
+    {
+      "id": "math-medium-08",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "orbit"
+      ],
+      "layer_count": 5,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/medium/math-medium-08.json",
+      "tags": [
+        "math",
+        "medium",
+        "orbit"
+      ]
+    },
+    {
+      "id": "math-medium-09",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "spin",
+        "pulse"
+      ],
+      "layer_count": 8,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/medium/math-medium-09.json",
+      "tags": [
+        "math",
+        "medium",
+        "spin",
+        "pulse"
+      ]
+    },
+    {
+      "id": "math-medium-10",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse",
+        "orbit"
+      ],
+      "layer_count": 8,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/medium/math-medium-10.json",
+      "tags": [
+        "math",
+        "medium",
+        "pulse",
+        "orbit"
+      ]
+    },
+    {
+      "id": "math-large-01",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse",
+        "orbit"
+      ],
+      "layer_count": 12,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/large/math-large-01.json",
+      "tags": [
+        "math",
+        "large",
+        "pulse",
+        "orbit"
+      ]
+    },
+    {
+      "id": "math-large-02",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "orbit",
+        "spin"
+      ],
+      "layer_count": 13,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/large/math-large-02.json",
+      "tags": [
+        "math",
+        "large",
+        "orbit",
+        "spin"
+      ]
+    },
+    {
+      "id": "math-large-03",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "spin",
+        "orbit"
+      ],
+      "layer_count": 13,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/large/math-large-03.json",
+      "tags": [
+        "math",
+        "large",
+        "spin",
+        "orbit"
+      ]
+    },
+    {
+      "id": "math-large-04",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse",
+        "spin"
+      ],
+      "layer_count": 12,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/large/math-large-04.json",
+      "tags": [
+        "math",
+        "large",
+        "pulse",
+        "spin"
+      ]
+    },
+    {
+      "id": "math-large-05",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "orbit",
+        "pulse"
+      ],
+      "layer_count": 12,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/large/math-large-05.json",
+      "tags": [
+        "math",
+        "large",
+        "orbit",
+        "pulse"
+      ]
+    },
+    {
+      "id": "math-large-06",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "spin"
+      ],
+      "layer_count": 7,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/large/math-large-06.json",
+      "tags": [
+        "math",
+        "large",
+        "spin"
+      ]
+    },
+    {
+      "id": "math-large-07",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse"
+      ],
+      "layer_count": 6,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/large/math-large-07.json",
+      "tags": [
+        "math",
+        "large",
+        "pulse"
+      ]
+    },
+    {
+      "id": "math-large-08",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "orbit"
+      ],
+      "layer_count": 7,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/large/math-large-08.json",
+      "tags": [
+        "math",
+        "large",
+        "orbit"
+      ]
+    },
+    {
+      "id": "math-large-09",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "spin",
+        "pulse"
+      ],
+      "layer_count": 12,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/large/math-large-09.json",
+      "tags": [
+        "math",
+        "large",
+        "spin",
+        "pulse"
+      ]
+    },
+    {
+      "id": "math-large-10",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "pulse",
+        "orbit"
+      ],
+      "layer_count": 12,
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "file": "math/large/math-large-10.json",
+      "tags": [
+        "math",
+        "large",
+        "pulse",
+        "orbit"
+      ]
+    },
+    {
+      "id": "history-small-01",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "timeline",
+        "rings"
+      ],
+      "layer_count": 7,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/small/history-small-01.json",
+      "tags": [
+        "history",
+        "small",
+        "timeline",
+        "rings"
+      ]
+    },
+    {
+      "id": "history-small-02",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "rings"
+      ],
+      "layer_count": 3,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/small/history-small-02.json",
+      "tags": [
+        "history",
+        "small",
+        "rings"
+      ]
+    },
+    {
+      "id": "history-small-03",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "timeline"
+      ],
+      "layer_count": 5,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/small/history-small-03.json",
+      "tags": [
+        "history",
+        "small",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-small-04",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "rings",
+        "timeline"
+      ],
+      "layer_count": 7,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/small/history-small-04.json",
+      "tags": [
+        "history",
+        "small",
+        "rings",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-small-05",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "timeline",
+        "rings"
+      ],
+      "layer_count": 7,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/small/history-small-05.json",
+      "tags": [
+        "history",
+        "small",
+        "timeline",
+        "rings"
+      ]
+    },
+    {
+      "id": "history-small-06",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "rings"
+      ],
+      "layer_count": 3,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/small/history-small-06.json",
+      "tags": [
+        "history",
+        "small",
+        "rings"
+      ]
+    },
+    {
+      "id": "history-small-07",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "timeline"
+      ],
+      "layer_count": 5,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/small/history-small-07.json",
+      "tags": [
+        "history",
+        "small",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-small-08",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "rings",
+        "timeline"
+      ],
+      "layer_count": 7,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/small/history-small-08.json",
+      "tags": [
+        "history",
+        "small",
+        "rings",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-small-09",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "timeline",
+        "rings"
+      ],
+      "layer_count": 7,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/small/history-small-09.json",
+      "tags": [
+        "history",
+        "small",
+        "timeline",
+        "rings"
+      ]
+    },
+    {
+      "id": "history-small-10",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "rings"
+      ],
+      "layer_count": 3,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/small/history-small-10.json",
+      "tags": [
+        "history",
+        "small",
+        "rings"
+      ]
+    },
+    {
+      "id": "history-medium-01",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "timeline",
+        "rings"
+      ],
+      "layer_count": 12,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/medium/history-medium-01.json",
+      "tags": [
+        "history",
+        "medium",
+        "timeline",
+        "rings"
+      ]
+    },
+    {
+      "id": "history-medium-02",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "rings"
+      ],
+      "layer_count": 5,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/medium/history-medium-02.json",
+      "tags": [
+        "history",
+        "medium",
+        "rings"
+      ]
+    },
+    {
+      "id": "history-medium-03",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "timeline"
+      ],
+      "layer_count": 8,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/medium/history-medium-03.json",
+      "tags": [
+        "history",
+        "medium",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-medium-04",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "rings",
+        "timeline"
+      ],
+      "layer_count": 12,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/medium/history-medium-04.json",
+      "tags": [
+        "history",
+        "medium",
+        "rings",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-medium-05",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "timeline",
+        "rings"
+      ],
+      "layer_count": 12,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/medium/history-medium-05.json",
+      "tags": [
+        "history",
+        "medium",
+        "timeline",
+        "rings"
+      ]
+    },
+    {
+      "id": "history-medium-06",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "rings"
+      ],
+      "layer_count": 5,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/medium/history-medium-06.json",
+      "tags": [
+        "history",
+        "medium",
+        "rings"
+      ]
+    },
+    {
+      "id": "history-medium-07",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "timeline"
+      ],
+      "layer_count": 8,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/medium/history-medium-07.json",
+      "tags": [
+        "history",
+        "medium",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-medium-08",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "rings",
+        "timeline"
+      ],
+      "layer_count": 12,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/medium/history-medium-08.json",
+      "tags": [
+        "history",
+        "medium",
+        "rings",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-medium-09",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "timeline",
+        "rings"
+      ],
+      "layer_count": 12,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/medium/history-medium-09.json",
+      "tags": [
+        "history",
+        "medium",
+        "timeline",
+        "rings"
+      ]
+    },
+    {
+      "id": "history-medium-10",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "rings"
+      ],
+      "layer_count": 5,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/medium/history-medium-10.json",
+      "tags": [
+        "history",
+        "medium",
+        "rings"
+      ]
+    },
+    {
+      "id": "history-large-01",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "timeline",
+        "rings"
+      ],
+      "layer_count": 18,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/large/history-large-01.json",
+      "tags": [
+        "history",
+        "large",
+        "timeline",
+        "rings"
+      ]
+    },
+    {
+      "id": "history-large-02",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "rings"
+      ],
+      "layer_count": 7,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/large/history-large-02.json",
+      "tags": [
+        "history",
+        "large",
+        "rings"
+      ]
+    },
+    {
+      "id": "history-large-03",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "timeline"
+      ],
+      "layer_count": 12,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/large/history-large-03.json",
+      "tags": [
+        "history",
+        "large",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-large-04",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "rings",
+        "timeline"
+      ],
+      "layer_count": 18,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/large/history-large-04.json",
+      "tags": [
+        "history",
+        "large",
+        "rings",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-large-05",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "timeline",
+        "rings"
+      ],
+      "layer_count": 18,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/large/history-large-05.json",
+      "tags": [
+        "history",
+        "large",
+        "timeline",
+        "rings"
+      ]
+    },
+    {
+      "id": "history-large-06",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "rings"
+      ],
+      "layer_count": 7,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/large/history-large-06.json",
+      "tags": [
+        "history",
+        "large",
+        "rings"
+      ]
+    },
+    {
+      "id": "history-large-07",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "timeline"
+      ],
+      "layer_count": 12,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/large/history-large-07.json",
+      "tags": [
+        "history",
+        "large",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-large-08",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "rings",
+        "timeline"
+      ],
+      "layer_count": 18,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/large/history-large-08.json",
+      "tags": [
+        "history",
+        "large",
+        "rings",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-large-09",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "timeline",
+        "rings"
+      ],
+      "layer_count": 18,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/large/history-large-09.json",
+      "tags": [
+        "history",
+        "large",
+        "timeline",
+        "rings"
+      ]
+    },
+    {
+      "id": "history-large-10",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "rings"
+      ],
+      "layer_count": 7,
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "file": "history/large/history-large-10.json",
+      "tags": [
+        "history",
+        "large",
+        "rings"
+      ]
+    },
+    {
+      "id": "biology-small-01",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "growth",
+        "cells"
+      ],
+      "layer_count": 9,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/small/biology-small-01.json",
+      "tags": [
+        "biology",
+        "small",
+        "growth",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-small-02",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "cells"
+      ],
+      "layer_count": 7,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/small/biology-small-02.json",
+      "tags": [
+        "biology",
+        "small",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-small-03",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "growth"
+      ],
+      "layer_count": 3,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/small/biology-small-03.json",
+      "tags": [
+        "biology",
+        "small",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-small-04",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "cells",
+        "growth"
+      ],
+      "layer_count": 9,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/small/biology-small-04.json",
+      "tags": [
+        "biology",
+        "small",
+        "cells",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-small-05",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "growth",
+        "cells"
+      ],
+      "layer_count": 9,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/small/biology-small-05.json",
+      "tags": [
+        "biology",
+        "small",
+        "growth",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-small-06",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "cells"
+      ],
+      "layer_count": 7,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/small/biology-small-06.json",
+      "tags": [
+        "biology",
+        "small",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-small-07",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "growth"
+      ],
+      "layer_count": 3,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/small/biology-small-07.json",
+      "tags": [
+        "biology",
+        "small",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-small-08",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "cells",
+        "growth"
+      ],
+      "layer_count": 9,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/small/biology-small-08.json",
+      "tags": [
+        "biology",
+        "small",
+        "cells",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-small-09",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "growth",
+        "cells"
+      ],
+      "layer_count": 9,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/small/biology-small-09.json",
+      "tags": [
+        "biology",
+        "small",
+        "growth",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-small-10",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 200,
+      "height": 200,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "cells"
+      ],
+      "layer_count": 7,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/small/biology-small-10.json",
+      "tags": [
+        "biology",
+        "small",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-medium-01",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "growth",
+        "cells"
+      ],
+      "layer_count": 17,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/medium/biology-medium-01.json",
+      "tags": [
+        "biology",
+        "medium",
+        "growth",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-medium-02",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "cells"
+      ],
+      "layer_count": 13,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/medium/biology-medium-02.json",
+      "tags": [
+        "biology",
+        "medium",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-medium-03",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "growth"
+      ],
+      "layer_count": 5,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/medium/biology-medium-03.json",
+      "tags": [
+        "biology",
+        "medium",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-medium-04",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "cells",
+        "growth"
+      ],
+      "layer_count": 17,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/medium/biology-medium-04.json",
+      "tags": [
+        "biology",
+        "medium",
+        "cells",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-medium-05",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "growth",
+        "cells"
+      ],
+      "layer_count": 17,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/medium/biology-medium-05.json",
+      "tags": [
+        "biology",
+        "medium",
+        "growth",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-medium-06",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "cells"
+      ],
+      "layer_count": 13,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/medium/biology-medium-06.json",
+      "tags": [
+        "biology",
+        "medium",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-medium-07",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "growth"
+      ],
+      "layer_count": 5,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/medium/biology-medium-07.json",
+      "tags": [
+        "biology",
+        "medium",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-medium-08",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "cells",
+        "growth"
+      ],
+      "layer_count": 17,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/medium/biology-medium-08.json",
+      "tags": [
+        "biology",
+        "medium",
+        "cells",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-medium-09",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "growth",
+        "cells"
+      ],
+      "layer_count": 17,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/medium/biology-medium-09.json",
+      "tags": [
+        "biology",
+        "medium",
+        "growth",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-medium-10",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "cells"
+      ],
+      "layer_count": 13,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/medium/biology-medium-10.json",
+      "tags": [
+        "biology",
+        "medium",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-large-01",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "growth",
+        "cells"
+      ],
+      "layer_count": 27,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/large/biology-large-01.json",
+      "tags": [
+        "biology",
+        "large",
+        "growth",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-large-02",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "cells"
+      ],
+      "layer_count": 21,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/large/biology-large-02.json",
+      "tags": [
+        "biology",
+        "large",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-large-03",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "growth"
+      ],
+      "layer_count": 7,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/large/biology-large-03.json",
+      "tags": [
+        "biology",
+        "large",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-large-04",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "cells",
+        "growth"
+      ],
+      "layer_count": 27,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/large/biology-large-04.json",
+      "tags": [
+        "biology",
+        "large",
+        "cells",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-large-05",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "growth",
+        "cells"
+      ],
+      "layer_count": 27,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/large/biology-large-05.json",
+      "tags": [
+        "biology",
+        "large",
+        "growth",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-large-06",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "cells"
+      ],
+      "layer_count": 21,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/large/biology-large-06.json",
+      "tags": [
+        "biology",
+        "large",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-large-07",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "growth"
+      ],
+      "layer_count": 7,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/large/biology-large-07.json",
+      "tags": [
+        "biology",
+        "large",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-large-08",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "cells",
+        "growth"
+      ],
+      "layer_count": 27,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/large/biology-large-08.json",
+      "tags": [
+        "biology",
+        "large",
+        "cells",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-large-09",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "growth",
+        "cells"
+      ],
+      "layer_count": 27,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/large/biology-large-09.json",
+      "tags": [
+        "biology",
+        "large",
+        "growth",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-large-10",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 800,
+      "height": 450,
+      "fr": 30,
+      "frames": 90,
+      "duration_s": 3.0,
+      "loop": true,
+      "elements": [
+        "cells"
+      ],
+      "layer_count": 21,
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "file": "biology/large/biology-large-10.json",
+      "tags": [
+        "biology",
+        "large",
+        "cells"
+      ]
+    }
+  ],
+  "count": 180,
+  "topics": [
+    "physics",
+    "chemistry",
+    "cs",
+    "math",
+    "history",
+    "biology"
+  ],
+  "sizes": {
+    "small": {
+      "width": 200,
+      "height": 200,
+      "count": 10
+    },
+    "medium": {
+      "width": 400,
+      "height": 300,
+      "count": 10
+    },
+    "large": {
+      "width": 800,
+      "height": 450,
+      "count": 10
+    }
+  }
+}

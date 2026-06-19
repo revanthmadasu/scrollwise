@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="physics decorative background">
+  <defs>
+    <radialGradient id="grad-physics-small-09" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#5b8cff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0b1026" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="160" height="160" fill="#0b1026"/>
+  <rect width="160" height="160" fill="url(#grad-physics-small-09)"/>
+  <polyline points="0,39.57 12.31,39.33 24.62,39.16 36.92,39.08 49.23,39.07 61.54,39.15 73.85,39.31 86.15,39.55 98.46,39.85 110.77,40.22 123.08,40.65 135.38,41.12 147.69,41.63 160,42.16" fill="none" stroke="#39d0d8" stroke-width="1.21" opacity="0.17"/>
+  <polyline points="0,78.15 12.31,79.31 24.62,80.39 36.92,81.3 49.23,81.98 61.54,82.38 73.85,82.48 86.15,82.27 98.46,81.77 110.77,81 123.08,80.02 135.38,78.91 147.69,77.73 160,76.57" fill="none" stroke="#5b8cff" stroke-width="1.93" opacity="0.27"/>
+  <polyline points="0,124.04 12.31,123.19 24.62,122.35 36.92,121.53 49.23,120.75 61.54,120.04 73.85,119.41 86.15,118.88 98.46,118.46 110.77,118.17 123.08,118 135.38,117.96 147.69,118.06 160,118.29" fill="none" stroke="#39d0d8" stroke-width="1.51" opacity="0.36"/>
+  <circle cx="59.72" cy="97.19" r="33.33" fill="none" stroke="#9b6bff" stroke-width="1" opacity="0.28"/>
+  <circle cx="59.72" cy="97.19" r="66.67" fill="none" stroke="#9b6bff" stroke-width="1" opacity="0.25"/>
+  <circle cx="59.72" cy="97.19" r="100" fill="none" stroke="#9b6bff" stroke-width="1" opacity="0.22"/>
+  <line x1="59.72" y1="97.19" x2="130.45" y2="110.64" stroke="#5b8cff" stroke-width="0.6" opacity="0.12"/>
+  <line x1="59.72" y1="97.19" x2="87.2" y2="163.74" stroke="#5b8cff" stroke-width="0.6" opacity="0.12"/>
+  <line x1="59.72" y1="97.19" x2="8.92" y2="148.21" stroke="#5b8cff" stroke-width="0.6" opacity="0.12"/>
+  <line x1="59.72" y1="97.19" x2="-12.28" y2="97.17" stroke="#5b8cff" stroke-width="0.6" opacity="0.12"/>
+  <line x1="59.72" y1="97.19" x2="28.23" y2="32.44" stroke="#5b8cff" stroke-width="0.6" opacity="0.12"/>
+  <line x1="59.72" y1="97.19" x2="100.59" y2="37.91" stroke="#5b8cff" stroke-width="0.6" opacity="0.12"/>
+</svg>

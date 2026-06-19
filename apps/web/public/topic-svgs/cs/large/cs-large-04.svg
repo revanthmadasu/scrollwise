@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="cs decorative background">
+  <defs>
+    <radialGradient id="grad-cs-large-04" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#3ddc84" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#06120b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="960" height="540" fill="#06120b"/>
+  <rect width="960" height="540" fill="url(#grad-cs-large-04)"/>
+  <line x1="0" y1="67.5" x2="960" y2="67.5" stroke="#a6f4c5" stroke-width="0.8" stroke-dasharray="2 8" opacity="0.25"/>
+  <path d="M349.33,63.5 L359.33,67.5 L349.33,71.5 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M170.56,63.5 L180.56,67.5 L170.56,71.5 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M319.69,63.5 L329.69,67.5 L319.69,71.5 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M679.84,63.5 L689.84,67.5 L679.84,71.5 Z" fill="#3ddc84" opacity="0.5"/>
+  <line x1="0" y1="135" x2="960" y2="135" stroke="#a6f4c5" stroke-width="0.8" stroke-dasharray="2 8" opacity="0.25"/>
+  <path d="M193.23,131 L203.23,135 L193.23,139 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M477.1,131 L487.1,135 L477.1,139 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M588.18,131 L598.18,135 L588.18,139 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M172.1,131 L182.1,135 L172.1,139 Z" fill="#3ddc84" opacity="0.5"/>
+  <line x1="0" y1="202.5" x2="960" y2="202.5" stroke="#a6f4c5" stroke-width="0.8" stroke-dasharray="2 8" opacity="0.25"/>
+  <path d="M480.22,198.5 L490.22,202.5 L480.22,206.5 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M552.64,198.5 L562.64,202.5 L552.64,206.5 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M186.98,198.5 L196.98,202.5 L186.98,206.5 Z" fill="#3ddc84" opacity="0.5"/>
+  <line x1="0" y1="270" x2="960" y2="270" stroke="#a6f4c5" stroke-width="0.8" stroke-dasharray="2 8" opacity="0.25"/>
+  <path d="M129.05,266 L139.05,270 L129.05,274 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M646.81,266 L656.81,270 L646.81,274 Z" fill="#3ddc84" opacity="0.5"/>
+  <line x1="0" y1="337.5" x2="960" y2="337.5" stroke="#a6f4c5" stroke-width="0.8" stroke-dasharray="2 8" opacity="0.25"/>
+  <path d="M828.48,333.5 L838.48,337.5 L828.48,341.5 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M324.59,333.5 L334.59,337.5 L324.59,341.5 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M58.4,333.5 L68.4,337.5 L58.4,341.5 Z" fill="#3ddc84" opacity="0.5"/>
+  <line x1="0" y1="405" x2="960" y2="405" stroke="#a6f4c5" stroke-width="0.8" stroke-dasharray="2 8" opacity="0.25"/>
+  <path d="M149.82,401 L159.82,405 L149.82,409 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M722.19,401 L732.19,405 L722.19,409 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M582.97,401 L592.97,405 L582.97,409 Z" fill="#3ddc84" opacity="0.5"/>
+  <line x1="0" y1="472.5" x2="960" y2="472.5" stroke="#a6f4c5" stroke-width="0.8" stroke-dasharray="2 8" opacity="0.25"/>
+  <path d="M808.46,468.5 L818.46,472.5 L808.46,476.5 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M807.9,468.5 L817.9,472.5 L807.9,476.5 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M448,448 L336,448 L336,540 L112,540" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="112" cy="540" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M0,336 L0,448 L0,112 L0,112" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="0" cy="112" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M224,0 L0,0 L336,0 L336,336 L112,336" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="112" cy="336" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M896,448 L896,336 L960,336 L960,336" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="960" cy="336" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M672,448 L896,448 L896,540" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="896" cy="540" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M112,448 L112,540 L448,540" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="448" cy="540" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M672,560 L672,224 L672,448" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="672" cy="448" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M224,112 L112,112 L112,336" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="112" cy="336" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M0,448 L0,224 L0,224 L0,0" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="0" cy="0" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M560,448 L560,540 L224,540" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="224" cy="540" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M672,448 L672,224 L672,0 L672,224" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="672" cy="224" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M0,336 L0,336 L0,336 L336,336 L112,336" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="112" cy="336" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M448,336 L448,540 L448,428 L560,428" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="560" cy="428" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M560,336 L672,336 L672,448 L784,448 L784,540" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="784" cy="540" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="math decorative background">
+  <defs>
+    <radialGradient id="grad-math-large-03" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#8b7bff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0e0a1f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="960" height="540" fill="#0e0a1f"/>
+  <rect width="960" height="540" fill="url(#grad-math-large-03)"/>
+  <polygon points="245.59,342.38 277.93,306.83 313.48,339.17 281.14,374.73" fill="none" stroke="#8b7bff" stroke-width="1.2" opacity="0.26"/>
+  <polygon points="308.59,474.05 256.14,470.56 259.63,418.11 312.08,421.6" fill="none" stroke="#5b8cff" stroke-width="1.2" opacity="0.28"/>
+  <polygon points="455.53,272.48 462.92,319.79 415.61,327.18 408.22,279.87" fill="none" stroke="#5b8cff" stroke-width="1.2" opacity="0.33"/>
+  <polygon points="600.59,104.43 547.24,141.91 509.76,88.56 563.11,51.08" fill="none" stroke="#c4b5fd" stroke-width="1.2" opacity="0.38"/>
+  <polygon points="399.04,375.78 376.18,447.87 304.08,425.01 326.94,352.92" fill="none" stroke="#8b7bff" stroke-width="1.2" opacity="0.38"/>
+  <polygon points="597.8,464.43 610.57,430.23 647.05,431.81 656.82,467 626.38,487.16" fill="none" stroke="#c4b5fd" stroke-width="1.2" opacity="0.38"/>
+  <polygon points="495.48,248.49 490.86,311.43 427.92,306.81 432.54,243.87" fill="none" stroke="#5b8cff" stroke-width="1.2" opacity="0.35"/>
+  <polygon points="531.95,410.58 454.3,383.75 455.82,301.6 534.41,277.67 581.46,345.02" fill="none" stroke="#5b8cff" stroke-width="1.2" opacity="0.3"/>
+  <polygon points="305.97,299.33 268.16,212.87 354.62,175.06 392.43,261.52" fill="none" stroke="#8b7bff" stroke-width="1.2" opacity="0.41"/>
+  <polygon points="775.06,204.3 732.13,180.7 731.11,131.72 773.02,106.34 815.95,129.94 816.97,178.92" fill="none" stroke="#8b7bff" stroke-width="1.2" opacity="0.38"/>
+  <line x1="0" y1="0" x2="0" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="79" y1="0" x2="79" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="158" y1="0" x2="158" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="237" y1="0" x2="237" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="316" y1="0" x2="316" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="395" y1="0" x2="395" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="474" y1="0" x2="474" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="553" y1="0" x2="553" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="632" y1="0" x2="632" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="711" y1="0" x2="711" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="790" y1="0" x2="790" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="869" y1="0" x2="869" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="948" y1="0" x2="948" y2="540" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="0" x2="960" y2="0" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="79" x2="960" y2="79" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="158" x2="960" y2="158" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="237" x2="960" y2="237" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="316" x2="960" y2="316" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="395" x2="960" y2="395" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="474" x2="960" y2="474" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <polyline points="0,513 10,511.49 20,509.94 30,508.37 40,506.76 50,505.11 60,503.43 70,501.72 80,499.97 90,498.18 100,496.36 110,494.5 120,492.6 130,490.65 140,488.67 150,486.65 160,484.58 170,482.47 180,480.31 190,478.11 200,475.87 210,473.57 220,471.23 230,468.84 240,466.39 250,463.9 260,461.36 270,458.76 280,456.1 290,453.39 300,450.62 310,447.8 320,444.91 330,441.97 340,438.96 350,435.89 360,432.75 370,429.55 380,426.28 390,422.94 400,419.54 410,416.06 420,412.5 430,408.87 440,405.17 450,401.39 460,397.53 470,393.58 480,389.56 490,385.44 500,381.25 510,376.96 520,372.58 530,368.12 540,363.55 550,358.9 560,354.14 570,349.28 580,344.32 590,339.26 600,334.09 610,328.81 620,323.42 630,317.92 640,312.3 650,306.56 660,300.7 670,294.72 680,288.61 690,282.38 700,276.01 710,269.51 720,262.87 730,256.09 740,249.17 750,242.1 760,234.89 770,227.52 780,220 790,212.32 800,204.48 810,196.47 820,188.29 830,179.95 840,171.42 850,162.72 860,153.83 870,144.76 880,135.49 890,126.03 900,116.38 910,106.51 920,96.44 930,86.16 940,75.66 950,64.94 960,54" fill="none" stroke="#8b7bff" stroke-width="2" opacity="0.55"/>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="biology decorative background">
+  <defs>
+    <radialGradient id="grad-biology-large-08" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#56c26a" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#071508" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="960" height="540" fill="#071508"/>
+  <rect width="960" height="540" fill="url(#grad-biology-large-08)"/>
+  <path d="M55.81,504.92 C847.08,71.37 647.2,289.02 940.14,163.54" fill="none" stroke="#56c26a" stroke-width="2.02" opacity="0.34"/>
+  <path d="M63.76,506.8 C292.01,63.62 50.72,404.87 723.31,419.27" fill="none" stroke="#56c26a" stroke-width="1.43" opacity="0.18"/>
+  <path d="M101.52,261.24 C671.47,164.5 534.32,500.59 947.63,43.8" fill="none" stroke="#56c26a" stroke-width="2.33" opacity="0.19"/>
+  <path d="M25.72,512.69 C114.21,407.17 336.77,263.25 907.04,252.82" fill="none" stroke="#2f9e6b" stroke-width="1.33" opacity="0.25"/>
+  <path d="M13.79,326.48 C886.66,380.83 48.67,201.16 777.11,197.04" fill="none" stroke="#2f9e6b" stroke-width="1.86" opacity="0.21"/>
+  <path d="M97.21,188.76 C647.29,423.78 311.62,479.95 895.87,294.35" fill="none" stroke="#56c26a" stroke-width="1.75" opacity="0.29"/>
+  <path d="M10.41,57.3 C876.21,325.75 101.5,345.2 945.13,181.3" fill="none" stroke="#56c26a" stroke-width="1.01" opacity="0.21"/>
+  <path d="M268.49,334.03 C112.23,492.88 185.73,522.84 860.68,296.19" fill="none" stroke="#56c26a" stroke-width="1.2" opacity="0.29"/>
+  <path d="M96.52,454.18 C19.9,440.98 160.79,524.52 951.13,117.5" fill="none" stroke="#56c26a" stroke-width="1.66" opacity="0.22"/>
+  <path d="M271.03,133.31 C262.7,375.84 324.54,493.84 954.62,93.36" fill="none" stroke="#56c26a" stroke-width="2.38" opacity="0.33"/>
+</svg>

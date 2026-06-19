@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="chemistry decorative background">
+  <defs>
+    <radialGradient id="grad-chemistry-small-02" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#2dd4a7" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#08160f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="160" height="160" fill="#08160f"/>
+  <rect width="160" height="160" fill="url(#grad-chemistry-small-02)"/>
+  <path d="M102.85,67.18 C103.71,75.04 101.19,91.59 95.11,95.22 C89.03,98.84 74.42,93.58 66.38,88.91 C58.34,84.24 47.13,74.89 46.86,67.18 C46.59,59.48 57.6,45.87 64.78,42.69 C71.97,39.51 83.61,44 89.95,48.08 C96.3,52.16 101.99,59.33 102.85,67.18 Z" fill="#f06aa6" opacity="0.12"/>
+  <path d="M102.85,67.18 C103.71,75.04 101.19,91.59 95.11,95.22 C89.03,98.84 74.42,93.58 66.38,88.91 C58.34,84.24 47.13,74.89 46.86,67.18 C46.59,59.48 57.6,45.87 64.78,42.69 C71.97,39.51 83.61,44 89.95,48.08 C96.3,52.16 101.99,59.33 102.85,67.18 Z" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.25"/>
+  <line x1="86.6" y1="50.55" x2="50.55" y2="124.14" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="86.6" y1="50.55" x2="18.77" y2="103.38" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="50.55" y1="124.14" x2="19.5" y2="123.92" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="50.55" y1="124.14" x2="18.77" y2="103.38" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="19.5" y1="123.92" x2="18.77" y2="103.38" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="19.5" y1="123.92" x2="50.55" y2="124.14" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="18.77" y1="103.38" x2="19.5" y2="123.92" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="18.77" y1="103.38" x2="50.55" y2="124.14" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <circle cx="86.6" cy="50.55" r="4.88" fill="#2dd4a7" opacity="0.5"/>
+  <circle cx="50.55" cy="124.14" r="6.27" fill="#f06aa6" opacity="0.5"/>
+  <circle cx="19.5" cy="123.92" r="7.34" fill="#2dd4a7" opacity="0.5"/>
+  <circle cx="18.77" cy="103.38" r="4.22" fill="#2dd4a7" opacity="0.5"/>
+</svg>

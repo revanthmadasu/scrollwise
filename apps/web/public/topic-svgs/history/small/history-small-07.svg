@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="history decorative background">
+  <defs>
+    <radialGradient id="grad-history-small-07" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#caa15a" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#1b1305" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="160" height="160" fill="#1b1305"/>
+  <rect width="160" height="160" fill="url(#grad-history-small-07)"/>
+  <line x1="8" y1="80" x2="152" y2="80" stroke="#caa15a" stroke-width="1.6" opacity="0.4"/>
+  <circle cx="8" cy="80" r="4" fill="#b5651d" opacity="0.6"/>
+  <line x1="8" y1="80" x2="8" y2="59.5" stroke="#e7cfa0" stroke-width="1" opacity="0.3"/>
+  <circle cx="80" cy="80" r="4" fill="#b5651d" opacity="0.6"/>
+  <line x1="80" y1="80" x2="80" y2="93.24" stroke="#e7cfa0" stroke-width="1" opacity="0.3"/>
+  <circle cx="152" cy="80" r="4" fill="#b5651d" opacity="0.6"/>
+  <line x1="152" y1="80" x2="152" y2="61.31" stroke="#e7cfa0" stroke-width="1" opacity="0.3"/>
+</svg>

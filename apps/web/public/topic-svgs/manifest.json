@@ -1,0 +1,4783 @@
+{
+  "generated_by": "scripts/gen_topic_svgs.py",
+  "assets": [
+    {
+      "id": "physics-small-01",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "field",
+        "particles"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 3221795799,
+      "file": "physics/small/physics-small-01.svg",
+      "tags": [
+        "physics",
+        "small",
+        "field",
+        "particles"
+      ]
+    },
+    {
+      "id": "physics-small-02",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "particles",
+        "waves"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 214536921,
+      "file": "physics/small/physics-small-02.svg",
+      "tags": [
+        "physics",
+        "small",
+        "particles",
+        "waves"
+      ]
+    },
+    {
+      "id": "physics-small-03",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "waves",
+        "particles"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 4155707992,
+      "file": "physics/small/physics-small-03.svg",
+      "tags": [
+        "physics",
+        "small",
+        "waves",
+        "particles"
+      ]
+    },
+    {
+      "id": "physics-small-04",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "field",
+        "waves"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 3113786233,
+      "file": "physics/small/physics-small-04.svg",
+      "tags": [
+        "physics",
+        "small",
+        "field",
+        "waves"
+      ]
+    },
+    {
+      "id": "physics-small-05",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "particles",
+        "field"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 2574678565,
+      "file": "physics/small/physics-small-05.svg",
+      "tags": [
+        "physics",
+        "small",
+        "particles",
+        "field"
+      ]
+    },
+    {
+      "id": "physics-small-06",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "waves"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 3465121519,
+      "file": "physics/small/physics-small-06.svg",
+      "tags": [
+        "physics",
+        "small",
+        "waves"
+      ]
+    },
+    {
+      "id": "physics-small-07",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "field"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 1330347043,
+      "file": "physics/small/physics-small-07.svg",
+      "tags": [
+        "physics",
+        "small",
+        "field"
+      ]
+    },
+    {
+      "id": "physics-small-08",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "particles"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 1218317022,
+      "file": "physics/small/physics-small-08.svg",
+      "tags": [
+        "physics",
+        "small",
+        "particles"
+      ]
+    },
+    {
+      "id": "physics-small-09",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "waves",
+        "field"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 1145064456,
+      "file": "physics/small/physics-small-09.svg",
+      "tags": [
+        "physics",
+        "small",
+        "waves",
+        "field"
+      ]
+    },
+    {
+      "id": "physics-small-10",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "field",
+        "particles"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 393000933,
+      "file": "physics/small/physics-small-10.svg",
+      "tags": [
+        "physics",
+        "small",
+        "field",
+        "particles"
+      ]
+    },
+    {
+      "id": "physics-medium-01",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "field",
+        "particles"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 1626282821,
+      "file": "physics/medium/physics-medium-01.svg",
+      "tags": [
+        "physics",
+        "medium",
+        "field",
+        "particles"
+      ]
+    },
+    {
+      "id": "physics-medium-02",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "particles",
+        "waves"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 4151489807,
+      "file": "physics/medium/physics-medium-02.svg",
+      "tags": [
+        "physics",
+        "medium",
+        "particles",
+        "waves"
+      ]
+    },
+    {
+      "id": "physics-medium-03",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "waves",
+        "particles"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 1579109224,
+      "file": "physics/medium/physics-medium-03.svg",
+      "tags": [
+        "physics",
+        "medium",
+        "waves",
+        "particles"
+      ]
+    },
+    {
+      "id": "physics-medium-04",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "field",
+        "waves"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 3141518569,
+      "file": "physics/medium/physics-medium-04.svg",
+      "tags": [
+        "physics",
+        "medium",
+        "field",
+        "waves"
+      ]
+    },
+    {
+      "id": "physics-medium-05",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "particles",
+        "field"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 2942017727,
+      "file": "physics/medium/physics-medium-05.svg",
+      "tags": [
+        "physics",
+        "medium",
+        "particles",
+        "field"
+      ]
+    },
+    {
+      "id": "physics-medium-06",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "waves"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 510166799,
+      "file": "physics/medium/physics-medium-06.svg",
+      "tags": [
+        "physics",
+        "medium",
+        "waves"
+      ]
+    },
+    {
+      "id": "physics-medium-07",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "field"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 2181969481,
+      "file": "physics/medium/physics-medium-07.svg",
+      "tags": [
+        "physics",
+        "medium",
+        "field"
+      ]
+    },
+    {
+      "id": "physics-medium-08",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "particles"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 3480293832,
+      "file": "physics/medium/physics-medium-08.svg",
+      "tags": [
+        "physics",
+        "medium",
+        "particles"
+      ]
+    },
+    {
+      "id": "physics-medium-09",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "waves",
+        "field"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 54560336,
+      "file": "physics/medium/physics-medium-09.svg",
+      "tags": [
+        "physics",
+        "medium",
+        "waves",
+        "field"
+      ]
+    },
+    {
+      "id": "physics-medium-10",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "field",
+        "particles"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 1540057501,
+      "file": "physics/medium/physics-medium-10.svg",
+      "tags": [
+        "physics",
+        "medium",
+        "field",
+        "particles"
+      ]
+    },
+    {
+      "id": "physics-large-01",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "field",
+        "particles"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 1126354057,
+      "file": "physics/large/physics-large-01.svg",
+      "tags": [
+        "physics",
+        "large",
+        "field",
+        "particles"
+      ]
+    },
+    {
+      "id": "physics-large-02",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "particles",
+        "waves"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 986622099,
+      "file": "physics/large/physics-large-02.svg",
+      "tags": [
+        "physics",
+        "large",
+        "particles",
+        "waves"
+      ]
+    },
+    {
+      "id": "physics-large-03",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "waves",
+        "particles"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 343163190,
+      "file": "physics/large/physics-large-03.svg",
+      "tags": [
+        "physics",
+        "large",
+        "waves",
+        "particles"
+      ]
+    },
+    {
+      "id": "physics-large-04",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "field",
+        "waves"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 3880439999,
+      "file": "physics/large/physics-large-04.svg",
+      "tags": [
+        "physics",
+        "large",
+        "field",
+        "waves"
+      ]
+    },
+    {
+      "id": "physics-large-05",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "particles",
+        "field"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 800955611,
+      "file": "physics/large/physics-large-05.svg",
+      "tags": [
+        "physics",
+        "large",
+        "particles",
+        "field"
+      ]
+    },
+    {
+      "id": "physics-large-06",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "waves"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 3695668473,
+      "file": "physics/large/physics-large-06.svg",
+      "tags": [
+        "physics",
+        "large",
+        "waves"
+      ]
+    },
+    {
+      "id": "physics-large-07",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "field"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 3385116487,
+      "file": "physics/large/physics-large-07.svg",
+      "tags": [
+        "physics",
+        "large",
+        "field"
+      ]
+    },
+    {
+      "id": "physics-large-08",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "particles"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 4192822990,
+      "file": "physics/large/physics-large-08.svg",
+      "tags": [
+        "physics",
+        "large",
+        "particles"
+      ]
+    },
+    {
+      "id": "physics-large-09",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "waves",
+        "field"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 3511253446,
+      "file": "physics/large/physics-large-09.svg",
+      "tags": [
+        "physics",
+        "large",
+        "waves",
+        "field"
+      ]
+    },
+    {
+      "id": "physics-large-10",
+      "topic": "physics",
+      "mood": "wave patterns, energy fields, particles",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "field",
+        "particles"
+      ],
+      "palette": {
+        "bg": "#0b1026",
+        "accent": "#5b8cff",
+        "accent2": "#9b6bff",
+        "accent3": "#39d0d8"
+      },
+      "seed": 1780990377,
+      "file": "physics/large/physics-large-10.svg",
+      "tags": [
+        "physics",
+        "large",
+        "field",
+        "particles"
+      ]
+    },
+    {
+      "id": "chemistry-small-01",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "bubbles",
+        "blob"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 4024434393,
+      "file": "chemistry/small/chemistry-small-01.svg",
+      "tags": [
+        "chemistry",
+        "small",
+        "bubbles",
+        "blob"
+      ]
+    },
+    {
+      "id": "chemistry-small-02",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "blob",
+        "molecule"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 1296543995,
+      "file": "chemistry/small/chemistry-small-02.svg",
+      "tags": [
+        "chemistry",
+        "small",
+        "blob",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-small-03",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "molecule",
+        "blob"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 3124149033,
+      "file": "chemistry/small/chemistry-small-03.svg",
+      "tags": [
+        "chemistry",
+        "small",
+        "molecule",
+        "blob"
+      ]
+    },
+    {
+      "id": "chemistry-small-04",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "bubbles",
+        "molecule"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 1817234563,
+      "file": "chemistry/small/chemistry-small-04.svg",
+      "tags": [
+        "chemistry",
+        "small",
+        "bubbles",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-small-05",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "blob",
+        "bubbles"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 1770279038,
+      "file": "chemistry/small/chemistry-small-05.svg",
+      "tags": [
+        "chemistry",
+        "small",
+        "blob",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-small-06",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "molecule"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 1697062805,
+      "file": "chemistry/small/chemistry-small-06.svg",
+      "tags": [
+        "chemistry",
+        "small",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-small-07",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "bubbles"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 3928181550,
+      "file": "chemistry/small/chemistry-small-07.svg",
+      "tags": [
+        "chemistry",
+        "small",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-small-08",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "blob"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 535249091,
+      "file": "chemistry/small/chemistry-small-08.svg",
+      "tags": [
+        "chemistry",
+        "small",
+        "blob"
+      ]
+    },
+    {
+      "id": "chemistry-small-09",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "molecule",
+        "bubbles"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 868900544,
+      "file": "chemistry/small/chemistry-small-09.svg",
+      "tags": [
+        "chemistry",
+        "small",
+        "molecule",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-small-10",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "bubbles",
+        "blob"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 1872321901,
+      "file": "chemistry/small/chemistry-small-10.svg",
+      "tags": [
+        "chemistry",
+        "small",
+        "bubbles",
+        "blob"
+      ]
+    },
+    {
+      "id": "chemistry-medium-01",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "bubbles",
+        "blob"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 23019095,
+      "file": "chemistry/medium/chemistry-medium-01.svg",
+      "tags": [
+        "chemistry",
+        "medium",
+        "bubbles",
+        "blob"
+      ]
+    },
+    {
+      "id": "chemistry-medium-02",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "blob",
+        "molecule"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 720014846,
+      "file": "chemistry/medium/chemistry-medium-02.svg",
+      "tags": [
+        "chemistry",
+        "medium",
+        "blob",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-medium-03",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "molecule",
+        "blob"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 1910944518,
+      "file": "chemistry/medium/chemistry-medium-03.svg",
+      "tags": [
+        "chemistry",
+        "medium",
+        "molecule",
+        "blob"
+      ]
+    },
+    {
+      "id": "chemistry-medium-04",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "bubbles",
+        "molecule"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 1841846549,
+      "file": "chemistry/medium/chemistry-medium-04.svg",
+      "tags": [
+        "chemistry",
+        "medium",
+        "bubbles",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-medium-05",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "blob",
+        "bubbles"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 347324774,
+      "file": "chemistry/medium/chemistry-medium-05.svg",
+      "tags": [
+        "chemistry",
+        "medium",
+        "blob",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-medium-06",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "molecule"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 336202029,
+      "file": "chemistry/medium/chemistry-medium-06.svg",
+      "tags": [
+        "chemistry",
+        "medium",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-medium-07",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "bubbles"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 4011021608,
+      "file": "chemistry/medium/chemistry-medium-07.svg",
+      "tags": [
+        "chemistry",
+        "medium",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-medium-08",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "blob"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 1346534889,
+      "file": "chemistry/medium/chemistry-medium-08.svg",
+      "tags": [
+        "chemistry",
+        "medium",
+        "blob"
+      ]
+    },
+    {
+      "id": "chemistry-medium-09",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "molecule",
+        "bubbles"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 3875309578,
+      "file": "chemistry/medium/chemistry-medium-09.svg",
+      "tags": [
+        "chemistry",
+        "medium",
+        "molecule",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-medium-10",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "bubbles",
+        "blob"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 3557916811,
+      "file": "chemistry/medium/chemistry-medium-10.svg",
+      "tags": [
+        "chemistry",
+        "medium",
+        "bubbles",
+        "blob"
+      ]
+    },
+    {
+      "id": "chemistry-large-01",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "bubbles",
+        "blob"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 2847209440,
+      "file": "chemistry/large/chemistry-large-01.svg",
+      "tags": [
+        "chemistry",
+        "large",
+        "bubbles",
+        "blob"
+      ]
+    },
+    {
+      "id": "chemistry-large-02",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "blob",
+        "molecule"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 2956734623,
+      "file": "chemistry/large/chemistry-large-02.svg",
+      "tags": [
+        "chemistry",
+        "large",
+        "blob",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-large-03",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "molecule",
+        "blob"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 542263111,
+      "file": "chemistry/large/chemistry-large-03.svg",
+      "tags": [
+        "chemistry",
+        "large",
+        "molecule",
+        "blob"
+      ]
+    },
+    {
+      "id": "chemistry-large-04",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "bubbles",
+        "molecule"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 3967798728,
+      "file": "chemistry/large/chemistry-large-04.svg",
+      "tags": [
+        "chemistry",
+        "large",
+        "bubbles",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-large-05",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "blob",
+        "bubbles"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 4034387344,
+      "file": "chemistry/large/chemistry-large-05.svg",
+      "tags": [
+        "chemistry",
+        "large",
+        "blob",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-large-06",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "molecule"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 937191365,
+      "file": "chemistry/large/chemistry-large-06.svg",
+      "tags": [
+        "chemistry",
+        "large",
+        "molecule"
+      ]
+    },
+    {
+      "id": "chemistry-large-07",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "bubbles"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 1317058631,
+      "file": "chemistry/large/chemistry-large-07.svg",
+      "tags": [
+        "chemistry",
+        "large",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-large-08",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "blob"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 1699685648,
+      "file": "chemistry/large/chemistry-large-08.svg",
+      "tags": [
+        "chemistry",
+        "large",
+        "blob"
+      ]
+    },
+    {
+      "id": "chemistry-large-09",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "molecule",
+        "bubbles"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 3871518233,
+      "file": "chemistry/large/chemistry-large-09.svg",
+      "tags": [
+        "chemistry",
+        "large",
+        "molecule",
+        "bubbles"
+      ]
+    },
+    {
+      "id": "chemistry-large-10",
+      "topic": "chemistry",
+      "mood": "molecular bonds, bubbles, organic shapes",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "bubbles",
+        "blob"
+      ],
+      "palette": {
+        "bg": "#08160f",
+        "accent": "#2dd4a7",
+        "accent2": "#f06aa6",
+        "accent3": "#7be0c4"
+      },
+      "seed": 3681045706,
+      "file": "chemistry/large/chemistry-large-10.svg",
+      "tags": [
+        "chemistry",
+        "large",
+        "bubbles",
+        "blob"
+      ]
+    },
+    {
+      "id": "cs-small-01",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "dataflow",
+        "binary"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 481923578,
+      "file": "cs/small/cs-small-01.svg",
+      "tags": [
+        "cs",
+        "small",
+        "dataflow",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-small-02",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "binary",
+        "circuit"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 1618969121,
+      "file": "cs/small/cs-small-02.svg",
+      "tags": [
+        "cs",
+        "small",
+        "binary",
+        "circuit"
+      ]
+    },
+    {
+      "id": "cs-small-03",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "circuit",
+        "binary"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 2483763995,
+      "file": "cs/small/cs-small-03.svg",
+      "tags": [
+        "cs",
+        "small",
+        "circuit",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-small-04",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "dataflow",
+        "circuit"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 3082738172,
+      "file": "cs/small/cs-small-04.svg",
+      "tags": [
+        "cs",
+        "small",
+        "dataflow",
+        "circuit"
+      ]
+    },
+    {
+      "id": "cs-small-05",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "binary",
+        "dataflow"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 3352697028,
+      "file": "cs/small/cs-small-05.svg",
+      "tags": [
+        "cs",
+        "small",
+        "binary",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-small-06",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "circuit"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 3113623357,
+      "file": "cs/small/cs-small-06.svg",
+      "tags": [
+        "cs",
+        "small",
+        "circuit"
+      ]
+    },
+    {
+      "id": "cs-small-07",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "dataflow"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 4220059015,
+      "file": "cs/small/cs-small-07.svg",
+      "tags": [
+        "cs",
+        "small",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-small-08",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "binary"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 1155735101,
+      "file": "cs/small/cs-small-08.svg",
+      "tags": [
+        "cs",
+        "small",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-small-09",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "circuit",
+        "dataflow"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 2361897511,
+      "file": "cs/small/cs-small-09.svg",
+      "tags": [
+        "cs",
+        "small",
+        "circuit",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-small-10",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "dataflow",
+        "binary"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 657865657,
+      "file": "cs/small/cs-small-10.svg",
+      "tags": [
+        "cs",
+        "small",
+        "dataflow",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-medium-01",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "dataflow",
+        "binary"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 3849360755,
+      "file": "cs/medium/cs-medium-01.svg",
+      "tags": [
+        "cs",
+        "medium",
+        "dataflow",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-medium-02",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "binary",
+        "circuit"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 3332689907,
+      "file": "cs/medium/cs-medium-02.svg",
+      "tags": [
+        "cs",
+        "medium",
+        "binary",
+        "circuit"
+      ]
+    },
+    {
+      "id": "cs-medium-03",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "circuit",
+        "binary"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 229618536,
+      "file": "cs/medium/cs-medium-03.svg",
+      "tags": [
+        "cs",
+        "medium",
+        "circuit",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-medium-04",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "dataflow",
+        "circuit"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 1593981770,
+      "file": "cs/medium/cs-medium-04.svg",
+      "tags": [
+        "cs",
+        "medium",
+        "dataflow",
+        "circuit"
+      ]
+    },
+    {
+      "id": "cs-medium-05",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "binary",
+        "dataflow"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 2225180356,
+      "file": "cs/medium/cs-medium-05.svg",
+      "tags": [
+        "cs",
+        "medium",
+        "binary",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-medium-06",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "circuit"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 2972559023,
+      "file": "cs/medium/cs-medium-06.svg",
+      "tags": [
+        "cs",
+        "medium",
+        "circuit"
+      ]
+    },
+    {
+      "id": "cs-medium-07",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "dataflow"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 2296764005,
+      "file": "cs/medium/cs-medium-07.svg",
+      "tags": [
+        "cs",
+        "medium",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-medium-08",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "binary"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 2492348121,
+      "file": "cs/medium/cs-medium-08.svg",
+      "tags": [
+        "cs",
+        "medium",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-medium-09",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "circuit",
+        "dataflow"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 261494544,
+      "file": "cs/medium/cs-medium-09.svg",
+      "tags": [
+        "cs",
+        "medium",
+        "circuit",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-medium-10",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "dataflow",
+        "binary"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 2426203091,
+      "file": "cs/medium/cs-medium-10.svg",
+      "tags": [
+        "cs",
+        "medium",
+        "dataflow",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-large-01",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "dataflow",
+        "binary"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 3329591,
+      "file": "cs/large/cs-large-01.svg",
+      "tags": [
+        "cs",
+        "large",
+        "dataflow",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-large-02",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "binary",
+        "circuit"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 592257347,
+      "file": "cs/large/cs-large-02.svg",
+      "tags": [
+        "cs",
+        "large",
+        "binary",
+        "circuit"
+      ]
+    },
+    {
+      "id": "cs-large-03",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "circuit",
+        "binary"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 4278590922,
+      "file": "cs/large/cs-large-03.svg",
+      "tags": [
+        "cs",
+        "large",
+        "circuit",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-large-04",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "dataflow",
+        "circuit"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 1410167219,
+      "file": "cs/large/cs-large-04.svg",
+      "tags": [
+        "cs",
+        "large",
+        "dataflow",
+        "circuit"
+      ]
+    },
+    {
+      "id": "cs-large-05",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "binary",
+        "dataflow"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 1430439350,
+      "file": "cs/large/cs-large-05.svg",
+      "tags": [
+        "cs",
+        "large",
+        "binary",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-large-06",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "circuit"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 1798663684,
+      "file": "cs/large/cs-large-06.svg",
+      "tags": [
+        "cs",
+        "large",
+        "circuit"
+      ]
+    },
+    {
+      "id": "cs-large-07",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "dataflow"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 3918345168,
+      "file": "cs/large/cs-large-07.svg",
+      "tags": [
+        "cs",
+        "large",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-large-08",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "binary"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 3974127341,
+      "file": "cs/large/cs-large-08.svg",
+      "tags": [
+        "cs",
+        "large",
+        "binary"
+      ]
+    },
+    {
+      "id": "cs-large-09",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "circuit",
+        "dataflow"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 1671995750,
+      "file": "cs/large/cs-large-09.svg",
+      "tags": [
+        "cs",
+        "large",
+        "circuit",
+        "dataflow"
+      ]
+    },
+    {
+      "id": "cs-large-10",
+      "topic": "cs",
+      "mood": "circuit grids, data flow, binary patterns",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "dataflow",
+        "binary"
+      ],
+      "palette": {
+        "bg": "#06120b",
+        "accent": "#3ddc84",
+        "accent2": "#16c2c2",
+        "accent3": "#a6f4c5"
+      },
+      "seed": 4290066702,
+      "file": "cs/large/cs-large-10.svg",
+      "tags": [
+        "cs",
+        "large",
+        "dataflow",
+        "binary"
+      ]
+    },
+    {
+      "id": "math-small-01",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "fractal",
+        "graph"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 3947427785,
+      "file": "math/small/math-small-01.svg",
+      "tags": [
+        "math",
+        "small",
+        "fractal",
+        "graph"
+      ]
+    },
+    {
+      "id": "math-small-02",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "graph",
+        "geometry"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 2311275301,
+      "file": "math/small/math-small-02.svg",
+      "tags": [
+        "math",
+        "small",
+        "graph",
+        "geometry"
+      ]
+    },
+    {
+      "id": "math-small-03",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "geometry",
+        "graph"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 1825446910,
+      "file": "math/small/math-small-03.svg",
+      "tags": [
+        "math",
+        "small",
+        "geometry",
+        "graph"
+      ]
+    },
+    {
+      "id": "math-small-04",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "fractal",
+        "geometry"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 3652078364,
+      "file": "math/small/math-small-04.svg",
+      "tags": [
+        "math",
+        "small",
+        "fractal",
+        "geometry"
+      ]
+    },
+    {
+      "id": "math-small-05",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "graph",
+        "fractal"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 3208667349,
+      "file": "math/small/math-small-05.svg",
+      "tags": [
+        "math",
+        "small",
+        "graph",
+        "fractal"
+      ]
+    },
+    {
+      "id": "math-small-06",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "geometry"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 3136640474,
+      "file": "math/small/math-small-06.svg",
+      "tags": [
+        "math",
+        "small",
+        "geometry"
+      ]
+    },
+    {
+      "id": "math-small-07",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "fractal"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 2181680164,
+      "file": "math/small/math-small-07.svg",
+      "tags": [
+        "math",
+        "small",
+        "fractal"
+      ]
+    },
+    {
+      "id": "math-small-08",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "graph"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 1335243619,
+      "file": "math/small/math-small-08.svg",
+      "tags": [
+        "math",
+        "small",
+        "graph"
+      ]
+    },
+    {
+      "id": "math-small-09",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "geometry",
+        "fractal"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 3239193557,
+      "file": "math/small/math-small-09.svg",
+      "tags": [
+        "math",
+        "small",
+        "geometry",
+        "fractal"
+      ]
+    },
+    {
+      "id": "math-small-10",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "fractal",
+        "graph"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 2293152090,
+      "file": "math/small/math-small-10.svg",
+      "tags": [
+        "math",
+        "small",
+        "fractal",
+        "graph"
+      ]
+    },
+    {
+      "id": "math-medium-01",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "fractal",
+        "graph"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 3372733748,
+      "file": "math/medium/math-medium-01.svg",
+      "tags": [
+        "math",
+        "medium",
+        "fractal",
+        "graph"
+      ]
+    },
+    {
+      "id": "math-medium-02",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "graph",
+        "geometry"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 308836028,
+      "file": "math/medium/math-medium-02.svg",
+      "tags": [
+        "math",
+        "medium",
+        "graph",
+        "geometry"
+      ]
+    },
+    {
+      "id": "math-medium-03",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "geometry",
+        "graph"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 3168973905,
+      "file": "math/medium/math-medium-03.svg",
+      "tags": [
+        "math",
+        "medium",
+        "geometry",
+        "graph"
+      ]
+    },
+    {
+      "id": "math-medium-04",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "fractal",
+        "geometry"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 1413932055,
+      "file": "math/medium/math-medium-04.svg",
+      "tags": [
+        "math",
+        "medium",
+        "fractal",
+        "geometry"
+      ]
+    },
+    {
+      "id": "math-medium-05",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "graph",
+        "fractal"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 2485608717,
+      "file": "math/medium/math-medium-05.svg",
+      "tags": [
+        "math",
+        "medium",
+        "graph",
+        "fractal"
+      ]
+    },
+    {
+      "id": "math-medium-06",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "geometry"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 864102685,
+      "file": "math/medium/math-medium-06.svg",
+      "tags": [
+        "math",
+        "medium",
+        "geometry"
+      ]
+    },
+    {
+      "id": "math-medium-07",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "fractal"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 2162174780,
+      "file": "math/medium/math-medium-07.svg",
+      "tags": [
+        "math",
+        "medium",
+        "fractal"
+      ]
+    },
+    {
+      "id": "math-medium-08",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "graph"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 2612554380,
+      "file": "math/medium/math-medium-08.svg",
+      "tags": [
+        "math",
+        "medium",
+        "graph"
+      ]
+    },
+    {
+      "id": "math-medium-09",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "geometry",
+        "fractal"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 2367108572,
+      "file": "math/medium/math-medium-09.svg",
+      "tags": [
+        "math",
+        "medium",
+        "geometry",
+        "fractal"
+      ]
+    },
+    {
+      "id": "math-medium-10",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "fractal",
+        "graph"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 3008387818,
+      "file": "math/medium/math-medium-10.svg",
+      "tags": [
+        "math",
+        "medium",
+        "fractal",
+        "graph"
+      ]
+    },
+    {
+      "id": "math-large-01",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "fractal",
+        "graph"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 2182368021,
+      "file": "math/large/math-large-01.svg",
+      "tags": [
+        "math",
+        "large",
+        "fractal",
+        "graph"
+      ]
+    },
+    {
+      "id": "math-large-02",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "graph",
+        "geometry"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 3835857563,
+      "file": "math/large/math-large-02.svg",
+      "tags": [
+        "math",
+        "large",
+        "graph",
+        "geometry"
+      ]
+    },
+    {
+      "id": "math-large-03",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "geometry",
+        "graph"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 3989869025,
+      "file": "math/large/math-large-03.svg",
+      "tags": [
+        "math",
+        "large",
+        "geometry",
+        "graph"
+      ]
+    },
+    {
+      "id": "math-large-04",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "fractal",
+        "geometry"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 3286523359,
+      "file": "math/large/math-large-04.svg",
+      "tags": [
+        "math",
+        "large",
+        "fractal",
+        "geometry"
+      ]
+    },
+    {
+      "id": "math-large-05",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "graph",
+        "fractal"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 2938773684,
+      "file": "math/large/math-large-05.svg",
+      "tags": [
+        "math",
+        "large",
+        "graph",
+        "fractal"
+      ]
+    },
+    {
+      "id": "math-large-06",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "geometry"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 7464469,
+      "file": "math/large/math-large-06.svg",
+      "tags": [
+        "math",
+        "large",
+        "geometry"
+      ]
+    },
+    {
+      "id": "math-large-07",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "fractal"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 3282242088,
+      "file": "math/large/math-large-07.svg",
+      "tags": [
+        "math",
+        "large",
+        "fractal"
+      ]
+    },
+    {
+      "id": "math-large-08",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "graph"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 1853420943,
+      "file": "math/large/math-large-08.svg",
+      "tags": [
+        "math",
+        "large",
+        "graph"
+      ]
+    },
+    {
+      "id": "math-large-09",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "geometry",
+        "fractal"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 3277757116,
+      "file": "math/large/math-large-09.svg",
+      "tags": [
+        "math",
+        "large",
+        "geometry",
+        "fractal"
+      ]
+    },
+    {
+      "id": "math-large-10",
+      "topic": "math",
+      "mood": "geometric forms, fractals, graph grids",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "fractal",
+        "graph"
+      ],
+      "palette": {
+        "bg": "#0e0a1f",
+        "accent": "#8b7bff",
+        "accent2": "#5b8cff",
+        "accent3": "#c4b5fd"
+      },
+      "seed": 2234638179,
+      "file": "math/large/math-large-10.svg",
+      "tags": [
+        "math",
+        "large",
+        "fractal",
+        "graph"
+      ]
+    },
+    {
+      "id": "history-small-01",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "timeline",
+        "contour"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 1032998992,
+      "file": "history/small/history-small-01.svg",
+      "tags": [
+        "history",
+        "small",
+        "timeline",
+        "contour"
+      ]
+    },
+    {
+      "id": "history-small-02",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "contour",
+        "texture"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 4276222168,
+      "file": "history/small/history-small-02.svg",
+      "tags": [
+        "history",
+        "small",
+        "contour",
+        "texture"
+      ]
+    },
+    {
+      "id": "history-small-03",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "texture",
+        "contour"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 2881186433,
+      "file": "history/small/history-small-03.svg",
+      "tags": [
+        "history",
+        "small",
+        "texture",
+        "contour"
+      ]
+    },
+    {
+      "id": "history-small-04",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "timeline",
+        "texture"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 1121733826,
+      "file": "history/small/history-small-04.svg",
+      "tags": [
+        "history",
+        "small",
+        "timeline",
+        "texture"
+      ]
+    },
+    {
+      "id": "history-small-05",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "contour",
+        "timeline"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 2336801514,
+      "file": "history/small/history-small-05.svg",
+      "tags": [
+        "history",
+        "small",
+        "contour",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-small-06",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "texture"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 1674913355,
+      "file": "history/small/history-small-06.svg",
+      "tags": [
+        "history",
+        "small",
+        "texture"
+      ]
+    },
+    {
+      "id": "history-small-07",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "timeline"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 2074423501,
+      "file": "history/small/history-small-07.svg",
+      "tags": [
+        "history",
+        "small",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-small-08",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "contour"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 3809283404,
+      "file": "history/small/history-small-08.svg",
+      "tags": [
+        "history",
+        "small",
+        "contour"
+      ]
+    },
+    {
+      "id": "history-small-09",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "texture",
+        "timeline"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 4086212275,
+      "file": "history/small/history-small-09.svg",
+      "tags": [
+        "history",
+        "small",
+        "texture",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-small-10",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "timeline",
+        "contour"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 104460052,
+      "file": "history/small/history-small-10.svg",
+      "tags": [
+        "history",
+        "small",
+        "timeline",
+        "contour"
+      ]
+    },
+    {
+      "id": "history-medium-01",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "timeline",
+        "contour"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 3286264186,
+      "file": "history/medium/history-medium-01.svg",
+      "tags": [
+        "history",
+        "medium",
+        "timeline",
+        "contour"
+      ]
+    },
+    {
+      "id": "history-medium-02",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "contour",
+        "texture"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 2277838461,
+      "file": "history/medium/history-medium-02.svg",
+      "tags": [
+        "history",
+        "medium",
+        "contour",
+        "texture"
+      ]
+    },
+    {
+      "id": "history-medium-03",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "texture",
+        "contour"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 2790018872,
+      "file": "history/medium/history-medium-03.svg",
+      "tags": [
+        "history",
+        "medium",
+        "texture",
+        "contour"
+      ]
+    },
+    {
+      "id": "history-medium-04",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "timeline",
+        "texture"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 2511547835,
+      "file": "history/medium/history-medium-04.svg",
+      "tags": [
+        "history",
+        "medium",
+        "timeline",
+        "texture"
+      ]
+    },
+    {
+      "id": "history-medium-05",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "contour",
+        "timeline"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 2105883056,
+      "file": "history/medium/history-medium-05.svg",
+      "tags": [
+        "history",
+        "medium",
+        "contour",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-medium-06",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "texture"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 4135740659,
+      "file": "history/medium/history-medium-06.svg",
+      "tags": [
+        "history",
+        "medium",
+        "texture"
+      ]
+    },
+    {
+      "id": "history-medium-07",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "timeline"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 1061043250,
+      "file": "history/medium/history-medium-07.svg",
+      "tags": [
+        "history",
+        "medium",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-medium-08",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "contour"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 3241851799,
+      "file": "history/medium/history-medium-08.svg",
+      "tags": [
+        "history",
+        "medium",
+        "contour"
+      ]
+    },
+    {
+      "id": "history-medium-09",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "texture",
+        "timeline"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 943427984,
+      "file": "history/medium/history-medium-09.svg",
+      "tags": [
+        "history",
+        "medium",
+        "texture",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-medium-10",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "timeline",
+        "contour"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 132041166,
+      "file": "history/medium/history-medium-10.svg",
+      "tags": [
+        "history",
+        "medium",
+        "timeline",
+        "contour"
+      ]
+    },
+    {
+      "id": "history-large-01",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "timeline",
+        "contour"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 616229592,
+      "file": "history/large/history-large-01.svg",
+      "tags": [
+        "history",
+        "large",
+        "timeline",
+        "contour"
+      ]
+    },
+    {
+      "id": "history-large-02",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "contour",
+        "texture"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 1437990291,
+      "file": "history/large/history-large-02.svg",
+      "tags": [
+        "history",
+        "large",
+        "contour",
+        "texture"
+      ]
+    },
+    {
+      "id": "history-large-03",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "texture",
+        "contour"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 1603682244,
+      "file": "history/large/history-large-03.svg",
+      "tags": [
+        "history",
+        "large",
+        "texture",
+        "contour"
+      ]
+    },
+    {
+      "id": "history-large-04",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "timeline",
+        "texture"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 2426880939,
+      "file": "history/large/history-large-04.svg",
+      "tags": [
+        "history",
+        "large",
+        "timeline",
+        "texture"
+      ]
+    },
+    {
+      "id": "history-large-05",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "contour",
+        "timeline"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 1781504964,
+      "file": "history/large/history-large-05.svg",
+      "tags": [
+        "history",
+        "large",
+        "contour",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-large-06",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "texture"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 1587397423,
+      "file": "history/large/history-large-06.svg",
+      "tags": [
+        "history",
+        "large",
+        "texture"
+      ]
+    },
+    {
+      "id": "history-large-07",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "timeline"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 4079163058,
+      "file": "history/large/history-large-07.svg",
+      "tags": [
+        "history",
+        "large",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-large-08",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "contour"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 1420151573,
+      "file": "history/large/history-large-08.svg",
+      "tags": [
+        "history",
+        "large",
+        "contour"
+      ]
+    },
+    {
+      "id": "history-large-09",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "texture",
+        "timeline"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 1094859576,
+      "file": "history/large/history-large-09.svg",
+      "tags": [
+        "history",
+        "large",
+        "texture",
+        "timeline"
+      ]
+    },
+    {
+      "id": "history-large-10",
+      "topic": "history",
+      "mood": "aged textures, timelines, map contours",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "timeline",
+        "contour"
+      ],
+      "palette": {
+        "bg": "#1b1305",
+        "accent": "#caa15a",
+        "accent2": "#b5651d",
+        "accent3": "#e7cfa0"
+      },
+      "seed": 4095274460,
+      "file": "history/large/history-large-10.svg",
+      "tags": [
+        "history",
+        "large",
+        "timeline",
+        "contour"
+      ]
+    },
+    {
+      "id": "biology-small-01",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "growth",
+        "curves"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 438697778,
+      "file": "biology/small/biology-small-01.svg",
+      "tags": [
+        "biology",
+        "small",
+        "growth",
+        "curves"
+      ]
+    },
+    {
+      "id": "biology-small-02",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "curves",
+        "cells"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 1774858575,
+      "file": "biology/small/biology-small-02.svg",
+      "tags": [
+        "biology",
+        "small",
+        "curves",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-small-03",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "cells",
+        "curves"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 1036413142,
+      "file": "biology/small/biology-small-03.svg",
+      "tags": [
+        "biology",
+        "small",
+        "cells",
+        "curves"
+      ]
+    },
+    {
+      "id": "biology-small-04",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "growth",
+        "cells"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 630498692,
+      "file": "biology/small/biology-small-04.svg",
+      "tags": [
+        "biology",
+        "small",
+        "growth",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-small-05",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "curves",
+        "growth"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 2418426141,
+      "file": "biology/small/biology-small-05.svg",
+      "tags": [
+        "biology",
+        "small",
+        "curves",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-small-06",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "cells"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 2230394048,
+      "file": "biology/small/biology-small-06.svg",
+      "tags": [
+        "biology",
+        "small",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-small-07",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "growth"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 787759561,
+      "file": "biology/small/biology-small-07.svg",
+      "tags": [
+        "biology",
+        "small",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-small-08",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "curves"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 3051313715,
+      "file": "biology/small/biology-small-08.svg",
+      "tags": [
+        "biology",
+        "small",
+        "curves"
+      ]
+    },
+    {
+      "id": "biology-small-09",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "cells",
+        "growth"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 4263407278,
+      "file": "biology/small/biology-small-09.svg",
+      "tags": [
+        "biology",
+        "small",
+        "cells",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-small-10",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "small",
+      "width": 160,
+      "height": 160,
+      "viewBox": "0 0 160 160",
+      "motifs": [
+        "growth",
+        "curves"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 177145747,
+      "file": "biology/small/biology-small-10.svg",
+      "tags": [
+        "biology",
+        "small",
+        "growth",
+        "curves"
+      ]
+    },
+    {
+      "id": "biology-medium-01",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "growth",
+        "curves"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 377978149,
+      "file": "biology/medium/biology-medium-01.svg",
+      "tags": [
+        "biology",
+        "medium",
+        "growth",
+        "curves"
+      ]
+    },
+    {
+      "id": "biology-medium-02",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "curves",
+        "cells"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 2475664148,
+      "file": "biology/medium/biology-medium-02.svg",
+      "tags": [
+        "biology",
+        "medium",
+        "curves",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-medium-03",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "cells",
+        "curves"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 2652616415,
+      "file": "biology/medium/biology-medium-03.svg",
+      "tags": [
+        "biology",
+        "medium",
+        "cells",
+        "curves"
+      ]
+    },
+    {
+      "id": "biology-medium-04",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "growth",
+        "cells"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 4065378842,
+      "file": "biology/medium/biology-medium-04.svg",
+      "tags": [
+        "biology",
+        "medium",
+        "growth",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-medium-05",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "curves",
+        "growth"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 3171979446,
+      "file": "biology/medium/biology-medium-05.svg",
+      "tags": [
+        "biology",
+        "medium",
+        "curves",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-medium-06",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "cells"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 1887018478,
+      "file": "biology/medium/biology-medium-06.svg",
+      "tags": [
+        "biology",
+        "medium",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-medium-07",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "growth"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 384250511,
+      "file": "biology/medium/biology-medium-07.svg",
+      "tags": [
+        "biology",
+        "medium",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-medium-08",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "curves"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 1911315292,
+      "file": "biology/medium/biology-medium-08.svg",
+      "tags": [
+        "biology",
+        "medium",
+        "curves"
+      ]
+    },
+    {
+      "id": "biology-medium-09",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "cells",
+        "growth"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 2559253108,
+      "file": "biology/medium/biology-medium-09.svg",
+      "tags": [
+        "biology",
+        "medium",
+        "cells",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-medium-10",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "medium",
+      "width": 400,
+      "height": 300,
+      "viewBox": "0 0 400 300",
+      "motifs": [
+        "growth",
+        "curves"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 335349701,
+      "file": "biology/medium/biology-medium-10.svg",
+      "tags": [
+        "biology",
+        "medium",
+        "growth",
+        "curves"
+      ]
+    },
+    {
+      "id": "biology-large-01",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "growth",
+        "curves"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 3238390062,
+      "file": "biology/large/biology-large-01.svg",
+      "tags": [
+        "biology",
+        "large",
+        "growth",
+        "curves"
+      ]
+    },
+    {
+      "id": "biology-large-02",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "curves",
+        "cells"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 3926792936,
+      "file": "biology/large/biology-large-02.svg",
+      "tags": [
+        "biology",
+        "large",
+        "curves",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-large-03",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "cells",
+        "curves"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 3447045917,
+      "file": "biology/large/biology-large-03.svg",
+      "tags": [
+        "biology",
+        "large",
+        "cells",
+        "curves"
+      ]
+    },
+    {
+      "id": "biology-large-04",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "growth",
+        "cells"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 356947556,
+      "file": "biology/large/biology-large-04.svg",
+      "tags": [
+        "biology",
+        "large",
+        "growth",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-large-05",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "curves",
+        "growth"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 3762370941,
+      "file": "biology/large/biology-large-05.svg",
+      "tags": [
+        "biology",
+        "large",
+        "curves",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-large-06",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "cells"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 2812304512,
+      "file": "biology/large/biology-large-06.svg",
+      "tags": [
+        "biology",
+        "large",
+        "cells"
+      ]
+    },
+    {
+      "id": "biology-large-07",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "growth"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 3416865643,
+      "file": "biology/large/biology-large-07.svg",
+      "tags": [
+        "biology",
+        "large",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-large-08",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "curves"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 3106609486,
+      "file": "biology/large/biology-large-08.svg",
+      "tags": [
+        "biology",
+        "large",
+        "curves"
+      ]
+    },
+    {
+      "id": "biology-large-09",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "cells",
+        "growth"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 785850273,
+      "file": "biology/large/biology-large-09.svg",
+      "tags": [
+        "biology",
+        "large",
+        "cells",
+        "growth"
+      ]
+    },
+    {
+      "id": "biology-large-10",
+      "topic": "biology",
+      "mood": "organic curves, cell patterns, growth",
+      "size": "large",
+      "width": 960,
+      "height": 540,
+      "viewBox": "0 0 960 540",
+      "motifs": [
+        "growth",
+        "curves"
+      ],
+      "palette": {
+        "bg": "#071508",
+        "accent": "#56c26a",
+        "accent2": "#a3d977",
+        "accent3": "#2f9e6b"
+      },
+      "seed": 3193148622,
+      "file": "biology/large/biology-large-10.svg",
+      "tags": [
+        "biology",
+        "large",
+        "growth",
+        "curves"
+      ]
+    }
+  ],
+  "count": 180,
+  "topics": [
+    "physics",
+    "chemistry",
+    "cs",
+    "math",
+    "history",
+    "biology"
+  ],
+  "sizes": {
+    "small": {
+      "width": 160,
+      "height": 160,
+      "count": 10
+    },
+    "medium": {
+      "width": 400,
+      "height": 300,
+      "count": 10
+    },
+    "large": {
+      "width": 960,
+      "height": 540,
+      "count": 10
+    }
+  }
+}

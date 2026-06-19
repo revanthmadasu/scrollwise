@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="biology decorative background">
+  <defs>
+    <radialGradient id="grad-biology-small-01" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#56c26a" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#071508" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="160" height="160" fill="#071508"/>
+  <rect width="160" height="160" fill="url(#grad-biology-small-01)"/>
+  <line x1="38.64" y1="160" x2="45.07" y2="125.39" stroke="#56c26a" stroke-width="2" opacity="0.39"/>
+  <line x1="45.07" y1="125.39" x2="34.21" y2="102.49" stroke="#56c26a" stroke-width="1.5" opacity="0.33"/>
+  <line x1="34.21" y1="102.49" x2="18.98" y2="92.44" stroke="#56c26a" stroke-width="1" opacity="0.27"/>
+  <circle cx="18.98" cy="92.44" r="3.33" fill="#2f9e6b" opacity="0.5"/>
+  <line x1="18.98" y1="92.44" x2="5.91" y2="93.8" stroke="#56c26a" stroke-width="0.5" opacity="0.21"/>
+  <line x1="18.98" y1="92.44" x2="12.06" y2="81.27" stroke="#56c26a" stroke-width="0.5" opacity="0.21"/>
+  <circle cx="12.06" cy="81.27" r="2.66" fill="#2f9e6b" opacity="0.5"/>
+  <line x1="34.21" y1="102.49" x2="32.11" y2="84.36" stroke="#56c26a" stroke-width="1" opacity="0.27"/>
+  <circle cx="32.11" cy="84.36" r="2.25" fill="#2f9e6b" opacity="0.5"/>
+  <line x1="32.11" y1="84.36" x2="26.04" y2="72.71" stroke="#56c26a" stroke-width="0.5" opacity="0.21"/>
+  <line x1="32.11" y1="84.36" x2="35.46" y2="71.66" stroke="#56c26a" stroke-width="0.5" opacity="0.21"/>
+  <circle cx="35.46" cy="71.66" r="2.59" fill="#2f9e6b" opacity="0.5"/>
+  <line x1="45.07" y1="125.39" x2="63.18" y2="107.67" stroke="#56c26a" stroke-width="1.5" opacity="0.33"/>
+  <line x1="63.18" y1="107.67" x2="65.76" y2="89.6" stroke="#56c26a" stroke-width="1" opacity="0.27"/>
+  <circle cx="65.76" cy="89.6" r="2.94" fill="#2f9e6b" opacity="0.5"/>
+  <line x1="65.76" y1="89.6" x2="60.89" y2="77.4" stroke="#56c26a" stroke-width="0.5" opacity="0.21"/>
+  <line x1="65.76" y1="89.6" x2="73.53" y2="79.01" stroke="#56c26a" stroke-width="0.5" opacity="0.21"/>
+  <line x1="63.18" y1="107.67" x2="79.86" y2="100.26" stroke="#56c26a" stroke-width="1" opacity="0.27"/>
+  <circle cx="79.86" cy="100.26" r="1.73" fill="#2f9e6b" opacity="0.5"/>
+  <line x1="79.86" y1="100.26" x2="86.65" y2="89.01" stroke="#56c26a" stroke-width="0.5" opacity="0.21"/>
+  <circle cx="86.65" cy="89.01" r="1.71" fill="#2f9e6b" opacity="0.5"/>
+  <line x1="79.86" y1="100.26" x2="92.99" y2="100.56" stroke="#56c26a" stroke-width="0.5" opacity="0.21"/>
+  <circle cx="92.99" cy="100.56" r="3.22" fill="#2f9e6b" opacity="0.5"/>
+  <path d="M11.23,115.36 C86.18,116.06 152.83,86.89 154.57,137.43" fill="none" stroke="#2f9e6b" stroke-width="1.39" opacity="0.34"/>
+  <path d="M38.92,38.27 C62.61,114.08 79.85,68.26 118.72,26.5" fill="none" stroke="#56c26a" stroke-width="1.7" opacity="0.29"/>
+  <path d="M1.21,111.7 C48.04,88.29 93.4,74.58 132.57,157.11" fill="none" stroke="#2f9e6b" stroke-width="1.33" opacity="0.18"/>
+</svg>

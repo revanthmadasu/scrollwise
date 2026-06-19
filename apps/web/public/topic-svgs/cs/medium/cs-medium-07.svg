@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="cs decorative background">
+  <defs>
+    <radialGradient id="grad-cs-medium-07" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#3ddc84" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#06120b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="#06120b"/>
+  <rect width="400" height="300" fill="url(#grad-cs-medium-07)"/>
+  <line x1="0" y1="60" x2="400" y2="60" stroke="#a6f4c5" stroke-width="0.8" stroke-dasharray="2 8" opacity="0.25"/>
+  <path d="M107.54,56 L117.54,60 L107.54,64 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M41.32,56 L51.32,60 L41.32,64 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M12.94,56 L22.94,60 L12.94,64 Z" fill="#3ddc84" opacity="0.5"/>
+  <line x1="0" y1="120" x2="400" y2="120" stroke="#a6f4c5" stroke-width="0.8" stroke-dasharray="2 8" opacity="0.25"/>
+  <path d="M255.26,116 L265.26,120 L255.26,124 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M256.5,116 L266.5,120 L256.5,124 Z" fill="#3ddc84" opacity="0.5"/>
+  <line x1="0" y1="180" x2="400" y2="180" stroke="#a6f4c5" stroke-width="0.8" stroke-dasharray="2 8" opacity="0.25"/>
+  <path d="M330.89,176 L340.89,180 L330.89,184 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M34.54,176 L44.54,180 L34.54,184 Z" fill="#3ddc84" opacity="0.5"/>
+  <line x1="0" y1="240" x2="400" y2="240" stroke="#a6f4c5" stroke-width="0.8" stroke-dasharray="2 8" opacity="0.25"/>
+  <path d="M193.21,236 L203.21,240 L193.21,244 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M9.38,236 L19.38,240 L9.38,244 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M117.55,236 L127.55,240 L117.55,244 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M204.28,236 L214.28,240 L204.28,244 Z" fill="#3ddc84" opacity="0.5"/>
+</svg>

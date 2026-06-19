@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="cs decorative background">
+  <defs>
+    <radialGradient id="grad-cs-medium-09" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#3ddc84" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#06120b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="#06120b"/>
+  <rect width="400" height="300" fill="url(#grad-cs-medium-09)"/>
+  <path d="M225,0 L150,0 L150,0" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="150" cy="0" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M0,300 L0,300 L0,300 L0,300 L0,300" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="0" cy="300" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M0,75 L0,0 L0,0 L0,0 L0,150" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="0" cy="150" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M75,150 L150,150 L0,150" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="0" cy="150" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M75,225 L150,225 L150,75" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="150" cy="75" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M300,225 L300,150 L75,150" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="75" cy="150" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M150,0 L225,0 L375,0 L400,0 L400,0" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="400" cy="0" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M300,225 L225,225 L75,225 L75,300 L0,300" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="0" cy="300" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <line x1="0" y1="60" x2="400" y2="60" stroke="#a6f4c5" stroke-width="0.8" stroke-dasharray="2 8" opacity="0.25"/>
+  <path d="M103.85,56 L113.85,60 L103.85,64 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M255.32,56 L265.32,60 L255.32,64 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M33.87,56 L43.87,60 L33.87,64 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M180.3,56 L190.3,60 L180.3,64 Z" fill="#3ddc84" opacity="0.5"/>
+  <line x1="0" y1="120" x2="400" y2="120" stroke="#a6f4c5" stroke-width="0.8" stroke-dasharray="2 8" opacity="0.25"/>
+  <path d="M144.96,116 L154.96,120 L144.96,124 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M237.44,116 L247.44,120 L237.44,124 Z" fill="#3ddc84" opacity="0.5"/>
+  <line x1="0" y1="180" x2="400" y2="180" stroke="#a6f4c5" stroke-width="0.8" stroke-dasharray="2 8" opacity="0.25"/>
+  <path d="M294.19,176 L304.19,180 L294.19,184 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M131.29,176 L141.29,180 L131.29,184 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M82.55,176 L92.55,180 L82.55,184 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M208.24,176 L218.24,180 L208.24,184 Z" fill="#3ddc84" opacity="0.5"/>
+  <line x1="0" y1="240" x2="400" y2="240" stroke="#a6f4c5" stroke-width="0.8" stroke-dasharray="2 8" opacity="0.25"/>
+  <path d="M101.4,236 L111.4,240 L101.4,244 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M315.2,236 L325.2,240 L315.2,244 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M301.81,236 L311.81,240 L301.81,244 Z" fill="#3ddc84" opacity="0.5"/>
+  <path d="M23.26,236 L33.26,240 L23.26,244 Z" fill="#3ddc84" opacity="0.5"/>
+</svg>

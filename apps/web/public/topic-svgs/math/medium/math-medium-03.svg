@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="math decorative background">
+  <defs>
+    <radialGradient id="grad-math-medium-03" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#8b7bff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0e0a1f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0e0a1f"/>
+  <rect width="400" height="300" fill="url(#grad-math-medium-03)"/>
+  <polygon points="200.26,201.9 213.8,195.21 224.34,206.02 217.32,219.39 202.44,216.85" fill="none" stroke="#8b7bff" stroke-width="1.2" opacity="0.23"/>
+  <polygon points="153.95,177.98 197.56,183.67 205.62,226.9 167,247.93 135.06,217.69" fill="none" stroke="#5b8cff" stroke-width="1.2" opacity="0.32"/>
+  <polygon points="80.85,124.75 71.77,142.69 51.91,139.6 48.71,119.75 66.59,110.58" fill="none" stroke="#5b8cff" stroke-width="1.2" opacity="0.39"/>
+  <polygon points="296.63,210.97 273.94,227.86 270.65,199.76" fill="none" stroke="#5b8cff" stroke-width="1.2" opacity="0.31"/>
+  <polygon points="312.93,98.29 341.83,85.31 363.1,108.78 347.36,136.27 316.35,129.78" fill="none" stroke="#c4b5fd" stroke-width="1.2" opacity="0.38"/>
+  <polygon points="191.63,63.32 192.06,112.71 149.08,88.39" fill="none" stroke="#8b7bff" stroke-width="1.2" opacity="0.34"/>
+  <line x1="0" y1="0" x2="0" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="50" y1="0" x2="50" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="100" y1="0" x2="100" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="150" y1="0" x2="150" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="200" y1="0" x2="200" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="250" y1="0" x2="250" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="300" y1="0" x2="300" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="350" y1="0" x2="350" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="0" x2="400" y2="0" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="50" x2="400" y2="50" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="100" x2="400" y2="100" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="150" x2="400" y2="150" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="200" x2="400" y2="200" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="250" x2="400" y2="250" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <polyline points="0,285 10,282.95 20,280.8 30,278.54 40,276.16 50,273.66 60,271.04 70,268.27 80,265.37 90,262.32 100,259.11 110,255.73 120,252.19 130,248.46 140,244.54 150,240.42 160,236.09 170,231.53 180,226.74 190,221.71 200,216.42 210,210.86 220,205.01 230,198.86 240,192.4 250,185.61 260,178.46 270,170.95 280,163.06 290,154.76 300,146.04 310,136.87 320,127.23 330,117.09 340,106.44 350,95.23 360,83.46 370,71.08 380,58.06 390,44.38 400,30" fill="none" stroke="#8b7bff" stroke-width="2" opacity="0.55"/>
+</svg>

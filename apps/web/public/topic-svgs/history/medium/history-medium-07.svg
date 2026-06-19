@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="history decorative background">
+  <defs>
+    <radialGradient id="grad-history-medium-07" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#caa15a" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#1b1305" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="#1b1305"/>
+  <rect width="400" height="300" fill="url(#grad-history-medium-07)"/>
+  <line x1="20" y1="150" x2="380" y2="150" stroke="#caa15a" stroke-width="1.6" opacity="0.4"/>
+  <circle cx="20" cy="150" r="4" fill="#b5651d" opacity="0.6"/>
+  <line x1="20" y1="150" x2="20" y2="137.15" stroke="#e7cfa0" stroke-width="1" opacity="0.3"/>
+  <circle cx="92" cy="150" r="4" fill="#b5651d" opacity="0.6"/>
+  <line x1="92" y1="150" x2="92" y2="166.62" stroke="#e7cfa0" stroke-width="1" opacity="0.3"/>
+  <circle cx="164" cy="150" r="4" fill="#b5651d" opacity="0.6"/>
+  <line x1="164" y1="150" x2="164" y2="131.64" stroke="#e7cfa0" stroke-width="1" opacity="0.3"/>
+  <circle cx="236" cy="150" r="4" fill="#b5651d" opacity="0.6"/>
+  <line x1="236" y1="150" x2="236" y2="174.05" stroke="#e7cfa0" stroke-width="1" opacity="0.3"/>
+  <circle cx="308" cy="150" r="4" fill="#b5651d" opacity="0.6"/>
+  <line x1="308" y1="150" x2="308" y2="131.2" stroke="#e7cfa0" stroke-width="1" opacity="0.3"/>
+  <circle cx="380" cy="150" r="4" fill="#b5651d" opacity="0.6"/>
+  <line x1="380" y1="150" x2="380" y2="164.45" stroke="#e7cfa0" stroke-width="1" opacity="0.3"/>
+</svg>

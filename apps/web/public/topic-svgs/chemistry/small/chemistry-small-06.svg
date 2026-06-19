@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="chemistry decorative background">
+  <defs>
+    <radialGradient id="grad-chemistry-small-06" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#2dd4a7" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#08160f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="160" height="160" fill="#08160f"/>
+  <rect width="160" height="160" fill="url(#grad-chemistry-small-06)"/>
+  <line x1="119.04" y1="50.42" x2="92.33" y2="36.32" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="119.04" y1="50.42" x2="135.37" y2="129.65" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="92.33" y1="36.32" x2="119.04" y2="50.42" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="92.33" y1="36.32" x2="135.37" y2="129.65" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="135.37" y1="129.65" x2="67.8" y2="138.43" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="135.37" y1="129.65" x2="119.04" y2="50.42" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="67.8" y1="138.43" x2="135.37" y2="129.65" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="67.8" y1="138.43" x2="119.04" y2="50.42" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <circle cx="119.04" cy="50.42" r="6.01" fill="#2dd4a7" opacity="0.5"/>
+  <circle cx="92.33" cy="36.32" r="6.67" fill="#2dd4a7" opacity="0.5"/>
+  <circle cx="135.37" cy="129.65" r="4.89" fill="#f06aa6" opacity="0.5"/>
+  <circle cx="67.8" cy="138.43" r="7.51" fill="#2dd4a7" opacity="0.5"/>
+</svg>

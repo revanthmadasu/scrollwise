@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="cs decorative background">
+  <defs>
+    <radialGradient id="grad-cs-medium-08" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#3ddc84" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#06120b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="#06120b"/>
+  <rect width="400" height="300" fill="url(#grad-cs-medium-08)"/>
+  <text x="7.5" y="17.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.38">1</text>
+  <text x="7.5" y="42.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.4">0</text>
+  <text x="7.5" y="92.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.36">0</text>
+  <text x="7.5" y="142.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.14">1</text>
+  <text x="7.5" y="167.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.13">1</text>
+  <text x="7.5" y="217.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.2">1</text>
+  <text x="7.5" y="292.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.26">0</text>
+  <text x="32.5" y="17.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.14">0</text>
+  <text x="32.5" y="67.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.18">1</text>
+  <text x="32.5" y="92.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.4">0</text>
+  <text x="32.5" y="142.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.28">0</text>
+  <text x="32.5" y="167.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.22">1</text>
+  <text x="32.5" y="192.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.18">1</text>
+  <text x="32.5" y="217.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.15">1</text>
+  <text x="32.5" y="242.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.36">1</text>
+  <text x="57.5" y="17.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.33">1</text>
+  <text x="57.5" y="42.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.23">0</text>
+  <text x="57.5" y="92.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.28">1</text>
+  <text x="57.5" y="217.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.35">1</text>
+  <text x="57.5" y="242.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.3">0</text>
+  <text x="57.5" y="267.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.22">0</text>
+  <text x="82.5" y="17.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.2">0</text>
+  <text x="82.5" y="67.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.36">1</text>
+  <text x="82.5" y="117.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.34">1</text>
+  <text x="82.5" y="142.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.22">1</text>
+  <text x="82.5" y="217.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.26">0</text>
+  <text x="82.5" y="292.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.16">0</text>
+  <text x="107.5" y="17.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.21">1</text>
+  <text x="107.5" y="67.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.27">1</text>
+  <text x="107.5" y="92.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.34">1</text>
+  <text x="107.5" y="192.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.39">1</text>
+  <text x="107.5" y="217.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.31">0</text>
+  <text x="107.5" y="267.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.26">0</text>
+  <text x="107.5" y="292.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.31">1</text>
+  <text x="132.5" y="217.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.23">1</text>
+  <text x="132.5" y="242.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.14">1</text>
+  <text x="132.5" y="267.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.22">0</text>
+  <text x="132.5" y="292.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.26">0</text>
+  <text x="157.5" y="17.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.28">0</text>
+  <text x="157.5" y="92.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.18">0</text>
+  <text x="157.5" y="117.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.24">0</text>
+  <text x="157.5" y="167.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.14">0</text>
+  <text x="157.5" y="242.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.4">0</text>
+  <text x="157.5" y="267.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.27">1</text>
+  <text x="157.5" y="292.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.19">0</text>
+  <text x="182.5" y="42.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.24">1</text>
+  <text x="182.5" y="67.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.31">0</text>
+  <text x="182.5" y="92.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.35">0</text>
+  <text x="182.5" y="167.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.26">0</text>
+  <text x="182.5" y="217.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.17">1</text>
+  <text x="182.5" y="242.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.3">0</text>
+  <text x="207.5" y="17.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.18">1</text>
+  <text x="207.5" y="67.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.25">0</text>
+  <text x="207.5" y="92.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.26">1</text>
+  <text x="207.5" y="117.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.4">0</text>
+  <text x="207.5" y="142.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.32">1</text>
+  <text x="207.5" y="167.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.33">0</text>
+  <text x="232.5" y="17.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.19">1</text>
+  <text x="232.5" y="67.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.17">0</text>
+  <text x="232.5" y="117.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.39">1</text>
+  <text x="232.5" y="167.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.28">0</text>
+  <text x="232.5" y="217.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.2">0</text>
+  <text x="232.5" y="267.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.32">1</text>
+  <text x="232.5" y="292.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.28">1</text>
+  <text x="257.5" y="17.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.17">0</text>
+  <text x="257.5" y="42.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.19">0</text>
+  <text x="257.5" y="67.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.33">0</text>
+  <text x="257.5" y="92.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.16">1</text>
+  <text x="257.5" y="117.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.14">0</text>
+  <text x="257.5" y="167.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.31">0</text>
+  <text x="257.5" y="192.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.3">1</text>
+  <text x="257.5" y="217.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.39">1</text>
+  <text x="257.5" y="267.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.31">0</text>
+  <text x="282.5" y="17.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.28">0</text>
+  <text x="282.5" y="42.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.16">1</text>
+  <text x="282.5" y="67.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.19">1</text>
+  <text x="282.5" y="117.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.33">0</text>
+  <text x="282.5" y="142.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.16">0</text>
+  <text x="282.5" y="167.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.33">0</text>
+  <text x="282.5" y="192.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.19">0</text>
+  <text x="282.5" y="242.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.36">1</text>
+  <text x="282.5" y="267.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.13">0</text>
+  <text x="282.5" y="292.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.34">0</text>
+  <text x="307.5" y="17.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.19">0</text>
+  <text x="307.5" y="67.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.29">0</text>
+  <text x="307.5" y="92.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.18">0</text>
+  <text x="307.5" y="167.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.32">1</text>
+  <text x="307.5" y="242.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.36">1</text>
+  <text x="332.5" y="17.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.14">1</text>
+  <text x="332.5" y="67.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.28">1</text>
+  <text x="357.5" y="17.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.31">0</text>
+  <text x="357.5" y="142.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.28">1</text>
+  <text x="357.5" y="167.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.21">0</text>
+  <text x="357.5" y="192.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.24">0</text>
+  <text x="357.5" y="242.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.24">0</text>
+  <text x="357.5" y="267.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.31">0</text>
+  <text x="357.5" y="292.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.22">1</text>
+  <text x="382.5" y="17.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.13">0</text>
+  <text x="382.5" y="42.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.39">0</text>
+  <text x="382.5" y="92.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.2">1</text>
+  <text x="382.5" y="117.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.4">0</text>
+  <text x="382.5" y="217.5" font-family="monospace" font-size="15" fill="#3ddc84" opacity="0.38">0</text>
+</svg>

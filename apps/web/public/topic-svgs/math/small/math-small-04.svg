@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="math decorative background">
+  <defs>
+    <radialGradient id="grad-math-small-04" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#8b7bff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0e0a1f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="160" height="160" fill="#0e0a1f"/>
+  <rect width="160" height="160" fill="url(#grad-math-small-04)"/>
+  <polygon points="80,19.2 32,115.2 128,115.2" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.33"/>
+  <polygon points="80,19.2 56,67.2 104,67.2" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.27"/>
+  <polygon points="80,19.2 68,43.2 92,43.2" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="68,43.2 56,67.2 80,67.2" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="92,43.2 80,67.2 104,67.2" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="56,67.2 32,115.2 80,115.2" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.27"/>
+  <polygon points="56,67.2 44,91.2 68,91.2" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="44,91.2 32,115.2 56,115.2" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="68,91.2 56,115.2 80,115.2" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="104,67.2 80,115.2 128,115.2" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.27"/>
+  <polygon points="104,67.2 92,91.2 116,91.2" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="92,91.2 80,115.2 104,115.2" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="116,91.2 104,115.2 128,115.2" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="108.74,53.53 111.13,67.76 100,76.94 86.48,71.9 84.09,57.67 95.22,48.48" fill="none" stroke="#c4b5fd" stroke-width="1.2" opacity="0.23"/>
+  <polygon points="122.45,129.71 109.3,130.69 108.32,117.54 121.47,116.56" fill="none" stroke="#5b8cff" stroke-width="1.2" opacity="0.31"/>
+  <polygon points="36.99,96.4 51.86,90.03 58.23,104.89 43.37,111.27" fill="none" stroke="#8b7bff" stroke-width="1.2" opacity="0.41"/>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="math decorative background">
+  <defs>
+    <radialGradient id="grad-math-medium-08" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#8b7bff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0e0a1f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0e0a1f"/>
+  <rect width="400" height="300" fill="url(#grad-math-medium-08)"/>
+  <line x1="0" y1="0" x2="0" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="50" y1="0" x2="50" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="100" y1="0" x2="100" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="150" y1="0" x2="150" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="200" y1="0" x2="200" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="250" y1="0" x2="250" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="300" y1="0" x2="300" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="350" y1="0" x2="350" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="0" x2="400" y2="0" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="50" x2="400" y2="50" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="100" x2="400" y2="100" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="150" x2="400" y2="150" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="200" x2="400" y2="200" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="250" x2="400" y2="250" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <polyline points="0,30 10,53.4 20,75.6 30,96.6 40,116.4 50,135 60,152.4 70,168.6 80,183.6 90,197.4 100,210 110,221.4 120,231.6 130,240.6 140,248.4 150,255 160,260.4 170,264.6 180,267.6 190,269.4 200,270 210,269.4 220,267.6 230,264.6 240,260.4 250,255 260,248.4 270,240.6 280,231.6 290,221.4 300,210 310,197.4 320,183.6 330,168.6 340,152.4 350,135 360,116.4 370,96.6 380,75.6 390,53.4 400,30" fill="none" stroke="#8b7bff" stroke-width="2" opacity="0.55"/>
+</svg>

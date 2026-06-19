@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="math decorative background">
+  <defs>
+    <radialGradient id="grad-math-medium-10" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#8b7bff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0e0a1f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0e0a1f"/>
+  <rect width="400" height="300" fill="url(#grad-math-medium-10)"/>
+  <polygon points="200,36 110,216 290,216" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.39"/>
+  <polygon points="200,36 155,126 245,126" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.33"/>
+  <polygon points="200,36 177.5,81 222.5,81" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.27"/>
+  <polygon points="200,36 188.75,58.5 211.25,58.5" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="188.75,58.5 177.5,81 200,81" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="211.25,58.5 200,81 222.5,81" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="177.5,81 155,126 200,126" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.27"/>
+  <polygon points="177.5,81 166.25,103.5 188.75,103.5" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="166.25,103.5 155,126 177.5,126" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="188.75,103.5 177.5,126 200,126" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="222.5,81 200,126 245,126" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.27"/>
+  <polygon points="222.5,81 211.25,103.5 233.75,103.5" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="211.25,103.5 200,126 222.5,126" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="233.75,103.5 222.5,126 245,126" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="155,126 110,216 200,216" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.33"/>
+  <polygon points="155,126 132.5,171 177.5,171" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.27"/>
+  <polygon points="155,126 143.75,148.5 166.25,148.5" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="143.75,148.5 132.5,171 155,171" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="166.25,148.5 155,171 177.5,171" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="132.5,171 110,216 155,216" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.27"/>
+  <polygon points="132.5,171 121.25,193.5 143.75,193.5" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="121.25,193.5 110,216 132.5,216" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="143.75,193.5 132.5,216 155,216" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="177.5,171 155,216 200,216" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.27"/>
+  <polygon points="177.5,171 166.25,193.5 188.75,193.5" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="166.25,193.5 155,216 177.5,216" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="188.75,193.5 177.5,216 200,216" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="245,126 200,216 290,216" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.33"/>
+  <polygon points="245,126 222.5,171 267.5,171" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.27"/>
+  <polygon points="245,126 233.75,148.5 256.25,148.5" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="233.75,148.5 222.5,171 245,171" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="256.25,148.5 245,171 267.5,171" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="222.5,171 200,216 245,216" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.27"/>
+  <polygon points="222.5,171 211.25,193.5 233.75,193.5" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="211.25,193.5 200,216 222.5,216" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="233.75,193.5 222.5,216 245,216" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="267.5,171 245,216 290,216" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.27"/>
+  <polygon points="267.5,171 256.25,193.5 278.75,193.5" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="256.25,193.5 245,216 267.5,216" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <polygon points="278.75,193.5 267.5,216 290,216" fill="none" stroke="#5b8cff" stroke-width="0.8" opacity="0.21"/>
+  <line x1="0" y1="0" x2="0" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="50" y1="0" x2="50" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="100" y1="0" x2="100" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="150" y1="0" x2="150" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="200" y1="0" x2="200" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="250" y1="0" x2="250" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="300" y1="0" x2="300" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="350" y1="0" x2="350" y2="300" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="0" x2="400" y2="0" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="50" x2="400" y2="50" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="100" x2="400" y2="100" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="150" x2="400" y2="150" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="200" x2="400" y2="200" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="250" x2="400" y2="250" stroke="#c4b5fd" stroke-width="0.5" opacity="0.1"/>
+  <polyline points="0,150 10,133.56 20,102.33 30,74.39 40,56.48 50,55.57 60,46.08 70,48.46 80,50.4 90,59.21 100,126.23 110,175.17 120,50.83 130,234.25 140,166.31 150,149.33 160,252.4 170,238.06 180,207.87 190,254.22 200,230.65 210,254.39 220,253.74 230,254.33 240,241.72 250,152.27 260,155.72 270,244.16 280,62.74 290,46.72 300,174.86 310,115.27 320,209.71 330,153.09 340,188.45 350,111.34 360,93.39 370,89.28 380,107.77 390,112.71 400,249.95" fill="none" stroke="#8b7bff" stroke-width="2" opacity="0.55"/>
+</svg>

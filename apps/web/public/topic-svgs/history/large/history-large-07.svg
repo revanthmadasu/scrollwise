@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="history decorative background">
+  <defs>
+    <radialGradient id="grad-history-large-07" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#caa15a" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#1b1305" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="960" height="540" fill="#1b1305"/>
+  <rect width="960" height="540" fill="url(#grad-history-large-07)"/>
+  <line x1="48" y1="270" x2="912" y2="270" stroke="#caa15a" stroke-width="1.6" opacity="0.4"/>
+  <circle cx="48" cy="270" r="4" fill="#b5651d" opacity="0.6"/>
+  <line x1="48" y1="270" x2="48" y2="243.49" stroke="#e7cfa0" stroke-width="1" opacity="0.3"/>
+  <circle cx="144" cy="270" r="4" fill="#b5651d" opacity="0.6"/>
+  <line x1="144" y1="270" x2="144" y2="285.92" stroke="#e7cfa0" stroke-width="1" opacity="0.3"/>
+  <circle cx="240" cy="270" r="4" fill="#b5651d" opacity="0.6"/>
+  <line x1="240" y1="270" x2="240" y2="252.5" stroke="#e7cfa0" stroke-width="1" opacity="0.3"/>
+  <circle cx="336" cy="270" r="4" fill="#b5651d" opacity="0.6"/>
+  <line x1="336" y1="270" x2="336" y2="293.81" stroke="#e7cfa0" stroke-width="1" opacity="0.3"/>
+  <circle cx="432" cy="270" r="4" fill="#b5651d" opacity="0.6"/>
+  <line x1="432" y1="270" x2="432" y2="257.31" stroke="#e7cfa0" stroke-width="1" opacity="0.3"/>
+  <circle cx="528" cy="270" r="4" fill="#b5651d" opacity="0.6"/>
+  <line x1="528" y1="270" x2="528" y2="292.84" stroke="#e7cfa0" stroke-width="1" opacity="0.3"/>
+  <circle cx="624" cy="270" r="4" fill="#b5651d" opacity="0.6"/>
+  <line x1="624" y1="270" x2="624" y2="255.54" stroke="#e7cfa0" stroke-width="1" opacity="0.3"/>
+  <circle cx="720" cy="270" r="4" fill="#b5651d" opacity="0.6"/>
+  <line x1="720" y1="270" x2="720" y2="282.36" stroke="#e7cfa0" stroke-width="1" opacity="0.3"/>
+  <circle cx="816" cy="270" r="4" fill="#b5651d" opacity="0.6"/>
+  <line x1="816" y1="270" x2="816" y2="245.98" stroke="#e7cfa0" stroke-width="1" opacity="0.3"/>
+  <circle cx="912" cy="270" r="4" fill="#b5651d" opacity="0.6"/>
+  <line x1="912" y1="270" x2="912" y2="297.1" stroke="#e7cfa0" stroke-width="1" opacity="0.3"/>
+</svg>

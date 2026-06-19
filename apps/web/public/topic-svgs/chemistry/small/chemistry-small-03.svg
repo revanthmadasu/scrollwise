@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="chemistry decorative background">
+  <defs>
+    <radialGradient id="grad-chemistry-small-03" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#2dd4a7" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#08160f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="160" height="160" fill="#08160f"/>
+  <rect width="160" height="160" fill="url(#grad-chemistry-small-03)"/>
+  <line x1="83.72" y1="75.62" x2="75.49" y2="53.16" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="83.72" y1="75.62" x2="71.68" y2="114.36" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="140.07" y1="82.61" x2="83.72" y2="75.62" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="140.07" y1="82.61" x2="75.49" y2="53.16" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="75.49" y1="53.16" x2="83.72" y2="75.62" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="75.49" y1="53.16" x2="71.68" y2="114.36" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="71.68" y1="114.36" x2="83.72" y2="75.62" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <line x1="71.68" y1="114.36" x2="75.49" y2="53.16" stroke="#7be0c4" stroke-width="1.4" opacity="0.3"/>
+  <circle cx="83.72" cy="75.62" r="5.26" fill="#2dd4a7" opacity="0.5"/>
+  <circle cx="140.07" cy="82.61" r="5.42" fill="#f06aa6" opacity="0.5"/>
+  <circle cx="75.49" cy="53.16" r="7.06" fill="#2dd4a7" opacity="0.5"/>
+  <circle cx="71.68" cy="114.36" r="5.49" fill="#f06aa6" opacity="0.5"/>
+  <path d="M75.59,80.65 C75.47,89.05 68.4,102.93 62.55,104.66 C56.69,106.4 45.45,97.72 40.45,91.04 C35.45,84.35 28.76,70.67 32.57,64.54 C36.38,58.41 56.15,51.57 63.32,54.25 C70.49,56.94 75.72,72.25 75.59,80.65 Z" fill="#f06aa6" opacity="0.12"/>
+  <path d="M75.59,80.65 C75.47,89.05 68.4,102.93 62.55,104.66 C56.69,106.4 45.45,97.72 40.45,91.04 C35.45,84.35 28.76,70.67 32.57,64.54 C36.38,58.41 56.15,51.57 63.32,54.25 C70.49,56.94 75.72,72.25 75.59,80.65 Z" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.25"/>
+</svg>

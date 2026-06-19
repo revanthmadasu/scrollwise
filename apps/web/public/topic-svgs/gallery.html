@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ScrollWise — topic SVG gallery</title>
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; padding: 24px; background: #07070c; color: #e7e7ef;
+           font: 14px/1.5 system-ui, sans-serif; }
+    h1 { font-weight: 500; font-size: 20px; margin: 0 0 4px; }
+    .sub { color: #9a9ab0; margin: 0 0 20px; }
+    .controls { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    button { background: #15151f; color: #cfcfe0; border: 1px solid #2a2a3a;
+             border-radius: 8px; padding: 6px 12px; cursor: pointer; font: inherit; }
+    button.on { background: #2a2a3a; color: #fff; }
+    h2 { font-weight: 500; font-size: 15px; margin: 24px 0 10px; text-transform: capitalize; }
+    .mood { color: #8a8aa0; font-weight: 400; font-size: 12px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+    .cell { background: #0e0e16; border: 1px solid #1c1c28; border-radius: 10px;
+            overflow: hidden; }
+    .cell img { display: block; width: 100%; height: 110px; object-fit: cover; background: #000; }
+    .cap { padding: 6px 8px; font-size: 11px; color: #8a8aa0;
+           display: flex; justify-content: space-between; gap: 6px; }
+    .cap b { color: #cfcfe0; font-weight: 500; }
+  </style>
+</head>
+<body>
+  <h1>ScrollWise — topic SVG gallery</h1>
+  <p class="sub">180 decorative assets · 6 topics × (small / medium / large) × 10. Metadata in <code>manifest.json</code>.</p>
+  <div class="controls" id="filters"></div>
+  <div id="root"></div>
+  <script>
+    const SIZES = ["small", "medium", "large"];
+    let activeSize = "all";
+    fetch("manifest.json").then(r => r.json()).then(m => {
+      const filters = document.getElementById("filters");
+      ["all", ...SIZES].forEach(s => {
+        const b = document.createElement("button");
+        b.textContent = s;
+        b.className = s === activeSize ? "on" : "";
+        b.onclick = () => { activeSize = s;
+          [...filters.children].forEach(c => c.className = c.textContent === s ? "on" : "");
+          render(m); };
+        filters.appendChild(b);
+      });
+      render(m);
+    });
+    function render(m) {
+      const root = document.getElementById("root");
+      root.innerHTML = "";
+      m.topics.forEach(topic => {
+        const assets = m.assets.filter(a => a.topic === topic &&
+          (activeSize === "all" || a.size === activeSize));
+        if (!assets.length) return;
+        const h = document.createElement("h2");
+        h.innerHTML = topic + ' <span class="mood">' + assets[0].mood + '</span>';
+        root.appendChild(h);
+        const grid = document.createElement("div");
+        grid.className = "grid";
+        assets.forEach(a => {
+          const cell = document.createElement("div");
+          cell.className = "cell";
+          cell.innerHTML =
+            '<img loading="lazy" src="' + a.file + '" alt="' + a.id + '">' +
+            '<div class="cap"><b>' + a.size + '</b><span>' + a.motifs.join(" · ") + '</span></div>';
+          grid.appendChild(cell);
+        });
+        root.appendChild(grid);
+      });
+    }
+  </script>
+</body>
+</html>

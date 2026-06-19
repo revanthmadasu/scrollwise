@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="math decorative background">
+  <defs>
+    <radialGradient id="grad-math-medium-06" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#8b7bff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0e0a1f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0e0a1f"/>
+  <rect width="400" height="300" fill="url(#grad-math-medium-06)"/>
+  <polygon points="104.28,183.48 139.72,150.87 172.33,186.31 136.89,218.92" fill="none" stroke="#c4b5fd" stroke-width="1.2" opacity="0.39"/>
+  <polygon points="174.19,112.11 154.4,156.9 109.62,137.11 129.4,92.33" fill="none" stroke="#c4b5fd" stroke-width="1.2" opacity="0.25"/>
+  <polygon points="223.32,182.86 189.1,202.56 159.79,176.11 175.89,140.05 215.16,144.23" fill="none" stroke="#5b8cff" stroke-width="1.2" opacity="0.33"/>
+  <polygon points="327.78,208.84 311.66,193.7 316.71,172.17 337.88,165.78 354,180.92 348.95,202.44" fill="none" stroke="#c4b5fd" stroke-width="1.2" opacity="0.3"/>
+  <polygon points="319.91,52.24 347.75,71.78 316.91,86.12" fill="none" stroke="#5b8cff" stroke-width="1.2" opacity="0.41"/>
+  <polygon points="266.67,171.62 267.12,148.46 286.95,160.43" fill="none" stroke="#c4b5fd" stroke-width="1.2" opacity="0.25"/>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="chemistry decorative background">
+  <defs>
+    <radialGradient id="grad-chemistry-small-07" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#2dd4a7" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#08160f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="160" height="160" fill="#08160f"/>
+  <rect width="160" height="160" fill="url(#grad-chemistry-small-07)"/>
+  <circle cx="57.13" cy="10.52" r="13.89" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.22"/>
+  <circle cx="52.96" cy="6.35" r="2.5" fill="#7be0c4" opacity="0.4"/>
+  <circle cx="114.22" cy="135.36" r="4.02" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.22"/>
+  <circle cx="113.01" cy="134.16" r="0.72" fill="#7be0c4" opacity="0.4"/>
+  <circle cx="42.29" cy="139.26" r="14.35" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.22"/>
+  <circle cx="37.99" cy="134.96" r="2.58" fill="#7be0c4" opacity="0.4"/>
+  <circle cx="102.3" cy="46.37" r="12.32" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.22"/>
+  <circle cx="98.6" cy="42.68" r="2.22" fill="#7be0c4" opacity="0.4"/>
+  <circle cx="111.82" cy="67.29" r="9.69" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.22"/>
+  <circle cx="108.91" cy="64.39" r="1.74" fill="#7be0c4" opacity="0.4"/>
+  <circle cx="76.33" cy="23.72" r="13.82" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.22"/>
+  <circle cx="72.19" cy="19.57" r="2.49" fill="#7be0c4" opacity="0.4"/>
+  <circle cx="67.21" cy="75.64" r="3.53" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.22"/>
+  <circle cx="66.15" cy="74.58" r="0.64" fill="#7be0c4" opacity="0.4"/>
+  <circle cx="94.99" cy="140.68" r="14.47" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.22"/>
+  <circle cx="90.65" cy="136.34" r="2.61" fill="#7be0c4" opacity="0.4"/>
+</svg>

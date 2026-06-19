@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="physics decorative background">
+  <defs>
+    <radialGradient id="grad-physics-small-07" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#5b8cff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#0b1026" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="160" height="160" fill="#0b1026"/>
+  <rect width="160" height="160" fill="url(#grad-physics-small-07)"/>
+  <circle cx="88.83" cy="67.43" r="33.33" fill="none" stroke="#9b6bff" stroke-width="1" opacity="0.28"/>
+  <circle cx="88.83" cy="67.43" r="66.67" fill="none" stroke="#9b6bff" stroke-width="1" opacity="0.25"/>
+  <circle cx="88.83" cy="67.43" r="100" fill="none" stroke="#9b6bff" stroke-width="1" opacity="0.22"/>
+  <line x1="88.83" y1="67.43" x2="158.59" y2="85.23" stroke="#5b8cff" stroke-width="0.6" opacity="0.12"/>
+  <line x1="88.83" y1="67.43" x2="122.21" y2="131.23" stroke="#5b8cff" stroke-width="0.6" opacity="0.12"/>
+  <line x1="88.83" y1="67.43" x2="43.38" y2="123.27" stroke="#5b8cff" stroke-width="0.6" opacity="0.12"/>
+  <line x1="88.83" y1="67.43" x2="19.46" y2="48.14" stroke="#5b8cff" stroke-width="0.6" opacity="0.12"/>
+  <line x1="88.83" y1="67.43" x2="61.79" y2="0.7" stroke="#5b8cff" stroke-width="0.6" opacity="0.12"/>
+  <line x1="88.83" y1="67.43" x2="130.46" y2="8.69" stroke="#5b8cff" stroke-width="0.6" opacity="0.12"/>
+</svg>

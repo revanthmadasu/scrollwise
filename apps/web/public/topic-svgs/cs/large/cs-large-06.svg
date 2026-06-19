@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="cs decorative background">
+  <defs>
+    <radialGradient id="grad-cs-large-06" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#3ddc84" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#06120b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="960" height="540" fill="#06120b"/>
+  <rect width="960" height="540" fill="url(#grad-cs-large-06)"/>
+  <path d="M896,0 L960,0 L960,0" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="960" cy="0" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M224,224 L112,224 L112,0" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="112" cy="0" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M336,560 L336,336 L0,336" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="0" cy="336" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M336,560 L672,540 L672,540 L960,540 L960,428" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="960" cy="428" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M448,0 L448,0 L448,0 L224,0" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="224" cy="0" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M560,336 L336,336 L0,336 L0,448" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="0" cy="448" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M784,112 L784,0 L784,112 L784,336" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="784" cy="336" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M336,224 L336,0 L112,0 L112,336 L112,224" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="112" cy="224" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M560,336 L560,112 L336,112 L336,448" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="336" cy="448" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M224,112 L0,112 L224,112 L336,112" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="336" cy="112" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M224,112 L224,0 L224,336" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="224" cy="336" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M672,112 L960,112 L960,0 L960,0" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="960" cy="0" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M0,112 L336,112 L448,112" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="448" cy="112" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+  <path d="M784,448 L560,448 L672,448 L672,224" fill="none" stroke="#3ddc84" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="672" cy="224" r="2.6" fill="#a6f4c5" opacity="0.55"/>
+</svg>
