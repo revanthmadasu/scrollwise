@@ -82,6 +82,19 @@ ${EMAIL_BLOCK}${DOMAIN} {
     # Frontend: static SPA with client-side routing fallback.
     handle {
         root * ${WEBROOT}
+
+        # Content-hashed build assets (index-<hash>.js, etc.) never change for a
+        # given URL — cache them hard.
+        @assets path /assets/*
+        header @assets Cache-Control "public, max-age=31536000, immutable"
+
+        # index.html and every SPA-fallback response must revalidate, so a fresh
+        # deploy is picked up on the next load instead of from a stale cache.
+        # (This is what makes /admin/login appear after a deploy without a manual
+        # hard-refresh.)
+        @html not path /assets/*
+        header @html Cache-Control "no-cache"
+
         try_files {path} /index.html
         file_server
     }
