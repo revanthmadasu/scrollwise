@@ -48,19 +48,62 @@ export type Value<T = string> = T | Binding;
 export type Guard = string | Binding;
 
 export type PaletteToken = "$accent" | "$bg" | "$surface" | "$text" | "$cycle";
-export type StyleScalar = "sm" | "md" | "lg";
+export type StyleScalar = "xs" | "sm" | "md" | "lg" | "xl";
+export type FontSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl";
 
+/**
+ * Whitelisted style tokens. Rich enough to express a distinct layout from data
+ * alone (no per-template CSS), but every value is an enum/number mapped through
+ * a fixed table in style.ts — nothing freeform reaches the DOM.
+ */
 export interface StyleSpec {
-  /** A CSS class already shipped in index.css. Carries the real styling. */
+  /** A CSS class already shipped in index.css (scene textures, animations). */
   preset?: string;
+
+  // layout
   dir?: "row" | "col";
   gap?: StyleScalar;
   pad?: StyleScalar;
-  radius?: StyleScalar;
-  align?: "start" | "center" | "end" | "stretch";
-  justify?: "start" | "center" | "between" | "end";
+  padX?: StyleScalar;
+  padY?: StyleScalar;
+  radius?: StyleScalar | "full" | "none";
+  align?: "start" | "center" | "end" | "stretch" | "baseline";
+  justify?: "start" | "center" | "between" | "end" | "around";
+  wrap?: boolean;
+  grow?: number;
+  w?: "full" | "half" | "auto";
+  h?: "full" | "auto" | number;
+  minH?: number;
+
+  // color
   bg?: PaletteToken | string;
   fg?: PaletteToken | string;
+  border?: PaletteToken | string;
+  borderWidth?: number;
+  /** A single-side colored accent bar (uses $accent unless `border` is set). */
+  accentBar?: "left" | "top" | "right" | "bottom";
+  opacity?: number;
+  shadow?: "sm" | "md" | "lg";
+
+  // typography
+  size?: FontSize;
+  weight?: 400 | 500 | 600 | 700 | 800 | 900;
+  talign?: "left" | "center" | "right";
+  transform?: "upper" | "none";
+  tracking?: "tight" | "normal" | "wide" | "wider";
+  leading?: "tight" | "normal" | "loose";
+  italic?: boolean;
+  serif?: boolean;
+  mono?: boolean;
+
+  // positioning (decorative overlays: ribbons, bars, badges)
+  pos?: "relative" | "absolute";
+  inset?: { top?: number; right?: number; bottom?: number; left?: number };
+  z?: number;
+
+  // media
+  fit?: "cover" | "contain";
+
   /** Set CSS custom properties (e.g. {"--stat-color":"$cycle"}). */
   vars?: Record<string, PaletteToken | string>;
 }
@@ -75,13 +118,13 @@ interface NodeBase {
 
 export interface BoxNode extends NodeBase {
   type: "box";
-  /** HTML tag override (div by default) — lets a box be a ul/li/section. */
-  as?: "div" | "section" | "header" | "ul" | "li" | "span";
+  /** HTML tag override (div by default) — lets a box be a ul/li/section/etc. */
+  as?: "div" | "section" | "header" | "footer" | "article" | "aside" | "ul" | "li" | "span" | "blockquote";
   children?: LayoutNode[];
 }
 export interface TextNode extends NodeBase {
   type: "text";
-  as?: "h1" | "h2" | "h3" | "p" | "span" | "li";
+  as?: "h1" | "h2" | "h3" | "p" | "span" | "li" | "blockquote";
   value: Value<string>;
 }
 export interface ImageNode extends NodeBase {
@@ -147,6 +190,9 @@ export interface TemplateDoc {
   vibe: Vibe;
   description: string;
   content_types: string[];
+  /** Organizational labels for the showcase (scene/age/length/theme). NOT a
+   * selection contract — the generator selects on vibe + content_types only. */
+  tags?: string[];
   palette: ThemePalette;
   /** Cycle palette for the `$cycle` token (per-item accent in repeats). */
   accents?: string[];

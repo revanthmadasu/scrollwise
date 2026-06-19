@@ -1205,3 +1205,53 @@ button.account-item:hover { background: var(--surface-2); }
   margin: 0;
   line-height: 1.6;
 }
+
+/* --- Template engine: reusable scene textures ---------------------------- */
+/* Data templates opt in via a `preset`. Each keys off --accent/--bg/--text
+   (set by the engine root) so they adapt to palette + light/dark automatically. */
+.scene-ruled {
+  background-image: repeating-linear-gradient(
+    to bottom, transparent 0, transparent 31px,
+    color-mix(in srgb, var(--accent) 24%, transparent) 32px);
+}
+.scene-grid {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--accent) 14%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 14%, transparent) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.scene-dots {
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--accent) 32%, transparent) 1.5px, transparent 1.6px);
+  background-size: 18px 18px;
+}
+.scene-blueprint {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--accent) 28%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 28%, transparent) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+.scene-stars {
+  background-image:
+    radial-gradient(1px 1px at 18% 28%, var(--text) 50%, transparent),
+    radial-gradient(1px 1px at 68% 62%, var(--text) 50%, transparent),
+    radial-gradient(1.6px 1.6px at 42% 82%, var(--text) 50%, transparent),
+    radial-gradient(1px 1px at 84% 22%, var(--text) 50%, transparent),
+    radial-gradient(1.4px 1.4px at 30% 55%, var(--text) 50%, transparent);
+}
+/* Soft animated pulse for energetic/neon templates (opt-in). */
+@keyframes te-pulse-soft { 0%, 100% { opacity: .55 } 50% { opacity: 1 } }
+.te-pulse { animation: te-pulse-soft 2.4s ease-in-out infinite; }
+/* A hairline that fades out at the ends — editorial rule. */
+.te-rule-soft {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+/* Card frame: clips decorative overflow and anchors absolute children. */
+.te-card { position: relative; overflow: hidden; }
+/* Rotated corner ribbon (energetic/novelty templates). */
+.te-ribbon {
+  position: absolute; top: 16px; right: -36px; transform: rotate(45deg);
+  padding: 4px 42px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase;
+}

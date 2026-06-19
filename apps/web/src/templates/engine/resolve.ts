@@ -10,6 +10,11 @@ function isBinding(v: unknown): v is Binding {
 
 /** Walk a dotted path (supports numeric array indices): "images.0.url". */
 export function getByPath(root: unknown, path: string): unknown {
+  // `$n` is the 1-based repeat index (a display convenience for numbered lists).
+  if (path === "$n") {
+    const i = (root as Scope)?.$index;
+    return typeof i === "number" ? i + 1 : undefined;
+  }
   let cur: unknown = root;
   for (const seg of path.split(".")) {
     if (cur == null) return undefined;

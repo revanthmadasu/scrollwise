@@ -9,8 +9,14 @@ import { glowPulse } from "./glowPulse";
 import { minimalScroll } from "./minimalScroll";
 import { lottieHero } from "./lottieHero";
 import { infographicCard } from "./infographicCard";
+import { LIBRARY } from "./library";
+import { LIBRARY2 } from "./library2";
 
-export const TEMPLATE_DOCS: TemplateDoc[] = [glowPulse, minimalScroll, lottieHero, infographicCard];
+export const TEMPLATE_DOCS: TemplateDoc[] = [
+  glowPulse, minimalScroll, lottieHero, infographicCard,
+  ...LIBRARY,
+  ...LIBRARY2,
+];
 
 export const TEMPLATE_BY_ID: Record<string, TemplateDoc> = Object.fromEntries(
   TEMPLATE_DOCS.map((d) => [d.template_id, d]),
