@@ -5,6 +5,7 @@ import {
   ChartIcon,
   CompassIcon,
   HomeIcon,
+  LayersIcon,
   LogoutIcon,
   MenuIcon,
   SparklesIcon,
@@ -53,6 +54,9 @@ export function Layout() {
           <NavLink to="/discover"><CompassIcon /><span>Discover</span></NavLink>
           <NavLink to="/interests"><SparklesIcon /><span>Interests</span></NavLink>
           <NavLink to="/progress"><ChartIcon /><span>Progress</span></NavLink>
+          {user?.is_admin && (
+            <NavLink to="/admin/templates"><LayersIcon /><span>Build</span></NavLink>
+          )}
         </nav>
 
         <div className="user-menu">

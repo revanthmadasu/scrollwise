@@ -19,6 +19,7 @@ export interface User {
   display_name: string | null;
   avatar_url: string | null;
   preferred_level: number;
+  is_admin: boolean;
 }
 
 export interface InterestCategory {
@@ -116,4 +117,32 @@ export interface Progress {
   topics: TopicProgress[];
   tests_taken: number;
   tests_passed: number;
+}
+
+export type TemplateStatus = "draft" | "approved" | "rejected" | "archived";
+
+/** The render contract + selection metadata for one post template. */
+export interface TemplateSubmit {
+  template_id: string;
+  name: string;
+  vibe: string;
+  description: string;
+  compatible_content_types: string[];
+  capacity: Record<string, unknown>;
+  required_inputs: string[];
+  optional_inputs: string[];
+  palette: Record<string, unknown>;
+  sample_inputs?: Record<string, unknown> | null;
+  status?: TemplateStatus;
+  review_notes?: string | null;
+}
+
+export interface TemplateRecord extends TemplateSubmit {
+  id: string;
+  status: TemplateStatus;
+  version: number;
+  review_notes: string | null;
+  created_at: string;
+  updated_at: string;
+  approved_at: string | null;
 }

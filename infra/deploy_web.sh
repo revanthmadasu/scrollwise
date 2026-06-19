@@ -27,6 +27,12 @@ if [ ! -d "$WEBROOT" ]; then
   exit 1
 fi
 
+# Install deps from the lockfile BEFORE building, so a newly-added package
+# (e.g. lottie-react) is present. `npm ci` is deterministic — it installs
+# exactly what package-lock.json pins and fails loudly if it's out of sync.
+echo "==> Installing frontend dependencies (npm ci)"
+( cd "$WEB_DIR" && npm ci )
+
 # Same relative API base the proxy expects (frontend calls /api/* same-origin).
 echo "==> Building frontend (VITE_API_BASE=/api)"
 ( cd "$WEB_DIR" && VITE_API_BASE=/api npm run build )

@@ -4,7 +4,7 @@ import uuid
 from datetime import datetime
 from typing import Optional
 
-from sqlalchemy import DateTime, Integer, String, func
+from sqlalchemy import Boolean, DateTime, Integer, String, false, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db import Base
@@ -31,6 +31,12 @@ class User(Base):
     # Preferred granularity (1=summary, 2=standard, 3=deep). Drives which of the
     # three per-subtopic post rows the feed serves.
     preferred_level: Mapped[int] = mapped_column(Integer, nullable=False, default=2)
+
+    # Grants access to the admin surface (template builder, etc.). Promote a
+    # user with `python scripts/make_admin.py <email>`; never set via the API.
+    is_admin: Mapped[bool] = mapped_column(
+        Boolean, nullable=False, default=False, server_default=false()
+    )
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False

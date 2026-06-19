@@ -18,7 +18,7 @@ from app.db import engine
 
 # Import models so they're registered on Base.metadata before any ORM use.
 from app import models  # noqa: F401  (side-effect import)
-from app.routers import auth, feed, interests, posts, progress, prompts, waitlist
+from app.routers import auth, feed, interests, posts, progress, prompts, templates, waitlist
 
 settings = get_settings()
 
@@ -48,6 +48,7 @@ app.include_router(prompts.router)
 app.include_router(feed.router)
 app.include_router(posts.router)
 app.include_router(progress.router)
+app.include_router(templates.router)
 app.include_router(waitlist.router)
 
 
