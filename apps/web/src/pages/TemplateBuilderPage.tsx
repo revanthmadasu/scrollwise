@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "../api/client";
-import type { TemplateRecord, TemplateStatus } from "../api/types";
+import type { TemplateRecord, TemplateStatus, TemplateSubmit } from "../api/types";
 import { ALL_TEMPLATES } from "../templates/index";
-import type { TemplateMeta } from "../templates/types";
+import type { TemplateDoc, FieldSpec } from "../templates/engine/spec";
 import { TemplateRenderer } from "../templates/TemplateRenderer";
 import { SAMPLES, textOnlySample } from "../templates/samples";
 
@@ -14,32 +14,39 @@ const STATUS_LABEL: Record<TemplateStatus, string> = {
   archived: "Archived",
 };
 
-/** Map the in-code template meta (camelCase) to the API's submit payload. */
-function metaToSubmit(meta: TemplateMeta) {
-  const sample = SAMPLES[meta.id];
+/** Map a template doc to the API's submit payload (includes the data-driven
+ * render contract: field-spec + layout). required/optional inputs are derived
+ * from the field-spec for back-compat with the generator's selection inputs. */
+function docToSubmit(doc: TemplateDoc): TemplateSubmit {
+  const sample = SAMPLES[doc.template_id];
   return {
-    template_id: meta.id,
-    name: meta.name,
-    vibe: meta.vibe,
-    description: meta.description,
-    compatible_content_types: meta.compatibleContentTypes,
-    capacity: meta.capacity as unknown as Record<string, unknown>,
-    required_inputs: meta.requiredInputs,
-    optional_inputs: meta.optionalInputs,
-    palette: meta.palette as unknown as Record<string, unknown>,
+    template_id: doc.template_id,
+    name: doc.name,
+    vibe: doc.vibe,
+    description: doc.description,
+    compatible_content_types: doc.content_types,
+    capacity: {},
+    required_inputs: doc.fields.filter((f) => f.required).map((f) => f.name),
+    optional_inputs: doc.fields.filter((f) => !f.required).map((f) => f.name),
+    palette: doc.palette as unknown as Record<string, unknown>,
+    fields: doc.fields as unknown as Record<string, unknown>[],
+    layout: doc.layout as unknown as Record<string, unknown>,
+    engine: doc.engine,
     sample_inputs: sample ? textOnlySample(sample) : null,
   };
 }
 
-function capacitySummary(c: TemplateMeta["capacity"]): string {
-  const parts: string[] = [`title ≤${c.maxTitleChars}`];
-  if (c.maxBodyChars) parts.push(`body ≤${c.maxBodyChars}`);
-  if (c.maxBullets) parts.push(`${c.maxBullets} bullets`);
-  if (c.maxStats) parts.push(`${c.maxStats} stats`);
-  if (c.maxImages) parts.push(`${c.maxImages} img`);
-  if (c.hasSvgSlot) parts.push("SVG slot");
-  if (c.hasLottieSlot) parts.push("Lottie slot");
-  return parts.join(" · ");
+/** One-line field-spec summary for the review card. */
+function fieldsSummary(fields: FieldSpec): string {
+  return fields
+    .map((f) => {
+      let s = f.name;
+      if (f.type === "list") s += `[${f.max ?? "∞"}]`;
+      else if (f.type === "asset") s += `(${f.asset})`;
+      else if (f.max) s += ` ≤${f.max}`;
+      return f.required ? s + "*" : s;
+    })
+    .join(" · ");
 }
 
 export function TemplateBuilderPage() {
@@ -50,8 +57,8 @@ export function TemplateBuilderPage() {
   for (const t of saved.data ?? []) byId.set(t.template_id, t);
 
   const review = useMutation({
-    mutationFn: (vars: { meta: TemplateMeta; status: TemplateStatus; notes: string }) =>
-      api.submitTemplate({ ...metaToSubmit(vars.meta), status: vars.status, review_notes: vars.notes || null }),
+    mutationFn: (vars: { doc: TemplateDoc; status: TemplateStatus; notes: string }) =>
+      api.submitTemplate({ ...docToSubmit(vars.doc), status: vars.status, review_notes: vars.notes || null }),
     onSuccess: () => qc.invalidateQueries({ queryKey: ["admin-templates"] }),
   });
 
@@ -74,13 +81,13 @@ export function TemplateBuilderPage() {
       </header>
 
       <div className="builder-list">
-        {ALL_TEMPLATES.map((meta) => (
+        {ALL_TEMPLATES.map((doc) => (
           <TemplateReviewCard
-            key={meta.id}
-            meta={meta}
-            record={byId.get(meta.id)}
-            busy={review.isPending && review.variables?.meta.id === meta.id}
-            onReview={(status, notes) => review.mutate({ meta, status, notes })}
+            key={doc.template_id}
+            doc={doc}
+            record={byId.get(doc.template_id)}
+            busy={review.isPending && review.variables?.doc.template_id === doc.template_id}
+            onReview={(status, notes) => review.mutate({ doc, status, notes })}
           />
         ))}
       </div>
@@ -89,12 +96,12 @@ export function TemplateBuilderPage() {
 }
 
 function TemplateReviewCard({
-  meta,
+  doc,
   record,
   busy,
   onReview,
 }: {
-  meta: TemplateMeta;
+  doc: TemplateDoc;
   record?: TemplateRecord;
   busy: boolean;
   onReview: (status: TemplateStatus, notes: string) => void;
@@ -105,38 +112,30 @@ function TemplateReviewCard({
   return (
     <section className="tb-card">
       <div className="tb-preview">
-        <TemplateRenderer templateId={meta.id} inputs={SAMPLES[meta.id] ?? { title: meta.name }} />
+        <TemplateRenderer templateId={doc.template_id} inputs={SAMPLES[doc.template_id] ?? { title: doc.name }} />
       </div>
 
       <div className="tb-meta">
         <div className="tb-meta-head">
-          <h2>{meta.name}</h2>
+          <h2>{doc.name}</h2>
           <span className={`tb-status ${status ?? "none"}`}>
             {status ? STATUS_LABEL[status] : "Not reviewed"}
           </span>
         </div>
-        <p className="muted tb-desc">{meta.description}</p>
+        <p className="muted tb-desc">{doc.description}</p>
 
         <dl className="tb-spec">
           <div>
             <dt>Vibe</dt>
-            <dd>{meta.vibe}</dd>
+            <dd>{doc.vibe}</dd>
           </div>
           <div>
             <dt>Content types</dt>
-            <dd>{meta.compatibleContentTypes.join(", ")}</dd>
-          </div>
-          <div>
-            <dt>Required inputs</dt>
-            <dd>{meta.requiredInputs.join(", ") || "—"}</dd>
-          </div>
-          <div>
-            <dt>Optional inputs</dt>
-            <dd>{meta.optionalInputs.join(", ") || "—"}</dd>
+            <dd>{doc.content_types.join(", ")}</dd>
           </div>
           <div className="tb-spec-wide">
-            <dt>Capacity</dt>
-            <dd>{capacitySummary(meta.capacity)}</dd>
+            <dt>Fields</dt>
+            <dd>{fieldsSummary(doc.fields)}</dd>
           </div>
         </dl>
 

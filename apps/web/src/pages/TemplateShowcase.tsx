@@ -12,19 +12,19 @@ export function TemplateShowcase() {
         </h1>
         <ThemeToggle />
       </div>
-      {ALL_TEMPLATES.map((meta) => (
-        <section key={meta.id} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+      {ALL_TEMPLATES.map((doc) => (
+        <section key={doc.template_id} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <span style={{ color: "var(--muted)", fontSize: "0.75rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em" }}>
-              {meta.name}
+              {doc.name}
             </span>
             <span style={{ background: "var(--surface-2)", color: "var(--text-soft)", fontSize: "0.7rem", padding: "2px 8px", borderRadius: 20 }}>
-              {meta.vibe}
+              {doc.vibe}
             </span>
           </div>
           <TemplateRenderer
-            templateId={meta.id}
-            inputs={SAMPLES[meta.id] ?? { title: meta.name }}
+            templateId={doc.template_id}
+            inputs={SAMPLES[doc.template_id] ?? { title: doc.name }}
           />
         </section>
       ))}

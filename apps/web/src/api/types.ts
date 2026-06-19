@@ -132,6 +132,10 @@ export interface TemplateSubmit {
   required_inputs: string[];
   optional_inputs: string[];
   palette: Record<string, unknown>;
+  /** Data-driven render contract: field-spec + layout node tree + engine version. */
+  fields?: Record<string, unknown>[];
+  layout?: Record<string, unknown>;
+  engine?: number;
   sample_inputs?: Record<string, unknown> | null;
   status?: TemplateStatus;
   review_notes?: string | null;

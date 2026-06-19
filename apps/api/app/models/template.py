@@ -51,6 +51,13 @@ class Template(Base):
     required_inputs: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
     optional_inputs: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
     palette: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
+
+    # --- Data-driven render contract (interpreted by the web TemplateEngine) ---
+    # `fields` is the lightweight field-spec (the input contract); `layout` is the
+    # node tree; `engine` is the node-vocabulary version the renderer must support.
+    fields: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    layout: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
+    engine: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
     # Text-only example inputs captured at review time (preview reproducibility).
     sample_inputs: Mapped[Optional[dict]] = mapped_column(JSON, nullable=True)
 

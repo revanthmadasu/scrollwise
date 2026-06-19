@@ -18,6 +18,10 @@ class TemplateBase(BaseModel):
     required_inputs: list[str] = Field(default_factory=list)
     optional_inputs: list[str] = Field(default_factory=list)
     palette: dict[str, Any] = Field(default_factory=dict)
+    # Data-driven render contract: field-spec + layout node tree + engine version.
+    fields: list[dict[str, Any]] = Field(default_factory=list)
+    layout: dict[str, Any] = Field(default_factory=dict)
+    engine: int = 1
     sample_inputs: Optional[dict[str, Any]] = None
 
 
