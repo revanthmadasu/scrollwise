@@ -7,8 +7,9 @@
 #
 # This is the public/Caddy counterpart to restart_dev.sh (which is for the
 # SSH-tunnel dev mode with the Vite dev server). Use this on the live site.
-# Runs every step even if one fails, then reports. Does NOT reinstall anything
-# or rewrite the Caddyfile — for first-time setup use ec2_proxy_setup.sh.
+# Runs every step even if one fails, then reports. Syncs deps + migrates the DB
+# (via restart_api.sh / deploy_web.sh) but does NOT rewrite the Caddyfile — for
+# first-time setup use ec2_proxy_setup.sh.
 #
 # Usage:  ./infra/restart_prod.sh
 set -uo pipefail
