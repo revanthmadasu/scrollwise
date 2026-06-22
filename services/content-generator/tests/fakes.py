@@ -69,12 +69,44 @@ def canonicalize_responder(system, user) -> str:
     return json.dumps({"canonical_title": "Test Topic"})
 
 
+def fill_responder(system, user) -> str:
+    """A kitchen-sink structured payload. validate_inputs keeps only the keys a
+    given template's field-spec declares, so this works for any fill request."""
+    return json.dumps({
+        "title": "Filled title",
+        "subtitle": "A grounded subtitle",
+        "value": "42",
+        "unit": "x",
+        "level": "Lv 1",
+        "kicker": "Topic",
+        "stats": [
+            {"label": "Alpha", "value": "10", "unit": "x"},
+            {"label": "Beta", "value": "20"},
+        ],
+        "steps": [
+            {"title": "First", "text": "do this"},
+            {"title": "Second", "text": "then that"},
+        ],
+        "options": ["Option A", "Option B", "Option C"],
+        "sides": [
+            {"label": "Left", "value": "one side"},
+            {"label": "Right", "value": "the other"},
+        ],
+        "items": [{"label": "Item 1", "value": "v1"}, {"label": "Item 2", "value": "v2"}],
+        "events": [{"when": "2020", "title": "An event", "text": "it happened"}],
+        "ingredients": ["a thing", "another thing"],
+        "body": "Filled body text.",
+    })
+
+
 def combined_responder(system, user) -> str:
     """Dispatch based on a distinctive phrase in the system prompt."""
     if "normalize a user" in system:
         return canonicalize_responder(system, user)
     elif "curriculum designer" in system:
         return curriculum_responder(system, user)
+    elif "reshape a learning post" in system:
+        return fill_responder(system, user)
     elif "learning posts" in system:
         return post_responder(system, user)
     elif "test questions" in system:

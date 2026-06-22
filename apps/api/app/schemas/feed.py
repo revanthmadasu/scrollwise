@@ -21,6 +21,11 @@ class PostOut(BaseModel):
     video_url: str | None = None
     estimated_duration_sec: int
 
+    # Data-driven rendering: when present, the client renders via the template
+    # engine instead of post_image_urls.
+    template_id: str | None = None
+    template_inputs: dict = {}
+
     # Test fields (only on content_type == "test")
     test_type: str | None = None
     question: str | None = None
@@ -48,6 +53,15 @@ class PostOut(BaseModel):
             except (json.JSONDecodeError, TypeError):
                 return []
 
+        def _obj(raw: str | None) -> dict:
+            if not raw:
+                return {}
+            try:
+                parsed = json.loads(raw)
+                return parsed if isinstance(parsed, dict) else {}
+            except (json.JSONDecodeError, TypeError):
+                return {}
+
         return cls(
             post_id=post.post_id,
             topic_id=post.topic_id,
@@ -60,6 +74,8 @@ class PostOut(BaseModel):
             post_image_urls=_arr(post.post_image_urls),
             video_url=post.video_url,
             estimated_duration_sec=post.estimated_duration_sec,
+            template_id=post.template_id,
+            template_inputs=_obj(post.template_inputs),
             test_type=post.test_type,
             question=post.question,
             options=_arr(post.options) if post.options else None,

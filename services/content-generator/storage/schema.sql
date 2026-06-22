@@ -66,6 +66,12 @@ CREATE TABLE IF NOT EXISTS posts (
     embedding TEXT,                    -- JSON array; vector(1024) in Postgres
     model_version TEXT NOT NULL DEFAULT '',
 
+    -- Data-driven rendering: which approved template renders this post, and the
+    -- structured inputs to feed its field-spec. NULL/'{}' = render the legacy
+    -- way (post_image_urls). The `templates` catalog itself is API-owned.
+    template_id TEXT,
+    template_inputs TEXT NOT NULL DEFAULT '{}',  -- JSON object
+
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

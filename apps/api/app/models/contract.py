@@ -56,6 +56,11 @@ class Post(Base):
     # subtopic_id is a synthetic gate id, not a content subtopic.)
     prerequisites: Mapped[Optional[str]] = mapped_column(String, nullable=True)
 
+    # Data-driven rendering (written by the generator): the selected template +
+    # the JSON inputs that fill its field-spec. NULL/'{}' = legacy rendering.
+    template_id: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    template_inputs: Mapped[Optional[str]] = mapped_column(String, nullable=True)  # JSON object (text)
+
     @property
     def is_test(self) -> bool:
         return self.content_type == "test"
