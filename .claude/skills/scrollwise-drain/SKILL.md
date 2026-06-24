@@ -55,6 +55,13 @@ The log lines are structured JSON. Useful events to grep for:
 `drain_loop_start`, `prompt_claimed`, `prompt_ready`, `prompt_failed`,
 `template_fill_failed`.
 
+The same JSON is **also written to a rotating file on disk**,
+`infra/logs/content-generator.log` (alongside `api.log` / `web.log`), via the
+unit's `Environment=CONTENT_GEN_LOG_FILE=…` line. So `tail -f
+infra/logs/content-generator.log` is equivalent to `journalctl -u
+scrollwise-drain -f`. See the `scrollwise-logging` skill for the full logging
+setup (env vars, rotation, adding loggers).
+
 ## The big gotcha: restart after approving or editing templates
 
 **This is the #1 reason to use this skill.** The worker builds its `Pipeline`
