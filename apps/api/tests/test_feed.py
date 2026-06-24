@@ -109,6 +109,54 @@ async def test_exhausted_repeats_when_everything_seen(auth_client):
     assert {i["post"]["post_id"] for i in body["items"]} <= {"s1", "s2"}
 
 
+async def test_topic_feed_returns_only_that_topics_content(auth_client):
+    # Another topic exists; the topic feed must not leak it in.
+    await _add_content_post("L1", topic_id="logic", subtopic_id="lt0")
+
+    r = await auth_client.get("/feed/topic/stoicism")
+    assert r.status_code == 200
+    body = r.json()
+    ids = [i["post"]["post_id"] for i in body["items"]]
+
+    # Content posts of stoicism only, in curriculum order. The blocking TEST
+    # (s1-test) is excluded — this is a content review — and "logic" is absent.
+    assert ids == ["s1", "s2"]
+    assert "s1-test" not in ids
+    assert "L1" not in ids
+    assert body["exhausted"] is False
+    assert all(i["reason"] == "prompted" for i in body["items"])
+
+
+async def test_topic_feed_orders_unvisited_before_visited(auth_client):
+    await _set_prompt_ready("stoicism")
+    # Main feed serves + marks s1 seen (s2 stays gated behind the unpassed test,
+    # so it remains unvisited).
+    await auth_client.get("/feed?limit=10")
+
+    r = await auth_client.get("/feed/topic/stoicism")
+    ids = [i["post"]["post_id"] for i in r.json()["items"]]
+    # Unvisited (s2) first, then visited (s1).
+    assert ids == ["s2", "s1"]
+
+
+async def test_topic_feed_is_read_only(auth_client):
+    await _set_prompt_ready("stoicism")
+    await auth_client.get("/feed?limit=10")  # marks s1 seen
+
+    # Two consecutive topic-feed calls return the same ordering: opening the
+    # filtered view must not mark s2 seen (which would flip it to the visited
+    # group on the second call).
+    first = [i["post"]["post_id"] for i in (await auth_client.get("/feed/topic/stoicism")).json()["items"]]
+    second = [i["post"]["post_id"] for i in (await auth_client.get("/feed/topic/stoicism")).json()["items"]]
+    assert first == second == ["s2", "s1"]
+
+
+async def test_topic_feed_unknown_topic_is_empty(auth_client):
+    r = await auth_client.get("/feed/topic/does-not-exist")
+    assert r.status_code == 200
+    assert r.json()["items"] == []
+
+
 async def test_discovery_serves_unsubscribed_topic(auth_client):
     # User has no prompts and no interests, but another topic has content.
     await _add_content_post("L1", topic_id="logic", subtopic_id="lt0")

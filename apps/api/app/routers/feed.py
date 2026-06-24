@@ -24,3 +24,18 @@ async def get_feed(
     successive calls page forward through the curriculum rather than repeating.
     """
     return await feed_service.build_feed(session, user, limit)
+
+
+@router.get("/feed/topic/{topic_id}", response_model=FeedResponse)
+async def get_topic_feed(
+    topic_id: str,
+    user: User = Depends(get_current_user),
+    session: AsyncSession = Depends(get_session),
+):
+    """A single topic's posts, unvisited first then visited, in curriculum order.
+
+    The filtered view the client jumps to from a Discover request. Unlike the
+    main feed, this is read-only: it does NOT advance progress or mark posts
+    seen — it's a browse/review lens scoped to one topic.
+    """
+    return await feed_service.build_topic_feed(session, user, topic_id)

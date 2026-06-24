@@ -141,6 +141,10 @@ export const api = {
 
   // --- feed / posts ---
   feed: (limit = 10) => request<FeedResponse>(`/feed?limit=${limit}`),
+  // A single topic's posts, unvisited first then visited. Read-only: this view
+  // does not advance progress or mark posts seen (see feed_service).
+  topicFeed: (topicId: string) =>
+    request<FeedResponse>(`/feed/topic/${encodeURIComponent(topicId)}`),
   getPost: (id: string) => request<Post>(`/posts/${id}`),
   react: (id: string, reaction: Reaction | null) =>
     request<ReactionResult>(`/posts/${id}/reaction`, { method: "PUT", body: { reaction } }),
