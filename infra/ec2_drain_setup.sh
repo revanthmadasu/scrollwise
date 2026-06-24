@@ -40,8 +40,14 @@ RUN_USER="$(id -un)"
 SERVICE="scrollwise-drain"
 UNIT_PATH="/etc/systemd/system/${SERVICE}.service"
 
+# Rotating JSON log file, alongside the API/web logs (infra/logs/*.log).
+LOG_DIR="$SCRIPT_DIR/logs"
+LOG_FILE="$LOG_DIR/content-generator.log"
+
 echo "==> Repo: $REPO_ROOT"
 echo "==> Service will run as user: $RUN_USER"
+
+mkdir -p "$LOG_DIR"
 
 # ----------------------------------------------------------- python + venv
 echo "==> Setting up the content-generator venv"
@@ -97,6 +103,10 @@ Wants=network-online.target
 Type=simple
 User=${RUN_USER}
 WorkingDirectory=${GEN_DIR}
+# Rotating JSON log file at infra/logs/content-generator.log (in addition to the
+# journal). Set in the unit environment so it's honored regardless of when the
+# worker loads .env. stderr still flows to journald.
+Environment=CONTENT_GEN_LOG_FILE=${LOG_FILE}
 ExecStart=${GEN_DIR}/.venv/bin/python -m scripts.drain_prompts --interval ${DRAIN_INTERVAL} --batch-size ${BATCH_SIZE}
 Restart=always
 RestartSec=3
@@ -124,10 +134,12 @@ cat <<DONE
 ==========================================
   Service : ${SERVICE}   (polls every ${DRAIN_INTERVAL}s, batch ${BATCH_SIZE})
   Runs    : ${GEN_DIR}/.venv/bin/python -m scripts.drain_prompts
+  Log     : infra/logs/content-generator.log  (rotating JSON; also in journald)
 
 Manage it:
   systemctl status ${SERVICE}
   journalctl -u ${SERVICE} -f        # live logs (JSON: prompt_claimed/ready/failed)
+  tail -f infra/logs/content-generator.log   # same JSON, on disk
   sudo systemctl restart ${SERVICE}
   sudo systemctl disable --now ${SERVICE}   # stop + don't start on boot
 
