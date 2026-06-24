@@ -247,16 +247,57 @@ def test_templated_posts_skip_image_generation():
 
 
 def test_untemplated_posts_still_generate_images():
-    """With no template catalog, posts fall back to background generation."""
+    """With no template catalog and the image-posts flag ON, posts fall back to
+    background generation."""
     with tempfile.TemporaryDirectory() as tmp:
         repo = Repository(str(Path(tmp) / "t.db"))  # no templates table
         images = _CountingImages()
         p = Pipeline(
             repo=repo, llm=FakeLLMClient(combined_responder),
             images=images, embeddings=HashEmbeddingClient(), test_cadence=99,
+            image_posts_enabled=True,
         )
         p.run(topic_title="X", num_modules=1, subtopics_per_module=1,
               levels=[Level.SUMMARY])
 
         assert images.calls > 0, "non-templated posts should still generate backgrounds"
         repo.close()
+
+
+def test_image_posts_flag_off_suppresses_backgrounds():
+    """With the image-posts feature flag off, even untemplated posts stay text
+    and never hit the image backend."""
+    with tempfile.TemporaryDirectory() as tmp:
+        repo = Repository(str(Path(tmp) / "t.db"))  # no templates table
+        images = _CountingImages()
+        p = Pipeline(
+            repo=repo, llm=FakeLLMClient(combined_responder),
+            images=images, embeddings=HashEmbeddingClient(), test_cadence=99,
+            image_posts_enabled=False,
+        )
+        p.run(topic_title="X", num_modules=1, subtopics_per_module=2,
+              levels=[Level.SUMMARY])
+
+        content = [pp for pp in repo.all_posts_for_topic("test_topic")
+                   if pp.content_type != ContentType.TEST]
+        assert content, "expected content posts to be generated"
+        assert images.calls == 0, "flag off must suppress all background generation"
+        assert all(pp.content_type == ContentType.TEXT for pp in content)
+        assert all(pp.image_urls == [] for pp in content)
+        repo.close()
+
+
+def test_image_posts_enabled_from_env(monkeypatch):
+    """The env flag parses truthy/falsy spellings; default is enabled."""
+    from generators.pipeline import image_posts_enabled_from_env
+
+    monkeypatch.delenv("IMAGE_POSTS_ENABLED", raising=False)
+    assert image_posts_enabled_from_env() is False  # default OFF: template-only
+
+    for falsy in ("0", "false", "False", "no", "off", ""):
+        monkeypatch.setenv("IMAGE_POSTS_ENABLED", falsy)
+        assert image_posts_enabled_from_env() is False, falsy
+
+    for truthy in ("1", "true", "TRUE", "yes", "on"):
+        monkeypatch.setenv("IMAGE_POSTS_ENABLED", truthy)
+        assert image_posts_enabled_from_env() is True, truthy

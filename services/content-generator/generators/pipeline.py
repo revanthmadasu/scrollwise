@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import uuid
 from dataclasses import dataclass
 
@@ -27,6 +28,26 @@ from storage.repository import CurriculumKeyConflict, Repository
 
 logger = get_logger(__name__)
 
+# Truthy/falsy spellings accepted for boolean env flags, so ops can write
+# whichever reads naturally in a .env or systemd unit.
+_FALSY = {"0", "false", "no", "off", ""}
+
+
+def image_posts_enabled_from_env() -> bool:
+    """Feature flag: may non-templated posts generate background images?
+
+    Image-based posts are the legacy rendering path — an AI background with the
+    post text overlaid. They are the most expensive thing the pipeline does
+    (image-backend calls + S3), and the feed is moving to data-driven templates,
+    so this defaults OFF: a post that doesn't match a template is produced as
+    plain text instead of hitting the image backend. Templated posts skip images
+    regardless of this flag.
+
+    Set IMAGE_POSTS_ENABLED to a truthy value (1/true/yes/on) to re-enable the
+    legacy image-background path.
+    """
+    return os.environ.get("IMAGE_POSTS_ENABLED", "false").strip().lower() not in _FALSY
+
 
 @dataclass
 class PipelineResult:
@@ -51,6 +72,7 @@ class Pipeline:
         embeddings: EmbeddingClient,
         test_cadence: int = 3,
         renderer: PostImageRenderer | None = None,
+        image_posts_enabled: bool = False,
     ):
         self.repo = repo
         self.canonicalizer = TopicCanonicalizer(llm)
@@ -58,6 +80,10 @@ class Pipeline:
         self.post_gen = PostGenerator(llm, images, embeddings, renderer=renderer)
         self.test_gen = TestGenerator(llm, embeddings)
         self.test_cadence = test_cadence
+        # Feature flag (see image_posts_enabled_from_env). When False, posts that
+        # don't match a template are emitted as plain text rather than generating
+        # an image background. Templated posts skip images either way.
+        self.image_posts_enabled = image_posts_enabled
         # Approved-template catalog for data-driven rendering, loaded once.
         # Empty when the API hasn't approved any (or the table isn't present) —
         # posts then carry no template and render the legacy way.
@@ -150,7 +176,7 @@ class Pipeline:
                         # Select a template up front, so a template-rendered post
                         # skips background image generation entirely (it draws its
                         # own background). Only non-templated posts hit the image
-                        # backend.
+                        # backend — and only when the image-posts flag is on.
                         spec = self._select_template(text, level, recent_templates, post_id)
                         post = self.post_gen.build_post(
                             text,
@@ -161,7 +187,7 @@ class Pipeline:
                             subtopic=subtopic,
                             subtopic_index=offset_subtopic_cursor,
                             level=level,
-                            make_images=spec is None,
+                            make_images=spec is None and self.image_posts_enabled,
                         )
                     except Exception:  # noqa: BLE001 — isolate one bad post, keep the run going
                         failures += 1

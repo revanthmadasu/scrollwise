@@ -82,6 +82,10 @@ EMBEDDING_BACKEND=hash
 
 # Image (stub for POC)
 IMAGE_BACKEND=stub
+# Feature flag: may non-templated posts generate AI image backgrounds? Defaults
+# OFF (template-only — untemplated posts become plain text). Set to true to
+# re-enable the legacy image-background path. Read once at startup.
+IMAGE_POSTS_ENABLED=false
 
 # Database
 DB_BACKEND=postgres

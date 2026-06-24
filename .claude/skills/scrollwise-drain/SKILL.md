@@ -29,6 +29,11 @@ to `ready` (or `failed`).
   user, `Restart=always`, starts on boot.
 - **DB:** its `.env` sets `DB_BACKEND=postgres` + a local `content_generator`
   Postgres URL, `IMAGE_BACKEND=stub`, `LLM_BACKEND=bedrock`.
+- **Feature flag `IMAGE_POSTS_ENABLED`** (default `false`): when off (the
+  default), non-templated posts are emitted as plain text instead of generating
+  an AI image background — i.e. generation is template-only. Set to `true` to
+  re-enable the legacy image-background path. Like the template catalog, it's
+  read once at startup, so **restart the service after changing it**.
 
 These commands must run **on the prod box** (SSH in first). Claude cannot reach
 prod from a local session — give the user the command, or run it only if the

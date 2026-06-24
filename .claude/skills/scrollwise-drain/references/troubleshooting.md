@@ -103,6 +103,25 @@ FROM templates WHERE status = 'approved';
 An error here (e.g. a missing column) is the smoking gun → the API migrations
 weren't fully applied (`cd apps/api && alembic upgrade head`).
 
+### 7. Image posts feature flag (`IMAGE_POSTS_ENABLED`)
+
+This flag, in `services/content-generator/.env`, controls whether *untemplated*
+posts may generate AI image backgrounds. It **defaults to `false`** (off) —
+template-only generation, where untemplated posts come out as plain text and the
+image backend is never called.
+
+So if you *expected* image-based posts and aren't getting any (and posts aren't
+templated either), the flag may simply be off. To re-enable the legacy
+image-background path:
+
+```
+IMAGE_POSTS_ENABLED=true
+```
+
+Conversely, leave it `false` (or unset) to suppress image posts entirely.
+Either way, `sudo systemctl restart scrollwise-drain` — it's read once at
+startup.
+
 ### Confirm the fix
 
 After a prompt drains through post-restart:

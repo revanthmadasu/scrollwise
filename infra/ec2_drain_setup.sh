@@ -71,6 +71,11 @@ AWS_REGION=us-east-1
 
 EMBEDDING_BACKEND=hash
 IMAGE_BACKEND=stub
+# Feature flag: may non-templated posts generate AI image backgrounds? Defaults
+# OFF (template-only — untemplated posts become plain text). Set to true to
+# re-enable the legacy image-background path. NOTE: the drain worker reads this
+# once at startup — restart scrollwise-drain after changing it.
+IMAGE_POSTS_ENABLED=false
 
 # Generator uses raw psycopg2 — plain libpq URL (NOT the +asyncpg the API uses).
 DB_BACKEND=postgres
