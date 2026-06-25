@@ -84,6 +84,13 @@ class Pipeline:
         # don't match a template are emitted as plain text rather than generating
         # an image background. Templated posts skip images either way.
         self.image_posts_enabled = image_posts_enabled
+        logger.info(
+            "pipeline_init",
+            extra={
+                "test_cadence": test_cadence,
+                "image_posts_enabled": image_posts_enabled,
+            },
+        )
         # Approved-template catalog for data-driven rendering, loaded once.
         # Empty when the API hasn't approved any (or the table isn't present) —
         # posts then carry no template and render the legacy way.
