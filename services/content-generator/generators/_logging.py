@@ -2,8 +2,10 @@
 
 import json
 import logging
+import os
 import sys
 from datetime import datetime
+from logging.handlers import RotatingFileHandler
 
 
 class JsonFormatter(logging.Formatter):
@@ -31,9 +33,26 @@ class JsonFormatter(logging.Formatter):
 def get_logger(name: str) -> logging.Logger:
     logger = logging.getLogger(name)
     if not logger.handlers:
+        formatter = JsonFormatter()
+
         handler = logging.StreamHandler(sys.stderr)
-        handler.setFormatter(JsonFormatter())
+        handler.setFormatter(formatter)
         logger.addHandler(handler)
-        logger.setLevel(logging.INFO)
+
+        # Optionally also write to a rotating log file. Enabled by setting
+        # CONTENT_GEN_LOG_FILE; the stderr stream is always kept so journald /
+        # container log drivers still capture output.
+        log_file = os.environ.get("CONTENT_GEN_LOG_FILE")
+        if log_file:
+            max_bytes = int(os.environ.get("CONTENT_GEN_LOG_MAX_BYTES", 10 * 1024 * 1024))
+            backup_count = int(os.environ.get("CONTENT_GEN_LOG_BACKUP_COUNT", 5))
+            file_handler = RotatingFileHandler(
+                log_file, maxBytes=max_bytes, backupCount=backup_count
+            )
+            file_handler.setFormatter(formatter)
+            logger.addHandler(file_handler)
+
+        level = os.environ.get("CONTENT_GEN_LOG_LEVEL", "INFO").upper()
+        logger.setLevel(getattr(logging, level, logging.INFO))
         logger.propagate = False
     return logger

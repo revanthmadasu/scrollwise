@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 import { api } from "../api/client";
 import type { Prompt, PromptStatus } from "../api/types";
 
@@ -12,7 +13,17 @@ const STATUS_LABEL: Record<PromptStatus, string> = {
 
 export function DiscoverPage() {
   const qc = useQueryClient();
+  const navigate = useNavigate();
   const [text, setText] = useState("");
+
+  // A ready request maps to a generated topic; clicking it opens the feed
+  // filtered to that topic (unvisited posts first). Only ready requests with a
+  // topic_id are navigable.
+  const openTopic = (p: Prompt) => {
+    if (p.status === "ready" && p.topic_id) {
+      navigate(`/?topic=${encodeURIComponent(p.topic_id)}`);
+    }
+  };
 
   const prompts = useQuery({ queryKey: ["prompts"], queryFn: api.listPrompts });
 
@@ -56,18 +67,39 @@ export function DiscoverPage() {
         <div className="muted">Loading…</div>
       ) : prompts.data && prompts.data.length > 0 ? (
         <ul className="prompt-list">
-          {prompts.data.map((p: Prompt) => (
-            <li key={p.id} className="prompt-row">
-              <div>
-                <div className="prompt-text">{p.prompt_text}</div>
-                <div className="muted small">{new Date(p.created_at).toLocaleString()}</div>
-                {p.status === "ready" && p.reused && (
-                  <div className="reused-note">✓ Already available — added to your feed instantly</div>
-                )}
-              </div>
-              <span className={`status-pill ${p.status}`}>{STATUS_LABEL[p.status]}</span>
-            </li>
-          ))}
+          {prompts.data.map((p: Prompt) => {
+            const navigable = p.status === "ready" && !!p.topic_id;
+            return (
+              <li
+                key={p.id}
+                className={`prompt-row${navigable ? " navigable" : ""}`}
+                onClick={navigable ? () => openTopic(p) : undefined}
+                role={navigable ? "button" : undefined}
+                tabIndex={navigable ? 0 : undefined}
+                onKeyDown={
+                  navigable
+                    ? (e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          openTopic(p);
+                        }
+                      }
+                    : undefined
+                }
+                aria-label={navigable ? `Open "${p.prompt_text}" in your feed` : undefined}
+              >
+                <div>
+                  <div className="prompt-text">{p.prompt_text}</div>
+                  <div className="muted small">{new Date(p.created_at).toLocaleString()}</div>
+                  {p.status === "ready" && p.reused && (
+                    <div className="reused-note">✓ Already available — added to your feed instantly</div>
+                  )}
+                  {navigable && <div className="prompt-cta">View in feed →</div>}
+                </div>
+                <span className={`status-pill ${p.status}`}>{STATUS_LABEL[p.status]}</span>
+              </li>
+            );
+          })}
         </ul>
       ) : (
         <p className="muted">No requests yet.</p>

@@ -22,10 +22,13 @@ import time
 import click
 from dotenv import load_dotenv
 
-from generators import prompt_consumer as pc
-from generators.models import Level
-
+# Load .env BEFORE importing generators: prompt_consumer builds its module-level
+# logger at import time, and generators._logging reads CONTENT_GEN_LOG_FILE /
+# CONTENT_GEN_LOG_LEVEL the first time a logger is created.
 load_dotenv()
+
+from generators import prompt_consumer as pc  # noqa: E402
+from generators.models import Level  # noqa: E402
 
 
 @click.command()

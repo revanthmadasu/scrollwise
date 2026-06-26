@@ -40,8 +40,14 @@ RUN_USER="$(id -un)"
 SERVICE="scrollwise-drain"
 UNIT_PATH="/etc/systemd/system/${SERVICE}.service"
 
+# Rotating JSON log file, alongside the API/web logs (infra/logs/*.log).
+LOG_DIR="$SCRIPT_DIR/logs"
+LOG_FILE="$LOG_DIR/content-generator.log"
+
 echo "==> Repo: $REPO_ROOT"
 echo "==> Service will run as user: $RUN_USER"
+
+mkdir -p "$LOG_DIR"
 
 # ----------------------------------------------------------- python + venv
 echo "==> Setting up the content-generator venv"
@@ -61,6 +67,22 @@ fi
 "$GEN_DIR/.venv/bin/pip" install psycopg2-binary
 
 # ------------------------------------------------------------------- .env
+# Append KEY=DEFAULT only if KEY is absent — never touch an existing value, so
+# operator edits (rotated DB_PASS, flipped IMAGE_POSTS_ENABLED, swapped
+# LLM_MODEL) survive a re-run, while keys added to this template later still
+# land on already-provisioned boxes.
+ensure_kv() {
+  local key="$1" default="$2"
+  # Make sure the file ends with a newline so we don't glue onto the last line.
+  [ -s "$GEN_DIR/.env" ] && [ -n "$(tail -c1 "$GEN_DIR/.env")" ] && echo >> "$GEN_DIR/.env"
+  if grep -qE "^${key}=" "$GEN_DIR/.env" 2>/dev/null; then
+    echo "    .env: ${key} present — keeping existing value"
+  else
+    printf '%s=%s\n' "$key" "$default" >> "$GEN_DIR/.env"
+    echo "    .env: ${key} missing — added (${default})"
+  fi
+}
+
 if [ ! -f "$GEN_DIR/.env" ]; then
   echo "==> Writing $GEN_DIR/.env (Bedrock + Postgres defaults)"
   cat > "$GEN_DIR/.env" <<ENV
@@ -82,7 +104,15 @@ DB_BACKEND=postgres
 DATABASE_URL=postgresql://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}
 ENV
 else
-  echo "==> $GEN_DIR/.env already exists — leaving it untouched"
+  echo "==> $GEN_DIR/.env exists — keeping values, adding any missing keys"
+  ensure_kv LLM_BACKEND bedrock
+  ensure_kv LLM_MODEL anthropic.claude-opus-4-5
+  ensure_kv AWS_REGION us-east-1
+  ensure_kv EMBEDDING_BACKEND hash
+  ensure_kv IMAGE_BACKEND stub
+  ensure_kv IMAGE_POSTS_ENABLED false
+  ensure_kv DB_BACKEND postgres
+  ensure_kv DATABASE_URL "postgresql://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}"
 fi
 
 # --------------------------------------------------------------- systemd unit
@@ -97,6 +127,10 @@ Wants=network-online.target
 Type=simple
 User=${RUN_USER}
 WorkingDirectory=${GEN_DIR}
+# Rotating JSON log file at infra/logs/content-generator.log (in addition to the
+# journal). Set in the unit environment so it's honored regardless of when the
+# worker loads .env. stderr still flows to journald.
+Environment=CONTENT_GEN_LOG_FILE=${LOG_FILE}
 ExecStart=${GEN_DIR}/.venv/bin/python -m scripts.drain_prompts --interval ${DRAIN_INTERVAL} --batch-size ${BATCH_SIZE}
 Restart=always
 RestartSec=3
@@ -124,10 +158,12 @@ cat <<DONE
 ==========================================
   Service : ${SERVICE}   (polls every ${DRAIN_INTERVAL}s, batch ${BATCH_SIZE})
   Runs    : ${GEN_DIR}/.venv/bin/python -m scripts.drain_prompts
+  Log     : infra/logs/content-generator.log  (rotating JSON; also in journald)
 
 Manage it:
   systemctl status ${SERVICE}
   journalctl -u ${SERVICE} -f        # live logs (JSON: prompt_claimed/ready/failed)
+  tail -f infra/logs/content-generator.log   # same JSON, on disk
   sudo systemctl restart ${SERVICE}
   sudo systemctl disable --now ${SERVICE}   # stop + don't start on boot
 
