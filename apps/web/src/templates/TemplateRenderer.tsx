@@ -1,6 +1,6 @@
-import { TEMPLATE_REGISTRY } from "./index";
-import type { TemplateInputs } from "./types";
-import { clampInputs } from "./validate";
+import { TEMPLATE_BY_ID } from "./defs";
+import { TemplateEngine } from "./engine/TemplateEngine";
+import type { TemplateInputs } from "./engine/spec";
 
 interface Props {
   templateId: string;
@@ -8,19 +8,16 @@ interface Props {
   className?: string;
 }
 
-/** Looks up the template by id and renders it. Falls back to a plain text card if unknown. */
+/** Looks up the template doc by id and renders it through the engine. Falls back to a plain text card if unknown. */
 export function TemplateRenderer({ templateId, inputs, className }: Props) {
-  const entry = TEMPLATE_REGISTRY[templateId];
-  if (!entry) {
+  const doc = TEMPLATE_BY_ID[templateId];
+  if (!doc) {
     return (
       <div className={`tmpl-fallback ${className ?? ""}`}>
-        <h2>{inputs.title}</h2>
-        {inputs.body && <p>{inputs.body}</p>}
+        <h2>{typeof inputs.title === "string" ? inputs.title : ""}</h2>
+        {inputs.body != null && <p>{String(inputs.body)}</p>}
       </div>
     );
   }
-  const { Component, meta } = entry;
-  // Defensive clamp: never let an over-long payload break the card layout.
-  const { inputs: safe } = clampInputs(meta, inputs);
-  return <Component inputs={safe} className={className} />;
+  return <TemplateEngine doc={doc} inputs={inputs} className={className} />;
 }

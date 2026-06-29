@@ -13,8 +13,12 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app._logging import configure_logging
 from app.config import get_settings
 from app.db import engine
+
+# Install JSON (+ optional rotating-file) logging before anything else runs.
+configure_logging()
 
 # Import models so they're registered on Base.metadata before any ORM use.
 from app import models  # noqa: F401  (side-effect import)

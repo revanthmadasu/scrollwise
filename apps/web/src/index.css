@@ -290,6 +290,21 @@ button.account-item:hover { background: var(--surface-2); }
 .status-pill.ready { color: var(--ok); background: rgba(46,204,113,0.14); }
 .status-pill.failed { color: var(--bad); background: rgba(255,107,107,0.14); }
 .reused-note { margin-top: 0.35rem; font-size: 0.78rem; font-weight: 600; color: var(--ok); }
+/* A ready request is clickable — it opens the feed filtered to its topic. */
+.prompt-row.navigable { cursor: pointer; transition: border-color 0.15s ease, transform 0.15s ease; }
+.prompt-row.navigable:hover { border-color: var(--accent); transform: translateY(-1px); }
+.prompt-row.navigable:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.prompt-cta { margin-top: 0.35rem; font-size: 0.78rem; font-weight: 600; color: var(--accent-2); }
+
+/* ---------- topic-filtered feed ---------- */
+.filter-bar { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem 0.85rem; margin-bottom: 0.4rem; }
+.filter-chip { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.3rem 0.4rem 0.3rem 0.8rem;
+  border: 1px solid var(--accent); border-radius: 999px; background: rgba(124,92,255,0.1); font-size: 0.85rem; }
+.filter-chip-label { max-width: 60ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.filter-clear { display: inline-flex; align-items: center; gap: 0.25rem; cursor: pointer;
+  font-size: 0.75rem; font-weight: 700; color: var(--text); background: var(--surface-2);
+  border: 1px solid var(--border); border-radius: 999px; padding: 0.2rem 0.6rem; }
+.filter-clear:hover { border-color: var(--accent); color: var(--accent-2); }
 
 /* ---------- interests ---------- */
 .interests-header { margin-bottom: 0.25rem; }
@@ -1204,4 +1219,54 @@ button.account-item:hover { background: var(--surface-2); }
   color: var(--text-soft);
   margin: 0;
   line-height: 1.6;
+}
+
+/* --- Template engine: reusable scene textures ---------------------------- */
+/* Data templates opt in via a `preset`. Each keys off --accent/--bg/--text
+   (set by the engine root) so they adapt to palette + light/dark automatically. */
+.scene-ruled {
+  background-image: repeating-linear-gradient(
+    to bottom, transparent 0, transparent 31px,
+    color-mix(in srgb, var(--accent) 24%, transparent) 32px);
+}
+.scene-grid {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--accent) 14%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 14%, transparent) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.scene-dots {
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--accent) 32%, transparent) 1.5px, transparent 1.6px);
+  background-size: 18px 18px;
+}
+.scene-blueprint {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--accent) 28%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 28%, transparent) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+.scene-stars {
+  background-image:
+    radial-gradient(1px 1px at 18% 28%, var(--text) 50%, transparent),
+    radial-gradient(1px 1px at 68% 62%, var(--text) 50%, transparent),
+    radial-gradient(1.6px 1.6px at 42% 82%, var(--text) 50%, transparent),
+    radial-gradient(1px 1px at 84% 22%, var(--text) 50%, transparent),
+    radial-gradient(1.4px 1.4px at 30% 55%, var(--text) 50%, transparent);
+}
+/* Soft animated pulse for energetic/neon templates (opt-in). */
+@keyframes te-pulse-soft { 0%, 100% { opacity: .55 } 50% { opacity: 1 } }
+.te-pulse { animation: te-pulse-soft 2.4s ease-in-out infinite; }
+/* A hairline that fades out at the ends — editorial rule. */
+.te-rule-soft {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+/* Card frame: clips decorative overflow and anchors absolute children. */
+.te-card { position: relative; overflow: hidden; }
+/* Rotated corner ribbon (energetic/novelty templates). */
+.te-ribbon {
+  position: absolute; top: 16px; right: -36px; transform: rotate(45deg);
+  padding: 4px 42px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase;
 }

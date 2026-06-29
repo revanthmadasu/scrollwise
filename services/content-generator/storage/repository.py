@@ -101,6 +101,17 @@ class Repository:
             )
             self._commit()
 
+        # template_id / template_inputs: data-driven rendering contract. NULL /
+        # '{}' on legacy rows means "render the old way" (post_image_urls).
+        if not self._column_exists("posts", "template_id"):
+            self._execute("ALTER TABLE posts ADD COLUMN template_id TEXT")
+            self._commit()
+        if not self._column_exists("posts", "template_inputs"):
+            self._execute(
+                "ALTER TABLE posts ADD COLUMN template_inputs TEXT NOT NULL DEFAULT '{}'"
+            )
+            self._commit()
+
         # category_id: high-level interest category for the curriculum. Added so
         # the API feed can group topics by the category the user selected.
         if not self._column_exists("curricula", "category_id"):
@@ -281,8 +292,9 @@ class Repository:
                     level, content_type, title, body,
                     image_prompts, image_urls, post_image_urls, video_url,
                     test_type, question, options, correct_index, explanation, blocking,
-                    estimated_duration_sec, prerequisites, embedding, model_version
-                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                    estimated_duration_sec, prerequisites, embedding, model_version,
+                    template_id, template_inputs
+                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
             """
         else:
             sql = """
@@ -292,14 +304,17 @@ class Repository:
                     level, content_type, title, body,
                     image_prompts, image_urls, post_image_urls, video_url,
                     test_type, question, options, correct_index, explanation, blocking,
-                    estimated_duration_sec, prerequisites, embedding, model_version
-                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                    estimated_duration_sec, prerequisites, embedding, model_version,
+                    template_id, template_inputs
+                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
                 ON CONFLICT (post_id) DO UPDATE SET
                     title = EXCLUDED.title, body = EXCLUDED.body,
                     image_urls = EXCLUDED.image_urls,
                     post_image_urls = EXCLUDED.post_image_urls,
                     content_type = EXCLUDED.content_type,
-                    embedding = EXCLUDED.embedding, model_version = EXCLUDED.model_version
+                    embedding = EXCLUDED.embedding, model_version = EXCLUDED.model_version,
+                    template_id = EXCLUDED.template_id,
+                    template_inputs = EXCLUDED.template_inputs
             """
         self._execute(sql, (
             post.post_id, post.topic_id, post.module_id, post.subtopic_id,
@@ -313,6 +328,7 @@ class Repository:
             post.estimated_duration_sec, json.dumps(post.prerequisites),
             json.dumps(post.embedding) if post.embedding else None,
             post.model_version,
+            post.template_id, json.dumps(post.template_inputs or {}),
         ))
         self._commit()
 
@@ -534,6 +550,38 @@ class Repository:
             )
         return row is not None
 
+    def list_approved_templates(self) -> list[dict]:
+        """Approved templates from the API-owned `templates` catalog (shared DB).
+
+        Returns the fields the selector needs. Resilient: if the table doesn't
+        exist (generator running against an isolated dev DB the API never
+        touched), returns [] so generation falls back to legacy rendering.
+        """
+        try:
+            rows = self._fetchall(
+                "SELECT template_id, name, vibe, compatible_content_types, fields, version "
+                "FROM templates WHERE status = 'approved'"
+            )
+        except Exception:
+            return []
+
+        def _json(v: Any, default: Any) -> Any:
+            if v is None:
+                return default
+            return json.loads(v) if isinstance(v, str) else v
+
+        return [
+            {
+                "template_id": r["template_id"],
+                "name": r["name"],
+                "vibe": r["vibe"],
+                "content_types": _json(r["compatible_content_types"], []),
+                "fields": _json(r["fields"], []),
+                "version": r["version"],
+            }
+            for r in rows
+        ]
+
     @staticmethod
     def _row_to_post(row: Any) -> Post:
         return Post(
@@ -562,6 +610,8 @@ class Repository:
             prerequisites=json.loads(row["prerequisites"]),
             embedding=json.loads(row["embedding"]) if row["embedding"] else None,
             model_version=row["model_version"],
+            template_id=row["template_id"],
+            template_inputs=json.loads(row["template_inputs"]) if row["template_inputs"] else {},
         )
 
     def close(self) -> None:

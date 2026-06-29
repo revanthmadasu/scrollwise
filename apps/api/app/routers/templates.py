@@ -81,6 +81,9 @@ async def submit_template(
     tpl.required_inputs = body.required_inputs
     tpl.optional_inputs = body.optional_inputs
     tpl.palette = body.palette
+    tpl.fields = body.fields
+    tpl.layout = body.layout
+    tpl.engine = body.engine
     tpl.sample_inputs = body.sample_inputs
     tpl.status = body.status
     tpl.review_notes = body.review_notes

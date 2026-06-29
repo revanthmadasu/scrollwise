@@ -68,6 +68,9 @@ export interface Post {
   post_image_urls: string[];
   video_url: string | null;
   estimated_duration_sec: number;
+  /** Data-driven rendering: when set, render via TemplateEngine instead of post_image_urls. */
+  template_id: string | null;
+  template_inputs: Record<string, unknown>;
   test_type: string | null;
   question: string | null;
   options: string[] | null;
@@ -132,6 +135,10 @@ export interface TemplateSubmit {
   required_inputs: string[];
   optional_inputs: string[];
   palette: Record<string, unknown>;
+  /** Data-driven render contract: field-spec + layout node tree + engine version. */
+  fields?: Record<string, unknown>[];
+  layout?: Record<string, unknown>;
+  engine?: number;
   sample_inputs?: Record<string, unknown> | null;
   status?: TemplateStatus;
   review_notes?: string | null;

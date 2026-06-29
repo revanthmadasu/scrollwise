@@ -558,3 +558,56 @@ async def _advance_cursors(
             )
         elif (m, s, q) > (prog.cursor_module, prog.cursor_subtopic, prog.cursor_seq):
             prog.cursor_module, prog.cursor_subtopic, prog.cursor_seq = m, s, q
+
+
+async def build_topic_feed(
+    session: AsyncSession, user: User, topic_id: str
+) -> FeedResponse:
+    """A single topic's posts, unvisited first then visited, in curriculum order.
+
+    This is the "filtered" view the client jumps to from a Discover request: it
+    scopes the feed to one topic so the user can binge or revisit it. Unlike
+    `build_feed`, it is intentionally READ-ONLY — it neither records views nor
+    advances progress cursors. The main feed is the progression engine; this is a
+    browse/review lens over what that engine produces, so opening it must not
+    mark posts seen (that would flip them out of the "unvisited" group on the
+    next visit) or count as forward progress.
+
+    Ordering: unvisited posts (not yet in the `user_post_views` ledger) come
+    first so there's always something new at the top, then already-visited posts
+    for review. Within each group, posts are in curriculum order. We serve one
+    version per subtopic at the user's preferred level, matching what the main
+    feed shows, and skip tests (this is a content review, not a graded run).
+    """
+    seen = await _seen_post_ids(session, user.id)
+
+    stmt = (
+        select(Post)
+        .where(
+            Post.topic_id == topic_id,
+            Post.content_type != "test",
+            Post.level == user.preferred_level,
+        )
+        .order_by(Post.offset_module, Post.offset_subtopic, Post.offset_seq)
+    )
+    posts = list((await session.execute(stmt)).scalars().all())
+
+    # Stable partition: unvisited first, visited second, each already in
+    # curriculum order from the query above.
+    unvisited = [p for p in posts if p.post_id not in seen]
+    visited = [p for p in posts if p.post_id in seen]
+    ordered = unvisited + visited
+
+    my_reaction, like_count = await _enrich(session, user.id, ordered)
+    items = [
+        FeedItem(
+            post=PostOut.from_post(
+                post,
+                my_reaction=my_reaction.get(post.post_id),
+                like_count=like_count.get(post.post_id, 0),
+            ),
+            reason="prompted",
+        )
+        for post in ordered
+    ]
+    return FeedResponse(items=items, exhausted=False)

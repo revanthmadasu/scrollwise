@@ -14,7 +14,7 @@ from generators.embedding_client import get_embedding_client
 from generators.image_client import get_image_client
 from generators.llm_client import get_llm_client
 from generators.models import Level
-from generators.pipeline import Pipeline
+from generators.pipeline import Pipeline, image_posts_enabled_from_env
 from generators.post_image_renderer import get_post_image_renderer
 from storage.repository import Repository
 
@@ -67,6 +67,7 @@ def main(topic, modules, subtopics_per_module, levels, test_cadence, db):
         embeddings=embeddings,
         test_cadence=test_cadence,
         renderer=renderer,
+        image_posts_enabled=image_posts_enabled_from_env(),
     )
 
     db_info = os.environ.get("DATABASE_URL", os.environ.get("DB_PATH", "data/content.db"))
