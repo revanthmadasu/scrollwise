@@ -123,6 +123,11 @@ class Post(BaseModel):
     # Vector for dedup
     embedding: Optional[list[float]] = None
 
+    # Data-driven rendering: the selected template + the inputs that fill its
+    # field-spec. None / {} means render the legacy way (post_image_urls).
+    template_id: Optional[str] = None
+    template_inputs: dict = Field(default_factory=dict)
+
     # Bookkeeping
     created_at: datetime = Field(default_factory=datetime.utcnow)
     model_version: str = ""

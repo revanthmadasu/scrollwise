@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Restart ONLY the ScrollWise API on EC2: stop the running uvicorn and start a
-# fresh one. Does NOT reinstall deps or rewrite .env — for that run
-# infra/ec2_app_setup.sh. Binds 127.0.0.1 only; reach it from your laptop via
-# infra/tunnel.sh.
+# Restart ONLY the ScrollWise API on EC2: stop the running uvicorn, sync deps,
+# migrate the DB, and start a fresh one. Does NOT rewrite .env — for first-time
+# setup run infra/ec2_app_setup.sh. Binds 127.0.0.1 only; reach it from your
+# laptop via infra/tunnel.sh.
 #
 # Usage:  ./infra/restart_api.sh
 set -euo pipefail
@@ -25,6 +25,15 @@ echo "==> Stopping API"
 [ -f "$LOG_DIR/api.pid" ] && kill "$(cat "$LOG_DIR/api.pid")" 2>/dev/null || true
 pkill -f "uvicorn app.main:app" 2>/dev/null || true
 sleep 1
+
+# Sync Python deps BEFORE migrations/boot, so a newly-added requirement is
+# present (the schema migration or the app itself may import it). Abort on
+# failure rather than booting against a half-installed environment.
+echo "==> Installing Python deps (pip install -r requirements.txt)"
+if ! ( cd "$API_DIR" && .venv/bin/pip install -q -r requirements.txt ); then
+  err "!!  pip install failed — NOT starting the API. Check the output above."
+  exit 1
+fi
 
 # Apply DB migrations BEFORE the app boots. Schema is owned by Alembic (the app
 # no longer runs create_all), so this is the single place the DB is brought up

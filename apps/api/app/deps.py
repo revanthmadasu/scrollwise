@@ -32,3 +32,17 @@ async def get_current_user(
     if user is None:
         raise cred_exc
     return user
+
+
+async def get_current_admin(user: User = Depends(get_current_user)) -> User:
+    """Like get_current_user, but 403s non-admins.
+
+    This is the real security boundary for the admin surface — the frontend
+    route guard is only UX. `is_admin` is read from the DB row, not the token.
+    """
+    if not user.is_admin:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Admin access required",
+        )
+    return user

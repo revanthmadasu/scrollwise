@@ -47,5 +47,6 @@ class UserOut(BaseModel):
     display_name: str | None = None
     avatar_url: str | None = None
     preferred_level: int
+    is_admin: bool = False
 
     model_config = {"from_attributes": True}

@@ -3,6 +3,8 @@ import type { TouchEvent } from "react";
 import type { FeedItem, FeedReason } from "../api/types";
 import { ReactionBar } from "./ReactionBar";
 import { TestCard } from "./TestCard";
+import { TemplateRenderer } from "../templates/TemplateRenderer";
+import { TEMPLATE_BY_ID } from "../templates/defs";
 
 const REASON_LABEL: Record<FeedReason, string> = {
   prompted: "From your request",
@@ -72,6 +74,25 @@ export function PostCard({ item }: { item: FeedItem }) {
       <article className="card test-card">
         <ReasonBadge reason={reason} />
         <TestCard post={post} />
+      </article>
+    );
+  }
+
+  // Data-driven rendering: when the generator assigned an approved template
+  // (and the client still recognizes it), render through the engine instead
+  // of the legacy image+text layout. Falls through on an unknown/older id.
+  if (post.template_id && TEMPLATE_BY_ID[post.template_id]) {
+    return (
+      <article className="card">
+        <header className="card-head">
+          <ReasonBadge reason={reason} />
+          <span className="level-chip">{LEVEL_LABEL[post.level] ?? `L${post.level}`}</span>
+        </header>
+        <TemplateRenderer templateId={post.template_id} inputs={post.template_inputs} />
+        <footer className="card-foot">
+          <ReactionBar post={post} />
+          <span className="duration muted">{post.estimated_duration_sec}s read</span>
+        </footer>
       </article>
     );
   }

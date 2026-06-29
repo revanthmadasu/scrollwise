@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import uuid
+from dataclasses import dataclass, field
 
 from generators._logging import get_logger
 from generators.embedding_client import EmbeddingClient
@@ -22,6 +23,17 @@ DURATION_BY_LEVEL = {
 }
 
 
+@dataclass
+class GeneratedText:
+    """The text phase of a post, before any image rendering. Lets the caller
+    decide whether to generate background images (a template-rendered post
+    skips them)."""
+
+    title: str
+    body: str
+    image_prompts: list[str] = field(default_factory=list)
+
+
 class PostGenerator:
     def __init__(
         self,
@@ -37,16 +49,16 @@ class PostGenerator:
         # When None (e.g. stub image backend), posts keep raw backgrounds only.
         self.renderer = renderer
 
-    def generate_for_subtopic(
+    def generate_text(
         self,
-        topic_id: str,
+        *,
         topic_title: str,
         module: Module,
-        module_index: int,
         subtopic: Subtopic,
-        subtopic_index: int,
         level: Level,
-    ) -> Post:
+    ) -> GeneratedText:
+        """Phase 1: the LLM call that writes the post copy + image prompts. No
+        image generation — the caller decides whether backgrounds are needed."""
         level_name, level_description, word_budget = LEVEL_DESCRIPTIONS[int(level)]
 
         user_prompt = POST_USER.format(
@@ -74,36 +86,59 @@ class PostGenerator:
         )
         try:
             data = parse_json_response(response)
-
         except ValueError as e:
             logger.error("Failed to parse LLM response", extra={"error": str(e), "response": response})
             raise
 
-        # Generate background images from prompts
-        image_prompts = data.get("image_prompts", [])
-        image_urls = [self.images.generate(p) for p in image_prompts]
+        return GeneratedText(
+            title=data["title"],
+            body=data["body"],
+            image_prompts=data.get("image_prompts", []),
+        )
 
-        # Compose the post text over the first background into feed card(s).
-        # Long bodies paginate into multiple cards (a carousel).
+    def build_post(
+        self,
+        text: GeneratedText,
+        *,
+        post_id: str,
+        topic_id: str,
+        module: Module,
+        module_index: int,
+        subtopic: Subtopic,
+        subtopic_index: int,
+        level: Level,
+        make_images: bool = True,
+    ) -> Post:
+        """Phase 2: assemble a Post from generated text.
+
+        ``make_images=False`` skips background generation entirely (no calls to
+        the image backend) and the post stays ``content_type='text'`` — used for
+        template-rendered posts, which draw their own background.
+        """
+        image_urls: list[str] = []
         post_image_urls: list[str] = []
-        if self.renderer and image_urls:
-            post_image_urls = self.renderer.render_from_url(
-                image_urls[0], data["title"], data["body"]
-            )
-
-        # Content type: prefer the rendered cards; fall back to raw backgrounds.
-        cards = post_image_urls or image_urls
         content_type = ContentType.TEXT
-        if len(cards) == 1:
-            content_type = ContentType.IMAGE_POST
-        elif len(cards) > 1:
-            content_type = ContentType.CAROUSEL
 
-        # Embed on title + body for dedup
-        embedding = self.embeddings.embed(f"{data['title']}\n\n{data['body']}")
+        if make_images:
+            image_urls = [self.images.generate(p) for p in text.image_prompts]
+            # Compose the post text over the first background into feed card(s).
+            # Long bodies paginate into multiple cards (a carousel).
+            if self.renderer and image_urls:
+                post_image_urls = self.renderer.render_from_url(
+                    image_urls[0], text.title, text.body
+                )
+            # Content type: prefer the rendered cards; fall back to raw backgrounds.
+            cards = post_image_urls or image_urls
+            if len(cards) == 1:
+                content_type = ContentType.IMAGE_POST
+            elif len(cards) > 1:
+                content_type = ContentType.CAROUSEL
+
+        # Embed on title + body for dedup.
+        embedding = self.embeddings.embed(f"{text.title}\n\n{text.body}")
 
         post = Post(
-            post_id=str(uuid.uuid4()),
+            post_id=post_id,
             topic_id=topic_id,
             module_id=module.module_id,
             subtopic_id=subtopic.subtopic_id,
@@ -112,9 +147,9 @@ class PostGenerator:
             offset_seq=0,
             level=level,
             content_type=content_type,
-            title=data["title"],
-            body=data["body"],
-            image_prompts=image_prompts,
+            title=text.title,
+            body=text.body,
+            image_prompts=text.image_prompts,
             image_urls=image_urls,
             post_image_urls=post_image_urls,
             estimated_duration_sec=DURATION_BY_LEVEL[level],
@@ -135,3 +170,29 @@ class PostGenerator:
             },
         )
         return post
+
+    def generate_for_subtopic(
+        self,
+        topic_id: str,
+        topic_title: str,
+        module: Module,
+        module_index: int,
+        subtopic: Subtopic,
+        subtopic_index: int,
+        level: Level,
+    ) -> Post:
+        """Convenience: text + full image rendering (the legacy single-call path)."""
+        text = self.generate_text(
+            topic_title=topic_title, module=module, subtopic=subtopic, level=level
+        )
+        return self.build_post(
+            text,
+            post_id=str(uuid.uuid4()),
+            topic_id=topic_id,
+            module=module,
+            module_index=module_index,
+            subtopic=subtopic,
+            subtopic_index=subtopic_index,
+            level=level,
+            make_images=True,
+        )

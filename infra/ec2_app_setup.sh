@@ -133,6 +133,21 @@ $PYTHON -m venv "$API_DIR/.venv"
 "$API_DIR/.venv/bin/pip" install --upgrade pip >/dev/null
 "$API_DIR/.venv/bin/pip" install -r "$API_DIR/requirements.txt"
 
+# Append KEY=DEFAULT only if KEY is absent — never touch an existing value, so
+# operator edits (and especially the existing JWT_SECRET, which must NOT change
+# or every issued token is invalidated) survive a re-run, while keys added to
+# this template later still land on already-provisioned boxes.
+ensure_kv() {
+  local key="$1" default="$2"
+  [ -s "$API_DIR/.env" ] && [ -n "$(tail -c1 "$API_DIR/.env")" ] && echo >> "$API_DIR/.env"
+  if grep -qE "^${key}=" "$API_DIR/.env" 2>/dev/null; then
+    echo "    .env: ${key} present — keeping existing value"
+  else
+    printf '%s=%s\n' "$key" "$default" >> "$API_DIR/.env"
+    echo "    .env: ${key} missing — added"
+  fi
+}
+
 if [ ! -f "$API_DIR/.env" ]; then
   echo "    Writing apps/api/.env"
   JWT_SECRET="$("$API_DIR/.venv/bin/python" -c 'import secrets; print(secrets.token_urlsafe(48))')"
@@ -153,7 +168,16 @@ GOOGLE_CLIENT_SECRET=
 CORS_ORIGINS=http://localhost:3000,http://localhost:5173
 ENV
 else
-  echo "    apps/api/.env already exists — leaving it untouched"
+  echo "    apps/api/.env exists — keeping values, adding any missing keys"
+  # JWT_SECRET default is generated lazily but only used if the key is absent;
+  # an existing secret is always preserved by ensure_kv.
+  ensure_kv DATABASE_URL "${API_DB_URL}"
+  ensure_kv JWT_SECRET "$("$API_DIR/.venv/bin/python" -c 'import secrets; print(secrets.token_urlsafe(48))')"
+  ensure_kv JWT_ACCESS_TTL_MIN 30
+  ensure_kv JWT_REFRESH_TTL_DAYS 30
+  ensure_kv GOOGLE_CLIENT_ID ""
+  ensure_kv GOOGLE_CLIENT_SECRET ""
+  ensure_kv CORS_ORIGINS "http://localhost:3000,http://localhost:5173"
 fi
 
 # ------------------------------------------------------------------- web setup

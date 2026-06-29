@@ -13,6 +13,9 @@ import type {
   ReactionResult,
   Post,
   Reaction,
+  TemplateRecord,
+  TemplateStatus,
+  TemplateSubmit,
   TokenPair,
   Topic,
   User,
@@ -138,6 +141,10 @@ export const api = {
 
   // --- feed / posts ---
   feed: (limit = 10) => request<FeedResponse>(`/feed?limit=${limit}`),
+  // A single topic's posts, unvisited first then visited. Read-only: this view
+  // does not advance progress or mark posts seen (see feed_service).
+  topicFeed: (topicId: string) =>
+    request<FeedResponse>(`/feed/topic/${encodeURIComponent(topicId)}`),
   getPost: (id: string) => request<Post>(`/posts/${id}`),
   react: (id: string, reaction: Reaction | null) =>
     request<ReactionResult>(`/posts/${id}/reaction`, { method: "PUT", body: { reaction } }),
@@ -147,6 +154,16 @@ export const api = {
 
   // --- progress ---
   progress: () => request<Progress>("/me/progress"),
+
+  // --- templates (admin builder) ---
+  listTemplates: () => request<TemplateRecord[]>("/admin/templates"),
+  submitTemplate: (body: TemplateSubmit) =>
+    request<TemplateRecord>("/admin/templates", { method: "PUT", body }),
+  setTemplateStatus: (template_id: string, status: TemplateStatus, review_notes?: string) =>
+    request<TemplateRecord>(`/admin/templates/${template_id}/status`, {
+      method: "PATCH",
+      body: { status, review_notes },
+    }),
 };
 
 export { BASE as API_BASE };

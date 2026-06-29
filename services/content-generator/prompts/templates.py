@@ -189,3 +189,26 @@ Generate one multiple-choice question. JSON shape:
   "explanation": "Why the correct answer is correct, in 1-2 sentences"
 }}
 """
+
+
+# Reshapes an already-written post into the structured fields a card template
+# needs (stats, steps, options, ...). Grounded strictly in the given content —
+# the field-spec to fill is injected per template.
+TEMPLATE_FILL_SYSTEM = """You reshape a learning post into structured fields for \
+a card template. Use ONLY information already present in the provided post — \
+never invent facts, figures, names, or statistics that aren't in the text. \
+Output a single JSON object with exactly the requested keys and nothing else."""
+
+TEMPLATE_FILL_USER = """Post title: {title}
+
+Post content:
+{body}
+
+Produce a JSON object with these fields, grounded strictly in the content above:
+{schema}
+
+Rules:
+- Use only facts, figures, and terms that appear in the content. Do not fabricate.
+- If a requested figure isn't in the content, leave that item out rather than inventing one.
+- Keep every field within its stated length limit.
+- Output only the JSON object, no prose."""
