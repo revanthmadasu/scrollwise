@@ -1,0 +1,51 @@
+{
+  "_comment": "Copy to distribution-config.json and replace every __PLACEHOLDER__. See README.md Step 5. CallerReference must be unique per create call.",
+  "CallerReference": "scrollwise-web-__UNIQUE_STRING__",
+  "Comment": "ScrollWise web (S3 static UI only; API is served separately at api.scrollwise.net)",
+  "Enabled": true,
+  "DefaultRootObject": "index.html",
+  "Aliases": {
+    "_comment": "Custom domains. Use Quantity 0 and drop Items if using the default *.cloudfront.net URL.",
+    "Quantity": 1,
+    "Items": ["scrollwise.net"]
+  },
+  "Origins": {
+    "_comment": "Single origin: just the static-site S3 bucket. The API is NOT proxied here — the browser calls https://api.scrollwise.net directly (CORS).",
+    "Quantity": 1,
+    "Items": [
+      {
+        "Id": "s3-static",
+        "DomainName": "__WEB_BUNDLE_BUILD_BUCKET__.s3.__AWS_REGION__.amazonaws.com",
+        "OriginAccessControlId": "__OAC_ID__",
+        "S3OriginConfig": { "OriginAccessIdentity": "" }
+      }
+    ]
+  },
+  "DefaultCacheBehavior": {
+    "_comment": "Static SPA from S3. CachingOptimized managed policy id below.",
+    "TargetOriginId": "s3-static",
+    "ViewerProtocolPolicy": "redirect-to-https",
+    "AllowedMethods": { "Quantity": 2, "Items": ["GET", "HEAD"] },
+    "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+    "Compress": true
+  },
+  "CacheBehaviors": {
+    "_comment": "No extra behaviors — there is no /api/* proxy. The API lives on its own domain.",
+    "Quantity": 0
+  },
+  "CustomErrorResponses": {
+    "_comment": "SPA routing: serve index.html (200) for client-side routes so React Router deep links work.",
+    "Quantity": 2,
+    "Items": [
+      { "ErrorCode": 403, "ResponseCode": "200", "ResponsePagePath": "/index.html", "ErrorCachingMinTTL": 10 },
+      { "ErrorCode": 404, "ResponseCode": "200", "ResponsePagePath": "/index.html", "ErrorCachingMinTTL": 10 }
+    ]
+  },
+  "ViewerCertificate": {
+    "_comment": "For a custom domain: set ACMCertificateArn (us-east-1 cert), SSLSupportMethod sni-only, MinimumProtocolVersion TLSv1.2_2021, and remove CloudFrontDefaultCertificate. For the default *.cloudfront.net URL, keep only CloudFrontDefaultCertificate: true.",
+    "ACMCertificateArn": "__ACM_CERT_ARN__",
+    "SSLSupportMethod": "sni-only",
+    "MinimumProtocolVersion": "TLSv1.2_2021"
+  },
+  "PriceClass": "PriceClass_100"
+}
