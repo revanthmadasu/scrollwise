@@ -1,0 +1,16 @@
+# Keep the Lambda image small and reproducible — only ship the app package.
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+tests/
+migrations/
+alembic.ini
+.env
+.env.*
+*.db
+*.sqlite
+README.md
+CLAUDE.md
+.dockerignore
+Dockerfile
