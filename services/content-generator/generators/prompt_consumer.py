@@ -5,15 +5,15 @@ This closes the producer/consumer loop: apps/api enqueues a row in `user_prompts
 rows, runs the generation Pipeline, and flips each row to `ready` (with its
 `topic_id`) or `failed`. See packages/contract/README.md.
 
-The design is invocation-agnostic so the same logic runs in two deployment
-shapes:
+The design is invocation-agnostic so the same logic runs in two shapes:
 
-  * **EC2 (now):** a long-running poller — `run_forever()`, driven by
-    `scripts/drain_prompts.py`.
-  * **Serverless (future):** a single-shot handler — `lambda_handler()` calls
-    `drain_once()` once per invocation (trigger via EventBridge schedule or an
-    SQS message). The DB-level claim uses `FOR UPDATE SKIP LOCKED` on Postgres,
-    so many concurrent Lambdas can drain the same queue without double-work.
+  * **Dev / poller:** a long-running loop — `run_forever()`, driven by
+    `scripts/drain_prompts.py` (`make drain`).
+  * **Prod (serverless):** a single-shot batch — `scripts/drain_prompts.py --once`
+    calls `drain_once()` once per invocation, run as an event-driven ECS/Fargate
+    task (`apps/api` fires `RunTask` on prompt submit). The DB-level claim uses
+    `FOR UPDATE SKIP LOCKED` on Postgres, so many concurrent tasks can drain the
+    same queue without double-work.
 
 `drain_once()` / `process_claimed()` take an already-built Repository + Pipeline
 (dependency injection) so tests can pass fakes; `build_pipeline()` is the real
@@ -183,29 +183,3 @@ def build_pipeline(test_cadence: int = 3) -> tuple[Repository, Pipeline]:
         image_posts_enabled=image_posts_enabled_from_env(),
     )
     return repo, pipeline
-
-
-def lambda_handler(event: dict | None = None, context: object = None) -> dict:
-    """AWS Lambda entry point (future serverless deployment).
-
-    Drains one batch per invocation. Tune via the event payload, e.g.
-    `{"batch_size": 3, "modules": 2, "levels": [1, 2]}`. Trigger on an
-    EventBridge schedule, or fan out one invocation per SQS message.
-    """
-    event = event or {}
-    opts = GenerationOptions(
-        num_modules=int(event.get("modules", 3)),
-        subtopics_per_module=int(event.get("subtopics_per_module", 4)),
-        levels=[Level(int(x)) for x in event.get("levels", [1, 2, 3])],
-    )
-    repo, pipeline = build_pipeline(test_cadence=int(event.get("test_cadence", 3)))
-    try:
-        recovered = recover_stuck(
-            repo, stuck_after_seconds=int(event.get("stuck_after", 900))
-        )
-        processed = drain_once(
-            repo, pipeline, opts, batch_size=int(event.get("batch_size", 5))
-        )
-    finally:
-        repo.close()
-    return {"processed": processed, "recovered": recovered}

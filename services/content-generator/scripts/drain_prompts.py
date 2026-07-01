@@ -5,10 +5,10 @@ PENDING rows; this drains them and flips each to READY (with a topic_id) or
 FAILED. See generators/prompt_consumer.py for the shared core.
 
 Usage:
-    # EC2: long-running poller (default) — checks every 10s
+    # Local/dev: long-running poller (default) — checks every 10s
     python -m scripts.drain_prompts
 
-    # one pass and exit (cron / smoke test / serverless-style)
+    # one pass and exit — the prod ECS/Fargate task entrypoint (also cron / smoke test)
     python -m scripts.drain_prompts --once
 
     # tune the curriculum shape + batch size
