@@ -172,7 +172,7 @@ permission to read the `scrollwise/api` secret.
 aws lambda create-function --function-name scrollwise-api --region "$AWS_REGION" \
   --package-type Image \
   --code ImageUri="$ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/scrollwise-api:latest" \
-  --role "arn:aws:iam::$ACCOUNT_ID:role/scrollwise-api-lambda" \
+  --role "arn:aws:iam::$ACCOUNT_ID:role/scrollwise-api-lambdas" \
   --timeout 30 --memory-size 512 \
   --vpc-config SubnetIds=subnet-AAAA,subnet-BBBB,SecurityGroupIds=sg-LAMBDA \
   --environment "Variables={CORS_ORIGINS=https://app.scrollwise.net}"
@@ -254,6 +254,21 @@ aws lambda add-permission --function-name scrollwise-api --region "$AWS_REGION" 
   `DB_BACKEND=postgres`) to the **RDS** endpoint, then restart it:
   `sudo systemctl restart scrollwise-drain`. Both halves must use RDS now.
 
+## Updating env vars later — `set-env.sh`
+
+`aws lambda update-function-configuration --environment` **replaces the entire env
+map**, so a hand-edit that forgets a key silently wipes `DATABASE_URL`/`JWT_SECRET`.
+Use **`infra/aws/api/set-env.sh KEY=VALUE …`** instead — it fetches the current map,
+overlays your keys, and applies the merge (skips the reserved `AWS_REGION`). Example
+(the event-driven content-generator trigger; `infra/aws/generator/setup.sh` prints
+this line pre-filled):
+```bash
+infra/aws/api/set-env.sh \
+  ECS_CLUSTER=scrollwise ECS_TASK_DEFINITION=scrollwise-generator \
+  ECS_SUBNETS=<public-subnet> ECS_SECURITY_GROUPS=sg-0f0cc540888358d41 \
+  ECS_ASSIGN_PUBLIC_IP=ENABLED
+```
+
 ## Cutover checklist
 
 1. RDS up, pgvector enabled, data restored (Steps 1–3).
@@ -290,6 +305,16 @@ win here is operational (no servers to patch, autoscaling), not raw cost.
 > ~$32/mo NAT. Worth designing around.
 
 ---
+
+## Redeploying (roll the image)
+
+**`infra/aws/api/deploy.sh`** is the repeatable local deploy — ECR login → build
+**arm64** (Graviton) → push → `update-function-code --publish` → wait → `/health`
+check. Run it after any `apps/api` change:
+```bash
+./infra/aws/api/deploy.sh
+```
+(The CI workflow below does the same on push to `master`, once wired.)
 
 ## CI/CD
 

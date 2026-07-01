@@ -109,7 +109,7 @@ domain → CORS + repoint generator).
 - [x] ECR repo + container build/push. **DONE** — `scrollwise-api` repo, **arm64**
       image (built native on M-series Mac), digest `sha256:57642cce…0c17ea`.
 - [x] Lambda (VPC-attached) + execution role. **DONE** — `scrollwise-api`, arm64,
-      512MB/30s, role `scrollwise-api-lambda` (+AWSLambdaVPCAccessExecutionRole),
+      512MB/30s, role `scrollwise-api-lambdas` (+AWSLambdaVPCAccessExecutionRole),
       SG `sg-0f0cc540888358d41`, subnets 1a+1b. `/health` 200 + `/auth/register`
       201 → **RDS reachable through the VPC, verified end-to-end.**
 - [x] API Gateway HTTP API. **DONE** — id `4un2b4m7ij`, endpoint
@@ -177,7 +177,7 @@ domain → CORS + repoint generator).
 
 ---
 
-## 3. Content-generator — serverless  [NOT STARTED — this is the last EC2 tenant]
+## 3. Content-generator — serverless  [✅ LIVE on Fargate (2026-07-01); EC2 teardown pending]
 
 **Goal: make generation serverless and then TERMINATE THE EC2 BOX ENTIRELY.**
 The RDS migration already moved the DB off EC2 (§2), so the generator is now the
@@ -190,34 +190,76 @@ Currently: EC2 `scrollwise-drain` systemd poller (`scripts/drain_prompts.py`,
 polls `user_prompts` every 2s; has a `--once` mode; uses Bedrock for the LLM via
 the EC2 instance role; writes posts/curricula to RDS).
 
-### Proposed design (least change from what exists)
-- **Package** the generator as an **arm64 container-image Lambda** (`scrollwise-generator`),
-  same pattern as the API. Own ECR repo `scrollwise-generator`.
-- **Trigger:** EventBridge Scheduler (rate ~1 min) → invoke the Lambda in a
-  `--once`-style batch that drains pending `user_prompts` and returns. This reuses
-  the existing drain logic and keeps the DB-as-queue design; the only change vs the
-  systemd poller is a ~1-min latency instead of 2s (fine — generation itself takes
-  ~40s for a topic). *Alt:* have `apps/api` publish to SQS on prompt submit and let
-  SQS trigger the Lambda (lower latency, but changes the API's generation hand-off).
-- **Duration:** observed ~40s to generate a 42-post topic → well under Lambda's
-  15-min cap, so plain Lambda works. Only reach for **Fargate/Step Functions** if a
-  single batch ever risks >15 min.
-- **VPC:** attach to the same private subnets + a client SG allowed into RDS SG
-  `sg-0ec7b63d9aad80020` (reuse `sg-0f0cc540888358d41` or a new one).
-- **Bedrock egress:** the generator calls **Bedrock**, which is public — and a
-  VPC Lambda has no internet (we run no NAT). Add an **interface VPC endpoint for
-  `bedrock-runtime`** (~$7/mo, far cheaper than a NAT) so the Lambda reaches Bedrock
-  privately. (If image posts get re-enabled — `IMAGE_POSTS_ENABLED`, S3 — add S3 +
-  the image model endpoints too. Currently off.)
-- **IAM:** execution role with `AWSLambdaVPCAccessExecutionRole` + `bedrock:InvokeModel`
-  (replacing today's EC2 instance-role Bedrock access).
-- **Config:** env vars mirror the drain `.env` — `DB_BACKEND=postgres`,
+### Decision: ECS/Fargate task (NOT Lambda)  [decided 2026-07-01]
+
+**Chose Fargate over Lambda.** Lambda fits today's ~40s/topic batch, but the
+roadmap makes generation **longer, variable, and heavily LLM-bound** — planned:
+LLM-synthesized templates when none exist, LLM-generated assets (SVG/Lottie),
+and larger topics producing more posts. That trajectory hits Lambda's two weak
+spots: the **15-min hard cap** (a big topic + per-asset generation can exceed
+it) and **paying for idle Bedrock wait per invocation, multiplied** over many
+calls. A single Fargate container has **no time cap** and can amortize the idle
+waits (async fan-out inside one task) — so it's the one-migration path that
+doesn't need redoing when the heavy features land. See the options table in the
+design notes; the same reasoning kills EC2 either way.
+
+**Step Functions is the noted future escalation path, NOT built now.** Reach for
+it only when generation needs real *orchestration* — staged checkpointing, a
+human-approval pause on synthesized templates, or a visual multi-stage DAG. Until
+then it's more machinery and no cheaper for pure throughput. Don't add
+Step-Functions scaffolding to the code or infra yet.
+
+### Design (Fargate, least change from what exists)
+- **Package** the generator as an **arm64 container image** (`scrollwise-generator`,
+  own ECR repo) running as an **ECS/Fargate task** — a plain container (NOT the
+  Lambda base image). Dockerfile added: `services/content-generator/Dockerfile`
+  (`CMD python -m scripts.drain_prompts --once`).
+- **Trigger:** EVENT-DRIVEN (decided 2026-07-01, not a scheduler). `apps/api`
+  fires an ECS `RunTask` on prompt submit (`app/services/generation_service.py`
+  `enqueue()`, gated on `ECS_CLUSTER` being set). The task drains *all* pending
+  `user_prompts` via `--once` and exits. `SKIP LOCKED` makes concurrent submits →
+  concurrent tasks safe (each claims different rows) and self-healing (a task also
+  sweeps rows whose own trigger was lost). No periodic sweep → the "one prompt,
+  trigger lost, no further submits" tail leaves that row pending (acceptable at
+  current volume; a slow safety schedule is the noted future backstop).
+- **Duration:** no 15-min cap, so big topics / per-asset generation are safe.
+- **Networking (public subnet, decided 2026-07-01):** the task runs in a **public
+  subnet with a public IP**, reaching ECR/Bedrock/Logs over the free Internet
+  Gateway — **no NAT, no per-service endpoints for the task.** SG blocks all
+  inbound (public = outbound-only); still reaches RDS via internal VPC routing.
+  The task reuses `sg-0f0cc540888358d41` (allowed into RDS SG `sg-0ec7b63d9aad80020`).
+  One `ecs` interface endpoint (~$7/mo, private subnets, SG `scrollwise-vpce`) is
+  kept so the private-subnet API Lambda can call `RunTask`. Chosen over NAT (~$32)
+  and the five-endpoint model (~$35): public IP bills only per task-minute, so
+  ≈ $7–10/mo total. `setup.sh` auto-discovers the public subnet (route → IGW) and
+  deletes any paid ecr/logs/bedrock endpoints a prior run created.
+- **IAM:** task role `bedrock:InvokeModel`; exec role `AmazonECSTaskExecutionRolePolicy`
+  (ECR pull + logs); API Lambda role gets scoped `ecs:RunTask` + guarded `iam:PassRole`.
+- **Config:** task-def env vars mirror the drain `.env` — `DB_BACKEND=postgres`,
   `DATABASE_URL=postgresql://scrollwise:…@<rds>/scrollwise` (plain psycopg, NOT
-  asyncpg), `LLM_BACKEND=bedrock`, `IMAGE_POSTS_ENABLED=false`.
+  asyncpg), `LLM_BACKEND=bedrock`, `IMAGE_POSTS_ENABLED=false`, `AWS_REGION=us-east-1`.
+  API Lambda env: `ECS_CLUSTER`, `ECS_TASK_DEFINITION`, `ECS_SUBNETS` (the public
+  subnet), `ECS_SECURITY_GROUPS`, `ECS_ASSIGN_PUBLIC_IP=ENABLED` (required for
+  public-subnet egress; do NOT set `AWS_REGION` on Lambda — reserved). API image
+  now needs `boto3` (added to `apps/api/requirements.txt`).
+
+Full runbook + one-command idempotent provisioner:
+`infra/aws/generator/README.md`, `setup.sh`, `task-definition.template.json`
+(`DB_PASS=… ./infra/aws/generator/setup.sh`). It stops short of the EC2 teardown.
 
 ### Cutover + EC2 teardown checklist
-- [ ] Build/push `scrollwise-generator` image; create the Lambda (VPC, Bedrock endpoint, role).
-- [ ] Wire the EventBridge Scheduler trigger; confirm it drains a test prompt end-to-end into RDS.
+- [x] Add the Fargate Dockerfile + `.dockerignore` (`services/content-generator/`).
+- [x] Write the provisioning runbook + `setup.sh` + task-def template (`infra/aws/generator/`).
+- [x] Event-driven trigger in the API (`generation_service.enqueue` → `ecs:RunTask`,
+      config in `app/config.py`, `boto3` added). Dev no-ops when `ECS_CLUSTER` unset.
+- [x] Run `setup.sh` (ECR image, public-subnet discovery + `ecs` endpoint, roles,
+      task def, API-role IAM, delete old schedule + stale paid endpoints).
+- [x] Set API Lambda env vars (`ECS_*` incl. `ECS_ASSIGN_PUBLIC_IP=ENABLED`) via
+      `infra/aws/api/set-env.sh` + redeployed the API image with boto3 (`/health` OK).
+- [ ] Submit a prompt; confirm a Fargate task drains it end-to-end into RDS
+      (watch `generation_triggered` in API logs + `prompt_ready` in generator logs).
+      ⚠️ If `setup.sh` first ran before the API-role name fix, re-run so the
+      `run-generator` (RunTask) policy actually attaches to `scrollwise-api-lambdas`.
 - [ ] Run in parallel with EC2 `scrollwise-drain` briefly, then **stop** the systemd service.
 - [ ] Verify no double-generation (only one drainer active) and the feed still fills.
 - [ ] Decommission EC2: stop/terminate `i-07f9dd1d8f1111f92`, release its EIP, remove
@@ -249,10 +291,14 @@ VITE_API_BASE         https://api.scrollwise.net
 ```
 
 ## Status & next step
-**Web ✅ live** (app.scrollwise.net) and **API ✅ live** (api.scrollwise.net,
-Lambda+API GW+RDS, DB round-trip verified). See `ARCHITECTURE.md` for the as-built
-picture and the `scrollwise-serverless` skill for ops.
+**All three services serverless:** Web ✅ (app.scrollwise.net), API ✅
+(api.scrollwise.net), Generator ✅ (Fargate, event-driven). See `ARCHITECTURE.md`
+for the as-built picture and the `scrollwise-serverless` skill for ops of all three.
 
-**Next: §3 — make the content-generator serverless and terminate the EC2 box.**
-That's the last non-serverless piece. Loose ends meanwhile: delete the smoke-test
-user from RDS, wire the API CI/CD IAM user + secrets, optional cold-start tuning.
+**Next: finish the EC2 teardown (§3 checklist).** The generator is live on Fargate,
+but `i-07f9dd1d8f1111f92` still exists — final `pg_dump`, stop `scrollwise-drain`,
+terminate the box, release its EIP, clean up its SG rules. Then nothing runs on EC2.
+Loose ends: end-to-end prompt verification through Fargate, delete the smoke-test
+user from RDS, wire the API/generator CI/CD IAM users + secrets, optional cold-start
+tuning. (Fargate chosen over Lambda for the heavier LLM-bound roadmap; Step Functions
+is a future escalation, not built now.)

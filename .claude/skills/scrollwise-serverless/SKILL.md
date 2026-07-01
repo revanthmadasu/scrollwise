@@ -13,8 +13,13 @@ description: >-
   AWS resource ids for this deployment. Reach for it even when the user doesn't
   say "serverless" — "redeploy the api", "why is the api 500ing", "the site won't
   load", "update the frontend", and "where are the api logs in aws" are all this
-  skill. For the content-generator worker (scrollwise-drain on EC2) use the
-  scrollwise-drain skill instead; for log *plumbing/config* use scrollwise-logging.
+  skill. Also covers the **content-generator on ECS/Fargate** (event-driven task
+  `scrollwise-generator`): "redeploy the generator", "why isn't generation running
+  after a prompt", "generation_trigger_failed", "the Fargate task is failing / won't
+  pull the image", generator CloudWatch logs, changing the generator's task-def env
+  vars. The legacy EC2 `scrollwise-drain` worker is being torn down — use the
+  scrollwise-drain skill only for that box until it's decommissioned. For log
+  *plumbing/config* use scrollwise-logging.
 ---
 
 # Operating the ScrollWise serverless stack
@@ -35,7 +40,7 @@ to the user.
 |---|---|---|---|
 | Web (`apps/web`) | S3 `scrollwise-web-bundle-prod` + CloudFront `E3RSA4VCIHJJ90` | `app.scrollwise.net` | static SPA, calls API by URL |
 | API (`apps/api`) | Lambda `scrollwise-api` (arm64 image) + API GW `4un2b4m7ij` | `api.scrollwise.net` | VPC, no NAT, reads RDS |
-| Generator (`services/content-generator`) | **EC2** `scrollwise-drain` (NOT serverless yet) | — | writes posts to RDS; see `scrollwise-drain` |
+| Generator (`services/content-generator`) | **ECS Fargate** task `scrollwise-generator` (arm64, event-driven) | — | `apps/api` fires `RunTask` on prompt submit; drains `user_prompts`, writes posts to RDS via Bedrock |
 
 Shared **RDS** `scrollwise-pg…:5432/scrollwise` (Postgres 16 + pgvector, private).
 
@@ -64,6 +69,35 @@ VITE_API_BASE=https://api.scrollwise.net ./infra/aws/web/deploy.sh
 "Site not updating" is almost always a stale CloudFront cache — the script
 invalidates, but you can force it: `aws cloudfront create-invalidation --profile
 scrollwise --distribution-id E3RSA4VCIHJJ90 --paths '/*'`.
+
+## Operate the generator (Fargate, event-driven)
+The content-generator runs as an **arm64 Fargate task** `scrollwise-generator`
+(cluster `scrollwise`), triggered by `apps/api` calling `ecs:RunTask` on prompt
+submit — no scheduler, no poller. It drains pending `user_prompts` (`SKIP LOCKED`)
+and exits. Full runbook + all resource ids: `infra/aws/generator/README.md`.
+The four scripts (run from repo root, `scrollwise` profile):
+```bash
+DB_PASS='…' ./infra/aws/generator/setup.sh   # (re)provision — idempotent; SKIP_BUILD=1 to skip image build
+./infra/aws/api/deploy.sh                     # roll the API image (the trigger lives in apps/api)
+./infra/aws/generator/set-env.sh KEY=VALUE …  # change task env → registers a new task-def revision
+./infra/aws/generator/healthcheck.sh          # read-only: task def, ecs endpoint, API trigger env, recent runs
+```
+**Deploy new generator code:** rebuild/push the image (`setup.sh` does it, or the
+build block in Step 1 of its README), then the next triggered task pulls `:latest`.
+
+**Generator logs** → CloudWatch group `/ecs/scrollwise-generator`:
+```bash
+aws logs tail /ecs/scrollwise-generator --profile scrollwise --region us-east-1 --since 15m --follow
+#   drain_loop_start → prompt_claimed → prompt_ready ; grep prompt_failed for errors
+```
+**Nothing generating after a submit?** Check the API logs for `generation_triggered`
+(fired) vs `generation_trigger_failed` (couldn't RunTask — usually the `ecs` VPC
+endpoint not `available`, or the `run-generator` IAM policy missing on
+`scrollwise-api-lambdas`). Then check a stopped task's exit code
+(`aws ecs list-tasks --cluster scrollwise --desired-status STOPPED …` → `describe-tasks`);
+`CannotPullContainerError` = the public-subnet egress / image isn't right.
+**Env vars** live in the **task definition** (immutable → new revision via `set-env.sh`),
+NOT a `.env` and NOT Lambda config. `DATABASE_URL` is plain psycopg (not `+asyncpg`).
 
 ## Troubleshooting
 
@@ -108,6 +142,7 @@ error" → the alias/cert isn't on the distribution/API-GW domain; "doesn't reso
 → the IONOS record is missing.
 
 ## Not covered here
-Building the stack from scratch (see the `infra/aws/**/README.md` walkthroughs),
-the generator worker (see `scrollwise-drain`), and the still-pending **generator
-serverless migration + EC2 teardown** (PROGRESS.md §3).
+Building the stack from scratch (see the `infra/aws/**/README.md` walkthroughs) and
+the **EC2 teardown** still pending in PROGRESS.md §3 (the generator is on Fargate
+now; the old `scrollwise-drain` EC2 box is being decommissioned — `scrollwise-drain`
+skill covers that box until it's gone).

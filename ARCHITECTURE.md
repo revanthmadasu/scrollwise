@@ -26,9 +26,9 @@ Last updated: 2026-07-01.
                     │  DB "scrollwise" · SG sg-0ec7b63d9aad80020│
                     └─────────────────────────────────────────┘
                               ▲
-                              │  writes posts/curricula (still EC2 — see below)
-                    EC2  content_generator_server (i-07f9dd1d8f1111f92)          GEN
-                       systemd  scrollwise-drain  →  Bedrock (LLM)               (batch worker)
+                              │  writes posts/curricula
+  apps/api ──RunTask──►  ECS Fargate task  scrollwise-generator (arm64)          GEN
+  (on prompt submit)       public subnet · drains user_prompts · → Bedrock (LLM)  (event-driven)
 ```
 
 ## Components
@@ -59,22 +59,32 @@ Last updated: 2026-07-01.
   `CORS_ORIGINS=https://app.scrollwise.net`). Secrets Manager is a later hardening
   step. CI scaffolded: [`.github/workflows/deploy-api.yml`](.github/workflows/deploy-api.yml).
 
-### Content-generator — EC2 drain worker  ⚠️ not yet serverless
-- Producer (`services/content-generator`) runs as the **`scrollwise-drain`**
-  systemd service on **EC2 `content_generator_server`** (`/opt/ScrollWise`).
-- Polls the `user_prompts` queue, generates curricula + posts via **Bedrock**, and
-  writes them to the shared RDS DB (repointed 2026-06-30). Uses the plain psycopg
-  `DATABASE_URL` (not asyncpg). See the `scrollwise-drain` skill for ops.
-- **This is the last non-serverless piece and the last reason the EC2 box exists.**
-  Plan to move it to Lambda/Fargate and terminate EC2: PROGRESS.md §3.
+### Content-generator — ECS/Fargate task  ✅ serverless (event-driven)
+- Producer (`services/content-generator`) runs as an **arm64 Fargate task**
+  `scrollwise-generator` (ECS cluster `scrollwise`), **not** a poller.
+- **Event-driven:** on prompt submit, `apps/api` fires `ecs:RunTask`
+  (`app/services/generation_service.py`). The task drains pending `user_prompts`
+  via `drain_prompts --once`, writes curricula + posts to RDS via **Bedrock**, and
+  exits. `SKIP LOCKED` makes concurrent tasks safe + self-healing. Uses the plain
+  psycopg `DATABASE_URL` (not asyncpg).
+- **Networking:** runs in a **public subnet** with a public IP → free egress to
+  ECR/Bedrock/Logs via the Internet Gateway (no NAT). One `ecs` interface endpoint
+  lets the private-subnet API Lambda call RunTask. Task reuses SG
+  `sg-0f0cc540888358d41`; task role has `bedrock:InvokeModel`.
+- Ops + all resource ids: `infra/aws/generator/` (`setup.sh`, `set-env.sh`,
+  `deploy.sh`→image, `healthcheck.sh`) and the `scrollwise-serverless` skill.
+- ⏳ **EC2 teardown pending:** the old `scrollwise-drain` box
+  (`i-07f9dd1d8f1111f92`) is being decommissioned — see PROGRESS.md §3. Until then
+  its local Postgres remains a cold backup.
 
 ## The shared database is the contract
 RDS DB **`scrollwise`** is shared by the API and the generator. The generator
 **owns** `posts` + `curricula` (writes them); the API reads them and owns
 everything else (users, prompts, progress). Schema changes to the contract tables
 are cross-component — canonical DDL is
-`services/content-generator/storage/schema.sql`. The old local Postgres on EC2 is
-now a **cold backup** (do not delete until the generator is serverless + verified).
+`services/content-generator/storage/schema.sql`. Both the API (asyncpg) and the
+Fargate generator (psycopg) point at this RDS. The old local Postgres on EC2 is a
+**cold backup** — keep it until the EC2 teardown is done (take a final `pg_dump` first).
 
 ## DNS (IONOS — not Route 53)
 `scrollwise.net` nameservers are IONOS (`ns*.ui-dns.*`); all records are managed in
@@ -92,5 +102,8 @@ the two ACM validation CNAMEs.
 | API Gateway | 4un2b4m7ij (api.scrollwise.net) |
 | CloudFront | E3RSA4VCIHJJ90 (app.scrollwise.net) |
 | ECR / Lambda (API) | scrollwise-api / scrollwise-api |
-| EC2 (generator) | i-07f9dd1d8f1111f92 |
+| ECR / ECS (generator) | scrollwise-generator / cluster `scrollwise`, task-def family `scrollwise-generator` |
+| Generator roles | scrollwise-generator-exec (pull+logs), scrollwise-generator-task (bedrock) |
+| Generator `ecs` VPC endpoint SG | scrollwise-vpce |
+| EC2 (generator, ⏳ teardown pending) | i-07f9dd1d8f1111f92 |
 ```

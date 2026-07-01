@@ -103,3 +103,6 @@ cdn creation:
             },
             "DefaultRootObject": "index.html",
             "Origins": {
+
+scrollwise-api-lamda role:
+arn:aws:iam::339140804013:role/scrollwise-api-lambdas

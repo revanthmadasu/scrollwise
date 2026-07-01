@@ -18,6 +18,10 @@ pgvector>=0.2.5            # vector(1024) column support (prod)
 # events. Unused by uvicorn/dev — only the Lambda container entrypoint imports it.
 mangum>=0.17.0
 
+# AWS SDK — used to fire an ECS RunTask on prompt submit (event-driven content
+# generation). Only imported when the trigger is configured (prod); dev no-ops.
+boto3>=1.34.0
+
 # Auth
 passlib[bcrypt]>=1.7.4     # password hashing
 bcrypt>=4.0,<4.1           # passlib 1.7.4 is incompatible with bcrypt >=4.1
