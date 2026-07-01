@@ -128,14 +128,18 @@ aws secretsmanager create-secret --name scrollwise/api --region "$AWS_REGION" \
   --secret-string "$(cat <<JSON
 {
   "DATABASE_URL": "postgresql+asyncpg://$DB_USER:$DB_PASS@$DB_HOST:5432/$DB_NAME",
-  "JWT_SECRET": "<paste a 48-char secret>",
-  "GOOGLE_CLIENT_ID": "<...>",
-  "GOOGLE_CLIENT_SECRET": "<...>"
+  "JWT_SECRET": "<paste a 48-char secret>"
 }
 JSON
 )"
 ```
 **Expected output:** JSON with the secret ARN. The Lambda reads these (Step 7).
+
+> **No `GOOGLE_CLIENT_ID` here — intentional (decision 2026-06-30).** Prod isn't
+> using Google sign-in, and leaving `GOOGLE_CLIENT_ID` unset means the API makes
+> zero outbound internet calls (the JWKS fetch in `app/services/google_oauth.py`
+> short-circuits to "not configured"). That's what lets the VPC Lambda run with
+> **no NAT Gateway**. Only add Google creds back if you also add egress (a NAT).
 
 > `DATABASE_URL` MUST use the `postgresql+asyncpg://` driver prefix — that's what
 > the API's async engine expects.
@@ -176,10 +180,11 @@ aws lambda create-function --function-name scrollwise-api --region "$AWS_REGION"
 **Expected output:** function ARN, `State: Pending` → `Active`.
 
 **Two things that bite people here:**
-- **VPC = no internet by default.** A VPC Lambda can reach RDS but NOT the public
-  internet (Google OIDC's JWKS/token endpoints) unless the subnets route through
-  a **NAT Gateway** (or you add VPC endpoints). If you use Google sign-in, put the
-  Lambda in **private subnets with a NAT**.
+- **VPC = no internet by default — and that's fine for us.** A VPC Lambda can reach
+  RDS but NOT the public internet. The API's only would-be outbound call is the
+  Google JWKS fetch, which is disabled while `GOOGLE_CLIENT_ID` is unset (the
+  decision for prod). So put the Lambda in the VPC with **NO NAT Gateway**. If you
+  ever enable Google sign-in, you'll also need egress (private subnets + a NAT).
 - **Secrets:** wire the `scrollwise/api` secret into the function — either inject
   as env vars at deploy time, or read it at cold start. Pydantic settings pick up
   the env var names directly (`DATABASE_URL`, `JWT_SECRET`, …).
@@ -270,7 +275,7 @@ aws lambda add-permission --function-name scrollwise-api --region "$AWS_REGION" 
 | API Gateway HTTP API | $1.00 / million requests → **~$0–1/mo** |
 | **RDS `db.t4g.micro`** | ~**$12–15/mo** (on-demand; the main cost) |
 | RDS storage (20 GB gp3) | ~$2.30/mo |
-| NAT Gateway (if Google OIDC) | ~$32/mo + data — **the expensive surprise** |
+| NAT Gateway | **$0 — not used** (no Google OIDC in prod; see Step 7) |
 | RDS Proxy (optional) | ~$11/mo |
 | Secrets Manager | $0.40/secret/mo |
 | ACM cert | free |
@@ -286,9 +291,20 @@ win here is operational (no servers to patch, autoscaling), not raw cost.
 
 ---
 
-## CI/CD (later)
+## CI/CD
 
-Same pattern as the web deploy: a GitHub Actions workflow (`apps/api/**` path
-filter) that builds the image, pushes to ECR, and calls
-`aws lambda update-function-code --image-uri …`. Reuse the Option-B IAM keys (add
-ECR + Lambda permissions) or, better, the OIDC role. Ask and I'll scaffold it.
+Scaffolded: **`.github/workflows/deploy-api.yml`** (push to `master` touching
+`apps/api/**`) builds the **arm64** image via buildx+QEMU, pushes to ECR, and
+rolls the Lambda with `aws lambda update-function-code --image-uri … --publish`.
+
+To activate (same Option-B static-keys pattern as the web deploy):
+1. IAM user `scrollwise-api-deploy` with the least-privilege policy in
+   **`infra/aws/api/github-deploy-permissions.json`** (ECR push + this one
+   Lambda's update).
+2. Create an access key for it → GitHub repo **Secrets**: `AWS_ACCESS_KEY_ID`,
+   `AWS_SECRET_ACCESS_KEY`.
+3. Region / ECR repo / function name are hardcoded in the workflow's `env:` block
+   (`us-east-1` / `scrollwise-api` / `scrollwise-api`) — edit there if they change.
+
+OIDC (no stored keys) is the better long-term option; swap the credentials step
+for `role-to-assume` when you set up an OIDC provider.
