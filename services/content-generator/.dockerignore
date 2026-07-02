@@ -1,0 +1,20 @@
+# Keep the Fargate image small and reproducible — ship only runtime code.
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+tests/
+*.db
+*.sqlite
+.env
+.env.*
+README.md
+CLAUDE.md
+operational.txt
+.dockerignore
+Dockerfile
+# Dev-only / one-off scripts not needed at runtime.
+scripts/ec2_setup.sh
+scripts/ec2_smoke_test.sh
+scripts/eval_canonicalization.py
+scripts/test_image_gen.py

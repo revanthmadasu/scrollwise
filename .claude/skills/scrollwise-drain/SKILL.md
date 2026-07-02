@@ -1,6 +1,11 @@
 ---
 name: scrollwise-drain
 description: >-
+  DEPRECATED / legacy: the ScrollWise content-generator moved to ECS/Fargate
+  (event-driven) — for the LIVE generator use the `scrollwise-serverless` skill.
+  This skill covers only the old `scrollwise-drain` systemd worker on the EC2 box,
+  which is being decommissioned (PROGRESS.md §3). Use it if the user is explicitly
+  operating that EC2 box during teardown, or on a pre-migration branch. Otherwise:
   Operate and troubleshoot the ScrollWise prod content-generator worker, the
   `scrollwise-drain` systemd service on EC2. Use this whenever the user mentions
   scrollwise-drain, the drain worker/poller, the prompt queue not generating,
@@ -13,6 +18,14 @@ description: >-
 ---
 
 # Operating `scrollwise-drain`
+
+> ⚠️ **DEPRECATED (2026-07-01).** The content-generator is now an **event-driven
+> ECS/Fargate task** (`scrollwise-generator`) — see the `scrollwise-serverless`
+> skill and `infra/aws/generator/`. This `scrollwise-drain` systemd worker on EC2
+> is being torn down (PROGRESS.md §3). Everything below applies **only** to that
+> legacy EC2 box while it still exists (e.g. during teardown, or on a
+> pre-migration branch). The "restart after approving templates" gotcha does NOT
+> apply to Fargate — each task is a fresh process that reloads the catalog.
 
 `scrollwise-drain` is the always-on **systemd service that runs the ScrollWise
 content generator** on the prod EC2 box. It is the consumer half of the

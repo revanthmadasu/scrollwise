@@ -1,0 +1,79 @@
+name: Deploy API (ECR + Lambda)
+
+# Path-filtered, independent deploy (per the monorepo's "deploys are independent"
+# rule): only runs when the API or its deploy tooling changes. Builds the Lambda
+# container image, pushes it to ECR, and rolls the function to the new image.
+on:
+  push:
+    branches: [master]
+    paths:
+      - "apps/api/**"
+      - ".github/workflows/deploy-api.yml"
+  workflow_dispatch: {} # allow manual runs from the Actions tab
+
+concurrency:
+  group: deploy-api
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  # The Lambda runs on Graviton, so the image MUST be arm64 (built via QEMU on
+  # the x86 runner). Keep these in sync with the resources created by hand in
+  # infra/aws/api/README.md.
+  AWS_REGION: us-east-1
+  ECR_REPOSITORY: scrollwise-api
+  LAMBDA_FUNCTION: scrollwise-api
+  IMAGE_PLATFORM: linux/arm64
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      # Loads the IAM deploy user's access keys from GitHub repo secrets. These
+      # are long-lived — keep them least-privilege (ECR push + this one Lambda's
+      # update, see infra/aws/api/github-deploy-permissions.json) and rotate
+      # periodically. Never echo them in a step.
+      - name: Configure AWS credentials (static keys)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      # arm64 build on an x86 runner needs QEMU + buildx.
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Build and push image
+        id: build
+        env:
+          REGISTRY: ${{ steps.ecr.outputs.registry }}
+        run: |
+          IMAGE="$REGISTRY/$ECR_REPOSITORY"
+          TAG="${GITHUB_SHA::12}"
+          docker buildx build \
+            --platform "$IMAGE_PLATFORM" \
+            --tag "$IMAGE:$TAG" \
+            --tag "$IMAGE:latest" \
+            --push \
+            apps/api
+          echo "image_uri=$IMAGE:$TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Update Lambda to the new image
+        run: |
+          aws lambda update-function-code \
+            --function-name "$LAMBDA_FUNCTION" \
+            --image-uri "${{ steps.build.outputs.image_uri }}" \
+            --publish
+          aws lambda wait function-updated \
+            --function-name "$LAMBDA_FUNCTION"
+          echo "Deployed ${{ steps.build.outputs.image_uri }} to $LAMBDA_FUNCTION"

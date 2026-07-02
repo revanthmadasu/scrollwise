@@ -1,0 +1,45 @@
+{
+  "//": "ECS/Fargate task def for the ScrollWise content-generator. Fill in the",
+  "//role": "two role ARNs and the DATABASE_URL password, then register with:",
+  "//register": "aws ecs register-task-definition --cli-input-json file://task-definition.json --profile scrollwise --region us-east-1",
+  "family": "scrollwise-generator",
+  "requiresCompatibilities": ["FARGATE"],
+  "networkMode": "awsvpc",
+  "cpu": "512",
+  "memory": "1024",
+  "runtimePlatform": {
+    "cpuArchitecture": "ARM64",
+    "operatingSystemFamily": "LINUX"
+  },
+  "executionRoleArn": "arn:aws:iam::339140804013:role/scrollwise-generator-exec",
+  "taskRoleArn": "arn:aws:iam::339140804013:role/scrollwise-generator-task",
+  "containerDefinitions": [
+    {
+      "name": "generator",
+      "image": "339140804013.dkr.ecr.us-east-1.amazonaws.com/scrollwise-generator:latest",
+      "essential": true,
+      "command": ["python", "-m", "scripts.drain_prompts", "--once"],
+      "environment": [
+        { "name": "DB_BACKEND", "value": "postgres" },
+        { "name": "DATABASE_URL", "value": "postgresql://scrollwise:<DB_PASS>@scrollwise-pg.c29wyqmsy86m.us-east-1.rds.amazonaws.com:5432/scrollwise" },
+        { "name": "LLM_BACKEND", "value": "bedrock" },
+        { "name": "LLM_MODEL", "value": "us.meta.llama3-3-70b-instruct-v1:0" },
+        { "name": "EMBEDDING_BACKEND", "value": "hash" },
+        { "name": "IMAGE_BACKEND", "value": "bedrock" },
+        { "name": "IMAGE_POSTS_ENABLED", "value": "false" },
+        { "name": "IMAGE_S3_BUCKET", "value": "content-generated-images" },
+        { "name": "IMAGE_BEDROCK_REGION", "value": "us-west-2" },
+        { "name": "IMAGE_BEDROCK_MODEL", "value": "stability.stable-image-core-v1:1" },
+        { "name": "AWS_REGION", "value": "us-east-1" }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/scrollwise-generator",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "drain"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+name: Deploy web (S3 + CloudFront)
+
+# Path-filtered, independent deploy (per the monorepo's "deploys are independent"
+# rule): this only runs when the frontend or its deploy tooling changes.
+on:
+  push:
+    branches: [master]
+    paths:
+      - "apps/web/**"
+      - "infra/aws/web/**"
+      - ".github/workflows/deploy-web.yml"
+  workflow_dispatch: {} # allow manual runs from the Actions tab
+
+concurrency:
+  group: deploy-web
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+
+      # Loads the IAM user's access keys from GitHub repo secrets. These are
+      # long-lived — keep them least-privilege (S3 + CloudFront only) and rotate
+      # periodically. Never echo them in a step.
+      - name: Configure AWS credentials (static keys)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Deploy
+        env:
+          WEB_BUNDLE_BUILD_BUCKET: ${{ vars.WEB_BUNDLE_BUILD_BUCKET }}
+          CF_DISTRIBUTION_ID: ${{ vars.CF_DISTRIBUTION_ID }}
+          VITE_API_BASE: ${{ vars.VITE_API_BASE }} # e.g. https://api.scrollwise.net
+        run: ./infra/aws/web/deploy.sh

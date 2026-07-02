@@ -1,0 +1,24 @@
+{
+  "_comment": "Least-privilege permissions for the GitHub Actions deploy IAM user. Replace WEB_BUNDLE_BUILD_BUCKET, ACCOUNT_ID, DISTRIBUTION_ID. Scoped to exactly the one bucket and one distribution this app deploys to.",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "SyncBundleToBucket",
+      "Effect": "Allow",
+      "Action": ["s3:ListBucket"],
+      "Resource": "arn:aws:s3:::scrollwise-web-bundle-prod"
+    },
+    {
+      "Sid": "WriteObjects",
+      "Effect": "Allow",
+      "Action": ["s3:PutObject", "s3:DeleteObject"],
+      "Resource": "arn:aws:s3:::scrollwise-web-bundle-prod/*"
+    },
+    {
+      "Sid": "InvalidateCache",
+      "Effect": "Allow",
+      "Action": ["cloudfront:CreateInvalidation"],
+      "Resource": "arn:aws:cloudfront::ACCOUNT_ID:distribution/DISTRIBUTION_ID"
+    }
+  ]
+}

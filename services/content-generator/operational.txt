@@ -45,3 +45,64 @@ cd infra
 deployment scripts:
 
 prod deployment: restart_prod.sh
+
+
+bucket: 
+{
+    "Location": "/scrollwise-web-bundle-prod",
+    "BucketArn": "arn:aws:s3:::scrollwise-web-bundle-prod"
+}
+
+cloudfront oac: 
+{
+    "Location": "https://cloudfront.amazonaws.com/2020-05-31/origin-access-control/E1UQTYDP33AC79",
+    "ETag": "ETVPDKIKX0DER",
+    "OriginAccessControl": {
+        "Id": "E1UQTYDP33AC79",
+        "OriginAccessControlConfig": {
+            "Name": "scrollwise-web-bundle-prod-oac",
+            "SigningProtocol": "sigv4",
+            "SigningBehavior": "always",
+            "OriginAccessControlOriginType": "s3"
+        }
+    }
+}
+
+aws acm:
+{
+    "CertificateArn": "arn:aws:acm:us-east-1:339140804013:certificate/51f11116-fcc1-4cb3-9c86-51058e3c322b"
+}
+
+cdn creation: 
+
+{
+    "Location": "https://cloudfront.amazonaws.com/2020-05-31/distribution/E3RSA4VCIHJJ90",
+    "ETag": "E23ZP02F085DFQ",
+    "Distribution": {
+        "Id": "E3RSA4VCIHJJ90",
+        "ARN": "arn:aws:cloudfront::339140804013:distribution/E3RSA4VCIHJJ90",
+        "Status": "InProgress",
+        "LastModifiedTime": "2026-06-30T04:10:21.393000+00:00",
+        "InProgressInvalidationBatches": 0,
+        "DomainName": "dkflt0h7ibwhb.cloudfront.net",
+        "ActiveTrustedSigners": {
+            "Enabled": false,
+            "Quantity": 0
+        },
+        "ActiveTrustedKeyGroups": {
+            "Enabled": false,
+            "Quantity": 0
+        },
+        "DistributionConfig": {
+            "CallerReference": "scrollwise-web-20260629T183901",
+            "Aliases": {
+                "Quantity": 1,
+                "Items": [
+                    "app.scrollwise.net"
+                ]
+            },
+            "DefaultRootObject": "index.html",
+            "Origins": {
+
+scrollwise-api-lamda role:
+arn:aws:iam::339140804013:role/scrollwise-api-lambdas

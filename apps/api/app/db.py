@@ -28,10 +28,15 @@ settings = get_settings()
 # SQLite needs check_same_thread off for the async pool; Postgres ignores it.
 _connect_args = {"check_same_thread": False} if settings.database_url.startswith("sqlite") else {}
 
+# pool_pre_ping: Lambda freezes the container between invocations, which can
+# leave a pooled DB connection stale (RDS / RDS Proxy may have dropped it). A
+# lightweight liveness check before each checkout avoids "connection was closed"
+# errors on the first request after a thaw. Harmless for dev (SQLite).
 engine = create_async_engine(
     settings.database_url,
     echo=False,
     future=True,
+    pool_pre_ping=True,
     connect_args=_connect_args,
 )
 
