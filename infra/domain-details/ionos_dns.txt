@@ -1,0 +1,29 @@
+_domainconnect.scrollwise.net 3600 IN CNAME _domainconnect.ionos.com
+
+scrollwise.net 3600 IN MX 10 mx00.ionos.com
+scrollwise.net 3600 IN MX 10 mx01.ionos.com
+
+scrollwise.net 3600 IN TXT "v=spf1 include:_spf-us.ionos.com ~all"
+
+_dmarc.scrollwise.net 3600 IN CNAME dmarc.ionos.com
+s1-ionos._domainkey.scrollwise.net 3600 IN CNAME s1.dkim.ionos.com
+s2-ionos._domainkey.scrollwise.net 3600 IN CNAME s2.dkim.ionos.com
+autodiscover.scrollwise.net 3600 IN CNAME adsredir.ionos.info
+
+scrollwise.net 3600 IN A 74.208.236.167
+www.scrollwise.net 3600 IN A 74.208.236.167
+
+scrollwise.net 3600 IN AAAA 2607:f1c0:100f:f000:0:0:0:200
+www.scrollwise.net 3600 IN AAAA 2607:f1c0:100f:f000:0:0:0:200
+
+_dep_ws_mutex.scrollwise.net 3600 IN TXT "d6e93807ddc93a502fc1a73088114bac5b41db508da6ebec0f79d9d4e3acacb3_1782967013784"
+www.scrollwise.net 3600 IN A 74.208.236.167
+www.scrollwise.net 3600 IN AAAA 2607:f1c0:100f:f000:0:0:0:200
+_dep_ws_mutex.www.scrollwise.net 3600 IN TXT "19157f10b156871872580308b82396bd291f40590f93943682e7d67d6e823832_1782967013749"
+
+_4efa95d4bc7dade529652e68d0ec42bb.scrollwise.net 3600 IN CNAME _544ee2a3b1ee8820b71a9f5dff2ebba3.jkddzztszm.acm-validations.aws
+api.scrollwise.net 300 IN CNAME d-25fxrdt7b2.execute-api.us-east-1.amazonaws.com
+_a56cee9e074a1ec0e165339ed2d9848b.api.scrollwise.net 3600 IN CNAME _f977265c4feb4b8fcaa72fc9dbcf9daf.jkddzztszm.acm-validations.AWS_REGION
+app.scrollwise.net 300 IN CNAME dkflt0h7ibwhb.cloudfront.net
+_85156dfb8c25c6d141bf2ed9e0ef41f5.app.scrollwise.net 3600 IN CNAME _da76553854b8f5c08c70c48be2632d05.jkddzztszm.acm-validations.aws
+_11faf25746f3b33d544e2f1f2239e8f4.www.scrollwise.net 3600 IN CNAME _949e1f372de2240f5543145328d49afb.jkddzztszm.acm-validations.aws
