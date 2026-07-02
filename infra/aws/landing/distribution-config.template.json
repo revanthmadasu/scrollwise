@@ -1,0 +1,42 @@
+{
+  "CallerReference": "__CALLER_REFERENCE__",
+  "Comment": "ScrollWise landing page (apex scrollwise.net via www; static S3 origin)",
+  "Enabled": true,
+  "DefaultRootObject": "index.html",
+  "Aliases": {
+    "Quantity": 2,
+    "Items": ["scrollwise.net", "www.scrollwise.net"]
+  },
+  "Origins": {
+    "Quantity": 1,
+    "Items": [
+      {
+        "Id": "s3-static",
+        "DomainName": "__BUCKET__.s3.us-east-1.amazonaws.com",
+        "OriginAccessControlId": "__OAC_ID__",
+        "S3OriginConfig": { "OriginAccessIdentity": "" }
+      }
+    ]
+  },
+  "DefaultCacheBehavior": {
+    "TargetOriginId": "s3-static",
+    "ViewerProtocolPolicy": "redirect-to-https",
+    "AllowedMethods": { "Quantity": 2, "Items": ["GET", "HEAD"] },
+    "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+    "Compress": true
+  },
+  "CacheBehaviors": { "Quantity": 0 },
+  "CustomErrorResponses": {
+    "Quantity": 2,
+    "Items": [
+      { "ErrorCode": 403, "ResponseCode": "200", "ResponsePagePath": "/index.html", "ErrorCachingMinTTL": 10 },
+      { "ErrorCode": 404, "ResponseCode": "200", "ResponsePagePath": "/index.html", "ErrorCachingMinTTL": 10 }
+    ]
+  },
+  "ViewerCertificate": {
+    "ACMCertificateArn": "__CERT_ARN__",
+    "SSLSupportMethod": "sni-only",
+    "MinimumProtocolVersion": "TLSv1.2_2021"
+  },
+  "PriceClass": "PriceClass_100"
+}
