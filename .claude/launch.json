@@ -7,6 +7,13 @@
       "runtimeArgs": ["node_modules/vite/bin/vite.js", "--port", "5173"],
       "cwd": "apps/web",
       "port": 5173
+    },
+    {
+      "name": "landing",
+      "runtimeExecutable": "/opt/homebrew/bin/python3.12",
+      "runtimeArgs": ["-m", "http.server", "4173"],
+      "cwd": "apps/landing",
+      "port": 4173
     }
   ]
 }
